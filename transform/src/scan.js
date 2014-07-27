@@ -36,7 +36,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 	// Find declared helpers, and API methods/properties
 	estraverse.replace( ast, {
 		enter: function ( node, parent ) {
-			var _left, _right, declaration, left, keypath, skip;
+			var _left, _right, name, declaration, left, keypath, skip;
 
 			if ( node.type === 'VariableDeclaration' ) {
 				node._unpackedDeclarations = [];
@@ -45,8 +45,11 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 
 			// Function declarations
 			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
-				if ( !scopeDepth && node.id && /^d3_/.test( node.id.name ) ) {
-					helpers.push( node.id.name );
+				if ( !scopeDepth && node.id ) {
+					name = node.id.name;
+					if ( /^d3_/.test( name ) && !~helpers.indexOf( name ) ) {
+						helpers.push( name );
+					}
 				}
 
 				scopeDepth += 1;
@@ -66,9 +69,11 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 							init: getEndValue( _right )
 						};
 
-						if ( !!shared[ declaration.id.name ] ) {
+						name = declaration.id.name;
+
+						if ( !!shared[ name ] ) {
 							parent._sharedDeclarations.push({
-								name: shared[ declaration.id.name ],
+								name: shared[ name ],
 								init: declaration.init
 							});
 
@@ -78,8 +83,8 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 						else {
 							parent._unpackedDeclarations.push( declaration );
 
-							if ( /^d3_/.test( declaration.id.name ) ) {
-								helpers.push( declaration.id.name );
+							if ( /^d3_/.test( name ) && !~helpers.indexOf( name ) ) {
+								helpers.push( name );
 							}
 						}
 
@@ -107,7 +112,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 
 				if ( left.type === 'MemberExpression' ) {
 					keypath = getKeypath( left );
-					if ( /^d3\./.test( keypath ) ) {
+					if ( /^d3\./.test( keypath ) && !~exports.indexOf( keypath ) ) {
 						exports.push( keypath );
 					}
 				}
@@ -119,7 +124,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 					usesShared = true;
 				}
 
-				if ( /^d3_/.test( node.name ) ) {
+				if ( /^d3_/.test( node.name ) && !~dependencies.indexOf( node.name ) ) {
 					dependencies.push( node.name );
 				}
 			}
@@ -132,7 +137,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 					usesShared = true;
 				}
 
-				if ( /^d3\./.test( keypath ) ) {
+				if ( /^d3\./.test( keypath ) && !~dependencies.indexOf( keypath ) ) {
 					dependencies.push( keypath );
 				}
 
