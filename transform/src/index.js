@@ -85,11 +85,17 @@ module.exports = function () {
 			scanned.forEach( function ( x ) {
 				var deps = x.dependencies, i = deps.length, dep, index;
 				while ( i-- ) {
-					deps[i] = confirm( deps[i], x );
+					dep = confirm( deps[i], x );
 
-					if ( !!shared[ deps[i] ] ) {
-						deps.splice( i, 1 );
+					if ( !!shared[ dep ] ) {
+						dep = null;
 						x.usesShared = true;
+					}
+
+					if ( !dep ) {
+						deps.splice( i, 1 );
+					} else {
+						deps[i] = dep;
 					}
 				}
 			});
@@ -110,8 +116,11 @@ module.exports = function () {
 					if ( ~index ) {
 						dep = dep.substr( 0, index );
 					} else {
+						// This applies to locale/time-format.js... not proud of this hack
+						// but the alternative is to keep track of all variables currently
+						// in scopes below the root scope, and exclude them from dependencies
 						console.error( 'Could not find `' + dep + '` definition (' + x.filepath + ')' );
-						return dep;
+						return null;
 					}
 				} while ( true );
 			}
