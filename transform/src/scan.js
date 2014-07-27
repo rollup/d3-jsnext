@@ -7,6 +7,8 @@ var undeclaredHelperPattern = /(d3_[\w]+)/g,
 	undeclaredExportPattern = /(d3\.[\w\.]+)/g,
 	declaredExportPattern = /(d3\.[\w\.]+)\s*=[^=]/g,
 
+	shouldExport = require( './shouldExport' ),
+
 	shared = require( './shared.json' );
 
 module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName ) {
@@ -47,7 +49,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
 				if ( !scopeDepth && node.id ) {
 					name = node.id.name;
-					if ( /^d3_/.test( name ) && !~helpers.indexOf( name ) ) {
+					if ( shouldExport( name ) && !~helpers.indexOf( name ) ) {
 						helpers.push( name );
 					}
 				}
@@ -83,7 +85,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 						else {
 							parent._unpackedDeclarations.push( declaration );
 
-							if ( /^d3_/.test( name ) && !~helpers.indexOf( name ) ) {
+							if ( shouldExport( name ) && !~helpers.indexOf( name ) ) {
 								helpers.push( name );
 							}
 						}
@@ -130,7 +132,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 					usesShared = true;
 				}
 
-				else if ( /^d3_/.test( node.name ) && !~dependencies.indexOf( node.name ) ) {
+				else if ( shouldExport( node.name ) && !~dependencies.indexOf( node.name ) ) {
 					dependencies.push( node.name );
 				}
 			}

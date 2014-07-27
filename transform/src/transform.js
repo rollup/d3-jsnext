@@ -8,6 +8,7 @@ var promo = require( 'promo' ),
 	relative = require( '../utils/relative' ),
 
 	shared = require( './shared.json' ),
+	confirm = require( './confirm' ),
 
 	templates = {};
 
@@ -61,12 +62,20 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 		}
 
 
+		// TODO apply these changes to the AST
 		src = x.src
 			// Replace references to values that are
 			// shared between modules
 			.replace( sharedPattern, function ( match ) {
 				return 'shared.' + shared[ match ];
-			});
+			})
+
+			.replace( /d3\.[\w\.]+/g, function ( exportName ) {
+				var confirmed = confirm( exportName, x, pathsByHelperName, pathsByExportName );
+				return confirmed.replace( /\./g, '$' ) + exportName.substring( confirmed.length );
+			})
+
+			.replace( /apply\(\s*d3/g, 'apply(null' );
 
 		data = {
 			importDeclarations: importDeclarations,
@@ -74,10 +83,12 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 			helpers: x.helpers,
 			exports: x.exports,
 			safeExports: x.exports.map( function ( exportName ) {
-				return exportName.replace( /\./g, '$' );
+				var confirmed = confirm( exportName, x, pathsByHelperName, pathsByExportName );
+				return confirmed.replace( /\./g, '$' ) + exportName.substring( confirmed.length );
 			}),
 			filepath: x.filepath,
-			relative: relative
+			relative: relative,
+			usesShared: x.usesShared
 		};
 
 		result = {

@@ -13,6 +13,7 @@ var fs = require( 'graceful-fs' ),
 	writeTo = require( '../utils/writeTo' ),
 
 	shared = require( './shared.json' ),
+	confirm = require( './confirm' ),
 	generateCjs = require( './generators/cjs' ),
 	generateCjsIndex = require( './generators/cjsIndex' ),
 
@@ -85,7 +86,7 @@ module.exports = function () {
 			scanned.forEach( function ( x ) {
 				var deps = x.dependencies, i = deps.length, dep, index;
 				while ( i-- ) {
-					dep = confirm( deps[i], x );
+					dep = confirm( deps[i], x, pathsByHelperName, pathsByExportName );
 
 					if ( !!shared[ dep ] ) {
 						dep = null;
@@ -99,31 +100,6 @@ module.exports = function () {
 					}
 				}
 			});
-
-			function confirm ( dep, x ) {
-				var index;
-
-				do {
-					if ( shared[ dep ] ) {
-						return dep;
-					}
-
-					if ( pathsByHelperName[ dep ] || pathsByExportName[ dep ] ) {
-						return dep;
-					}
-
-					index = dep.lastIndexOf( '.' );
-					if ( ~index ) {
-						dep = dep.substr( 0, index );
-					} else {
-						// This applies to locale/time-format.js... not proud of this hack
-						// but the alternative is to keep track of all variables currently
-						// in scopes below the root scope, and exclude them from dependencies
-						console.error( 'Could not find `' + dep + '` definition (' + x.filepath + ')' );
-						return null;
-					}
-				} while ( true );
-			}
 		}).catch( debug );
 
 
