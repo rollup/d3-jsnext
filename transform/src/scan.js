@@ -106,13 +106,19 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 				}
 			}
 
-			// Property assignments to the d3 namespace (and children)
+			// Assigments
 			if ( node.type === 'AssignmentExpression' ) {
 				left = node.left;
 
+				// Property assignments to the d3 namespace (and children)
 				if ( left.type === 'MemberExpression' ) {
 					keypath = getKeypath( left );
-					if ( /^d3\./.test( keypath ) && !~exports.indexOf( keypath ) ) {
+
+					if ( !!shared[ keypath ] ) {
+						usesShared = true;
+					}
+
+					else if ( /^d3\./.test( keypath ) && !~exports.indexOf( keypath ) ) {
 						exports.push( keypath );
 					}
 				}
@@ -124,7 +130,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 					usesShared = true;
 				}
 
-				if ( /^d3_/.test( node.name ) && !~dependencies.indexOf( node.name ) ) {
+				else if ( /^d3_/.test( node.name ) && !~dependencies.indexOf( node.name ) ) {
 					dependencies.push( node.name );
 				}
 			}
@@ -133,11 +139,11 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 			if ( node.type === 'MemberExpression' ) {
 				keypath = getKeypath( node );
 
-				if ( shared[ keypath ] ) {
+				if ( !!shared[ keypath ] ) {
 					usesShared = true;
 				}
 
-				if ( /^d3\./.test( keypath ) && !~dependencies.indexOf( keypath ) ) {
+				else if ( /^d3\./.test( keypath ) && !~dependencies.indexOf( keypath ) ) {
 					dependencies.push( keypath );
 				}
 

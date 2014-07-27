@@ -11,6 +11,7 @@
 		}).join( '\n' );
 	}).join( '\n' )
 %>
+<% if ( usesShared ) { %>var shared = require( '<%= relative( filepath, "_/_shared" ) %>' );<% } %>
 
 <%=
 	safeExports.map( function ( exportName ) {

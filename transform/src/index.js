@@ -49,21 +49,35 @@ module.exports = function () {
 			// Discover exports and helpers
 			scanned.forEach( function ( x ) {
 				x.helpers.forEach( function ( helperName ) {
-					if ( !shared[ helperName ] && pathsByHelperName[ helperName ] && pathsByHelperName[ helperName ] !== x.filepath ) {
+					if ( shared[ helperName ] ) {
+						// TODO
+					}
+
+					// already exists as something else?
+					else if ( pathsByHelperName[ helperName ] && pathsByHelperName[ helperName ] !== x.filepath ) {
 						//throw new Error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 					}
 
-					pathsByHelperName[ helperName ] = x.filepath;
+					else {
+						pathsByHelperName[ helperName ] = x.filepath;
+					}
 				});
 
 				x.exports.forEach( function ( exportName ) {
-					if ( !shared[ exportName ] &&pathsByExportName[ exportName ] && pathsByExportName[ exportName ] !== x.filepath ) {
+					if ( shared[ exportName ] ) {
+						// TODO
+					}
+
+					// already exists as something else?
+					else if ( pathsByExportName[ exportName ] && pathsByExportName[ exportName ] !== x.filepath ) {
 						//throw new Error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 					}
 
-					pathsByExportName[ exportName ] = x.filepath;
+					else {
+						pathsByExportName[ exportName ] = x.filepath;
+					}
 				});
 			});
 
@@ -85,7 +99,7 @@ module.exports = function () {
 
 				do {
 					if ( shared[ dep ] ) {
-						return 'shared.' + shared[ dep ];
+						return dep;
 					}
 
 					if ( pathsByHelperName[ dep ] || pathsByExportName[ dep ] ) {
@@ -165,7 +179,9 @@ module.exports = function () {
 				return writeTo( path.join( __dirname, '../../output/cjs/' + modulePath + '.js' ) )( generateCjsIndex( groupName.split( '.' ).splice( -1 )[0], groups[ groupName ] ) );
 			});
 
-
+			promises.push(
+				writeTo( path.join( __dirname, '../../output/cjs/d3/_/_shared.js' ) )( 'module.exports = {};' )
+			);
 
 			return Promise.all( promises );
 		}).catch( debug );

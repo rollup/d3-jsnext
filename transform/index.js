@@ -3,8 +3,7 @@ var fs = require( 'fs' ),
 	promo = require( 'promo' ),
 	Promise = promo.Promise,
 	glob = promo( require( 'glob' ) ),
-	unlink = promo( fs.unlink ),
-	rmdir = promo( fs.rmdir ),
+	rimraf = promo( require( 'rimraf' ) ),
 	stat = promo( fs.stat ),
 
 	transformTests = require( './test' ),
@@ -13,19 +12,7 @@ var fs = require( 'fs' ),
 	debug = require( './utils/debug' );
 
 // Unlink all files. TODO use rimraf when have internet
-glob( path.join( __dirname, '../output/**/*' ) ).then( function ( files ) {
-	var promises = files.map( function ( file ) {
-		stat( file ).then( function ( stats ) {
-			if ( stats.isDirectory() ) {
-				return rmdir( file );
-			}
-
-			return unlink( file );
-		});
-	});
-
-	return Promise.all( promises );
-})
+rimraf( path.join( __dirname, '../output' ) )
 
 .then( transformTests )
 .then( transformSource )
