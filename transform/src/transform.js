@@ -7,7 +7,11 @@ var promo = require( 'promo' ),
 	debug = require( '../utils/debug' ),
 	relative = require( '../utils/relative' ),
 
+	shared = require( './shared.json' ),
+
 	templates = {};
+
+var sharedPattern = new RegExp( '\\b(?:' + Object.keys( shared ).map( function ( key ) { return key.replace( /\./g, '\\.' ); }).join( '|' ) + ')\\b' );
 
 var templatePromise = Promise.all(
 	[ 'es6', 'cjs' ].map( function ( type ) {
@@ -19,7 +23,7 @@ var templatePromise = Promise.all(
 	})
 ).catch( debug );
 
-module.exports = function ( x, pathsByHelperName ) {
+module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 	return templatePromise.then( function () {
 		var src,
 			srcPath,
@@ -28,7 +32,7 @@ module.exports = function ( x, pathsByHelperName ) {
 			imports = '', exports = '', data, result;
 
 		x.dependencies.forEach( function ( dep ) {
-			var srcPath = pathsByHelperName[ dep ];
+			var srcPath = pathsByHelperName[ dep ] || pathsByExportName[ dep ];
 
 			if ( !dependencyGroups[ srcPath ] ) {
 				dependencyGroups[ srcPath ] = [];
@@ -56,8 +60,13 @@ module.exports = function ( x, pathsByHelperName ) {
 			}).join( '\n' );
 		}
 
-		// Remove smash import declarations
-		src = x.src.replace( /^import.+/gm, '' );
+
+		src = x.src
+			// Replace references to values that are
+			// shared between modules
+			.replace( sharedPattern, function ( match ) {
+				return 'shared.' + shared[ match ];
+			});
 
 		data = {
 			importDeclarations: importDeclarations,

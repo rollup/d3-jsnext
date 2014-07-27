@@ -3,6 +3,10 @@
 		var relativePath = relative( filepath, group.path );
 
 		return group.dependencies.map( function ( dep ) {
+			// dep may be an exposed function, e.g. `d3.quantile` - we need
+			// to turn those into `d3$quantile`
+			dep = dep.replace( /\./g, '$' );
+
 			return 'var ' + dep + ' = require( \'' + relativePath.replace( '.js', '' ) + '\' ).' + dep + ';';
 		}).join( '\n' );
 	}).join( '\n' )

@@ -1,0 +1,22 @@
+{
+	"d3_array": "array",
+    "d3_date": "date",
+    "d3.event": "event",
+
+	"d3_geo_centroidW0": "geo_centroidW0",
+    "d3_geo_centroidW1": "geo_centroidW1",
+    "d3_geo_centroidX0": "geo_centroidX0",
+    "d3_geo_centroidY0": "geo_centroidY0",
+    "d3_geo_centroidZ0": "geo_centroidZ0",
+    "d3_geo_centroidX1": "geo_centroidX1",
+    "d3_geo_centroidY1": "geo_centroidY1",
+    "d3_geo_centroidZ1": "geo_centroidZ1",
+    "d3_geo_centroidX2": "geo_centroidX2",
+    "d3_geo_centroidY2": "geo_centroidY2",
+    "d3_geo_centroidZ2": "geo_centroidZ2",
+
+    "d3_geo_pathBoundsX0": "geo_pathBoundsX0",
+    "d3_geo_pathBoundsY0": "geo_pathBoundsY0",
+    "d3_geo_pathBoundsX1": "geo_pathBoundsX1",
+    "d3_geo_pathBoundsY1": "geo_pathBoundsY1"
+}
