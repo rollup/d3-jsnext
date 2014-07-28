@@ -1,11 +1,21 @@
-var shared = require( './shared.json' );
+var groupByIdentifier = require( './groupByIdentifier' );
 
 module.exports = function confirm ( dep, x, pathsByHelperName, pathsByExportName ) {
-	var index;
+	var index, group;
 
 	do {
-		if ( shared[ dep ] ) {
-			return dep;
+		/*try {
+			dep.lastIndexOf( '.' );
+		} catch ( err ) {
+			console.log( 'dep', dep );
+			console.error( err.message );
+			throw err;
+		}*/
+
+		if ( group = groupByIdentifier[ dep ] ) {
+			return null;
+			console.warn( 'TODO' );
+			return group.name;
 		}
 
 		if ( pathsByHelperName[ dep ] || pathsByExportName[ dep ] ) {

@@ -8,20 +8,22 @@ var undeclaredHelperPattern = /(d3_[\w]+)/g,
 	declaredExportPattern = /(d3\.[\w\.]+)\s*=[^=]/g,
 
 	shouldExport = require( './shouldExport' ),
-
-	shared = require( './shared.json' );
+	traverse = require( './traverse' ),
+	astHelpers = require( './astHelpers' );
 
 module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName ) {
 	var ast,
 		match,
-		dependencies = [],
-		helpers = [],
-		exports = [],
-		sharedAssignments = [],
-		declaratorsToRemove = [],
-		scopeDepth = 0,
 		i,
-		node;
+		node,
+		scanned = {
+			filepath: filepath,
+			shared: [],
+			dependencies: [],
+			helpers: [],
+			exports: [],
+			scopeDepth: 0
+		};
 
 	src = src
 		// Remove smash import declarations
@@ -35,156 +37,38 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 		throw err;
 	}
 
+	astHelpers.preprocess( ast );
+
 	// Find declared helpers, and API methods/properties
 	estraverse.replace( ast, {
 		enter: function ( node, parent ) {
-			var _left, _right, name, declaration, left, keypath, skip;
+			var fn, _left, _right, name, declaration, left, keypath, skip;
 
-			if ( node.type === 'VariableDeclaration' ) {
-				node._unpackedDeclarations = [];
-				node._sharedDeclarations = [];
+			// We don't want to traverse nodes we created ourselves
+			if ( parent._isReplacement ) {
+				return;
 			}
 
-			// Function declarations
-			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
-				if ( !scopeDepth && node.id ) {
-					name = node.id.name;
-					if ( shouldExport( name ) && !~helpers.indexOf( name ) ) {
-						helpers.push( name );
-					}
-				}
-
-				scopeDepth += 1;
-			}
-
-			// Variable declarations
-			if ( node.type === 'VariableDeclarator' ) {
-				if ( !scopeDepth && node.id ) {
-
-					// We need to break apart e.g. `var foo = bar = baz = 0;`
-					_left = node.id;
-					_right = node.init;
-					do {
-						declaration = {
-							type: 'VariableDeclarator',
-							id: _left,
-							init: getEndValue( _right )
-						};
-
-						name = declaration.id.name;
-
-						if ( !!shared[ name ] ) {
-							parent._sharedDeclarations.push({
-								name: shared[ name ],
-								init: declaration.init
-							});
-
-							parent._shouldFlatten = true;
-						}
-
-						else {
-							parent._unpackedDeclarations.push( declaration );
-
-							if ( shouldExport( name ) && !~helpers.indexOf( name ) ) {
-								helpers.push( name );
-							}
-						}
-
-						if ( !_right ) {
-							break;
-						}
-
-						_left = _right.left;
-						_right = _right.right;
-					} while ( _left );
-
-					function getEndValue ( node ) {
-						if ( node && node.type === 'AssignmentExpression' ) {
-							return getEndValue( node.right );
-						}
-
-						return node;
-					}
-				}
-			}
-
-			// Assigments
-			if ( node.type === 'AssignmentExpression' ) {
-				left = node.left;
-
-				// Property assignments to the d3 namespace (and children)
-				if ( left.type === 'MemberExpression' ) {
-					keypath = getKeypath( left );
-
-					if ( !!shared[ keypath ] ) {
-						usesShared = true;
-					}
-
-					else if ( /^d3\./.test( keypath ) && !~exports.indexOf( keypath ) ) {
-						exports.push( keypath );
-					}
-				}
-			}
-
-			// References to helpers
-			if ( node.type === 'Identifier' ) {
-				if ( shared[ node.name ] ) {
-					usesShared = true;
-				}
-
-				else if ( shouldExport( node.name ) && !~dependencies.indexOf( node.name ) ) {
-					dependencies.push( node.name );
-				}
-			}
-
-			// References to d3 namespace
-			if ( node.type === 'MemberExpression' ) {
-				keypath = getKeypath( node );
-
-				if ( !!shared[ keypath ] ) {
-					usesShared = true;
-				}
-
-				else if ( /^d3\./.test( keypath ) && !~dependencies.indexOf( keypath ) ) {
-					dependencies.push( keypath );
-				}
-
-				skip = true;
-			}
-
-
-			if ( skip ) {
-				this.skip();
+			if ( fn = traverse.enter[ node.type ] ) {
+				replacement = fn( node, parent, scanned );
+				return replacement;
 			}
 		},
 
 		leave: function ( node ) {
 			var i;
 
-			if ( node.type === 'VariableDeclaration' ) {
-				if ( node._shouldFlatten ) {
-					node.declarations = node._unpackedDeclarations;
-				}
-
-				if ( !node.declarations.length ) {
-					return { emptyVariableDeclaration: true, _sharedDeclarations: node._sharedDeclarations };
-				}
-
-				delete node._shouldFlatten;
-				delete node._unpackedDeclarations;
-			}
-
 			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
-				scopeDepth -= 1;
+				scanned.scopeDepth -= 1;
 			}
+
+			delete node._isReplacement;
+			delete node._ignore;
 		}
 	});
 
-	// insert sharedAssignments nodes
-	insertSharedAssignments( ast.body );
-
-	dependencies = dependencies.filter( function ( dep ) {
-		return !~helpers.indexOf( dep ) && !~exports.indexOf( dep );
+	scanned.dependencies = scanned.dependencies.filter( function ( dep ) {
+		return !~scanned.helpers.indexOf( dep ) && !~scanned.exports.indexOf( dep );
 	});
 
 	try {
@@ -194,80 +78,12 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 		throw err;
 	}
 
-	return {
-		src: escodegen.generate( ast ),
-		filepath: filepath,
-		dependencies: dependencies,
-		helpers: helpers,
-		exports: exports
-	};
+	scanned.ast = ast;
+	scanned.src = src;
+	delete scanned.scopeDepth;
+
+	return scanned;
 };
-
-function getKeypath ( node ) {
-	keys = [];
-
-	do {
-		keys.unshift( node.property.name );
-		node = node.object;
-	} while ( node.type === 'MemberExpression' );
-
-	if ( node.type === 'Identifier' ) {
-		keys.unshift( node.name );
-		return keys.join( '.' );
-	}
-
-	return '';
-}
-
-function insertSharedAssignments ( body ) {
-	var i, node, spliceArgs, declarations;
-
-	i = body.length;
-	while ( i-- ) {
-		node = body[i];
-
-		if ( node._sharedDeclarations ) {
-			declarations = node._sharedDeclarations.filter( function ( decl ) {
-				return decl.init;
-			}).map( function ( decl ) {
-				var assignment;
-
-				assignment = {
-					type: 'ExpressionStatement',
-					expression: {
-						type: 'AssignmentExpression',
-						operator: '=',
-						left: {
-							type: 'MemberExpression',
-							computed: false,
-							object: {
-								type: 'Identifier',
-								name: 'shared'
-							},
-							property: {
-								type: 'Identifier',
-								name: decl.name
-							}
-						},
-						right: decl.init
-					}
-				};
-
-				return assignment;
-			});
-
-			spliceArgs = [ i + 1, 0 ].concat( declarations );
-
-			body.splice.apply( body, spliceArgs );
-
-			delete node._sharedDeclarations;
-		}
-
-		if ( node.emptyVariableDeclaration ) {
-			body.splice( i, 1 );
-		}
-	}
-}
 
 
 function s ( thing ) {

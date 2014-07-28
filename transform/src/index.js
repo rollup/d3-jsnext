@@ -13,6 +13,7 @@ var fs = require( 'graceful-fs' ),
 	writeTo = require( '../utils/writeTo' ),
 
 	shared = require( './shared.json' ),
+	groupByIdentifier = require( './groupByIdentifier' ),
 	confirm = require( './confirm' ),
 	generateCjs = require( './generators/cjs' ),
 	generateCjsIndex = require( './generators/cjsIndex' ),
@@ -46,16 +47,24 @@ module.exports = function () {
 		pathsByHelperName = {};
 		pathsByExportName = {};
 
-		scanPromise.then( function () {
+		scanPromise = scanPromise.then( function () {
+			var promises = scanned.map( function ( x ) {
+				return writeTo( path.join( __dirname, 'scanned', x.filepath ) )( JSON.stringify( x, null, '  ' ) );
+			});
+
+			return Promise.all( promises );
+		}).then( function () {
+			console.log( 'wrote all scanned files' );
+
 			// Discover exports and helpers
 			scanned.forEach( function ( x ) {
 				x.helpers.forEach( function ( helperName ) {
-					if ( shared[ helperName ] ) {
+					/*if ( shared[ helperName ] ) {
 						// TODO
-					}
+					}*/
 
 					// already exists as something else?
-					else if ( pathsByHelperName[ helperName ] && pathsByHelperName[ helperName ] !== x.filepath ) {
+					if ( pathsByHelperName[ helperName ] && pathsByHelperName[ helperName ] !== x.filepath ) {
 						//throw new Error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 					}
@@ -66,12 +75,12 @@ module.exports = function () {
 				});
 
 				x.exports.forEach( function ( exportName ) {
-					if ( shared[ exportName ] ) {
+					/*if ( shared[ exportName ] ) {
 						// TODO
-					}
+					}*/
 
 					// already exists as something else?
-					else if ( pathsByExportName[ exportName ] && pathsByExportName[ exportName ] !== x.filepath ) {
+					if ( pathsByExportName[ exportName ] && pathsByExportName[ exportName ] !== x.filepath ) {
 						//throw new Error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 					}
@@ -88,9 +97,10 @@ module.exports = function () {
 				while ( i-- ) {
 					dep = confirm( deps[i], x, pathsByHelperName, pathsByExportName );
 
-					if ( !!shared[ dep ] ) {
+					// TODO is this still necessary at this stage?
+					if ( group = groupByIdentifier[ dep ] ) {
 						dep = null;
-						x.usesShared = true;
+						console.warn( 'TODO' );
 					}
 
 					if ( !dep ) {
@@ -118,7 +128,7 @@ module.exports = function () {
 
 		// Then, we write files corresponding to the API
 		exportPromise = transformPromise.then( function () {
-			var exportName, srcPath, modulePath, promises = [];
+			var exportName, srcPath, modulePath, promises = [], version;
 
 			promises = Object.keys( pathsByExportName ).map( function ( exportName ) {
 				var modulePath, srcPath;
@@ -128,6 +138,12 @@ module.exports = function () {
 
 				return writeTo( path.join( destDir + '/cjs/' + ( modulePath || 'index' ) + '.js' ) )( generateCjs( exportName, srcPath ) );
 			});
+
+			version = require( '../../d3/package.json' ).version;
+
+			promises.push(
+				writeTo( path.join( destDir, 'cjs/d3/version.js' ) )( 'module.exports = \'' + version + '\';' )
+			);
 
 			return Promise.all( promises );
 		}).catch( debug );
@@ -164,9 +180,16 @@ module.exports = function () {
 				return writeTo( path.join( __dirname, '../../output/cjs/' + modulePath + '.js' ) )( generateCjsIndex( groupName.split( '.' ).splice( -1 )[0], groups[ groupName ] ) );
 			});
 
-			promises.push(
+			Object.keys( shared ).forEach( function ( groupName ) {
+				var group = shared[ groupName ];
+				promises.push(
+					writeTo( path.join( __dirname, '../../output/cjs/d3/_' + group.path ) )( 'module.exports = {};' )
+				);
+			});
+
+			/*promises.push(
 				writeTo( path.join( __dirname, '../../output/cjs/d3/_/_shared.js' ) )( 'module.exports = {};' )
-			);
+			);*/
 
 			return Promise.all( promises );
 		}).catch( debug );

@@ -7,12 +7,11 @@ var promo = require( 'promo' ),
 	debug = require( '../utils/debug' ),
 	relative = require( '../utils/relative' ),
 
-	shared = require( './shared.json' ),
 	confirm = require( './confirm' ),
 
 	templates = {};
 
-var sharedPattern = new RegExp( '\\b(?:' + Object.keys( shared ).map( function ( key ) { return key.replace( /\./g, '\\.' ); }).join( '|' ) + ')\\b' );
+//var sharedPattern = new RegExp( '\\b(?:' + Object.keys( shared ).map( function ( key ) { return key.replace( /\./g, '\\.' ); }).join( '|' ) + ')\\b' );
 
 var templatePromise = Promise.all(
 	[ 'es6', 'cjs' ].map( function ( type ) {
@@ -66,12 +65,18 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 		src = x.src
 			// Replace references to values that are
 			// shared between modules
-			.replace( sharedPattern, function ( match ) {
+			/*.replace( sharedPattern, function ( match ) {
 				return 'shared.' + shared[ match ];
-			})
+			})*/
 
 			.replace( /d3\.[\w\.]+/g, function ( exportName ) {
 				var confirmed = confirm( exportName, x, pathsByHelperName, pathsByExportName );
+
+				if ( !confirmed ) {
+					console.log( 'wut? ' + exportName );
+					return exportName;
+				}
+
 				return confirmed.replace( /\./g, '$' ) + exportName.substring( confirmed.length );
 			})
 
@@ -88,7 +93,7 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 			}),
 			filepath: x.filepath,
 			relative: relative,
-			usesShared: x.usesShared
+			shared: x.shared
 		};
 
 		result = {
