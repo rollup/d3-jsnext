@@ -824,6 +824,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.scale.quantize = function () {\n    return d3_scale_quantize(0, 1, [\n        0,\n        1\n    ]);\n};\nfunction d3_scale_quantize(x0, x1, range) {\n    var kx, i;\n    function scale(x) {\n        return range[Math.max(0, Math.min(i, Math.floor(kx * (x - x0))))];\n    }\n    function rescale() {\n        kx = range.length / (x1 - x0);\n        i = range.length - 1;\n        return scale;\n    }\n    scale.domain = function (x) {\n        if (!arguments.length)\n            return [\n                x0,\n                x1\n            ];\n        x0 = +x[0];\n        x1 = +x[x.length - 1];\n        return rescale();\n    };\n    scale.range = function (x) {\n        if (!arguments.length)\n            return range;\n        range = x;\n        return rescale();\n    };\n    scale.invertExtent = function (y) {\n        y = range.indexOf(y);\n        y = y < 0 ? NaN : y / kx + x0;\n        return [\n            y,\n            y + 1 / kx\n        ];\n    };\n    scale.copy = function () {\n        return d3_scale_quantize(x0, x1, range);\n    };\n    return rescale();\n}"
+  }
 }

@@ -503,6 +503,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_azimuthal(scale, angle) {\n    function azimuthal(λ, φ) {\n        var cosλ = Math.cos(λ), cosφ = Math.cos(φ), k = scale(cosλ * cosφ);\n        return [\n            k * cosφ * Math.sin(λ),\n            k * Math.sin(φ)\n        ];\n    }\n    azimuthal.invert = function (x, y) {\n        var ρ = Math.sqrt(x * x + y * y), c = angle(ρ), sinc = Math.sin(c), cosc = Math.cos(c);\n        return [\n            Math.atan2(x * sinc, ρ * cosc),\n            Math.asin(ρ && y * sinc / ρ)\n        ];\n    };\n    return azimuthal;\n}"
+  }
 }

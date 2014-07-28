@@ -733,6 +733,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "var d3_formatPrefixes = [\n        'y',\n        'z',\n        'a',\n        'f',\n        'p',\n        'n',\n        '\\xB5',\n        'm',\n        '',\n        'k',\n        'M',\n        'G',\n        'T',\n        'P',\n        'E',\n        'Z',\n        'Y'\n    ].map(d3_formatPrefix);\nd3.formatPrefix = function (value, precision) {\n    var i = 0;\n    if (value) {\n        if (value < 0)\n            value *= -1;\n        if (precision)\n            value = d3.round(value, d3_format_precision(value, precision));\n        i = 1 + Math.floor(1e-12 + Math.log(value) / Math.LN10);\n        i = Math.max(-24, Math.min(24, Math.floor((i - 1) / 3) * 3));\n    }\n    return d3_formatPrefixes[8 + i / 3];\n};\nfunction d3_formatPrefix(d, i) {\n    var k = Math.pow(10, abs(8 - i) * 3);\n    return {\n        scale: i > 8 ? function (d) {\n            return d / k;\n        } : function (d) {\n            return d * k;\n        },\n        symbol: d\n    };\n}"
+  }
 }

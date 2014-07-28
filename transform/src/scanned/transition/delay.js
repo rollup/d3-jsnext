@@ -364,6 +364,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.delay = function (value) {\n    var id = this.id;\n    if (arguments.length < 1)\n        return this.node().__transition__[id].delay;\n    return d3_selection_each(this, typeof value === 'function' ? function (node, i, j) {\n        node.__transition__[id].delay = +value.call(node, node.__data__, i, j);\n    } : (value = +value, function (node) {\n        node.__transition__[id].delay = value;\n    }));\n};"
+  }
 }

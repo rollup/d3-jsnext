@@ -246,6 +246,5 @@
         }
       }
     ]
-  },
-  "src": "d3.pairs = function (array) {\n    var i = 0, n = array.length - 1, p0, p1 = array[0], pairs = new Array(n < 0 ? 0 : n);\n    while (i < n)\n        pairs[i] = [\n            p0 = p1,\n            p1 = array[++i]\n        ];\n    return pairs;\n};"
+  }
 }

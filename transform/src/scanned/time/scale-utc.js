@@ -656,6 +656,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_time_scaleUtcMethods = d3_time_scaleLocalMethods.map(function (m) {\n        return [\n            m[0].utc,\n            m[1]\n        ];\n    });\nvar d3_time_scaleUtcFormat = d3_time_formatUtc.multi([\n        [\n            '.%L',\n            function (d) {\n                return d.getUTCMilliseconds();\n            }\n        ],\n        [\n            ':%S',\n            function (d) {\n                return d.getUTCSeconds();\n            }\n        ],\n        [\n            '%I:%M',\n            function (d) {\n                return d.getUTCMinutes();\n            }\n        ],\n        [\n            '%I %p',\n            function (d) {\n                return d.getUTCHours();\n            }\n        ],\n        [\n            '%a %d',\n            function (d) {\n                return d.getUTCDay() && d.getUTCDate() != 1;\n            }\n        ],\n        [\n            '%b %d',\n            function (d) {\n                return d.getUTCDate() != 1;\n            }\n        ],\n        [\n            '%B',\n            function (d) {\n                return d.getUTCMonth();\n            }\n        ],\n        [\n            '%Y',\n            d3_true\n        ]\n    ]);\nd3_time_scaleUtcMethods.year = d3_time.year.utc;\nd3_time.scale.utc = function () {\n    return d3_time_scale(d3.scale.linear(), d3_time_scaleUtcMethods, d3_time_scaleUtcFormat);\n};"
+  }
 }

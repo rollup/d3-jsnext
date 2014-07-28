@@ -566,6 +566,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.select = function (selector) {\n    var id = this.id, subgroups = [], subgroup, subnode, node;\n    selector = d3_selection_selector(selector);\n    for (var j = -1, m = this.length; ++j < m;) {\n        subgroups.push(subgroup = []);\n        for (var group = this[j], i = -1, n = group.length; ++i < n;) {\n            if ((node = group[i]) && (subnode = selector.call(node, node.__data__, i, j))) {\n                if ('__data__' in node)\n                    subnode.__data__ = node.__data__;\n                d3_transitionNode(subnode, i, id, node.__transition__[id]);\n                subgroup.push(subnode);\n            } else {\n                subgroup.push(null);\n            }\n        }\n    }\n    return d3_transition(subgroups, id);\n};"
+  }
 }

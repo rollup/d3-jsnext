@@ -563,6 +563,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.event = null;\nfunction d3_eventPreventDefault() {\n    d3.event.preventDefault();\n}\nfunction d3_eventSource() {\n    var e = d3.event, s;\n    while (s = e.sourceEvent)\n        e = s;\n    return e;\n}\nfunction d3_eventDispatch(target) {\n    var dispatch = new d3_dispatch(), i = 0, n = arguments.length;\n    while (++i < n)\n        dispatch[arguments[i]] = d3_dispatch_event(dispatch);\n    dispatch.of = function (thiz, argumentz) {\n        return function (e1) {\n            try {\n                var e0 = e1.sourceEvent = d3.event;\n                e1.target = target;\n                d3.event = e1;\n                dispatch[e1.type].apply(thiz, argumentz);\n            } finally {\n                d3.event = e0;\n            }\n        };\n    };\n    return dispatch;\n}"
+  }
 }

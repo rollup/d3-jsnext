@@ -144,6 +144,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_geo_orthographic = d3_geo_azimuthal(function () {\n        return 1;\n    }, Math.asin);\n(d3.geo.orthographic = function () {\n    return d3_geo_projection(d3_geo_orthographic);\n}).raw = d3_geo_orthographic;"
+  }
 }

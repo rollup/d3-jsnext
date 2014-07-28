@@ -151,6 +151,5 @@
         }
       }
     ]
-  },
-  "src": "d3.entries = function (map) {\n    var entries = [];\n    for (var key in map)\n        entries.push({\n            key: key,\n            value: map[key]\n        });\n    return entries;\n};"
+  }
 }

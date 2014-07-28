@@ -145,6 +145,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_equirectangular(λ, φ) {\n    return [\n        λ,\n        φ\n    ];\n}\n(d3.geo.equirectangular = function () {\n    return d3_geo_projection(d3_geo_equirectangular);\n}).raw = d3_geo_equirectangular.invert = d3_geo_equirectangular;"
+  }
 }

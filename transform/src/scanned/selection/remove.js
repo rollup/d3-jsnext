@@ -131,6 +131,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.remove = function () {\n    return this.each(function () {\n        var parent = this.parentNode;\n        if (parent)\n            parent.removeChild(this);\n    });\n};"
+  }
 }

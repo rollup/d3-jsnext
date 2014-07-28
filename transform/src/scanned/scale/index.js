@@ -7,6 +7,5 @@
   "ast": {
     "type": "Program",
     "body": []
-  },
-  "src": ""
+  }
 }

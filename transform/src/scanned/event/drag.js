@@ -591,6 +591,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "var d3_event_dragSelect = 'onselectstart' in d3_document ? null : d3_vendorSymbol(d3_documentElement.style, 'userSelect');\nvar d3_event_dragId = 0;\nfunction d3_event_dragSuppress() {\n    var name = '.dragsuppress-' + ++d3_event_dragId, click = 'click' + name, w = d3.select(d3_window).on('touchmove' + name, d3_eventPreventDefault).on('dragstart' + name, d3_eventPreventDefault).on('selectstart' + name, d3_eventPreventDefault);\n    if (d3_event_dragSelect) {\n        var style = d3_documentElement.style, select = style[d3_event_dragSelect];\n        style[d3_event_dragSelect] = 'none';\n    }\n    return function (suppressClick) {\n        w.on(name, null);\n        if (d3_event_dragSelect)\n            style[d3_event_dragSelect] = select;\n        if (suppressClick) {\n            function off() {\n                w.on(click, null);\n            }\n            w.on(click, function () {\n                d3_eventPreventDefault();\n                off();\n            }, true);\n            setTimeout(off, 0);\n        }\n    };\n}"
+  }
 }

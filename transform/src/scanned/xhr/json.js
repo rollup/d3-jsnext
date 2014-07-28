@@ -139,6 +139,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.json = function (url, callback) {\n    return d3_xhr(url, 'application/json', d3_json, callback);\n};\nfunction d3_json(request) {\n    return JSON.parse(request.responseText);\n}"
+  }
 }

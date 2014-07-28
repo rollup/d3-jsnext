@@ -70,6 +70,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_number(x) {\n    return x != null && !isNaN(x);\n}"
+  }
 }

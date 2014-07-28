@@ -1,29 +1,20 @@
 var groupByIdentifier = require( './groupByIdentifier' );
 
 module.exports = function confirm ( dep, x, pathsByHelperName, pathsByExportName ) {
-	var index, group;
+	var index, group, remainder = '';
 
 	do {
-		/*try {
-			dep.lastIndexOf( '.' );
-		} catch ( err ) {
-			console.log( 'dep', dep );
-			console.error( err.message );
-			throw err;
-		}*/
-
 		if ( group = groupByIdentifier[ dep ] ) {
-			return null;
-			console.warn( 'TODO' );
-			return group.name;
+			return group.name + '.' + dep.replace( /\./g, '$' ) + remainder;
 		}
 
 		if ( pathsByHelperName[ dep ] || pathsByExportName[ dep ] ) {
-			return dep;
+			return dep.replace( /\./g, '$' ) + remainder;
 		}
 
 		index = dep.lastIndexOf( '.' );
 		if ( ~index ) {
+			remainder = dep.substr( index ) + remainder;
 			dep = dep.substr( 0, index );
 		} else {
 			// This applies to locale/time-format.js... not proud of this hack

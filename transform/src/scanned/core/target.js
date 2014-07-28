@@ -47,6 +47,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_target(d) {\n    return d.target;\n}"
+  }
 }

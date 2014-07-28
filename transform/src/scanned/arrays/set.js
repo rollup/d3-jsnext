@@ -548,6 +548,5 @@
         }
       }
     ]
-  },
-  "src": "d3.set = function (array) {\n    var set = new d3_Set();\n    if (array)\n        for (var i = 0, n = array.length; i < n; ++i)\n            set.add(array[i]);\n    return set;\n};\nfunction d3_Set() {\n}\nd3_class(d3_Set, {\n    has: d3_map_has,\n    add: function (value) {\n        this[d3_map_prefix + value] = true;\n        return value;\n    },\n    remove: function (value) {\n        value = d3_map_prefix + value;\n        return value in this && delete this[value];\n    },\n    values: d3_map_keys,\n    size: d3_map_size,\n    empty: d3_map_empty,\n    forEach: function (f) {\n        for (var value in this)\n            if (value.charCodeAt(0) === d3_map_prefixCode)\n                f.call(this, value.substring(1));\n    }\n});"
+  }
 }

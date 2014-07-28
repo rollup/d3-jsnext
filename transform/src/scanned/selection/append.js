@@ -370,6 +370,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.append = function (name) {\n    name = d3_selection_creator(name);\n    return this.select(function () {\n        return this.appendChild(name.apply(this, arguments));\n    });\n};\nfunction d3_selection_creator(name) {\n    return typeof name === 'function' ? name : (name = d3.ns.qualify(name)).local ? function () {\n        return this.ownerDocument.createElementNS(name.space, name.local);\n    } : function () {\n        return this.ownerDocument.createElementNS(this.namespaceURI, name);\n    };\n}"
+  }
 }

@@ -210,6 +210,5 @@
         }
       }
     ]
-  },
-  "src": "d3.median = function (array, f) {\n    if (arguments.length > 1)\n        array = array.map(f);\n    array = array.filter(d3_number);\n    return array.length ? d3.quantile(array.sort(d3_ascending), 0.5) : undefined;\n};"
+  }
 }

@@ -113,6 +113,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_format_precision(x, p) {\n    return p - (x ? Math.ceil(Math.log(x) / Math.LN10) : 1);\n}"
+  }
 }

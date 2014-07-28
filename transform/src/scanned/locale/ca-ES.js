@@ -432,6 +432,5 @@
         }
       }
     ]
-  },
-  "src": "d3.locale.ca_ES = d3.locale({\n    decimal: ',',\n    thousands: '.',\n    grouping: [3],\n    currency: [\n        '',\n        ' \\u20AC'\n    ],\n    dateTime: '%A, %e de %B de %Y, %X',\n    date: '%d/%m/%Y',\n    time: '%H:%M:%S',\n    periods: [\n        'AM',\n        'PM'\n    ],\n    days: [\n        'diumenge',\n        'dilluns',\n        'dimarts',\n        'dimecres',\n        'dijous',\n        'divendres',\n        'dissabte'\n    ],\n    shortDays: [\n        'dg.',\n        'dl.',\n        'dt.',\n        'dc.',\n        'dj.',\n        'dv.',\n        'ds.'\n    ],\n    months: [\n        'gener',\n        'febrer',\n        'mar\\xE7',\n        'abril',\n        'maig',\n        'juny',\n        'juliol',\n        'agost',\n        'setembre',\n        'octubre',\n        'novembre',\n        'desembre'\n    ],\n    shortMonths: [\n        'gen.',\n        'febr.',\n        'mar\\xE7',\n        'abr.',\n        'maig',\n        'juny',\n        'jul.',\n        'ag.',\n        'set.',\n        'oct.',\n        'nov.',\n        'des.'\n    ]\n});"
+  }
 }

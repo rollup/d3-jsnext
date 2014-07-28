@@ -12,7 +12,6 @@
     }
   ],
   "dependencies": [
-    "d3.time",
     "d3_date"
   ],
   "helpers": [
@@ -20,10 +19,35 @@
     "d3_date_utc",
     "d3_time_prototype"
   ],
-  "exports": [],
+  "exports": [
+    "d3.time"
+  ],
   "ast": {
     "type": "Program",
     "body": [
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "d3"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "time"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "ObjectExpression",
+            "properties": []
+          }
+        }
+      },
       {
         "type": "VariableDeclaration",
         "kind": "var",
@@ -35,19 +59,6 @@
               "name": "d3_time"
             },
             "init": {
-              "type": "ObjectExpression",
-              "properties": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -58,10 +69,6 @@
                 "type": "Identifier",
                 "name": "time"
               }
-            },
-            "init": {
-              "type": "ObjectExpression",
-              "properties": []
             }
           }
         ]
@@ -1347,6 +1354,5 @@
         ]
       }
     ]
-  },
-  "src": "var d3_time = {};\nvar d3.time = {};\nGLOBAL.d3_date = Date;\nfunction d3_date_utc() {\n    this._ = new Date(arguments.length > 1 ? Date.UTC.apply(this, arguments) : arguments[0]);\n}\nd3_date_utc.prototype = {\n    getDate: function () {\n        return this._.getUTCDate();\n    },\n    getDay: function () {\n        return this._.getUTCDay();\n    },\n    getFullYear: function () {\n        return this._.getUTCFullYear();\n    },\n    getHours: function () {\n        return this._.getUTCHours();\n    },\n    getMilliseconds: function () {\n        return this._.getUTCMilliseconds();\n    },\n    getMinutes: function () {\n        return this._.getUTCMinutes();\n    },\n    getMonth: function () {\n        return this._.getUTCMonth();\n    },\n    getSeconds: function () {\n        return this._.getUTCSeconds();\n    },\n    getTime: function () {\n        return this._.getTime();\n    },\n    getTimezoneOffset: function () {\n        return 0;\n    },\n    valueOf: function () {\n        return this._.valueOf();\n    },\n    setDate: function () {\n        d3_time_prototype.setUTCDate.apply(this._, arguments);\n    },\n    setDay: function () {\n        d3_time_prototype.setUTCDay.apply(this._, arguments);\n    },\n    setFullYear: function () {\n        d3_time_prototype.setUTCFullYear.apply(this._, arguments);\n    },\n    setHours: function () {\n        d3_time_prototype.setUTCHours.apply(this._, arguments);\n    },\n    setMilliseconds: function () {\n        d3_time_prototype.setUTCMilliseconds.apply(this._, arguments);\n    },\n    setMinutes: function () {\n        d3_time_prototype.setUTCMinutes.apply(this._, arguments);\n    },\n    setMonth: function () {\n        d3_time_prototype.setUTCMonth.apply(this._, arguments);\n    },\n    setSeconds: function () {\n        d3_time_prototype.setUTCSeconds.apply(this._, arguments);\n    },\n    setTime: function () {\n        d3_time_prototype.setTime.apply(this._, arguments);\n    }\n};\nvar d3_time_prototype = Date.prototype;"
+  }
 }

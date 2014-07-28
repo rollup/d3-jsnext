@@ -418,6 +418,5 @@
         ]
       }
     ]
-  },
-  "src": "var d3_locale_enUS = d3.locale({\n        decimal: '.',\n        thousands: ',',\n        grouping: [3],\n        currency: [\n            '$',\n            ''\n        ],\n        dateTime: '%a %b %e %X %Y',\n        date: '%m/%d/%Y',\n        time: '%H:%M:%S',\n        periods: [\n            'AM',\n            'PM'\n        ],\n        days: [\n            'Sunday',\n            'Monday',\n            'Tuesday',\n            'Wednesday',\n            'Thursday',\n            'Friday',\n            'Saturday'\n        ],\n        shortDays: [\n            'Sun',\n            'Mon',\n            'Tue',\n            'Wed',\n            'Thu',\n            'Fri',\n            'Sat'\n        ],\n        months: [\n            'January',\n            'February',\n            'March',\n            'April',\n            'May',\n            'June',\n            'July',\n            'August',\n            'September',\n            'October',\n            'November',\n            'December'\n        ],\n        shortMonths: [\n            'Jan',\n            'Feb',\n            'Mar',\n            'Apr',\n            'May',\n            'Jun',\n            'Jul',\n            'Aug',\n            'Sep',\n            'Oct',\n            'Nov',\n            'Dec'\n        ]\n    });"
+  }
 }

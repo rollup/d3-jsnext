@@ -521,6 +521,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_adder() {\n}\nd3_adder.prototype = {\n    s: 0,\n    t: 0,\n    add: function (y) {\n        d3_adderSum(y, this.t, d3_adderTemp);\n        d3_adderSum(d3_adderTemp.s, this.s, this);\n        if (this.s)\n            this.t += d3_adderTemp.t;\n        else\n            this.s = d3_adderTemp.t;\n    },\n    reset: function () {\n        this.s = this.t = 0;\n    },\n    valueOf: function () {\n        return this.s;\n    }\n};\nvar d3_adderTemp = new d3_adder();\nfunction d3_adderSum(a, b, o) {\n    var x = o.s = a + b, bv = x - a, av = x - bv;\n    o.t = a - av + (b - bv);\n}"
+  }
 }

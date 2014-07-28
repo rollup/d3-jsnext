@@ -66,6 +66,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.empty = function () {\n    return !this.node();\n};"
+  }
 }

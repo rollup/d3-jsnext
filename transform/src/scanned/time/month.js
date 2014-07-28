@@ -321,6 +321,5 @@
         }
       }
     ]
-  },
-  "src": "d3_time.month = d3_time_interval(function (date) {\n    date = d3_time.day(date);\n    date.setDate(1);\n    return date;\n}, function (date, offset) {\n    date.setMonth(date.getMonth() + offset);\n}, function (date) {\n    return date.getMonth();\n});\nd3_time.months = d3_time.month.range;\nd3_time.months.utc = d3_time.month.utc.range;"
+  }
 }

@@ -372,6 +372,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_nsPrefix = {\n        svg: 'http://www.w3.org/2000/svg',\n        xhtml: 'http://www.w3.org/1999/xhtml',\n        xlink: 'http://www.w3.org/1999/xlink',\n        xml: 'http://www.w3.org/XML/1998/namespace',\n        xmlns: 'http://www.w3.org/2000/xmlns/'\n    };\nd3.ns = {\n    prefix: d3_nsPrefix,\n    qualify: function (name) {\n        var i = name.indexOf(':'), prefix = name;\n        if (i >= 0) {\n            prefix = name.substring(0, i);\n            name = name.substring(i + 1);\n        }\n        return d3_nsPrefix.hasOwnProperty(prefix) ? {\n            space: d3_nsPrefix[prefix],\n            local: name\n        } : name;\n    }\n};"
+  }
 }

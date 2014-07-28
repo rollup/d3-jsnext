@@ -74,6 +74,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_collapse(s) {\n    return s.trim().replace(/\\s+/g, ' ');\n}"
+  }
 }

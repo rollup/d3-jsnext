@@ -278,6 +278,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_time_formatIso = d3_time_formatUtc('%Y-%m-%dT%H:%M:%S.%LZ');\nd3_time_format.iso = Date.prototype.toISOString && +new Date('2000-01-01T00:00:00.000Z') ? d3_time_formatIsoNative : d3_time_formatIso;\nfunction d3_time_formatIsoNative(date) {\n    return date.toISOString();\n}\nd3_time_formatIsoNative.parse = function (string) {\n    var date = new Date(string);\n    return isNaN(date) ? null : date;\n};\nd3_time_formatIsoNative.toString = d3_time_formatIso.toString;"
+  }
 }

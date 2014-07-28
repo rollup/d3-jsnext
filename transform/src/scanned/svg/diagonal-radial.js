@@ -419,6 +419,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.svg.diagonal.radial = function () {\n    var diagonal = d3.svg.diagonal(), projection = d3_svg_diagonalProjection, projection_ = diagonal.projection;\n    diagonal.projection = function (x) {\n        return arguments.length ? projection_(d3_svg_diagonalRadialProjection(projection = x)) : projection;\n    };\n    return diagonal;\n};\nfunction d3_svg_diagonalRadialProjection(projection) {\n    return function () {\n        var d = projection.apply(this, arguments), r = d[0], a = d[1] + d3_svg_arcOffset;\n        return [\n            r * Math.cos(a),\n            r * Math.sin(a)\n        ];\n    };\n}"
+  }
 }

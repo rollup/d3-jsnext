@@ -78,6 +78,5 @@
         "alternate": null
       }
     ]
-  },
-  "src": "if (!Date.now)\n    Date.now = function () {\n        return +new Date();\n    };"
+  }
 }

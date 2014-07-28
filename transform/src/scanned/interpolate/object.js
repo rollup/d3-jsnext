@@ -379,6 +379,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateObject = d3_interpolateObject;\nfunction d3_interpolateObject(a, b) {\n    var i = {}, c = {}, k;\n    for (k in a) {\n        if (k in b) {\n            i[k] = d3_interpolate(a[k], b[k]);\n        } else {\n            c[k] = a[k];\n        }\n    }\n    for (k in b) {\n        if (!(k in a)) {\n            c[k] = b[k];\n        }\n    }\n    return function (t) {\n        for (k in i)\n            c[k] = i[k](t);\n        return c;\n    };\n}"
+  }
 }

@@ -432,6 +432,5 @@
         }
       }
     ]
-  },
-  "src": "d3.locale.fi_FI = d3.locale({\n    decimal: ',',\n    thousands: '\\xA0',\n    grouping: [3],\n    currency: [\n        '',\n        '\\xA0\\u20AC'\n    ],\n    dateTime: '%A, %-d. %Bta %Y klo %X',\n    date: '%-d.%-m.%Y',\n    time: '%H:%M:%S',\n    periods: [\n        'a.m.',\n        'p.m.'\n    ],\n    days: [\n        'sunnuntai',\n        'maanantai',\n        'tiistai',\n        'keskiviikko',\n        'torstai',\n        'perjantai',\n        'lauantai'\n    ],\n    shortDays: [\n        'Su',\n        'Ma',\n        'Ti',\n        'Ke',\n        'To',\n        'Pe',\n        'La'\n    ],\n    months: [\n        'tammikuu',\n        'helmikuu',\n        'maaliskuu',\n        'huhtikuu',\n        'toukokuu',\n        'kes\\xE4kuu',\n        'hein\\xE4kuu',\n        'elokuu',\n        'syyskuu',\n        'lokakuu',\n        'marraskuu',\n        'joulukuu'\n    ],\n    shortMonths: [\n        'Tammi',\n        'Helmi',\n        'Maalis',\n        'Huhti',\n        'Touko',\n        'Kes\\xE4',\n        'Hein\\xE4',\n        'Elo',\n        'Syys',\n        'Loka',\n        'Marras',\n        'Joulu'\n    ]\n});"
+  }
 }

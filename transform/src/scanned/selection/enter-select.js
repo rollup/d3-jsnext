@@ -540,6 +540,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selection_enterPrototype.select = function (selector) {\n    var subgroups = [], subgroup, subnode, upgroup, group, node;\n    for (var j = -1, m = this.length; ++j < m;) {\n        upgroup = (group = this[j]).update;\n        subgroups.push(subgroup = []);\n        subgroup.parentNode = group.parentNode;\n        for (var i = -1, n = group.length; ++i < n;) {\n            if (node = group[i]) {\n                subgroup.push(upgroup[i] = subnode = selector.call(group.parentNode, node.__data__, i, j));\n                subnode.__data__ = node.__data__;\n            } else {\n                subgroup.push(null);\n            }\n        }\n    }\n    return d3_selection(subgroups);\n};"
+  }
 }

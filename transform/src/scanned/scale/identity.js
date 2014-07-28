@@ -463,6 +463,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.scale.identity = function () {\n    return d3_scale_identity([\n        0,\n        1\n    ]);\n};\nfunction d3_scale_identity(domain) {\n    function identity(x) {\n        return +x;\n    }\n    identity.invert = identity;\n    identity.domain = identity.range = function (x) {\n        if (!arguments.length)\n            return domain;\n        domain = x.map(identity);\n        return identity;\n    };\n    identity.ticks = function (m) {\n        return d3_scale_linearTicks(domain, m);\n    };\n    identity.tickFormat = function (m, format) {\n        return d3_scale_linearTickFormat(domain, m, format);\n    };\n    identity.copy = function () {\n        return d3_scale_identity(domain);\n    };\n    return identity;\n}"
+  }
 }

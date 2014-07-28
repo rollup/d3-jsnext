@@ -376,6 +376,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.each = function (callback) {\n    return d3_selection_each(this, function (node, i, j) {\n        callback.call(node, node.__data__, i, j);\n    });\n};\nfunction d3_selection_each(groups, callback) {\n    for (var j = 0, m = groups.length; j < m; j++) {\n        for (var group = groups[j], i = 0, n = group.length, node; i < n; i++) {\n            if (node = group[i])\n                callback(node, i, j);\n        }\n    }\n    return groups;\n}"
+  }
 }

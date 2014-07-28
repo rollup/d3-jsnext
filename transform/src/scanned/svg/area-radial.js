@@ -413,6 +413,5 @@
         }
       }
     ]
-  },
-  "src": "d3.svg.area.radial = function () {\n    var area = d3_svg_area(d3_svg_lineRadial);\n    area.radius = area.x, delete area.x;\n    area.innerRadius = area.x0, delete area.x0;\n    area.outerRadius = area.x1, delete area.x1;\n    area.angle = area.y, delete area.y;\n    area.startAngle = area.y0, delete area.y0;\n    area.endAngle = area.y1, delete area.y1;\n    return area;\n};"
+  }
 }

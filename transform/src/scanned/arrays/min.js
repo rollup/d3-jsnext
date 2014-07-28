@@ -547,6 +547,5 @@
         }
       }
     ]
-  },
-  "src": "d3.min = function (array, f) {\n    var i = -1, n = array.length, a, b;\n    if (arguments.length === 1) {\n        while (++i < n && !((a = array[i]) != null && a <= a))\n            a = undefined;\n        while (++i < n)\n            if ((b = array[i]) != null && a > b)\n                a = b;\n    } else {\n        while (++i < n && !((a = f.call(array, array[i], i)) != null && a <= a))\n            a = undefined;\n        while (++i < n)\n            if ((b = f.call(array, array[i], i)) != null && a > b)\n                a = b;\n    }\n    return a;\n};"
+  }
 }

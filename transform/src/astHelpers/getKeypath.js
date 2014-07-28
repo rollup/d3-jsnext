@@ -4,6 +4,10 @@ module.exports = function ( node ) {
 	do {
 		key = node.property.name;
 
+		if ( !key ) {
+			return null;
+		}
+
 		keys.unshift( key );
 		node = node.object;
 		node._ignore = true;

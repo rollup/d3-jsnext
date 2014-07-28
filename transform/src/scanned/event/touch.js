@@ -275,6 +275,5 @@
         }
       }
     ]
-  },
-  "src": "d3.touch = function (container, touches, identifier) {\n    if (arguments.length < 3)\n        identifier = touches, touches = d3_eventSource().changedTouches;\n    if (touches)\n        for (var i = 0, n = touches.length, touch; i < n; ++i) {\n            if ((touch = touches[i]).identifier === identifier) {\n                return d3_mousePoint(container, touch);\n            }\n        }\n};"
+  }
 }

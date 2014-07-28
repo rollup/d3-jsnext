@@ -10,7 +10,7 @@
     "d3.select",
     "d3_event_dragSuppress",
     "d3.rebind",
-    "d3.event.changedTouches..identifier",
+    "d3.event.changedTouches",
     "d3_window"
   ],
   "helpers": [
@@ -1588,6 +1588,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.behavior.drag = function () {\n    var event = d3_eventDispatch(drag, 'drag', 'dragstart', 'dragend'), origin = null, mousedown = dragstart(d3_noop, d3.mouse, d3_behavior_dragMouseSubject, 'mousemove', 'mouseup'), touchstart = dragstart(d3_behavior_dragTouchId, d3.touch, d3_behavior_dragTouchSubject, 'touchmove', 'touchend');\n    function drag() {\n        this.on('mousedown.drag', mousedown).on('touchstart.drag', touchstart);\n    }\n    function dragstart(id, position, subject, move, end) {\n        return function () {\n            var that = this, target = d3.event.target, parent = that.parentNode, dispatch = event.of(that, arguments), dragged = 0, dragId = id(), dragName = '.drag' + (dragId == null ? '' : '-' + dragId), dragOffset, dragSubject = d3.select(subject()).on(move + dragName, moved).on(end + dragName, ended), dragRestore = d3_event_dragSuppress(), position0 = position(parent, dragId);\n            if (origin) {\n                dragOffset = origin.apply(that, arguments);\n                dragOffset = [\n                    dragOffset.x - position0[0],\n                    dragOffset.y - position0[1]\n                ];\n            } else {\n                dragOffset = [\n                    0,\n                    0\n                ];\n            }\n            dispatch({ type: 'dragstart' });\n            function moved() {\n                var position1 = position(parent, dragId), dx, dy;\n                if (!position1)\n                    return;\n                dx = position1[0] - position0[0];\n                dy = position1[1] - position0[1];\n                dragged |= dx | dy;\n                position0 = position1;\n                dispatch({\n                    type: 'drag',\n                    x: position1[0] + dragOffset[0],\n                    y: position1[1] + dragOffset[1],\n                    dx: dx,\n                    dy: dy\n                });\n            }\n            function ended() {\n                if (!position(parent, dragId))\n                    return;\n                dragSubject.on(move + dragName, null).on(end + dragName, null);\n                dragRestore(dragged && d3.event.target === target);\n                dispatch({ type: 'dragend' });\n            }\n        };\n    }\n    drag.origin = function (x) {\n        if (!arguments.length)\n            return origin;\n        origin = x;\n        return drag;\n    };\n    return d3.rebind(drag, event, 'on');\n};\nfunction d3_behavior_dragTouchId() {\n    return d3.event.changedTouches[0].identifier;\n}\nfunction d3_behavior_dragTouchSubject() {\n    return d3.event.target;\n}\nfunction d3_behavior_dragMouseSubject() {\n    return d3_window;\n}"
+  }
 }

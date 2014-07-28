@@ -320,6 +320,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_conic(projectAt) {\n    var φ0 = 0, φ1 = π / 3, m = d3_geo_projectionMutator(projectAt), p = m(φ0, φ1);\n    p.parallels = function (_) {\n        if (!arguments.length)\n            return [\n                φ0 / π * 180,\n                φ1 / π * 180\n            ];\n        return m(φ0 = _[0] * π / 180, φ1 = _[1] * π / 180);\n    };\n    return p;\n}"
+  }
 }

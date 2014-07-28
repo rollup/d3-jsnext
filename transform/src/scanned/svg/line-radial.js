@@ -500,6 +500,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.svg.line.radial = function () {\n    var line = d3_svg_line(d3_svg_lineRadial);\n    line.radius = line.x, delete line.x;\n    line.angle = line.y, delete line.y;\n    return line;\n};\nfunction d3_svg_lineRadial(points) {\n    var point, i = -1, n = points.length, r, a;\n    while (++i < n) {\n        point = points[i];\n        r = point[0];\n        a = point[1] + d3_svg_arcOffset;\n        point[0] = r * Math.cos(a);\n        point[1] = r * Math.sin(a);\n    }\n    return points;\n}"
+  }
 }

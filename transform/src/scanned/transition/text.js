@@ -173,6 +173,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_transitionPrototype.text = function (value) {\n    return d3_transition_tween(this, 'text', value, d3_transition_text);\n};\nfunction d3_transition_text(b) {\n    if (b == null)\n        b = '';\n    return function () {\n        this.textContent = b;\n    };\n}"
+  }
 }

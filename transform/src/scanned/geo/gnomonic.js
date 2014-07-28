@@ -157,6 +157,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_geo_gnomonic = d3_geo_azimuthal(function (cosλcosφ) {\n        return 1 / cosλcosφ;\n    }, Math.atan);\n(d3.geo.gnomonic = function () {\n    return d3_geo_projection(d3_geo_gnomonic);\n}).raw = d3_geo_gnomonic;"
+  }
 }

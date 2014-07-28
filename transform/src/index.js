@@ -17,6 +17,7 @@ var fs = require( 'graceful-fs' ),
 	confirm = require( './confirm' ),
 	generateCjs = require( './generators/cjs' ),
 	generateCjsIndex = require( './generators/cjsIndex' ),
+	postprocess = require( './postprocess' ),
 
 	srcDir = path.join( __dirname, '../../d3/src' ),
 	destDir = path.join( __dirname, '../../output' );
@@ -53,9 +54,9 @@ module.exports = function () {
 			});
 
 			return Promise.all( promises );
-		}).then( function () {
-			console.log( 'wrote all scanned files' );
+		});
 
+		scanPromise.then( function () {
 			// Discover exports and helpers
 			scanned.forEach( function ( x ) {
 				x.helpers.forEach( function ( helperName ) {
@@ -91,17 +92,15 @@ module.exports = function () {
 				});
 			});
 
+			scanned.forEach( function ( x ) {
+				postprocess( x, pathsByHelperName, pathsByExportName );
+			});
+
 			// Clean up dependencies
 			scanned.forEach( function ( x ) {
 				var deps = x.dependencies, i = deps.length, dep, index;
 				while ( i-- ) {
 					dep = confirm( deps[i], x, pathsByHelperName, pathsByExportName );
-
-					// TODO is this still necessary at this stage?
-					if ( group = groupByIdentifier[ dep ] ) {
-						dep = null;
-						console.warn( 'TODO' );
-					}
 
 					if ( !dep ) {
 						deps.splice( i, 1 );

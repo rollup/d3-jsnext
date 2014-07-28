@@ -1117,6 +1117,5 @@
         }
       }
     ]
-  },
-  "src": "var ρ = Math.SQRT2;\nvar ρ2 = 2;\nvar ρ4 = 4;\nd3.interpolateZoom = function (p0, p1) {\n    var ux0 = p0[0], uy0 = p0[1], w0 = p0[2], ux1 = p1[0], uy1 = p1[1], w1 = p1[2];\n    var dx = ux1 - ux0, dy = uy1 - uy0, d2 = dx * dx + dy * dy, d1 = Math.sqrt(d2), b0 = (w1 * w1 - w0 * w0 + ρ4 * d2) / (2 * w0 * ρ2 * d1), b1 = (w1 * w1 - w0 * w0 - ρ4 * d2) / (2 * w1 * ρ2 * d1), r0 = Math.log(Math.sqrt(b0 * b0 + 1) - b0), r1 = Math.log(Math.sqrt(b1 * b1 + 1) - b1), dr = r1 - r0, S = (dr || Math.log(w1 / w0)) / ρ;\n    function interpolate(t) {\n        var s = t * S;\n        if (dr) {\n            var coshr0 = d3_cosh(r0), u = w0 / (ρ2 * d1) * (coshr0 * d3_tanh(ρ * s + r0) - d3_sinh(r0));\n            return [\n                ux0 + u * dx,\n                uy0 + u * dy,\n                w0 * coshr0 / d3_cosh(ρ * s + r0)\n            ];\n        }\n        return [\n            ux0 + t * dx,\n            uy0 + t * dy,\n            w0 * Math.exp(ρ * s)\n        ];\n    }\n    interpolate.duration = S * 1000;\n    return interpolate;\n};"
+  }
 }

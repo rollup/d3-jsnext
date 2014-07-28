@@ -335,6 +335,5 @@
         }
       }
     ]
-  },
-  "src": "d3_time.minute = d3_time_interval(function (date) {\n    return new d3_date(Math.floor(date / 60000) * 60000);\n}, function (date, offset) {\n    date.setTime(date.getTime() + Math.floor(offset) * 60000);\n}, function (date) {\n    return date.getMinutes();\n});\nd3_time.minutes = d3_time.minute.range;\nd3_time.minutes.utc = d3_time.minute.utc.range;"
+  }
 }

@@ -1006,6 +1006,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_mercator(λ, φ) {\n    return [\n        λ,\n        Math.log(Math.tan(π / 4 + φ / 2))\n    ];\n}\nd3_geo_mercator.invert = function (x, y) {\n    return [\n        x,\n        2 * Math.atan(Math.exp(y)) - halfπ\n    ];\n};\nfunction d3_geo_mercatorProjection(project) {\n    var m = d3_geo_projection(project), scale = m.scale, translate = m.translate, clipExtent = m.clipExtent, clipAuto;\n    m.scale = function () {\n        var v = scale.apply(m, arguments);\n        return v === m ? clipAuto ? m.clipExtent(null) : m : v;\n    };\n    m.translate = function () {\n        var v = translate.apply(m, arguments);\n        return v === m ? clipAuto ? m.clipExtent(null) : m : v;\n    };\n    m.clipExtent = function (_) {\n        var v = clipExtent.apply(m, arguments);\n        if (v === m) {\n            if (clipAuto = _ == null) {\n                var k = π * scale(), t = translate();\n                clipExtent([\n                    [\n                        t[0] - k,\n                        t[1] - k\n                    ],\n                    [\n                        t[0] + k,\n                        t[1] + k\n                    ]\n                ]);\n            }\n        } else if (clipAuto) {\n            v = null;\n        }\n        return v;\n    };\n    return m.clipExtent(null);\n}\n(d3.geo.mercator = function () {\n    return d3_geo_mercatorProjection(d3_geo_mercator);\n}).raw = d3_geo_mercator;"
+  }
 }

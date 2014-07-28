@@ -201,6 +201,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.html = function (url, callback) {\n    return d3_xhr(url, 'text/html', d3_html, callback);\n};\nfunction d3_html(request) {\n    var range = d3_document.createRange();\n    range.selectNode(d3_document.body);\n    return range.createContextualFragment(request.responseText);\n}"
+  }
 }

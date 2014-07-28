@@ -492,6 +492,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.selectAll = function (selector) {\n    var subgroups = [], subgroup, node;\n    selector = d3_selection_selectorAll(selector);\n    for (var j = -1, m = this.length; ++j < m;) {\n        for (var group = this[j], i = -1, n = group.length; ++i < n;) {\n            if (node = group[i]) {\n                subgroups.push(subgroup = d3_array(selector.call(node, node.__data__, i, j)));\n                subgroup.parentNode = node;\n            }\n        }\n    }\n    return d3_selection(subgroups);\n};\nfunction d3_selection_selectorAll(selector) {\n    return typeof selector === 'function' ? selector : function () {\n        return d3_selectAll(selector, this);\n    };\n}"
+  }
 }

@@ -184,6 +184,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_class(ctor, properties) {\n    try {\n        for (var key in properties) {\n            Object.defineProperty(ctor.prototype, key, {\n                value: properties[key],\n                enumerable: false\n            });\n        }\n    } catch (e) {\n        ctor.prototype = properties;\n    }\n}"
+  }
 }

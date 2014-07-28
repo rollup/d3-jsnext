@@ -6,8 +6,7 @@ var promo = require( 'promo' ),
 	_ = require( 'lodash' ),
 	debug = require( '../utils/debug' ),
 	relative = require( '../utils/relative' ),
-
-	confirm = require( './confirm' ),
+	escodegen = require( 'escodegen' ),
 
 	templates = {};
 
@@ -62,23 +61,12 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 
 
 		// TODO apply these changes to the AST
-		src = x.src
+		src = escodegen.generate( x.ast )
 			// Replace references to values that are
 			// shared between modules
 			/*.replace( sharedPattern, function ( match ) {
 				return 'shared.' + shared[ match ];
 			})*/
-
-			.replace( /d3\.[\w\.]+/g, function ( exportName ) {
-				var confirmed = confirm( exportName, x, pathsByHelperName, pathsByExportName );
-
-				if ( !confirmed ) {
-					console.log( 'wut? ' + exportName );
-					return exportName;
-				}
-
-				return confirmed.replace( /\./g, '$' ) + exportName.substring( confirmed.length );
-			})
 
 			.replace( /apply\(\s*d3/g, 'apply(null' );
 
@@ -87,9 +75,12 @@ module.exports = function ( x, pathsByHelperName, pathsByExportName ) {
 			src: src,
 			helpers: x.helpers,
 			exports: x.exports,
-			safeExports: x.exports.map( function ( exportName ) {
+			/*safeExports: x.exports.map( function ( exportName ) {
 				var confirmed = confirm( exportName, x, pathsByHelperName, pathsByExportName );
 				return confirmed.replace( /\./g, '$' ) + exportName.substring( confirmed.length );
+			}),*/
+			safeExports: x.exports.map( function ( exportName ) {
+				return exportName.replace( /\./g, '$' );
 			}),
 			filepath: x.filepath,
 			relative: relative,

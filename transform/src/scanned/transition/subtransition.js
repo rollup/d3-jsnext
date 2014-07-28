@@ -490,6 +490,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.transition = function () {\n    var id0 = this.id, id1 = ++d3_transitionId, subgroups = [], subgroup, group, node, transition;\n    for (var j = 0, m = this.length; j < m; j++) {\n        subgroups.push(subgroup = []);\n        for (var group = this[j], i = 0, n = group.length; i < n; i++) {\n            if (node = group[i]) {\n                transition = Object.create(node.__transition__[id0]);\n                transition.delay += transition.duration;\n                d3_transitionNode(node, i, id1, transition);\n            }\n            subgroup.push(node);\n        }\n    }\n    return d3_transition(subgroups, id1);\n};"
+  }
 }

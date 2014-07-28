@@ -2057,6 +2057,23 @@
             "type": "VariableDeclarator",
             "id": {
               "type": "Identifier",
+              "name": "τ"
+            },
+            "init": {
+              "type": "Identifier",
+              "name": "ε"
+            }
+          }
+        ]
+      },
+      {
+        "type": "VariableDeclaration",
+        "kind": "var",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
               "name": "d3_svg_arcMax"
             },
             "init": {
@@ -2070,23 +2087,6 @@
                 "type": "Identifier",
                 "name": "ε"
               }
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "τ"
-            },
-            "init": {
-              "type": "Identifier",
-              "name": "ε"
             }
           }
         ]
@@ -2240,6 +2240,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.svg.arc = function () {\n    var innerRadius = d3_svg_arcInnerRadius, outerRadius = d3_svg_arcOuterRadius, startAngle = d3_svg_arcStartAngle, endAngle = d3_svg_arcEndAngle;\n    function arc() {\n        var r0 = innerRadius.apply(this, arguments), r1 = outerRadius.apply(this, arguments), a0 = startAngle.apply(this, arguments) + d3_svg_arcOffset, a1 = endAngle.apply(this, arguments) + d3_svg_arcOffset, da = (a1 < a0 && (da = a0, a0 = a1, a1 = da), a1 - a0), df = da < π ? '0' : '1', c0 = Math.cos(a0), s0 = Math.sin(a0), c1 = Math.cos(a1), s1 = Math.sin(a1);\n        return da >= d3_svg_arcMax ? r0 ? 'M0,' + r1 + 'A' + r1 + ',' + r1 + ' 0 1,1 0,' + -r1 + 'A' + r1 + ',' + r1 + ' 0 1,1 0,' + r1 + 'M0,' + r0 + 'A' + r0 + ',' + r0 + ' 0 1,0 0,' + -r0 + 'A' + r0 + ',' + r0 + ' 0 1,0 0,' + r0 + 'Z' : 'M0,' + r1 + 'A' + r1 + ',' + r1 + ' 0 1,1 0,' + -r1 + 'A' + r1 + ',' + r1 + ' 0 1,1 0,' + r1 + 'Z' : r0 ? 'M' + r1 * c0 + ',' + r1 * s0 + 'A' + r1 + ',' + r1 + ' 0 ' + df + ',1 ' + r1 * c1 + ',' + r1 * s1 + 'L' + r0 * c1 + ',' + r0 * s1 + 'A' + r0 + ',' + r0 + ' 0 ' + df + ',0 ' + r0 * c0 + ',' + r0 * s0 + 'Z' : 'M' + r1 * c0 + ',' + r1 * s0 + 'A' + r1 + ',' + r1 + ' 0 ' + df + ',1 ' + r1 * c1 + ',' + r1 * s1 + 'L0,0' + 'Z';\n    }\n    arc.innerRadius = function (v) {\n        if (!arguments.length)\n            return innerRadius;\n        innerRadius = d3_functor(v);\n        return arc;\n    };\n    arc.outerRadius = function (v) {\n        if (!arguments.length)\n            return outerRadius;\n        outerRadius = d3_functor(v);\n        return arc;\n    };\n    arc.startAngle = function (v) {\n        if (!arguments.length)\n            return startAngle;\n        startAngle = d3_functor(v);\n        return arc;\n    };\n    arc.endAngle = function (v) {\n        if (!arguments.length)\n            return endAngle;\n        endAngle = d3_functor(v);\n        return arc;\n    };\n    arc.centroid = function () {\n        var r = (innerRadius.apply(this, arguments) + outerRadius.apply(this, arguments)) / 2, a = (startAngle.apply(this, arguments) + endAngle.apply(this, arguments)) / 2 + d3_svg_arcOffset;\n        return [\n            Math.cos(a) * r,\n            Math.sin(a) * r\n        ];\n    };\n    return arc;\n};\nvar d3_svg_arcOffset = -halfπ;\nvar d3_svg_arcMax = τ - ε;\nvar τ = ε;\nfunction d3_svg_arcInnerRadius(d) {\n    return d.innerRadius;\n}\nfunction d3_svg_arcOuterRadius(d) {\n    return d.outerRadius;\n}\nfunction d3_svg_arcStartAngle(d) {\n    return d.startAngle;\n}\nfunction d3_svg_arcEndAngle(d) {\n    return d.endAngle;\n}"
+  }
 }

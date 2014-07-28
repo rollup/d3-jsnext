@@ -620,6 +620,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.select = function (selector) {\n    var subgroups = [], subgroup, subnode, group, node;\n    selector = d3_selection_selector(selector);\n    for (var j = -1, m = this.length; ++j < m;) {\n        subgroups.push(subgroup = []);\n        subgroup.parentNode = (group = this[j]).parentNode;\n        for (var i = -1, n = group.length; ++i < n;) {\n            if (node = group[i]) {\n                subgroup.push(subnode = selector.call(node, node.__data__, i, j));\n                if (subnode && '__data__' in node)\n                    subnode.__data__ = node.__data__;\n            } else {\n                subgroup.push(null);\n            }\n        }\n    }\n    return d3_selection(subgroups);\n};\nfunction d3_selection_selector(selector) {\n    return typeof selector === 'function' ? selector : function () {\n        return d3_select(selector, this);\n    };\n}"
+  }
 }

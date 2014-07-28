@@ -125,6 +125,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.call = function (callback) {\n    var args = d3_array(arguments);\n    callback.apply(args[0] = this, args);\n    return this;\n};"
+  }
 }

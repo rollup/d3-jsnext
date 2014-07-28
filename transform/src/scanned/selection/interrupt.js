@@ -137,6 +137,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.interrupt = function () {\n    return this.each(d3_selection_interrupt);\n};\nfunction d3_selection_interrupt() {\n    var lock = this.__transition__;\n    if (lock)\n        ++lock.active;\n}"
+  }
 }

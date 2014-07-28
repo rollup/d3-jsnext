@@ -206,6 +206,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_geo_stereographic = d3_geo_azimuthal(function (cosλcosφ) {\n        return 1 / (1 + cosλcosφ);\n    }, function (ρ) {\n        return 2 * Math.atan(ρ);\n    });\n(d3.geo.stereographic = function () {\n    return d3_geo_projection(d3_geo_stereographic);\n}).raw = d3_geo_stereographic;"
+  }
 }

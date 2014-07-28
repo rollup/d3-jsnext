@@ -354,6 +354,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.sort = function (comparator) {\n    comparator = d3_selection_sortComparator.apply(this, arguments);\n    for (var j = -1, m = this.length; ++j < m;)\n        this[j].sort(comparator);\n    return this.order();\n};\nfunction d3_selection_sortComparator(comparator) {\n    if (!arguments.length)\n        comparator = d3_ascending;\n    return function (a, b) {\n        return a && b ? comparator(a.__data__, b.__data__) : !a - !b;\n    };\n}"
+  }
 }

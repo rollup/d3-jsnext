@@ -13,7 +13,6 @@
 %>
 <%=
 	shared.map( function ( group ) {
-		console.log( 'finding relative path between ' + filepath + ' and ' + group.path );
 		return 'var ' + group.name + ' = require( \'' + relative( filepath, group.path ).replace( '.js', '' ) + '\' );';
 	}).join( '\n' )
 %>

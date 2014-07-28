@@ -688,6 +688,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.style = function (name, value, priority) {\n    var n = arguments.length;\n    if (n < 3) {\n        if (typeof name !== 'string') {\n            if (n < 2)\n                value = '';\n            for (priority in name)\n                this.each(d3_selection_style(priority, name[priority], value));\n            return this;\n        }\n        if (n < 2)\n            return d3_window.getComputedStyle(this.node(), null).getPropertyValue(name);\n        priority = '';\n    }\n    return this.each(d3_selection_style(name, value, priority));\n};\nfunction d3_selection_style(name, value, priority) {\n    function styleNull() {\n        this.style.removeProperty(name);\n    }\n    function styleConstant() {\n        this.style.setProperty(name, value, priority);\n    }\n    function styleFunction() {\n        var x = value.apply(this, arguments);\n        if (x == null)\n            this.style.removeProperty(name);\n        else\n            this.style.setProperty(name, x, priority);\n    }\n    return value == null ? styleNull : typeof value === 'function' ? styleFunction : styleConstant;\n}"
+  }
 }

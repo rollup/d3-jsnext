@@ -1003,6 +1003,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_conicConformal(φ0, φ1) {\n    var cosφ0 = Math.cos(φ0), t = function (φ) {\n            return Math.tan(π / 4 + φ / 2);\n        }, n = φ0 === φ1 ? Math.sin(φ0) : Math.log(cosφ0 / Math.cos(φ1)) / Math.log(t(φ1) / t(φ0)), F = cosφ0 * Math.pow(t(φ0), n) / n;\n    if (!n)\n        return d3_geo_mercator;\n    function forward(λ, φ) {\n        if (F > 0) {\n            if (φ < -halfπ + ε)\n                φ = -halfπ + ε;\n        } else {\n            if (φ > halfπ - ε)\n                φ = halfπ - ε;\n        }\n        var ρ = F / Math.pow(t(φ), n);\n        return [\n            ρ * Math.sin(n * λ),\n            F - ρ * Math.cos(n * λ)\n        ];\n    }\n    forward.invert = function (x, y) {\n        var ρ0_y = F - y, ρ = d3_sgn(n) * Math.sqrt(x * x + ρ0_y * ρ0_y);\n        return [\n            Math.atan2(x, ρ0_y) / n,\n            2 * Math.atan(Math.pow(F / ρ, 1 / n)) - halfπ\n        ];\n    };\n    return forward;\n}\n(d3.geo.conicConformal = function () {\n    return d3_geo_conic(d3_geo_conicConformal);\n}).raw = d3_geo_conicConformal;"
+  }
 }

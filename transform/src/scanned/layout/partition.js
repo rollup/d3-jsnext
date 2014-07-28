@@ -1003,6 +1003,5 @@
         }
       }
     ]
-  },
-  "src": "d3.layout.partition = function () {\n    var hierarchy = d3.layout.hierarchy(), size = [\n            1,\n            1\n        ];\n    function position(node, x, dx, dy) {\n        var children = node.children;\n        node.x = x;\n        node.y = node.depth * dy;\n        node.dx = dx;\n        node.dy = dy;\n        if (children && (n = children.length)) {\n            var i = -1, n, c, d;\n            dx = node.value ? dx / node.value : 0;\n            while (++i < n) {\n                position(c = children[i], x, d = c.value * dx, dy);\n                x += d;\n            }\n        }\n    }\n    function depth(node) {\n        var children = node.children, d = 0;\n        if (children && (n = children.length)) {\n            var i = -1, n;\n            while (++i < n)\n                d = Math.max(d, depth(children[i]));\n        }\n        return 1 + d;\n    }\n    function partition(d, i) {\n        var nodes = hierarchy.call(this, d, i);\n        position(nodes[0], 0, size[0], size[1] / depth(nodes[0]));\n        return nodes;\n    }\n    partition.size = function (x) {\n        if (!arguments.length)\n            return size;\n        size = x;\n        return partition;\n    };\n    return d3_layout_hierarchyRebind(partition, hierarchy);\n};"
+  }
 }

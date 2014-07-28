@@ -398,6 +398,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.duration = function (value) {\n    var id = this.id;\n    if (arguments.length < 1)\n        return this.node().__transition__[id].duration;\n    return d3_selection_each(this, typeof value === 'function' ? function (node, i, j) {\n        node.__transition__[id].duration = Math.max(1, value.call(node, node.__data__, i, j));\n    } : (value = Math.max(1, value), function (node) {\n        node.__transition__[id].duration = value;\n    }));\n};"
+  }
 }

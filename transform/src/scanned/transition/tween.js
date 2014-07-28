@@ -650,6 +650,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_transitionPrototype.tween = function (name, tween) {\n    var id = this.id;\n    if (arguments.length < 2)\n        return this.node().__transition__[id].tween.get(name);\n    return d3_selection_each(this, tween == null ? function (node) {\n        node.__transition__[id].tween.remove(name);\n    } : function (node) {\n        node.__transition__[id].tween.set(name, tween);\n    });\n};\nfunction d3_transition_tween(groups, name, value, tween) {\n    var id = groups.id;\n    return d3_selection_each(groups, typeof value === 'function' ? function (node, i, j) {\n        node.__transition__[id].tween.set(name, tween(value.call(node, node.__data__, i, j)));\n    } : (value = tween(value), function (node) {\n        node.__transition__[id].tween.set(name, value);\n    }));\n}"
+  }
 }

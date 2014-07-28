@@ -35,6 +35,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_true() {\n    return true;\n}"
+  }
 }

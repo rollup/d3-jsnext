@@ -945,6 +945,5 @@
         }
       }
     ]
-  },
-  "src": "[\n    'sunday',\n    'monday',\n    'tuesday',\n    'wednesday',\n    'thursday',\n    'friday',\n    'saturday'\n].forEach(function (day, i) {\n    i = 7 - i;\n    var interval = d3_time[day] = d3_time_interval(function (date) {\n            (date = d3_time.day(date)).setDate(date.getDate() - (date.getDay() + i) % 7);\n            return date;\n        }, function (date, offset) {\n            date.setDate(date.getDate() + Math.floor(offset) * 7);\n        }, function (date) {\n            var day = d3_time.year(date).getDay();\n            return Math.floor((d3_time.dayOfYear(date) + (day + i) % 7) / 7) - (day !== i);\n        });\n    d3_time[day + 's'] = interval.range;\n    d3_time[day + 's'].utc = interval.utc.range;\n    d3_time[day + 'OfYear'] = function (date) {\n        var day = d3_time.year(date).getDay();\n        return Math.floor((d3_time.dayOfYear(date) + (day + i) % 7) / 7);\n    };\n});\nd3_time.week = d3_time.sunday;\nd3_time.weeks = d3_time.sunday.range;\nd3_time.weeks.utc = d3_time.sunday.utc.range;\nd3_time.weekOfYear = d3_time.sundayOfYear;"
+  }
 }

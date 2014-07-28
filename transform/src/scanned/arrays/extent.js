@@ -660,6 +660,5 @@
         }
       }
     ]
-  },
-  "src": "d3.extent = function (array, f) {\n    var i = -1, n = array.length, a, b, c;\n    if (arguments.length === 1) {\n        while (++i < n && !((a = c = array[i]) != null && a <= a))\n            a = c = undefined;\n        while (++i < n)\n            if ((b = array[i]) != null) {\n                if (a > b)\n                    a = b;\n                if (c < b)\n                    c = b;\n            }\n    } else {\n        while (++i < n && !((a = c = f.call(array, array[i], i)) != null && a <= a))\n            a = undefined;\n        while (++i < n)\n            if ((b = f.call(array, array[i], i)) != null) {\n                if (a > b)\n                    a = b;\n                if (c < b)\n                    c = b;\n            }\n    }\n    return [\n        a,\n        c\n    ];\n};"
+  }
 }

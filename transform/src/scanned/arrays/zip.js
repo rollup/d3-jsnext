@@ -360,6 +360,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.zip = function () {\n    if (!(n = arguments.length))\n        return [];\n    for (var i = -1, m = d3.min(arguments, d3_zipLength), zips = new Array(m); ++i < m;) {\n        for (var j = -1, n, zip = zips[i] = new Array(n); ++j < n;) {\n            zip[j] = arguments[j][i];\n        }\n    }\n    return zips;\n};\nfunction d3_zipLength(d) {\n    return d.length;\n}"
+  }
 }

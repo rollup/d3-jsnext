@@ -342,6 +342,5 @@
         }
       }
     ]
-  },
-  "src": "d3.merge = function (arrays) {\n    var n = arrays.length, m, i = -1, j = 0, merged, array;\n    while (++i < n)\n        j += arrays[i].length;\n    merged = new Array(j);\n    while (--n >= 0) {\n        array = arrays[n];\n        m = array.length;\n        while (--m >= 0) {\n            merged[--j] = array[m];\n        }\n    }\n    return merged;\n};"
+  }
 }

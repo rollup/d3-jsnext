@@ -892,6 +892,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.geo.length = function (object) {\n    d3_geo_lengthSum = 0;\n    d3.geo.stream(object, d3_geo_length);\n    return d3_geo_lengthSum;\n};\nvar d3_geo_lengthSum;\nvar d3_geo_length = {\n        sphere: d3_noop,\n        point: d3_noop,\n        lineStart: d3_geo_lengthLineStart,\n        lineEnd: d3_noop,\n        polygonStart: d3_noop,\n        polygonEnd: d3_noop\n    };\nfunction d3_geo_lengthLineStart() {\n    var λ0, sinφ0, cosφ0;\n    d3_geo_length.point = function (λ, φ) {\n        λ0 = λ * d3_radians, sinφ0 = Math.sin(φ *= d3_radians), cosφ0 = Math.cos(φ);\n        d3_geo_length.point = nextPoint;\n    };\n    d3_geo_length.lineEnd = function () {\n        d3_geo_length.point = d3_geo_length.lineEnd = d3_noop;\n    };\n    function nextPoint(λ, φ) {\n        var sinφ = Math.sin(φ *= d3_radians), cosφ = Math.cos(φ), t = abs((λ *= d3_radians) - λ0), cosΔλ = Math.cos(t);\n        d3_geo_lengthSum += Math.atan2(Math.sqrt((t = cosφ * Math.sin(t)) * t + (t = cosφ0 * sinφ - sinφ0 * cosφ * cosΔλ) * t), sinφ0 * sinφ + cosφ0 * cosφ * cosΔλ);\n        λ0 = λ, sinφ0 = sinφ, cosφ0 = cosφ;\n    }\n}"
+  }
 }

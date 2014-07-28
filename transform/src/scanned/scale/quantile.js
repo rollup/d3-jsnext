@@ -911,6 +911,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.scale.quantile = function () {\n    return d3_scale_quantile([], []);\n};\nfunction d3_scale_quantile(domain, range) {\n    var thresholds;\n    function rescale() {\n        var k = 0, q = range.length;\n        thresholds = [];\n        while (++k < q)\n            thresholds[k - 1] = d3.quantile(domain, k / q);\n        return scale;\n    }\n    function scale(x) {\n        if (!isNaN(x = +x))\n            return range[d3.bisect(thresholds, x)];\n    }\n    scale.domain = function (x) {\n        if (!arguments.length)\n            return domain;\n        domain = x.filter(d3_number).sort(d3_ascending);\n        return rescale();\n    };\n    scale.range = function (x) {\n        if (!arguments.length)\n            return range;\n        range = x;\n        return rescale();\n    };\n    scale.quantiles = function () {\n        return thresholds;\n    };\n    scale.invertExtent = function (y) {\n        y = range.indexOf(y);\n        return y < 0 ? [\n            NaN,\n            NaN\n        ] : [\n            y > 0 ? thresholds[y - 1] : domain[0],\n            y < thresholds.length ? thresholds[y] : domain[domain.length - 1]\n        ];\n    };\n    scale.copy = function () {\n        return d3_scale_quantile(domain, range);\n    };\n    return rescale();\n}"
+  }
 }

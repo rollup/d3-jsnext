@@ -263,6 +263,5 @@
         "finalizer": null
       }
     ]
-  },
-  "src": "var d3_document = document;\nvar d3_documentElement = d3_document.documentElement;\nvar d3_window = window;\ntry {\n    d3_array(d3_documentElement.childNodes)[0].nodeType;\n} catch (e) {\n    d3_array = function (list) {\n        var i = list.length, array = new Array(i);\n        while (i--)\n            array[i] = list[i];\n        return array;\n    };\n}"
+  }
 }

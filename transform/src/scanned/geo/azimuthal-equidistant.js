@@ -208,6 +208,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_geo_azimuthalEquidistant = d3_geo_azimuthal(function (cosλcosφ) {\n        var c = Math.acos(cosλcosφ);\n        return c && c / Math.sin(c);\n    }, d3_identity);\n(d3.geo.azimuthalEquidistant = function () {\n    return d3_geo_projection(d3_geo_azimuthalEquidistant);\n}).raw = d3_geo_azimuthalEquidistant;"
+  }
 }

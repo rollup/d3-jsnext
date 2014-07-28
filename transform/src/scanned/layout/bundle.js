@@ -900,6 +900,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.layout.bundle = function () {\n    return function (links) {\n        var paths = [], i = -1, n = links.length;\n        while (++i < n)\n            paths.push(d3_layout_bundlePath(links[i]));\n        return paths;\n    };\n};\nfunction d3_layout_bundlePath(link) {\n    var start = link.source, end = link.target, lca = d3_layout_bundleLeastCommonAncestor(start, end), points = [start];\n    while (start !== lca) {\n        start = start.parent;\n        points.push(start);\n    }\n    var k = points.length;\n    while (end !== lca) {\n        points.splice(k, 0, end);\n        end = end.parent;\n    }\n    return points;\n}\nfunction d3_layout_bundleAncestors(node) {\n    var ancestors = [], parent = node.parent;\n    while (parent != null) {\n        ancestors.push(node);\n        node = parent;\n        parent = parent.parent;\n    }\n    ancestors.push(node);\n    return ancestors;\n}\nfunction d3_layout_bundleLeastCommonAncestor(a, b) {\n    if (a === b)\n        return a;\n    var aNodes = d3_layout_bundleAncestors(a), bNodes = d3_layout_bundleAncestors(b), aNode = aNodes.pop(), bNode = bNodes.pop(), sharedNode = null;\n    while (aNode === bNode) {\n        sharedNode = aNode;\n        aNode = aNodes.pop();\n        bNode = bNodes.pop();\n    }\n    return sharedNode;\n}"
+  }
 }

@@ -805,6 +805,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.geo.transform = function (methods) {\n    return {\n        stream: function (stream) {\n            var transform = new d3_geo_transform(stream);\n            for (var k in methods)\n                transform[k] = methods[k];\n            return transform;\n        }\n    };\n};\nfunction d3_geo_transform(stream) {\n    this.stream = stream;\n}\nd3_geo_transform.prototype = {\n    point: function (x, y) {\n        this.stream.point(x, y);\n    },\n    sphere: function () {\n        this.stream.sphere();\n    },\n    lineStart: function () {\n        this.stream.lineStart();\n    },\n    lineEnd: function () {\n        this.stream.lineEnd();\n    },\n    polygonStart: function () {\n        this.stream.polygonStart();\n    },\n    polygonEnd: function () {\n        this.stream.polygonEnd();\n    }\n};\nfunction d3_geo_transformPoint(stream, point) {\n    return {\n        point: point,\n        sphere: function () {\n            stream.sphere();\n        },\n        lineStart: function () {\n            stream.lineStart();\n        },\n        lineEnd: function () {\n            stream.lineEnd();\n        },\n        polygonStart: function () {\n            stream.polygonStart();\n        },\n        polygonEnd: function () {\n            stream.polygonEnd();\n        }\n    };\n}"
+  }
 }

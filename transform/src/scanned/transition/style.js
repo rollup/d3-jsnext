@@ -889,6 +889,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.style = function (name, value, priority) {\n    var n = arguments.length;\n    if (n < 3) {\n        if (typeof name !== 'string') {\n            if (n < 2)\n                value = '';\n            for (priority in name)\n                this.style(priority, name[priority], value);\n            return this;\n        }\n        priority = '';\n    }\n    function styleNull() {\n        this.style.removeProperty(name);\n    }\n    function styleString(b) {\n        return b == null ? styleNull : (b += '', function () {\n            var a = d3_window.getComputedStyle(this, null).getPropertyValue(name), i;\n            return a !== b && (i = d3_interpolate(a, b), function (t) {\n                this.style.setProperty(name, i(t), priority);\n            });\n        });\n    }\n    return d3_transition_tween(this, 'style.' + name, value, styleString);\n};\nd3_transitionPrototype.styleTween = function (name, tween, priority) {\n    if (arguments.length < 3)\n        priority = '';\n    function styleTween(d, i) {\n        var f = tween.call(this, d, i, d3_window.getComputedStyle(this, null).getPropertyValue(name));\n        return f && function (t) {\n            this.style.setProperty(name, f(t), priority);\n        };\n    }\n    return this.tween('style.' + name, styleTween);\n};"
+  }
 }

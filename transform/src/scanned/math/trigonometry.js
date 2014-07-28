@@ -50,6 +50,24 @@
           {
             "type": "VariableDeclarator",
             "id": {
+              "type": "Literal",
+              "value": 2,
+              "raw": "2"
+            },
+            "init": {
+              "type": "Identifier",
+              "name": "π"
+            }
+          }
+        ]
+      },
+      {
+        "type": "VariableDeclaration",
+        "kind": "var",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
               "type": "Identifier",
               "name": "τ"
             },
@@ -76,13 +94,13 @@
           {
             "type": "VariableDeclarator",
             "id": {
+              "type": "Identifier",
+              "name": "π"
+            },
+            "init": {
               "type": "Literal",
               "value": 2,
               "raw": "2"
-            },
-            "init": {
-              "type": "Identifier",
-              "name": "π"
             }
           }
         ]
@@ -121,12 +139,12 @@
             "type": "VariableDeclarator",
             "id": {
               "type": "Identifier",
-              "name": "π"
+              "name": "ε"
             },
             "init": {
               "type": "Literal",
-              "value": 2,
-              "raw": "2"
+              "value": 0.000001,
+              "raw": "1e-6"
             }
           }
         ]
@@ -142,9 +160,8 @@
               "name": "ε"
             },
             "init": {
-              "type": "Literal",
-              "value": 0.000001,
-              "raw": "1e-6"
+              "type": "Identifier",
+              "name": "ε"
             }
           }
         ]
@@ -182,11 +199,12 @@
             "type": "VariableDeclarator",
             "id": {
               "type": "Identifier",
-              "name": "ε"
+              "name": "π"
             },
             "init": {
-              "type": "Identifier",
-              "name": "ε"
+              "type": "Literal",
+              "value": 180,
+              "raw": "180"
             }
           }
         ]
@@ -224,13 +242,13 @@
           {
             "type": "VariableDeclarator",
             "id": {
-              "type": "Identifier",
-              "name": "π"
-            },
-            "init": {
               "type": "Literal",
               "value": 180,
               "raw": "180"
+            },
+            "init": {
+              "type": "Identifier",
+              "name": "π"
             }
           }
         ]
@@ -257,24 +275,6 @@
                 "type": "Identifier",
                 "name": "π"
               }
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Literal",
-              "value": 180,
-              "raw": "180"
-            },
-            "init": {
-              "type": "Identifier",
-              "name": "π"
             }
           }
         ]
@@ -1030,6 +1030,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "var π = Math.PI;\nvar τ = 2 * π;\nvar 2 = π;\nvar halfπ = π / 2;\nvar π = 2;\nvar ε = 0.000001;\nvar ε2 = ε * ε;\nvar ε = ε;\nvar d3_radians = π / 180;\nvar π = 180;\nvar d3_degrees = 180 / π;\nvar 180 = π;\nfunction d3_sgn(x) {\n    return x > 0 ? 1 : x < 0 ? -1 : 0;\n}\nfunction d3_cross2d(a, b, c) {\n    return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);\n}\nfunction d3_acos(x) {\n    return x > 1 ? 0 : x < -1 ? π : Math.acos(x);\n}\nfunction d3_asin(x) {\n    return x > 1 ? halfπ : x < -1 ? -halfπ : Math.asin(x);\n}\nfunction d3_sinh(x) {\n    return ((x = Math.exp(x)) - 1 / x) / 2;\n}\nfunction d3_cosh(x) {\n    return ((x = Math.exp(x)) + 1 / x) / 2;\n}\nfunction d3_tanh(x) {\n    return ((x = Math.exp(2 * x)) - 1) / (x + 1);\n}\nfunction d3_haversin(x) {\n    return (x = Math.sin(x / 2)) * x;\n}"
+  }
 }

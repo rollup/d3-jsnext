@@ -334,6 +334,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.order = function () {\n    for (var j = -1, m = this.length; ++j < m;) {\n        for (var group = this[j], i = group.length - 1, next = group[i], node; --i >= 0;) {\n            if (node = group[i]) {\n                if (next && next !== node.nextSibling)\n                    next.parentNode.insertBefore(node, next);\n                next = node;\n            }\n        }\n    }\n    return this;\n};"
+  }
 }

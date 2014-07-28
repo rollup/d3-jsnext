@@ -494,6 +494,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selectionPrototype.property = function (name, value) {\n    if (arguments.length < 2) {\n        if (typeof name === 'string')\n            return this.node()[name];\n        for (value in name)\n            this.each(d3_selection_property(value, name[value]));\n        return this;\n    }\n    return this.each(d3_selection_property(name, value));\n};\nfunction d3_selection_property(name, value) {\n    function propertyNull() {\n        delete this[name];\n    }\n    function propertyConstant() {\n        this[name] = value;\n    }\n    function propertyFunction() {\n        var x = value.apply(this, arguments);\n        if (x == null)\n            delete this[name];\n        else\n            this[name] = x;\n    }\n    return value == null ? propertyNull : typeof value === 'function' ? propertyFunction : propertyConstant;\n}"
+  }
 }

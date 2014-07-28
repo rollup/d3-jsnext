@@ -211,6 +211,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.insert = function (name, before) {\n    name = d3_selection_creator(name);\n    before = d3_selection_selector(before);\n    return this.select(function () {\n        return this.insertBefore(name.apply(this, arguments), before.apply(this, arguments) || null);\n    });\n};"
+  }
 }

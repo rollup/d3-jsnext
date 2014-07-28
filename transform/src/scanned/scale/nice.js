@@ -545,6 +545,5 @@
         ]
       }
     ]
-  },
-  "src": "function d3_scale_nice(domain, nice) {\n    var i0 = 0, i1 = domain.length - 1, x0 = domain[i0], x1 = domain[i1], dx;\n    if (x1 < x0) {\n        dx = i0, i0 = i1, i1 = dx;\n        dx = x0, x0 = x1, x1 = dx;\n    }\n    domain[i0] = nice.floor(x0);\n    domain[i1] = nice.ceil(x1);\n    return domain;\n}\nfunction d3_scale_niceStep(step) {\n    return step ? {\n        floor: function (x) {\n            return Math.floor(x / step) * step;\n        },\n        ceil: function (x) {\n            return Math.ceil(x / step) * step;\n        }\n    } : d3_scale_niceIdentity;\n}\nvar d3_scale_niceIdentity = {\n        floor: d3_identity,\n        ceil: d3_identity\n    };"
+  }
 }

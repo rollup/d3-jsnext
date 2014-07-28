@@ -370,6 +370,5 @@
         }
       }
     ]
-  },
-  "src": "d3.mean = function (array, f) {\n    var s = 0, n = array.length, a, i = -1, j = n;\n    if (arguments.length === 1) {\n        while (++i < n)\n            if (d3_number(a = array[i]))\n                s += a;\n            else\n                --j;\n    } else {\n        while (++i < n)\n            if (d3_number(a = f.call(array, array[i], i)))\n                s += a;\n            else\n                --j;\n    }\n    return j ? s / j : undefined;\n};"
+  }
 }

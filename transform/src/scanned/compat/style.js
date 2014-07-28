@@ -505,6 +505,5 @@
         "finalizer": null
       }
     ]
-  },
-  "src": "try {\n    d3_document.createElement('div').style.setProperty('opacity', 0, '');\n} catch (error) {\n    var d3_element_prototype = d3_window.Element.prototype;\n    var d3_element_setAttribute = d3_element_prototype.setAttribute;\n    var d3_element_setAttributeNS = d3_element_prototype.setAttributeNS;\n    var d3_style_prototype = d3_window.CSSStyleDeclaration.prototype;\n    var d3_style_setProperty = d3_style_prototype.setProperty;\n    d3_element_prototype.setAttribute = function (name, value) {\n        d3_element_setAttribute.call(this, name, value + '');\n    };\n    d3_element_prototype.setAttributeNS = function (space, local, value) {\n        d3_element_setAttributeNS.call(this, space, local, value + '');\n    };\n    d3_style_prototype.setProperty = function (name, value, priority) {\n        d3_style_setProperty.call(this, name, value + '', priority);\n    };\n}"
+  }
 }

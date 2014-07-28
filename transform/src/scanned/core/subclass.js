@@ -160,6 +160,5 @@
         ]
       }
     ]
-  },
-  "src": "var d3_subclass = {}.__proto__ ? function (object, prototype) {\n        object.__proto__ = prototype;\n    } : function (object, prototype) {\n        for (var property in prototype)\n            object[property] = prototype[property];\n    };"
+  }
 }

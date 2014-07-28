@@ -814,6 +814,5 @@
         }
       }
     ]
-  },
-  "src": "d3.random = {\n    normal: function (µ, σ) {\n        var n = arguments.length;\n        if (n < 2)\n            σ = 1;\n        if (n < 1)\n            µ = 0;\n        return function () {\n            var x, y, r;\n            do {\n                x = Math.random() * 2 - 1;\n                y = Math.random() * 2 - 1;\n                r = x * x + y * y;\n            } while (!r || r > 1);\n            return µ + σ * x * Math.sqrt(-2 * Math.log(r) / r);\n        };\n    },\n    logNormal: function () {\n        var random = d3.random.normal.apply(d3, arguments);\n        return function () {\n            return Math.exp(random());\n        };\n    },\n    bates: function (m) {\n        var random = d3.random.irwinHall(m);\n        return function () {\n            return random() / m;\n        };\n    },\n    irwinHall: function (m) {\n        return function () {\n            for (var s = 0, j = 0; j < m; j++)\n                s += Math.random();\n            return s;\n        };\n    }\n};"
+  }
 }

@@ -98,6 +98,5 @@
         }
       }
     ]
-  },
-  "src": "d3.scale.sqrt = function () {\n    return d3.scale.pow().exponent(0.5);\n};"
+  }
 }

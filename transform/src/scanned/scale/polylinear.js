@@ -527,6 +527,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_scale_polylinear(domain, range, uninterpolate, interpolate) {\n    var u = [], i = [], j = 0, k = Math.min(domain.length, range.length) - 1;\n    if (domain[k] < domain[0]) {\n        domain = domain.slice().reverse();\n        range = range.slice().reverse();\n    }\n    while (++j <= k) {\n        u.push(uninterpolate(domain[j - 1], domain[j]));\n        i.push(interpolate(range[j - 1], range[j]));\n    }\n    return function (x) {\n        var j = d3.bisect(domain, x, 1, k) - 1;\n        return i[j](u[j](x));\n    };\n}"
+  }
 }

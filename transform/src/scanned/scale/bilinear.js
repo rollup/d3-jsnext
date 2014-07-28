@@ -181,6 +181,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_scale_bilinear(domain, range, uninterpolate, interpolate) {\n    var u = uninterpolate(domain[0], domain[1]), i = interpolate(range[0], range[1]);\n    return function (x) {\n        return i(u(x));\n    };\n}"
+  }
 }

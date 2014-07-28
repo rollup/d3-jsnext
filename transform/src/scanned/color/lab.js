@@ -514,6 +514,33 @@
         }
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_lab"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "prototype"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "NewExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "d3_color"
+            },
+            "arguments": []
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -524,23 +551,6 @@
               "name": "d3_labPrototype"
             },
             "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -551,14 +561,6 @@
                 "type": "Identifier",
                 "name": "prototype"
               }
-            },
-            "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
             }
           }
         ]
@@ -1579,6 +1581,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.lab = d3_lab;\nfunction d3_lab(l, a, b) {\n    return this instanceof d3_lab ? void (this.l = +l, this.a = +a, this.b = +b) : arguments.length < 2 ? l instanceof d3_lab ? new d3_lab(l.l, l.a, l.b) : l instanceof d3_hcl ? d3_hcl_lab(l.l, l.c, l.h) : d3_rgb_lab((l = d3_rgb(l)).r, l.g, l.b) : new d3_lab(l, a, b);\n}\nLAB.d3_lab_K = 18;\nLAB.d3_lab_X = 0.95047;\nLAB.d3_lab_Y = 1;\nLAB.d3_lab_Z = 1.08883;\nvar d3_labPrototype = new d3_color();\nvar d3_lab.prototype = new d3_color();\nd3_labPrototype.brighter = function (k) {\n    return new d3_lab(Math.min(100, this.l + d3_lab_K * (arguments.length ? k : 1)), this.a, this.b);\n};\nd3_labPrototype.darker = function (k) {\n    return new d3_lab(Math.max(0, this.l - d3_lab_K * (arguments.length ? k : 1)), this.a, this.b);\n};\nd3_labPrototype.rgb = function () {\n    return d3_lab_rgb(this.l, this.a, this.b);\n};\nfunction d3_lab_rgb(l, a, b) {\n    var y = (l + 16) / 116, x = y + a / 500, z = y - b / 200;\n    x = d3_lab_xyz(x) * d3_lab_X;\n    y = d3_lab_xyz(y) * d3_lab_Y;\n    z = d3_lab_xyz(z) * d3_lab_Z;\n    return new d3_rgb(d3_xyz_rgb(3.2404542 * x - 1.5371385 * y - 0.4985314 * z), d3_xyz_rgb(-0.969266 * x + 1.8760108 * y + 0.041556 * z), d3_xyz_rgb(0.0556434 * x - 0.2040259 * y + 1.0572252 * z));\n}\nfunction d3_lab_hcl(l, a, b) {\n    return l > 0 ? new d3_hcl(Math.atan2(b, a) * d3_degrees, Math.sqrt(a * a + b * b), l) : new d3_hcl(NaN, NaN, l);\n}\nfunction d3_lab_xyz(x) {\n    return x > 0.206893034 ? x * x * x : (x - 4 / 29) / 7.787037;\n}"
+  }
 }

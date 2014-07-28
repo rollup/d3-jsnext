@@ -623,6 +623,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_conicEquidistant(φ0, φ1) {\n    var cosφ0 = Math.cos(φ0), n = φ0 === φ1 ? Math.sin(φ0) : (cosφ0 - Math.cos(φ1)) / (φ1 - φ0), G = cosφ0 / n + φ0;\n    if (abs(n) < ε)\n        return d3_geo_equirectangular;\n    function forward(λ, φ) {\n        var ρ = G - φ;\n        return [\n            ρ * Math.sin(n * λ),\n            G - ρ * Math.cos(n * λ)\n        ];\n    }\n    forward.invert = function (x, y) {\n        var ρ0_y = G - y;\n        return [\n            Math.atan2(x, ρ0_y) / n,\n            G - d3_sgn(n) * Math.sqrt(x * x + ρ0_y * ρ0_y)\n        ];\n    };\n    return forward;\n}\n(d3.geo.conicEquidistant = function () {\n    return d3_geo_conic(d3_geo_conicEquidistant);\n}).raw = d3_geo_conicEquidistant;"
+  }
 }

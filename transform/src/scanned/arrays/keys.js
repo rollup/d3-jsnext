@@ -118,6 +118,5 @@
         }
       }
     ]
-  },
-  "src": "d3.keys = function (map) {\n    var keys = [];\n    for (var key in map)\n        keys.push(key);\n    return keys;\n};"
+  }
 }

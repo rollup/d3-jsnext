@@ -463,6 +463,33 @@
         "expression": false
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_rgb"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "prototype"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "NewExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "d3_color"
+            },
+            "arguments": []
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -473,23 +500,6 @@
               "name": "d3_rgbPrototype"
             },
             "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -500,14 +510,6 @@
                 "type": "Identifier",
                 "name": "prototype"
               }
-            },
-            "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
             }
           }
         ]
@@ -5657,6 +5659,5 @@
         }
       }
     ]
-  },
-  "src": "d3.rgb = d3_rgb;\nfunction d3_rgb(r, g, b) {\n    return this instanceof d3_rgb ? void (this.r = ~~r, this.g = ~~g, this.b = ~~b) : arguments.length < 2 ? r instanceof d3_rgb ? new d3_rgb(r.r, r.g, r.b) : d3_rgb_parse('' + r, d3_rgb, d3_hsl_rgb) : new d3_rgb(r, g, b);\n}\nfunction d3_rgbNumber(value) {\n    return new d3_rgb(value >> 16, value >> 8 & 255, value & 255);\n}\nfunction d3_rgbString(value) {\n    return d3_rgbNumber(value) + '';\n}\nvar d3_rgbPrototype = new d3_color();\nvar d3_rgb.prototype = new d3_color();\nd3_rgbPrototype.brighter = function (k) {\n    k = Math.pow(0.7, arguments.length ? k : 1);\n    var r = this.r, g = this.g, b = this.b, i = 30;\n    if (!r && !g && !b)\n        return new d3_rgb(i, i, i);\n    if (r && r < i)\n        r = i;\n    if (g && g < i)\n        g = i;\n    if (b && b < i)\n        b = i;\n    return new d3_rgb(Math.min(255, r / k), Math.min(255, g / k), Math.min(255, b / k));\n};\nd3_rgbPrototype.darker = function (k) {\n    k = Math.pow(0.7, arguments.length ? k : 1);\n    return new d3_rgb(k * this.r, k * this.g, k * this.b);\n};\nd3_rgbPrototype.hsl = function () {\n    return d3_rgb_hsl(this.r, this.g, this.b);\n};\nd3_rgbPrototype.toString = function () {\n    return '#' + d3_rgb_hex(this.r) + d3_rgb_hex(this.g) + d3_rgb_hex(this.b);\n};\nfunction d3_rgb_hex(v) {\n    return v < 16 ? '0' + Math.max(0, v).toString(16) : Math.min(255, v).toString(16);\n}\nfunction d3_rgb_parse(format, rgb, hsl) {\n    var r = 0, g = 0, b = 0, m1, m2, color;\n    m1 = /([a-z]+)\\((.*)\\)/i.exec(format);\n    if (m1) {\n        m2 = m1[2].split(',');\n        switch (m1[1]) {\n        case 'hsl': {\n                return hsl(parseFloat(m2[0]), parseFloat(m2[1]) / 100, parseFloat(m2[2]) / 100);\n            }\n        case 'rgb': {\n                return rgb(d3_rgb_parseNumber(m2[0]), d3_rgb_parseNumber(m2[1]), d3_rgb_parseNumber(m2[2]));\n            }\n        }\n    }\n    if (color = d3_rgb_names.get(format))\n        return rgb(color.r, color.g, color.b);\n    if (format != null && format.charAt(0) === '#' && !isNaN(color = parseInt(format.substring(1), 16))) {\n        if (format.length === 4) {\n            r = (color & 3840) >> 4;\n            r = r >> 4 | r;\n            g = color & 240;\n            g = g >> 4 | g;\n            b = color & 15;\n            b = b << 4 | b;\n        } else if (format.length === 7) {\n            r = (color & 16711680) >> 16;\n            g = (color & 65280) >> 8;\n            b = color & 255;\n        }\n    }\n    return rgb(r, g, b);\n}\nfunction d3_rgb_hsl(r, g, b) {\n    var min = Math.min(r /= 255, g /= 255, b /= 255), max = Math.max(r, g, b), d = max - min, h, s, l = (max + min) / 2;\n    if (d) {\n        s = l < 0.5 ? d / (max + min) : d / (2 - max - min);\n        if (r == max)\n            h = (g - b) / d + (g < b ? 6 : 0);\n        else if (g == max)\n            h = (b - r) / d + 2;\n        else\n            h = (r - g) / d + 4;\n        h *= 60;\n    } else {\n        h = NaN;\n        s = l > 0 && l < 1 ? 0 : h;\n    }\n    return new d3_hsl(h, s, l);\n}\nfunction d3_rgb_lab(r, g, b) {\n    r = d3_rgb_xyz(r);\n    g = d3_rgb_xyz(g);\n    b = d3_rgb_xyz(b);\n    var x = d3_xyz_lab((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / d3_lab_X), y = d3_xyz_lab((0.2126729 * r + 0.7151522 * g + 0.072175 * b) / d3_lab_Y), z = d3_xyz_lab((0.0193339 * r + 0.119192 * g + 0.9503041 * b) / d3_lab_Z);\n    return d3_lab(116 * y - 16, 500 * (x - y), 200 * (y - z));\n}\nfunction d3_rgb_xyz(r) {\n    return (r /= 255) <= 0.04045 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);\n}\nfunction d3_rgb_parseNumber(c) {\n    var f = parseFloat(c);\n    return c.charAt(c.length - 1) === '%' ? Math.round(f * 2.55) : f;\n}\nvar d3_rgb_names = d3.map({\n        aliceblue: 15792383,\n        antiquewhite: 16444375,\n        aqua: 65535,\n        aquamarine: 8388564,\n        azure: 15794175,\n        beige: 16119260,\n        bisque: 16770244,\n        black: 0,\n        blanchedalmond: 16772045,\n        blue: 255,\n        blueviolet: 9055202,\n        brown: 10824234,\n        burlywood: 14596231,\n        cadetblue: 6266528,\n        chartreuse: 8388352,\n        chocolate: 13789470,\n        coral: 16744272,\n        cornflowerblue: 6591981,\n        cornsilk: 16775388,\n        crimson: 14423100,\n        cyan: 65535,\n        darkblue: 139,\n        darkcyan: 35723,\n        darkgoldenrod: 12092939,\n        darkgray: 11119017,\n        darkgreen: 25600,\n        darkgrey: 11119017,\n        darkkhaki: 12433259,\n        darkmagenta: 9109643,\n        darkolivegreen: 5597999,\n        darkorange: 16747520,\n        darkorchid: 10040012,\n        darkred: 9109504,\n        darksalmon: 15308410,\n        darkseagreen: 9419919,\n        darkslateblue: 4734347,\n        darkslategray: 3100495,\n        darkslategrey: 3100495,\n        darkturquoise: 52945,\n        darkviolet: 9699539,\n        deeppink: 16716947,\n        deepskyblue: 49151,\n        dimgray: 6908265,\n        dimgrey: 6908265,\n        dodgerblue: 2003199,\n        firebrick: 11674146,\n        floralwhite: 16775920,\n        forestgreen: 2263842,\n        fuchsia: 16711935,\n        gainsboro: 14474460,\n        ghostwhite: 16316671,\n        gold: 16766720,\n        goldenrod: 14329120,\n        gray: 8421504,\n        green: 32768,\n        greenyellow: 11403055,\n        grey: 8421504,\n        honeydew: 15794160,\n        hotpink: 16738740,\n        indianred: 13458524,\n        indigo: 4915330,\n        ivory: 16777200,\n        khaki: 15787660,\n        lavender: 15132410,\n        lavenderblush: 16773365,\n        lawngreen: 8190976,\n        lemonchiffon: 16775885,\n        lightblue: 11393254,\n        lightcoral: 15761536,\n        lightcyan: 14745599,\n        lightgoldenrodyellow: 16448210,\n        lightgray: 13882323,\n        lightgreen: 9498256,\n        lightgrey: 13882323,\n        lightpink: 16758465,\n        lightsalmon: 16752762,\n        lightseagreen: 2142890,\n        lightskyblue: 8900346,\n        lightslategray: 7833753,\n        lightslategrey: 7833753,\n        lightsteelblue: 11584734,\n        lightyellow: 16777184,\n        lime: 65280,\n        limegreen: 3329330,\n        linen: 16445670,\n        magenta: 16711935,\n        maroon: 8388608,\n        mediumaquamarine: 6737322,\n        mediumblue: 205,\n        mediumorchid: 12211667,\n        mediumpurple: 9662683,\n        mediumseagreen: 3978097,\n        mediumslateblue: 8087790,\n        mediumspringgreen: 64154,\n        mediumturquoise: 4772300,\n        mediumvioletred: 13047173,\n        midnightblue: 1644912,\n        mintcream: 16121850,\n        mistyrose: 16770273,\n        moccasin: 16770229,\n        navajowhite: 16768685,\n        navy: 128,\n        oldlace: 16643558,\n        olive: 8421376,\n        olivedrab: 7048739,\n        orange: 16753920,\n        orangered: 16729344,\n        orchid: 14315734,\n        palegoldenrod: 15657130,\n        palegreen: 10025880,\n        paleturquoise: 11529966,\n        palevioletred: 14381203,\n        papayawhip: 16773077,\n        peachpuff: 16767673,\n        peru: 13468991,\n        pink: 16761035,\n        plum: 14524637,\n        powderblue: 11591910,\n        purple: 8388736,\n        red: 16711680,\n        rosybrown: 12357519,\n        royalblue: 4286945,\n        saddlebrown: 9127187,\n        salmon: 16416882,\n        sandybrown: 16032864,\n        seagreen: 3050327,\n        seashell: 16774638,\n        sienna: 10506797,\n        silver: 12632256,\n        skyblue: 8900331,\n        slateblue: 6970061,\n        slategray: 7372944,\n        slategrey: 7372944,\n        snow: 16775930,\n        springgreen: 65407,\n        steelblue: 4620980,\n        tan: 13808780,\n        teal: 32896,\n        thistle: 14204888,\n        tomato: 16737095,\n        turquoise: 4251856,\n        violet: 15631086,\n        wheat: 16113331,\n        white: 16777215,\n        whitesmoke: 16119285,\n        yellow: 16776960,\n        yellowgreen: 10145074\n    });\nd3_rgb_names.forEach(function (key, value) {\n    d3_rgb_names.set(key, d3_rgbNumber(value));\n});"
+  }
 }

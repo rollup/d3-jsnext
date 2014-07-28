@@ -109,6 +109,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_arraySlice = [].slice;\nGLOBAL.d3_array = function (list) {\n    return d3_arraySlice.call(list);\n};"
+  }
 }

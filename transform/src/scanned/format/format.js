@@ -43,6 +43,5 @@
         }
       }
     ]
-  },
-  "src": "d3.format = d3_locale_enUS.numberFormat;"
+  }
 }

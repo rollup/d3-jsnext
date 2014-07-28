@@ -233,6 +233,5 @@
         }
       }
     ]
-  },
-  "src": "d3.shuffle = function (array) {\n    var m = array.length, t, i;\n    while (m) {\n        i = Math.random() * m-- | 0;\n        t = array[m], array[m] = array[i], array[i] = t;\n    }\n    return array;\n};"
+  }
 }

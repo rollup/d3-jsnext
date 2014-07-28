@@ -138,6 +138,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateRound = d3_interpolateRound;\nfunction d3_interpolateRound(a, b) {\n    b -= a;\n    return function (t) {\n        return Math.round(a + b * t);\n    };\n}"
+  }
 }

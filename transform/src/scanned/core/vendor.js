@@ -301,6 +301,5 @@
         ]
       }
     ]
-  },
-  "src": "function d3_vendorSymbol(object, name) {\n    if (name in object)\n        return name;\n    name = name.charAt(0).toUpperCase() + name.substring(1);\n    for (var i = 0, n = d3_vendorPrefixes.length; i < n; ++i) {\n        var prefixName = d3_vendorPrefixes[i] + name;\n        if (prefixName in object)\n            return prefixName;\n    }\n}\nvar d3_vendorPrefixes = [\n        'webkit',\n        'ms',\n        'moz',\n        'Moz',\n        'o',\n        'O'\n    ];"
+  }
 }

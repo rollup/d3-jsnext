@@ -308,6 +308,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_selection_enter(selection) {\n    d3_subclass(selection, d3_selection_enterPrototype);\n    return selection;\n}\nvar d3_selection_enterPrototype = [];\nd3.selection.enter = d3_selection_enter;\nd3.selection.enter.prototype = d3_selection_enterPrototype;\nd3_selection_enterPrototype.append = d3_selectionPrototype.append;\nd3_selection_enterPrototype.empty = d3_selectionPrototype.empty;\nd3_selection_enterPrototype.node = d3_selectionPrototype.node;\nd3_selection_enterPrototype.call = d3_selectionPrototype.call;\nd3_selection_enterPrototype.size = d3_selectionPrototype.size;"
+  }
 }

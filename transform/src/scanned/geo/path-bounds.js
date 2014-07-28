@@ -268,6 +268,5 @@
         "expression": false
       }
     ]
-  },
-  "src": ";\n;\n;\n;\nvar d3_geo_pathBounds = {\n        point: d3_geo_pathBoundsPoint,\n        lineStart: d3_noop,\n        lineEnd: d3_noop,\n        polygonStart: d3_noop,\n        polygonEnd: d3_noop\n    };\nfunction d3_geo_pathBoundsPoint(x, y) {\n    if (x < d3_geo_pathBoundsX0)\n        d3_geo_pathBoundsX0 = x;\n    if (x > d3_geo_pathBoundsX1)\n        d3_geo_pathBoundsX1 = x;\n    if (y < d3_geo_pathBoundsY0)\n        d3_geo_pathBoundsY0 = y;\n    if (y > d3_geo_pathBoundsY1)\n        d3_geo_pathBoundsY1 = y;\n}"
+  }
 }

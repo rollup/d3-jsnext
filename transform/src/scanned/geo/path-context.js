@@ -622,6 +622,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_pathContext(context) {\n    var pointRadius = 4.5;\n    var stream = {\n            point: point,\n            lineStart: function () {\n                stream.point = pointLineStart;\n            },\n            lineEnd: lineEnd,\n            polygonStart: function () {\n                stream.lineEnd = lineEndPolygon;\n            },\n            polygonEnd: function () {\n                stream.lineEnd = lineEnd;\n                stream.point = point;\n            },\n            pointRadius: function (_) {\n                pointRadius = _;\n                return stream;\n            },\n            result: d3_noop\n        };\n    function point(x, y) {\n        context.moveTo(x, y);\n        context.arc(x, y, pointRadius, 0, τ);\n    }\n    function pointLineStart(x, y) {\n        context.moveTo(x, y);\n        stream.point = pointLine;\n    }\n    function pointLine(x, y) {\n        context.lineTo(x, y);\n    }\n    function lineEnd() {\n        stream.point = point;\n    }\n    function lineEndPolygon() {\n        context.closePath();\n    }\n    return stream;\n}"
+  }
 }

@@ -102,6 +102,5 @@
         }
       }
     ]
-  },
-  "src": "d3.geom.delaunay = function (vertices) {\n    return d3.geom.voronoi().triangles(vertices);\n};"
+  }
 }

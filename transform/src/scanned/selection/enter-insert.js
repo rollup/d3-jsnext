@@ -424,6 +424,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3_selection_enterPrototype.insert = function (name, before) {\n    if (arguments.length < 2)\n        before = d3_selection_enterInsertBefore(this);\n    return d3_selectionPrototype.insert.call(this, name, before);\n};\nfunction d3_selection_enterInsertBefore(enter) {\n    var i0, j0;\n    return function (d, i, j) {\n        var group = enter[j].update, n = group.length, node;\n        if (j != j0)\n            j0 = j, i0 = 0;\n        if (i >= i0)\n            i0 = i + 1;\n        while (!(node = group[i0]) && ++i0 < n);\n        return node;\n    };\n}"
+  }
 }

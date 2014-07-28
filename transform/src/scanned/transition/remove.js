@@ -173,6 +173,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.remove = function () {\n    return this.each('end.transition', function () {\n        var p;\n        if (this.__transition__.count < 2 && (p = this.parentNode))\n            p.removeChild(this);\n    });\n};"
+  }
 }

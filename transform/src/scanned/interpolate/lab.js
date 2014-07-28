@@ -375,6 +375,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateLab = d3_interpolateLab;\nfunction d3_interpolateLab(a, b) {\n    a = d3.lab(a);\n    b = d3.lab(b);\n    var al = a.l, aa = a.a, ab = a.b, bl = b.l - al, ba = b.a - aa, bb = b.b - ab;\n    return function (t) {\n        return d3_lab_rgb(al + bl * t, aa + ba * t, ab + bb * t) + '';\n    };\n}"
+  }
 }

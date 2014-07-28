@@ -460,6 +460,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.each = function (type, listener) {\n    var id = this.id;\n    if (arguments.length < 2) {\n        var inherit = d3_transitionInherit, inheritId = d3_transitionInheritId;\n        d3_transitionInheritId = id;\n        d3_selection_each(this, function (node, i, j) {\n            d3_transitionInherit = node.__transition__[id];\n            type.call(node, node.__data__, i, j);\n        });\n        d3_transitionInherit = inherit;\n        d3_transitionInheritId = inheritId;\n    } else {\n        d3_selection_each(this, function (node) {\n            var transition = node.__transition__[id];\n            (transition.event || (transition.event = d3.dispatch('start', 'end'))).on(type, listener);\n        });\n    }\n    return this;\n};"
+  }
 }

@@ -972,6 +972,5 @@
         "type": "EmptyStatement"
       }
     ]
-  },
-  "src": "d3.mouse = function (container) {\n    return d3_mousePoint(container, d3_eventSource());\n};\nvar d3_mouse_bug44083 = /WebKit/.test(d3_window.navigator.userAgent) ? -1 : 0;\nfunction d3_mousePoint(container, e) {\n    if (e.changedTouches)\n        e = e.changedTouches[0];\n    var svg = container.ownerSVGElement || container;\n    if (svg.createSVGPoint) {\n        var point = svg.createSVGPoint();\n        if (d3_mouse_bug44083 < 0 && (d3_window.scrollX || d3_window.scrollY)) {\n            svg = d3.select('body').append('svg').style({\n                position: 'absolute',\n                top: 0,\n                left: 0,\n                margin: 0,\n                padding: 0,\n                border: 'none'\n            }, 'important');\n            var ctm = svg[0][0].getScreenCTM();\n            d3_mouse_bug44083 = !(ctm.f || ctm.e);\n            svg.remove();\n        }\n        if (d3_mouse_bug44083)\n            point.x = e.pageX, point.y = e.pageY;\n        else\n            point.x = e.clientX, point.y = e.clientY;\n        point = point.matrixTransform(container.getScreenCTM().inverse());\n        return [\n            point.x,\n            point.y\n        ];\n    }\n    var rect = container.getBoundingClientRect();\n    return [\n        e.clientX - rect.left - container.clientLeft,\n        e.clientY - rect.top - container.clientTop\n    ];\n}\n;"
+  }
 }

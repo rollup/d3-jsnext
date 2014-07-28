@@ -309,6 +309,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.html = function (value) {\n    return arguments.length ? this.each(typeof value === 'function' ? function () {\n        var v = value.apply(this, arguments);\n        this.innerHTML = v == null ? '' : v;\n    } : value == null ? function () {\n        this.innerHTML = '';\n    } : function () {\n        this.innerHTML = value;\n    }) : this.node().innerHTML;\n};"
+  }
 }

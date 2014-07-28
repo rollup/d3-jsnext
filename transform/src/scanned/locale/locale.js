@@ -101,6 +101,5 @@
         }
       }
     ]
-  },
-  "src": "d3.locale = function (locale) {\n    return {\n        numberFormat: d3_locale_numberFormat(locale),\n        timeFormat: d3_locale_timeFormat(locale)\n    };\n};"
+  }
 }

@@ -995,6 +995,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_cartesian(spherical) {\n    var λ = spherical[0], φ = spherical[1], cosφ = Math.cos(φ);\n    return [\n        cosφ * Math.cos(λ),\n        cosφ * Math.sin(λ),\n        Math.sin(φ)\n    ];\n}\nfunction d3_geo_cartesianDot(a, b) {\n    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];\n}\nfunction d3_geo_cartesianCross(a, b) {\n    return [\n        a[1] * b[2] - a[2] * b[1],\n        a[2] * b[0] - a[0] * b[2],\n        a[0] * b[1] - a[1] * b[0]\n    ];\n}\nfunction d3_geo_cartesianAdd(a, b) {\n    a[0] += b[0];\n    a[1] += b[1];\n    a[2] += b[2];\n}\nfunction d3_geo_cartesianScale(vector, k) {\n    return [\n        vector[0] * k,\n        vector[1] * k,\n        vector[2] * k\n    ];\n}\nfunction d3_geo_cartesianNormalize(d) {\n    var l = Math.sqrt(d[0] * d[0] + d[1] * d[1] + d[2] * d[2]);\n    d[0] /= l;\n    d[1] /= l;\n    d[2] /= l;\n}"
+  }
 }

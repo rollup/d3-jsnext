@@ -542,6 +542,5 @@
         "type": "EmptyStatement"
       }
     ]
-  },
-  "src": "d3.scale.threshold = function () {\n    return d3_scale_threshold([0.5], [\n        0,\n        1\n    ]);\n};\nfunction d3_scale_threshold(domain, range) {\n    function scale(x) {\n        if (x <= x)\n            return range[d3.bisect(domain, x)];\n    }\n    scale.domain = function (_) {\n        if (!arguments.length)\n            return domain;\n        domain = _;\n        return scale;\n    };\n    scale.range = function (_) {\n        if (!arguments.length)\n            return range;\n        range = _;\n        return scale;\n    };\n    scale.invertExtent = function (y) {\n        y = range.indexOf(y);\n        return [\n            domain[y - 1],\n            domain[y]\n        ];\n    };\n    scale.copy = function () {\n        return d3_scale_threshold(domain, range);\n    };\n    return scale;\n}\n;"
+  }
 }

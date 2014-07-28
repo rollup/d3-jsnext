@@ -587,6 +587,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "var d3_geo_pathAreaSum;\nvar d3_geo_pathAreaPolygon;\nvar d3_geo_pathArea = {\n        point: d3_noop,\n        lineStart: d3_noop,\n        lineEnd: d3_noop,\n        polygonStart: function () {\n            d3_geo_pathAreaPolygon = 0;\n            d3_geo_pathArea.lineStart = d3_geo_pathAreaRingStart;\n        },\n        polygonEnd: function () {\n            d3_geo_pathArea.lineStart = d3_geo_pathArea.lineEnd = d3_geo_pathArea.point = d3_noop;\n            d3_geo_pathAreaSum += abs(d3_geo_pathAreaPolygon / 2);\n        }\n    };\nfunction d3_geo_pathAreaRingStart() {\n    var x00, y00, x0, y0;\n    d3_geo_pathArea.point = function (x, y) {\n        d3_geo_pathArea.point = nextPoint;\n        x00 = x0 = x, y00 = y0 = y;\n    };\n    function nextPoint(x, y) {\n        d3_geo_pathAreaPolygon += y0 * x - x0 * y;\n        x0 = x, y0 = y;\n    }\n    d3_geo_pathArea.lineEnd = function () {\n        nextPoint(x00, y00);\n    };\n}"
+  }
 }

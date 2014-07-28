@@ -106,6 +106,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_functor(v) {\n    return typeof v === 'function' ? v : function () {\n        return v;\n    };\n}\nd3.functor = d3_functor;"
+  }
 }

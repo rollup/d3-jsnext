@@ -303,6 +303,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_compose(a, b) {\n    function compose(x, y) {\n        return x = a(x, y), b(x[0], x[1]);\n    }\n    if (a.invert && b.invert)\n        compose.invert = function (x, y) {\n            return x = b.invert(x, y), x && a.invert(x[0], x[1]);\n        };\n    return compose;\n}"
+  }
 }

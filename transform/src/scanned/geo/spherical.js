@@ -236,6 +236,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geo_spherical(cartesian) {\n    return [\n        Math.atan2(cartesian[1], cartesian[0]),\n        d3_asin(cartesian[2])\n    ];\n}\nfunction d3_geo_sphericalEqual(a, b) {\n    return abs(a[0] - b[0]) < ε && abs(a[1] - b[1]) < ε;\n}"
+  }
 }

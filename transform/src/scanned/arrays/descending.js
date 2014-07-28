@@ -124,6 +124,5 @@
         }
       }
     ]
-  },
-  "src": "d3.descending = function (a, b) {\n    return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;\n};"
+  }
 }

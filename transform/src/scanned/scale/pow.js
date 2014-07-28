@@ -1048,6 +1048,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.scale.pow = function () {\n    return d3_scale_pow(d3.scale.linear(), 1, [\n        0,\n        1\n    ]);\n};\nfunction d3_scale_pow(linear, exponent, domain) {\n    var powp = d3_scale_powPow(exponent), powb = d3_scale_powPow(1 / exponent);\n    function scale(x) {\n        return linear(powp(x));\n    }\n    scale.invert = function (x) {\n        return powb(linear.invert(x));\n    };\n    scale.domain = function (x) {\n        if (!arguments.length)\n            return domain;\n        linear.domain((domain = x.map(Number)).map(powp));\n        return scale;\n    };\n    scale.ticks = function (m) {\n        return d3_scale_linearTicks(domain, m);\n    };\n    scale.tickFormat = function (m, format) {\n        return d3_scale_linearTickFormat(domain, m, format);\n    };\n    scale.nice = function (m) {\n        return scale.domain(d3_scale_linearNice(domain, m));\n    };\n    scale.exponent = function (x) {\n        if (!arguments.length)\n            return exponent;\n        powp = d3_scale_powPow(exponent = x);\n        powb = d3_scale_powPow(1 / exponent);\n        linear.domain(domain.map(powp));\n        return scale;\n    };\n    scale.copy = function () {\n        return d3_scale_pow(linear.copy(), exponent, domain);\n    };\n    return d3_scale_linearRebind(scale, linear);\n}\nfunction d3_scale_powPow(e) {\n    return function (x) {\n        return x < 0 ? -Math.pow(-x, e) : Math.pow(x, e);\n    };\n}"
+  }
 }

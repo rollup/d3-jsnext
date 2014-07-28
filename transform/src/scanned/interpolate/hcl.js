@@ -600,6 +600,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateHcl = d3_interpolateHcl;\nfunction d3_interpolateHcl(a, b) {\n    a = d3.hcl(a);\n    b = d3.hcl(b);\n    var ah = a.h, ac = a.c, al = a.l, bh = b.h - ah, bc = b.c - ac, bl = b.l - al;\n    if (isNaN(bc))\n        bc = 0, ac = isNaN(ac) ? b.c : ac;\n    if (isNaN(bh))\n        bh = 0, ah = isNaN(ah) ? b.h : ah;\n    else if (bh > 180)\n        bh -= 360;\n    else if (bh < -180)\n        bh += 360;\n    return function (t) {\n        return d3_hcl_lab(ah + bh * t, ac + bc * t, al + bl * t) + '';\n    };\n}"
+  }
 }

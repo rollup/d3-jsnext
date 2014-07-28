@@ -301,6 +301,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.rebind = function (target, source) {\n    var i = 1, n = arguments.length, method;\n    while (++i < n)\n        target[method = arguments[i]] = d3_rebind(target, source, source[method]);\n    return target;\n};\nfunction d3_rebind(target, source, method) {\n    return function () {\n        var value = method.apply(source, arguments);\n        return value === source ? target : value;\n    };\n}"
+  }
 }

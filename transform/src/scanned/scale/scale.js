@@ -245,6 +245,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.scale = {};\nfunction d3_scaleExtent(domain) {\n    var start = domain[0], stop = domain[domain.length - 1];\n    return start < stop ? [\n        start,\n        stop\n    ] : [\n        stop,\n        start\n    ];\n}\nfunction d3_scaleRange(scale) {\n    return scale.rangeExtent ? scale.rangeExtent() : d3_scaleExtent(scale.range());\n}"
+  }
 }

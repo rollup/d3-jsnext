@@ -593,6 +593,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.range = function (start, stop, step) {\n    if (arguments.length < 3) {\n        step = 1;\n        if (arguments.length < 2) {\n            stop = start;\n            start = 0;\n        }\n    }\n    if ((stop - start) / step === Infinity)\n        throw new Error('infinite range');\n    var range = [], k = d3_range_integerScale(abs(step)), i = -1, j;\n    start *= k, stop *= k, step *= k;\n    if (step < 0)\n        while ((j = start + step * ++i) > stop)\n            range.push(j / k);\n    else\n        while ((j = start + step * ++i) < stop)\n            range.push(j / k);\n    return range;\n};\nfunction d3_range_integerScale(x) {\n    var k = 1;\n    while (x * k % 1)\n        k *= 10;\n    return k;\n}"
+  }
 }

@@ -86,6 +86,5 @@
         }
       }
     ]
-  },
-  "src": "d3.transpose = function (matrix) {\n    return d3.zip.apply(d3, matrix);\n};"
+  }
 }

@@ -389,6 +389,5 @@
         }
       }
     ]
-  },
-  "src": "d3_time.hour = d3_time_interval(function (date) {\n    var timezone = date.getTimezoneOffset() / 60;\n    return new d3_date((Math.floor(date / 3600000 - timezone) + timezone) * 3600000);\n}, function (date, offset) {\n    date.setTime(date.getTime() + Math.floor(offset) * 3600000);\n}, function (date) {\n    return date.getHours();\n});\nd3_time.hours = d3_time.hour.range;\nd3_time.hours.utc = d3_time.hour.utc.range;"
+  }
 }

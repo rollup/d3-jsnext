@@ -600,6 +600,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateHsl = d3_interpolateHsl;\nfunction d3_interpolateHsl(a, b) {\n    a = d3.hsl(a);\n    b = d3.hsl(b);\n    var ah = a.h, as = a.s, al = a.l, bh = b.h - ah, bs = b.s - as, bl = b.l - al;\n    if (isNaN(bs))\n        bs = 0, as = isNaN(as) ? b.s : as;\n    if (isNaN(bh))\n        bh = 0, ah = isNaN(ah) ? b.h : ah;\n    else if (bh > 180)\n        bh -= 360;\n    else if (bh < -180)\n        bh += 360;\n    return function (t) {\n        return d3_hsl_rgb(ah + bh * t, as + bs * t, al + bl * t) + '';\n    };\n}"
+  }
 }

@@ -26,6 +26,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_noop() {\n}"
+  }
 }

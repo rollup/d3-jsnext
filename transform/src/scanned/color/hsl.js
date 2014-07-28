@@ -306,6 +306,33 @@
         "expression": false
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_hsl"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "prototype"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "NewExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "d3_color"
+            },
+            "arguments": []
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -316,23 +343,6 @@
               "name": "d3_hslPrototype"
             },
             "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -343,14 +353,6 @@
                 "type": "Identifier",
                 "name": "prototype"
               }
-            },
-            "init": {
-              "type": "NewExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "d3_color"
-              },
-              "arguments": []
             }
           }
         ]
@@ -1473,6 +1475,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.hsl = d3_hsl;\nfunction d3_hsl(h, s, l) {\n    return this instanceof d3_hsl ? void (this.h = +h, this.s = +s, this.l = +l) : arguments.length < 2 ? h instanceof d3_hsl ? new d3_hsl(h.h, h.s, h.l) : d3_rgb_parse('' + h, d3_rgb_hsl, d3_hsl) : new d3_hsl(h, s, l);\n}\nvar d3_hslPrototype = new d3_color();\nvar d3_hsl.prototype = new d3_color();\nd3_hslPrototype.brighter = function (k) {\n    k = Math.pow(0.7, arguments.length ? k : 1);\n    return new d3_hsl(this.h, this.s, this.l / k);\n};\nd3_hslPrototype.darker = function (k) {\n    k = Math.pow(0.7, arguments.length ? k : 1);\n    return new d3_hsl(this.h, this.s, k * this.l);\n};\nd3_hslPrototype.rgb = function () {\n    return d3_hsl_rgb(this.h, this.s, this.l);\n};\nfunction d3_hsl_rgb(h, s, l) {\n    var m1, m2;\n    h = isNaN(h) ? 0 : (h %= 360) < 0 ? h + 360 : h;\n    s = isNaN(s) ? 0 : s < 0 ? 0 : s > 1 ? 1 : s;\n    l = l < 0 ? 0 : l > 1 ? 1 : l;\n    m2 = l <= 0.5 ? l * (1 + s) : l + s - l * s;\n    m1 = 2 * l - m2;\n    function v(h) {\n        if (h > 360)\n            h -= 360;\n        else if (h < 0)\n            h += 360;\n        if (h < 60)\n            return m1 + (m2 - m1) * h / 60;\n        if (h < 180)\n            return m2;\n        if (h < 240)\n            return m1 + (m2 - m1) * (240 - h) / 60;\n        return m1;\n    }\n    function vv(h) {\n        return Math.round(v(h) * 255);\n    }\n    return new d3_rgb(vv(h + 120), vv(h), vv(h - 120));\n}"
+  }
 }

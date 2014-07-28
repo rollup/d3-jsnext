@@ -39,6 +39,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_identity(d) {\n    return d;\n}"
+  }
 }

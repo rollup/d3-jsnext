@@ -71,15 +71,7 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 		return !~scanned.helpers.indexOf( dep ) && !~scanned.exports.indexOf( dep );
 	});
 
-	try {
-		src = escodegen.generate( ast );
-	} catch ( err ) {
-		console.log( 'could not generate code from ' + filepath + ' ast:\n', s(ast) );
-		throw err;
-	}
-
 	scanned.ast = ast;
-	scanned.src = src;
 	delete scanned.scopeDepth;
 
 	return scanned;

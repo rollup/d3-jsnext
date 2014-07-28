@@ -74,6 +74,5 @@
         }
       }
     ]
-  },
-  "src": "d3.text = d3_xhrType(function (request) {\n    return request.responseText;\n});"
+  }
 }

@@ -668,6 +668,5 @@
         }
       }
     ]
-  },
-  "src": "d3.geo.greatArc = function () {\n    var source = d3_source, source_, target = d3_target, target_;\n    function greatArc() {\n        return {\n            type: 'LineString',\n            coordinates: [\n                source_ || source.apply(this, arguments),\n                target_ || target.apply(this, arguments)\n            ]\n        };\n    }\n    greatArc.distance = function () {\n        return d3.geo.distance(source_ || source.apply(this, arguments), target_ || target.apply(this, arguments));\n    };\n    greatArc.source = function (_) {\n        if (!arguments.length)\n            return source;\n        source = _, source_ = typeof _ === 'function' ? null : _;\n        return greatArc;\n    };\n    greatArc.target = function (_) {\n        if (!arguments.length)\n            return target;\n        target = _, target_ = typeof _ === 'function' ? null : _;\n        return greatArc;\n    };\n    greatArc.precision = function () {\n        return arguments.length ? greatArc : 0;\n    };\n    return greatArc;\n};"
+  }
 }

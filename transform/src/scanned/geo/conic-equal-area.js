@@ -659,6 +659,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_conicEqualArea(φ0, φ1) {\n    var sinφ0 = Math.sin(φ0), n = (sinφ0 + Math.sin(φ1)) / 2, C = 1 + sinφ0 * (2 * n - sinφ0), ρ0 = Math.sqrt(C) / n;\n    function forward(λ, φ) {\n        var ρ = Math.sqrt(C - 2 * n * Math.sin(φ)) / n;\n        return [\n            ρ * Math.sin(λ *= n),\n            ρ0 - ρ * Math.cos(λ)\n        ];\n    }\n    forward.invert = function (x, y) {\n        var ρ0_y = ρ0 - y;\n        return [\n            Math.atan2(x, ρ0_y) / n,\n            d3_asin((C - (x * x + ρ0_y * ρ0_y) * n * n) / (2 * n))\n        ];\n    };\n    return forward;\n}\n(d3.geo.conicEqualArea = function () {\n    return d3_geo_conic(d3_geo_conicEqualArea);\n}).raw = d3_geo_conicEqualArea;"
+  }
 }

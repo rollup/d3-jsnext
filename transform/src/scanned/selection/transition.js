@@ -469,6 +469,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.transition = function () {\n    var id = d3_transitionInheritId || ++d3_transitionId, subgroups = [], subgroup, node, transition = d3_transitionInherit || {\n            time: Date.now(),\n            ease: d3_ease_cubicInOut,\n            delay: 0,\n            duration: 250\n        };\n    for (var j = -1, m = this.length; ++j < m;) {\n        subgroups.push(subgroup = []);\n        for (var group = this[j], i = -1, n = group.length; ++i < n;) {\n            if (node = group[i])\n                d3_transitionNode(node, i, id, transition);\n            subgroup.push(node);\n        }\n    }\n    return d3_transition(subgroups, id);\n};"
+  }
 }

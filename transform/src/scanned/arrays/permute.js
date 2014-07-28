@@ -155,6 +155,5 @@
         }
       }
     ]
-  },
-  "src": "d3.permute = function (array, indexes) {\n    var i = indexes.length, permutes = new Array(i);\n    while (i--)\n        permutes[i] = array[indexes[i]];\n    return permutes;\n};"
+  }
 }

@@ -126,6 +126,5 @@
         }
       }
     ]
-  },
-  "src": "d3.values = function (map) {\n    var values = [];\n    for (var key in map)\n        values.push(map[key]);\n    return values;\n};"
+  }
 }

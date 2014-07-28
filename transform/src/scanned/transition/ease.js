@@ -280,6 +280,5 @@
         }
       }
     ]
-  },
-  "src": "d3_transitionPrototype.ease = function (value) {\n    var id = this.id;\n    if (arguments.length < 1)\n        return this.node().__transition__[id].ease;\n    if (typeof value !== 'function')\n        value = d3.ease.apply(d3, arguments);\n    return d3_selection_each(this, function (node) {\n        node.__transition__[id].ease = value;\n    });\n};"
+  }
 }

@@ -133,6 +133,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.ascending = d3_ascending;\nfunction d3_ascending(a, b) {\n    return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;\n}"
+  }
 }

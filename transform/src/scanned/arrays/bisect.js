@@ -812,6 +812,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_bisector(compare) {\n    return {\n        left: function (a, x, lo, hi) {\n            if (arguments.length < 3)\n                lo = 0;\n            if (arguments.length < 4)\n                hi = a.length;\n            while (lo < hi) {\n                var mid = lo + hi >>> 1;\n                if (compare(a[mid], x) < 0)\n                    lo = mid + 1;\n                else\n                    hi = mid;\n            }\n            return lo;\n        },\n        right: function (a, x, lo, hi) {\n            if (arguments.length < 3)\n                lo = 0;\n            if (arguments.length < 4)\n                hi = a.length;\n            while (lo < hi) {\n                var mid = lo + hi >>> 1;\n                if (compare(a[mid], x) > 0)\n                    hi = mid;\n                else\n                    lo = mid + 1;\n            }\n            return lo;\n        }\n    };\n}\nvar d3_bisect = d3_bisector(d3_ascending);\nd3.bisectLeft = d3_bisect.left;\nd3.bisect = d3.bisectRight = d3_bisect.right;\nd3.bisector = function (f) {\n    return d3_bisector(f.length === 1 ? function (d, x) {\n        return d3_ascending(f(d), x);\n    } : f);\n};"
+  }
 }

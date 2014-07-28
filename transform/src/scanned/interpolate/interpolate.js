@@ -441,6 +441,5 @@
         }
       }
     ]
-  },
-  "src": "d3.interpolate = d3_interpolate;\nfunction d3_interpolate(a, b) {\n    var i = d3.interpolators.length, f;\n    while (--i >= 0 && !(f = d3.interpolators[i](a, b)));\n    return f;\n}\nd3.interpolators = [function (a, b) {\n        var t = typeof b;\n        return (t === 'string' ? d3_rgb_names.has(b) || /^(#|rgb\\(|hsl\\()/.test(b) ? d3_interpolateRgb : d3_interpolateString : b instanceof d3_color ? d3_interpolateRgb : Array.isArray(b) ? d3_interpolateArray : t === 'object' && isNaN(b) ? d3_interpolateObject : d3_interpolateNumber)(a, b);\n    }];"
+  }
 }

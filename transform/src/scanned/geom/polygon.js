@@ -2,8 +2,7 @@
   "filepath": "/geom/polygon.js",
   "shared": [],
   "dependencies": [
-    "d3_subclass",
-    "d3.geom.polygon.prototype"
+    "d3_subclass"
   ],
   "helpers": [
     "d3_geom_polygonPrototype",
@@ -12,7 +11,8 @@
     "d3_geom_polygonClosed"
   ],
   "exports": [
-    "d3.geom.polygon"
+    "d3.geom.polygon",
+    "d3.geom.polygon.prototype"
   ],
   "ast": {
     "type": "Program",
@@ -91,6 +91,45 @@
         }
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "d3"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "geom"
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "polygon"
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "prototype"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "ArrayExpression",
+            "elements": []
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -101,19 +140,6 @@
               "name": "d3_geom_polygonPrototype"
             },
             "init": {
-              "type": "ArrayExpression",
-              "elements": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -140,10 +166,6 @@
                 "type": "Identifier",
                 "name": "prototype"
               }
-            },
-            "init": {
-              "type": "ArrayExpression",
-              "elements": []
             }
           }
         ]
@@ -2289,6 +2311,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.geom.polygon = function (coordinates) {\n    d3_subclass(coordinates, d3_geom_polygonPrototype);\n    return coordinates;\n};\nvar d3_geom_polygonPrototype = [];\nvar d3.geom.polygon.prototype = [];\nd3_geom_polygonPrototype.area = function () {\n    var i = -1, n = this.length, a, b = this[n - 1], area = 0;\n    while (++i < n) {\n        a = b;\n        b = this[i];\n        area += a[1] * b[0] - a[0] * b[1];\n    }\n    return area * 0.5;\n};\nd3_geom_polygonPrototype.centroid = function (k) {\n    var i = -1, n = this.length, x = 0, y = 0, a, b = this[n - 1], c;\n    if (!arguments.length)\n        k = -1 / (6 * this.area());\n    while (++i < n) {\n        a = b;\n        b = this[i];\n        c = a[0] * b[1] - b[0] * a[1];\n        x += (a[0] + b[0]) * c;\n        y += (a[1] + b[1]) * c;\n    }\n    return [\n        x * k,\n        y * k\n    ];\n};\nd3_geom_polygonPrototype.clip = function (subject) {\n    var input, closed = d3_geom_polygonClosed(subject), i = -1, n = this.length - d3_geom_polygonClosed(this), j, m, a = this[n - 1], b, c, d;\n    while (++i < n) {\n        input = subject.slice();\n        subject.length = 0;\n        b = this[i];\n        c = input[(m = input.length - closed) - 1];\n        j = -1;\n        while (++j < m) {\n            d = input[j];\n            if (d3_geom_polygonInside(d, a, b)) {\n                if (!d3_geom_polygonInside(c, a, b)) {\n                    subject.push(d3_geom_polygonIntersect(c, d, a, b));\n                }\n                subject.push(d);\n            } else if (d3_geom_polygonInside(c, a, b)) {\n                subject.push(d3_geom_polygonIntersect(c, d, a, b));\n            }\n            c = d;\n        }\n        if (closed)\n            subject.push(subject[0]);\n        a = b;\n    }\n    return subject;\n};\nfunction d3_geom_polygonInside(p, a, b) {\n    return (b[0] - a[0]) * (p[1] - a[1]) < (b[1] - a[1]) * (p[0] - a[0]);\n}\nfunction d3_geom_polygonIntersect(c, d, a, b) {\n    var x1 = c[0], x3 = a[0], x21 = d[0] - x1, x43 = b[0] - x3, y1 = c[1], y3 = a[1], y21 = d[1] - y1, y43 = b[1] - y3, ua = (x43 * (y1 - y3) - y43 * (x1 - x3)) / (y43 * x21 - x43 * y21);\n    return [\n        x1 + ua * x21,\n        y1 + ua * y21\n    ];\n}\nfunction d3_geom_polygonClosed(coordinates) {\n    var a = coordinates[0], b = coordinates[coordinates.length - 1];\n    return !(a[0] - b[0] || a[1] - b[1]);\n}"
+  }
 }

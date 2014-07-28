@@ -235,6 +235,5 @@
         }
       }
     ]
-  },
-  "src": "d3.touches = function (container, touches) {\n    if (arguments.length < 2)\n        touches = d3_eventSource().touches;\n    return touches ? d3_array(touches).map(function (touch) {\n        var point = d3_mousePoint(container, touch);\n        point.identifier = touch.identifier;\n        return point;\n    }) : [];\n};"
+  }
 }

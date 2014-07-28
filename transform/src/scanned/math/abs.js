@@ -35,6 +35,5 @@
         ]
       }
     ]
-  },
-  "src": "var abs = Math.abs;"
+  }
 }

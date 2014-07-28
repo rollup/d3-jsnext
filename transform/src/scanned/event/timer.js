@@ -94,6 +94,79 @@
         ]
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": true,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_window"
+            },
+            "property": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "d3_vendorSymbol"
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "d3_window"
+                },
+                {
+                  "type": "Literal",
+                  "value": "requestAnimationFrame",
+                  "raw": "\"requestAnimationFrame\""
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "FunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "callback"
+              }
+            ],
+            "defaults": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "Identifier",
+                      "name": "setTimeout"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "name": "callback"
+                      },
+                      {
+                        "type": "Literal",
+                        "value": 17,
+                        "raw": "17"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "rest": null,
+            "generator": false,
+            "expression": false
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -172,81 +245,6 @@
                 "generator": false,
                 "expression": false
               }
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "MemberExpression",
-              "computed": true,
-              "object": {
-                "type": "Identifier",
-                "name": "d3_window"
-              },
-              "property": {
-                "type": "CallExpression",
-                "callee": {
-                  "type": "Identifier",
-                  "name": "d3_vendorSymbol"
-                },
-                "arguments": [
-                  {
-                    "type": "Identifier",
-                    "name": "d3_window"
-                  },
-                  {
-                    "type": "Literal",
-                    "value": "requestAnimationFrame",
-                    "raw": "\"requestAnimationFrame\""
-                  }
-                ]
-              }
-            },
-            "init": {
-              "type": "FunctionExpression",
-              "id": null,
-              "params": [
-                {
-                  "type": "Identifier",
-                  "name": "callback"
-                }
-              ],
-              "defaults": [],
-              "body": {
-                "type": "BlockStatement",
-                "body": [
-                  {
-                    "type": "ExpressionStatement",
-                    "expression": {
-                      "type": "CallExpression",
-                      "callee": {
-                        "type": "Identifier",
-                        "name": "setTimeout"
-                      },
-                      "arguments": [
-                        {
-                          "type": "Identifier",
-                          "name": "callback"
-                        },
-                        {
-                          "type": "Literal",
-                          "value": 17,
-                          "raw": "17"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              "rest": null,
-              "generator": false,
-              "expression": false
             }
           }
         ]
@@ -1324,6 +1322,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "var d3_timer_queueHead;\nvar d3_timer_queueTail;\nvar d3_timer_interval;\nvar d3_timer_timeout;\nvar d3_timer_active;\nvar d3_timer_frame = d3_window[d3_vendorSymbol(d3_window, 'requestAnimationFrame')] || function (callback) {\n        setTimeout(callback, 17);\n    };\nvar d3_window[d3_vendorSymbol(d3_window, 'requestAnimationFrame')] = function (callback) {\n    setTimeout(callback, 17);\n};\nd3.timer = function (callback, delay, then) {\n    var n = arguments.length;\n    if (n < 2)\n        delay = 0;\n    if (n < 3)\n        then = Date.now();\n    var time = then + delay, timer = {\n            c: callback,\n            t: time,\n            f: false,\n            n: null\n        };\n    if (d3_timer_queueTail)\n        d3_timer_queueTail.n = timer;\n    else\n        d3_timer_queueHead = timer;\n    d3_timer_queueTail = timer;\n    if (!d3_timer_interval) {\n        d3_timer_timeout = clearTimeout(d3_timer_timeout);\n        d3_timer_interval = 1;\n        d3_timer_frame(d3_timer_step);\n    }\n};\nfunction d3_timer_step() {\n    var now = d3_timer_mark(), delay = d3_timer_sweep() - now;\n    if (delay > 24) {\n        if (isFinite(delay)) {\n            clearTimeout(d3_timer_timeout);\n            d3_timer_timeout = setTimeout(d3_timer_step, delay);\n        }\n        d3_timer_interval = 0;\n    } else {\n        d3_timer_interval = 1;\n        d3_timer_frame(d3_timer_step);\n    }\n}\nd3.timer.flush = function () {\n    d3_timer_mark();\n    d3_timer_sweep();\n};\nfunction d3_timer_mark() {\n    var now = Date.now();\n    d3_timer_active = d3_timer_queueHead;\n    while (d3_timer_active) {\n        if (now >= d3_timer_active.t)\n            d3_timer_active.f = d3_timer_active.c(now - d3_timer_active.t);\n        d3_timer_active = d3_timer_active.n;\n    }\n    return now;\n}\nfunction d3_timer_sweep() {\n    var t0, t1 = d3_timer_queueHead, time = Infinity;\n    while (t1) {\n        if (t1.f) {\n            t1 = t0 ? t0.n = t1.n : d3_timer_queueHead = t1.n;\n        } else {\n            if (t1.t < time)\n                time = t1.t;\n            t1 = (t0 = t1).n;\n        }\n    }\n    d3_timer_queueTail = t0;\n    return time;\n}"
+  }
 }

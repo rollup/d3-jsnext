@@ -5,7 +5,6 @@
     "d3_subclass",
     "d3_documentElement",
     "d3_vendorSymbol",
-    "d3.selection.prototype",
     "d3_document",
     "d3_array"
   ],
@@ -20,6 +19,7 @@
   ],
   "exports": [
     "d3.selection",
+    "d3.selection.prototype",
     "d3.select",
     "d3.selectAll"
   ],
@@ -196,6 +196,51 @@
         ]
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_documentElement"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "matches"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "MemberExpression",
+            "computed": true,
+            "object": {
+              "type": "Identifier",
+              "name": "d3_documentElement"
+            },
+            "property": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "d3_vendorSymbol"
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "d3_documentElement"
+                },
+                {
+                  "type": "Literal",
+                  "value": "matchesSelector",
+                  "raw": "\"matchesSelector\""
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -245,53 +290,6 @@
                     }
                   ]
                 }
-              }
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "MemberExpression",
-              "computed": false,
-              "object": {
-                "type": "Identifier",
-                "name": "d3_documentElement"
-              },
-              "property": {
-                "type": "Identifier",
-                "name": "matches"
-              }
-            },
-            "init": {
-              "type": "MemberExpression",
-              "computed": true,
-              "object": {
-                "type": "Identifier",
-                "name": "d3_documentElement"
-              },
-              "property": {
-                "type": "CallExpression",
-                "callee": {
-                  "type": "Identifier",
-                  "name": "d3_vendorSymbol"
-                },
-                "arguments": [
-                  {
-                    "type": "Identifier",
-                    "name": "d3_documentElement"
-                  },
-                  {
-                    "type": "Literal",
-                    "value": "matchesSelector",
-                    "raw": "\"matchesSelector\""
-                  }
-                ]
               }
             }
           }
@@ -539,6 +537,37 @@
         }
       },
       {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "d3"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "selection"
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "prototype"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "type": "ArrayExpression",
+            "elements": []
+          }
+        }
+      },
+      {
         "type": "VariableDeclaration",
         "kind": "var",
         "declarations": [
@@ -549,19 +578,6 @@
               "name": "d3_selectionPrototype"
             },
             "init": {
-              "type": "ArrayExpression",
-              "elements": []
-            }
-          }
-        ]
-      },
-      {
-        "type": "VariableDeclaration",
-        "kind": "var",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
               "type": "MemberExpression",
               "computed": false,
               "object": {
@@ -580,10 +596,6 @@
                 "type": "Identifier",
                 "name": "prototype"
               }
-            },
-            "init": {
-              "type": "ArrayExpression",
-              "elements": []
             }
           }
         ]
@@ -911,6 +923,5 @@
         ]
       }
     ]
-  },
-  "src": "function d3_selection(groups) {\n    d3_subclass(groups, d3_selectionPrototype);\n    return groups;\n}\nvar d3_select = function (s, n) {\n    return n.querySelector(s);\n};\nvar d3_selectAll = function (s, n) {\n    return n.querySelectorAll(s);\n};\nvar d3_selectMatcher = d3_documentElement.matches || d3_documentElement[d3_vendorSymbol(d3_documentElement, 'matchesSelector')];\nvar d3_documentElement.matches = d3_documentElement[d3_vendorSymbol(d3_documentElement, 'matchesSelector')];\nvar d3_selectMatches = function (n, s) {\n    return d3_selectMatcher.call(n, s);\n};\nif (typeof Sizzle === 'function') {\n    d3_select = function (s, n) {\n        return Sizzle(s, n)[0] || null;\n    };\n    d3_selectAll = Sizzle;\n    d3_selectMatches = Sizzle.matchesSelector;\n}\nd3.selection = function () {\n    return d3_selectionRoot;\n};\nvar d3_selectionPrototype = [];\nvar d3.selection.prototype = [];\nd3.select = function (node) {\n    var group = [typeof node === 'string' ? d3_select(node, d3_document) : node];\n    group.parentNode = d3_documentElement;\n    return d3_selection([group]);\n};\nd3.selectAll = function (nodes) {\n    var group = d3_array(typeof nodes === 'string' ? d3_selectAll(nodes, d3_document) : nodes);\n    group.parentNode = d3_documentElement;\n    return d3_selection([group]);\n};\nvar d3_selectionRoot = d3.select(d3_documentElement);"
+  }
 }

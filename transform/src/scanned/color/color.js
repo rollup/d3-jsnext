@@ -119,6 +119,5 @@
         }
       }
     ]
-  },
-  "src": "d3.color = d3_color;\nfunction d3_color() {\n}\nd3_color.prototype.toString = function () {\n    return this.rgb() + '';\n};"
+  }
 }

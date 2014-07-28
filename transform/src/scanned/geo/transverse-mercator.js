@@ -751,6 +751,5 @@
         }
       }
     ]
-  },
-  "src": "function d3_geo_transverseMercator(λ, φ) {\n    return [\n        Math.log(Math.tan(π / 4 + φ / 2)),\n        -λ\n    ];\n}\nd3_geo_transverseMercator.invert = function (x, y) {\n    return [\n        -y,\n        2 * Math.atan(Math.exp(x)) - halfπ\n    ];\n};\n(d3.geo.transverseMercator = function () {\n    var projection = d3_geo_mercatorProjection(d3_geo_transverseMercator), center = projection.center, rotate = projection.rotate;\n    projection.center = function (_) {\n        return _ ? center([\n            -_[1],\n            _[0]\n        ]) : (_ = center(), [\n            _[1],\n            -_[0]\n        ]);\n    };\n    projection.rotate = function (_) {\n        return _ ? rotate([\n            _[0],\n            _[1],\n            _.length > 2 ? _[2] + 90 : 90\n        ]) : (_ = rotate(), [\n            _[0],\n            _[1],\n            _[2] - 90\n        ]);\n    };\n    return rotate([\n        0,\n        0,\n        90\n    ]);\n}).raw = d3_geo_transverseMercator;"
+  }
 }

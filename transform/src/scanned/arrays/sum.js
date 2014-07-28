@@ -336,6 +336,5 @@
         }
       }
     ]
-  },
-  "src": "d3.sum = function (array, f) {\n    var s = 0, n = array.length, a, i = -1;\n    if (arguments.length === 1) {\n        while (++i < n)\n            if (!isNaN(a = +array[i]))\n                s += a;\n    } else {\n        while (++i < n)\n            if (!isNaN(a = +f.call(array, array[i], i)))\n                s += a;\n    }\n    return s;\n};"
+  }
 }

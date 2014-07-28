@@ -240,6 +240,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.node = function () {\n    for (var j = 0, m = this.length; j < m; j++) {\n        for (var group = this[j], i = 0, n = group.length; i < n; i++) {\n            var node = group[i];\n            if (node)\n                return node;\n        }\n    }\n    return null;\n};"
+  }
 }

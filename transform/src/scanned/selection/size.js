@@ -113,6 +113,5 @@
         }
       }
     ]
-  },
-  "src": "d3_selectionPrototype.size = function () {\n    var n = 0;\n    this.each(function () {\n        ++n;\n    });\n    return n;\n};"
+  }
 }

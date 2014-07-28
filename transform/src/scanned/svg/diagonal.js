@@ -814,6 +814,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.svg.diagonal = function () {\n    var source = d3_source, target = d3_target, projection = d3_svg_diagonalProjection;\n    function diagonal(d, i) {\n        var p0 = source.call(this, d, i), p3 = target.call(this, d, i), m = (p0.y + p3.y) / 2, p = [\n                p0,\n                {\n                    x: p0.x,\n                    y: m\n                },\n                {\n                    x: p3.x,\n                    y: m\n                },\n                p3\n            ];\n        p = p.map(projection);\n        return 'M' + p[0] + 'C' + p[1] + ' ' + p[2] + ' ' + p[3];\n    }\n    diagonal.source = function (x) {\n        if (!arguments.length)\n            return source;\n        source = d3_functor(x);\n        return diagonal;\n    };\n    diagonal.target = function (x) {\n        if (!arguments.length)\n            return target;\n        target = d3_functor(x);\n        return diagonal;\n    };\n    diagonal.projection = function (x) {\n        if (!arguments.length)\n            return projection;\n        projection = x;\n        return diagonal;\n    };\n    return diagonal;\n};\nfunction d3_svg_diagonalProjection(d) {\n    return [\n        d.x,\n        d.y\n    ];\n}"
+  }
 }

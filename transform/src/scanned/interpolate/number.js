@@ -134,6 +134,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateNumber = d3_interpolateNumber;\nfunction d3_interpolateNumber(a, b) {\n    b -= a = +a;\n    return function (t) {\n        return a + b * t;\n    };\n}"
+  }
 }

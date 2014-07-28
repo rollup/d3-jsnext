@@ -1185,6 +1185,5 @@
         ]
       }
     ]
-  },
-  "src": "d3.interpolateString = d3_interpolateString;\nfunction d3_interpolateString(a, b) {\n    var bi = d3_interpolate_numberA.lastIndex = d3_interpolate_numberB.lastIndex = 0, am, bm, bs, i = -1, s = [], q = [];\n    a = a + '', b = b + '';\n    while ((am = d3_interpolate_numberA.exec(a)) && (bm = d3_interpolate_numberB.exec(b))) {\n        if ((bs = bm.index) > bi) {\n            bs = b.substring(bi, bs);\n            if (s[i])\n                s[i] += bs;\n            else\n                s[++i] = bs;\n        }\n        if ((am = am[0]) === (bm = bm[0])) {\n            if (s[i])\n                s[i] += bm;\n            else\n                s[++i] = bm;\n        } else {\n            s[++i] = null;\n            q.push({\n                i: i,\n                x: d3_interpolateNumber(am, bm)\n            });\n        }\n        bi = d3_interpolate_numberB.lastIndex;\n    }\n    if (bi < b.length) {\n        bs = b.substring(bi);\n        if (s[i])\n            s[i] += bs;\n        else\n            s[++i] = bs;\n    }\n    return s.length < 2 ? q[0] ? (b = q[0].x, function (t) {\n        return b(t) + '';\n    }) : function () {\n        return b;\n    } : (b = q.length, function (t) {\n        for (var i = 0, o; i < b; ++i)\n            s[(o = q[i]).i] = o.x(t);\n        return s.join('');\n    });\n}\nvar d3_interpolate_numberA = /[-+]?(?:\\d+\\.?\\d*|\\.?\\d+)(?:[eE][-+]?\\d+)?/g;\nvar d3_interpolate_numberB = new RegExp(d3_interpolate_numberA.source, 'g');"
+  }
 }

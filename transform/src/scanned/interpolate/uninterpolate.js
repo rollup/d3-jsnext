@@ -327,6 +327,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_uninterpolateNumber(a, b) {\n    b = b - (a = +a) ? 1 / (b - a) : 0;\n    return function (x) {\n        return (x - a) * b;\n    };\n}\nfunction d3_uninterpolateClamp(a, b) {\n    b = b - (a = +a) ? 1 / (b - a) : 0;\n    return function (x) {\n        return Math.max(0, Math.min(1, (x - a) * b));\n    };\n}"
+  }
 }

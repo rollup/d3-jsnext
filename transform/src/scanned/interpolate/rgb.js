@@ -452,6 +452,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateRgb = d3_interpolateRgb;\nfunction d3_interpolateRgb(a, b) {\n    a = d3.rgb(a);\n    b = d3.rgb(b);\n    var ar = a.r, ag = a.g, ab = a.b, br = b.r - ar, bg = b.g - ag, bb = b.b - ab;\n    return function (t) {\n        return '#' + d3_rgb_hex(Math.round(ar + br * t)) + d3_rgb_hex(Math.round(ag + bg * t)) + d3_rgb_hex(Math.round(ab + bb * t));\n    };\n}"
+  }
 }

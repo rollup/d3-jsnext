@@ -326,6 +326,5 @@
         }
       }
     ]
-  },
-  "src": "d3_time.year = d3_time_interval(function (date) {\n    date = d3_time.day(date);\n    date.setMonth(0, 1);\n    return date;\n}, function (date, offset) {\n    date.setFullYear(date.getFullYear() + offset);\n}, function (date) {\n    return date.getFullYear();\n});\nd3_time.years = d3_time.year.range;\nd3_time.years.utc = d3_time.year.utc.range;"
+  }
 }

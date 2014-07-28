@@ -232,6 +232,5 @@
         }
       }
     ]
-  },
-  "src": "var d3_geo_azimuthalEqualArea = d3_geo_azimuthal(function (cosλcosφ) {\n        return Math.sqrt(2 / (1 + cosλcosφ));\n    }, function (ρ) {\n        return 2 * Math.asin(ρ / 2);\n    });\n(d3.geo.azimuthalEqualArea = function () {\n    return d3_geo_projection(d3_geo_azimuthalEqualArea);\n}).raw = d3_geo_azimuthalEqualArea;"
+  }
 }

@@ -87,6 +87,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "function d3_geom_pointX(d) {\n    return d[0];\n}\nfunction d3_geom_pointY(d) {\n    return d[1];\n}"
+  }
 }

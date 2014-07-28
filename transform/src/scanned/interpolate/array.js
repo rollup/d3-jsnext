@@ -493,6 +493,5 @@
         "expression": false
       }
     ]
-  },
-  "src": "d3.interpolateArray = d3_interpolateArray;\nfunction d3_interpolateArray(a, b) {\n    var x = [], c = [], na = a.length, nb = b.length, n0 = Math.min(a.length, b.length), i;\n    for (i = 0; i < n0; ++i)\n        x.push(d3_interpolate(a[i], b[i]));\n    for (; i < na; ++i)\n        c[i] = a[i];\n    for (; i < nb; ++i)\n        c[i] = b[i];\n    return function (t) {\n        for (i = 0; i < n0; ++i)\n            c[i] = x[i](t);\n        return c;\n    };\n}"
+  }
 }

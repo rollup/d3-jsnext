@@ -187,6 +187,5 @@
         }
       }
     ]
-  },
-  "src": "d3.geo.albers = function () {\n    return d3.geo.conicEqualArea().rotate([\n        96,\n        0\n    ]).center([\n        -0.6,\n        38.7\n    ]).parallels([\n        29.5,\n        45.5\n    ]).scale(1070);\n};"
+  }
 }

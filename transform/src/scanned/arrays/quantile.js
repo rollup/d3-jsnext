@@ -233,6 +233,5 @@
         }
       }
     ]
-  },
-  "src": "d3.quantile = function (values, p) {\n    var H = (values.length - 1) * p + 1, h = Math.floor(H), v = +values[h - 1], e = H - h;\n    return e ? v + e * (values[h] - v) : v;\n};"
+  }
 }

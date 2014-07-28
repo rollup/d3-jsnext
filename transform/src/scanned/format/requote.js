@@ -97,6 +97,5 @@
         ]
       }
     ]
-  },
-  "src": "d3.requote = function (s) {\n    return s.replace(d3_requote_re, '\\\\$&');\n};\nvar d3_requote_re = /[\\\\\\^\\$\\*\\+\\?\\|\\[\\]\\(\\)\\.\\{\\}]/g;"
+  }
 }

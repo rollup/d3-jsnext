@@ -536,6 +536,5 @@
         }
       }
     ]
-  },
-  "src": "d3_time.day = d3_time_interval(function (date) {\n    var day = new d3_date(2000, 0);\n    day.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());\n    return day;\n}, function (date, offset) {\n    date.setDate(date.getDate() + offset);\n}, function (date) {\n    return date.getDate() - 1;\n});\nd3_time.days = d3_time.day.range;\nd3_time.days.utc = d3_time.day.utc.range;\nd3_time.dayOfYear = function (date) {\n    var year = d3_time.year(date);\n    return Math.floor((date - year - (date.getTimezoneOffset() - year.getTimezoneOffset()) * 60000) / 86400000);\n};"
+  }
 }
