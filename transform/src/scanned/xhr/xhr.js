@@ -15,7 +15,6 @@
     "d3_identity",
     "d3.dispatch",
     "d3_window",
-    "d3_array",
     "d3.rebind"
   ],
   "helpers": [
@@ -1600,8 +1599,17 @@
                                             {
                                               "type": "CallExpression",
                                               "callee": {
-                                                "type": "Identifier",
-                                                "name": "d3_array"
+                                                "type": "MemberExpression",
+                                                "computed": false,
+                                                "object": {
+                                                  "type": "Identifier",
+                                                  "name": "GLOBAL"
+                                                },
+                                                "property": {
+                                                  "type": "Identifier",
+                                                  "name": "d3_array"
+                                                },
+                                                "_isReplacement": true
                                               },
                                               "arguments": [
                                                 {

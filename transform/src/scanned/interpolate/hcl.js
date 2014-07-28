@@ -1,9 +1,27 @@
 {
   "filepath": "/interpolate/hcl.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/color/_color.js",
+      "properties": [
+        "d3_lab",
+        "d3_lab_K",
+        "d3_lab_X",
+        "d3_lab_Y",
+        "d3_lab_Z",
+        "d3_hcl",
+        "d3_hsl",
+        "d3_rgb",
+        "d3_lab_hcl",
+        "d3_rgb_lab",
+        "d3_hsl_rgb",
+        "d3_hcl_lab"
+      ],
+      "name": "COLOR"
+    }
+  ],
   "dependencies": [
-    "d3.hcl",
-    "d3_hcl_lab"
+    "d3.hcl"
   ],
   "helpers": [
     "d3_interpolateHcl"
@@ -513,8 +531,17 @@
                         "left": {
                           "type": "CallExpression",
                           "callee": {
-                            "type": "Identifier",
-                            "name": "d3_hcl_lab"
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "COLOR"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_hcl_lab"
+                            },
+                            "_isReplacement": true
                           },
                           "arguments": [
                             {

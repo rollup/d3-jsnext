@@ -11,9 +11,7 @@
       "name": "GLOBAL"
     }
   ],
-  "dependencies": [
-    "d3_array"
-  ],
+  "dependencies": [],
   "helpers": [
     "d3_arraySlice"
   ],
@@ -60,7 +58,8 @@
             "property": {
               "type": "Identifier",
               "name": "d3_array"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
@@ -106,7 +105,8 @@
             "generator": false,
             "expression": false
           }
-        }
+        },
+        "_isReplacement": true
       }
     ]
   }

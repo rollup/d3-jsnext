@@ -1,26 +1,37 @@
 {
   "filepath": "/color/rgb.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/color/_color.js",
+      "properties": [
+        "d3_lab",
+        "d3_lab_K",
+        "d3_lab_X",
+        "d3_lab_Y",
+        "d3_lab_Z",
+        "d3_hcl",
+        "d3_hsl",
+        "d3_rgb",
+        "d3_lab_hcl",
+        "d3_rgb_lab",
+        "d3_hsl_rgb",
+        "d3_hcl_lab"
+      ],
+      "name": "COLOR"
+    }
+  ],
   "dependencies": [
-    "d3_hsl_rgb",
     "d3_color",
-    "d3_hsl",
     "d3_xyz_lab",
-    "d3_lab_X",
-    "d3_lab_Y",
-    "d3_lab_Z",
-    "d3_lab",
     "d3.map"
   ],
   "helpers": [
-    "d3_rgb",
     "d3_rgbNumber",
     "d3_rgbString",
     "d3_rgbPrototype",
     "d3_rgb_hex",
     "d3_rgb_parse",
     "d3_rgb_hsl",
-    "d3_rgb_lab",
     "d3_rgb_xyz",
     "d3_rgb_parseNumber",
     "d3_rgb_names"
@@ -31,6 +42,808 @@
   "ast": {
     "type": "Program",
     "body": [
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_rgb_lab"
+            },
+            "_isReplacement": true
+          },
+          "operator": "=",
+          "right": {
+            "type": "FunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "r"
+              },
+              {
+                "type": "Identifier",
+                "name": "g"
+              },
+              {
+                "type": "Identifier",
+                "name": "b"
+              }
+            ],
+            "defaults": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "r"
+                    },
+                    "right": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "d3_rgb_xyz"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "name": "r"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "g"
+                    },
+                    "right": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "d3_rgb_xyz"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "name": "g"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "b"
+                    },
+                    "right": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "d3_rgb_xyz"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "name": "b"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "VariableDeclaration",
+                  "declarations": [
+                    {
+                      "type": "VariableDeclarator",
+                      "id": {
+                        "type": "Identifier",
+                        "name": "x"
+                      },
+                      "init": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "d3_xyz_lab"
+                        },
+                        "arguments": [
+                          {
+                            "type": "BinaryExpression",
+                            "operator": "/",
+                            "left": {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.4124564,
+                                    "raw": "0.4124564"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "r"
+                                  }
+                                },
+                                "right": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.3575761,
+                                    "raw": "0.3575761"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "g"
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "BinaryExpression",
+                                "operator": "*",
+                                "left": {
+                                  "type": "Literal",
+                                  "value": 0.1804375,
+                                  "raw": "0.1804375"
+                                },
+                                "right": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_lab_X"
+                              },
+                              "_isReplacement": true
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "VariableDeclarator",
+                      "id": {
+                        "type": "Identifier",
+                        "name": "y"
+                      },
+                      "init": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "d3_xyz_lab"
+                        },
+                        "arguments": [
+                          {
+                            "type": "BinaryExpression",
+                            "operator": "/",
+                            "left": {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.2126729,
+                                    "raw": "0.2126729"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "r"
+                                  }
+                                },
+                                "right": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.7151522,
+                                    "raw": "0.7151522"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "g"
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "BinaryExpression",
+                                "operator": "*",
+                                "left": {
+                                  "type": "Literal",
+                                  "value": 0.072175,
+                                  "raw": "0.0721750"
+                                },
+                                "right": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_lab_Y"
+                              },
+                              "_isReplacement": true
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "VariableDeclarator",
+                      "id": {
+                        "type": "Identifier",
+                        "name": "z"
+                      },
+                      "init": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "d3_xyz_lab"
+                        },
+                        "arguments": [
+                          {
+                            "type": "BinaryExpression",
+                            "operator": "/",
+                            "left": {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.0193339,
+                                    "raw": "0.0193339"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "r"
+                                  }
+                                },
+                                "right": {
+                                  "type": "BinaryExpression",
+                                  "operator": "*",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": 0.119192,
+                                    "raw": "0.1191920"
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "g"
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "BinaryExpression",
+                                "operator": "*",
+                                "left": {
+                                  "type": "Literal",
+                                  "value": 0.9503041,
+                                  "raw": "0.9503041"
+                                },
+                                "right": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_lab_Z"
+                              },
+                              "_isReplacement": true
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "kind": "var"
+                },
+                {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "COLOR"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "d3_lab"
+                      },
+                      "_isReplacement": true
+                    },
+                    "arguments": [
+                      {
+                        "type": "BinaryExpression",
+                        "operator": "-",
+                        "left": {
+                          "type": "BinaryExpression",
+                          "operator": "*",
+                          "left": {
+                            "type": "Literal",
+                            "value": 116,
+                            "raw": "116"
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "y"
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 16,
+                          "raw": "16"
+                        }
+                      },
+                      {
+                        "type": "BinaryExpression",
+                        "operator": "*",
+                        "left": {
+                          "type": "Literal",
+                          "value": 500,
+                          "raw": "500"
+                        },
+                        "right": {
+                          "type": "BinaryExpression",
+                          "operator": "-",
+                          "left": {
+                            "type": "Identifier",
+                            "name": "x"
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "y"
+                          }
+                        }
+                      },
+                      {
+                        "type": "BinaryExpression",
+                        "operator": "*",
+                        "left": {
+                          "type": "Literal",
+                          "value": 200,
+                          "raw": "200"
+                        },
+                        "right": {
+                          "type": "BinaryExpression",
+                          "operator": "-",
+                          "left": {
+                            "type": "Identifier",
+                            "name": "y"
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "z"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "rest": null,
+            "generator": false,
+            "expression": false
+          }
+        },
+        "_shouldHoist": true
+      },
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_rgb"
+            },
+            "_isReplacement": true
+          },
+          "operator": "=",
+          "right": {
+            "type": "FunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "r"
+              },
+              {
+                "type": "Identifier",
+                "name": "g"
+              },
+              {
+                "type": "Identifier",
+                "name": "b"
+              }
+            ],
+            "defaults": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "ConditionalExpression",
+                    "test": {
+                      "type": "BinaryExpression",
+                      "operator": "instanceof",
+                      "left": {
+                        "type": "ThisExpression"
+                      },
+                      "right": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "COLOR"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "d3_rgb"
+                        },
+                        "_isReplacement": true
+                      }
+                    },
+                    "consequent": {
+                      "type": "UnaryExpression",
+                      "operator": "void",
+                      "argument": {
+                        "type": "SequenceExpression",
+                        "expressions": [
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "r"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "~",
+                              "argument": {
+                                "type": "UnaryExpression",
+                                "operator": "~",
+                                "argument": {
+                                  "type": "Identifier",
+                                  "name": "r"
+                                },
+                                "prefix": true
+                              },
+                              "prefix": true
+                            }
+                          },
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "g"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "~",
+                              "argument": {
+                                "type": "UnaryExpression",
+                                "operator": "~",
+                                "argument": {
+                                  "type": "Identifier",
+                                  "name": "g"
+                                },
+                                "prefix": true
+                              },
+                              "prefix": true
+                            }
+                          },
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "b"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "~",
+                              "argument": {
+                                "type": "UnaryExpression",
+                                "operator": "~",
+                                "argument": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                },
+                                "prefix": true
+                              },
+                              "prefix": true
+                            }
+                          }
+                        ]
+                      },
+                      "prefix": true
+                    },
+                    "alternate": {
+                      "type": "ConditionalExpression",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "<",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "arguments"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "length"
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 2,
+                          "raw": "2"
+                        }
+                      },
+                      "consequent": {
+                        "type": "ConditionalExpression",
+                        "test": {
+                          "type": "BinaryExpression",
+                          "operator": "instanceof",
+                          "left": {
+                            "type": "Identifier",
+                            "name": "r"
+                          },
+                          "right": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "COLOR"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_rgb"
+                            },
+                            "_isReplacement": true
+                          }
+                        },
+                        "consequent": {
+                          "type": "NewExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "COLOR"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_rgb"
+                            },
+                            "_isReplacement": true
+                          },
+                          "arguments": [
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "r"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "r"
+                              }
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "r"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "g"
+                              }
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "r"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "b"
+                              }
+                            }
+                          ]
+                        },
+                        "alternate": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "d3_rgb_parse"
+                          },
+                          "arguments": [
+                            {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "Literal",
+                                "value": "",
+                                "raw": "\"\""
+                              },
+                              "right": {
+                                "type": "Identifier",
+                                "name": "r"
+                              }
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_rgb"
+                              },
+                              "_isReplacement": true
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_hsl_rgb"
+                              },
+                              "_isReplacement": true
+                            }
+                          ]
+                        }
+                      },
+                      "alternate": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "COLOR"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "d3_rgb"
+                          },
+                          "_isReplacement": true
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "r"
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "g"
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "b"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "rest": null,
+            "generator": false,
+            "expression": false
+          }
+        },
+        "_shouldHoist": true
+      },
       {
         "type": "ExpressionStatement",
         "expression": {
@@ -49,289 +862,19 @@
             }
           },
           "right": {
-            "type": "Identifier",
-            "name": "d3_rgb"
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_rgb"
+            },
+            "_isReplacement": true
           }
         }
-      },
-      {
-        "type": "FunctionDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "d3_rgb"
-        },
-        "params": [
-          {
-            "type": "Identifier",
-            "name": "r"
-          },
-          {
-            "type": "Identifier",
-            "name": "g"
-          },
-          {
-            "type": "Identifier",
-            "name": "b"
-          }
-        ],
-        "defaults": [],
-        "body": {
-          "type": "BlockStatement",
-          "body": [
-            {
-              "type": "ReturnStatement",
-              "argument": {
-                "type": "ConditionalExpression",
-                "test": {
-                  "type": "BinaryExpression",
-                  "operator": "instanceof",
-                  "left": {
-                    "type": "ThisExpression"
-                  },
-                  "right": {
-                    "type": "Identifier",
-                    "name": "d3_rgb"
-                  }
-                },
-                "consequent": {
-                  "type": "UnaryExpression",
-                  "operator": "void",
-                  "argument": {
-                    "type": "SequenceExpression",
-                    "expressions": [
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "r"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "~",
-                          "argument": {
-                            "type": "UnaryExpression",
-                            "operator": "~",
-                            "argument": {
-                              "type": "Identifier",
-                              "name": "r"
-                            },
-                            "prefix": true
-                          },
-                          "prefix": true
-                        }
-                      },
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "g"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "~",
-                          "argument": {
-                            "type": "UnaryExpression",
-                            "operator": "~",
-                            "argument": {
-                              "type": "Identifier",
-                              "name": "g"
-                            },
-                            "prefix": true
-                          },
-                          "prefix": true
-                        }
-                      },
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "b"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "~",
-                          "argument": {
-                            "type": "UnaryExpression",
-                            "operator": "~",
-                            "argument": {
-                              "type": "Identifier",
-                              "name": "b"
-                            },
-                            "prefix": true
-                          },
-                          "prefix": true
-                        }
-                      }
-                    ]
-                  },
-                  "prefix": true
-                },
-                "alternate": {
-                  "type": "ConditionalExpression",
-                  "test": {
-                    "type": "BinaryExpression",
-                    "operator": "<",
-                    "left": {
-                      "type": "MemberExpression",
-                      "computed": false,
-                      "object": {
-                        "type": "Identifier",
-                        "name": "arguments"
-                      },
-                      "property": {
-                        "type": "Identifier",
-                        "name": "length"
-                      }
-                    },
-                    "right": {
-                      "type": "Literal",
-                      "value": 2,
-                      "raw": "2"
-                    }
-                  },
-                  "consequent": {
-                    "type": "ConditionalExpression",
-                    "test": {
-                      "type": "BinaryExpression",
-                      "operator": "instanceof",
-                      "left": {
-                        "type": "Identifier",
-                        "name": "r"
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "d3_rgb"
-                      }
-                    },
-                    "consequent": {
-                      "type": "NewExpression",
-                      "callee": {
-                        "type": "Identifier",
-                        "name": "d3_rgb"
-                      },
-                      "arguments": [
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "r"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "r"
-                          }
-                        },
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "r"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "g"
-                          }
-                        },
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "r"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "b"
-                          }
-                        }
-                      ]
-                    },
-                    "alternate": {
-                      "type": "CallExpression",
-                      "callee": {
-                        "type": "Identifier",
-                        "name": "d3_rgb_parse"
-                      },
-                      "arguments": [
-                        {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "Literal",
-                            "value": "",
-                            "raw": "\"\""
-                          },
-                          "right": {
-                            "type": "Identifier",
-                            "name": "r"
-                          }
-                        },
-                        {
-                          "type": "Identifier",
-                          "name": "d3_rgb"
-                        },
-                        {
-                          "type": "Identifier",
-                          "name": "d3_hsl_rgb"
-                        }
-                      ]
-                    }
-                  },
-                  "alternate": {
-                    "type": "NewExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "d3_rgb"
-                    },
-                    "arguments": [
-                      {
-                        "type": "Identifier",
-                        "name": "r"
-                      },
-                      {
-                        "type": "Identifier",
-                        "name": "g"
-                      },
-                      {
-                        "type": "Identifier",
-                        "name": "b"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "rest": null,
-        "generator": false,
-        "expression": false
       },
       {
         "type": "FunctionDeclaration",
@@ -354,8 +897,17 @@
               "argument": {
                 "type": "NewExpression",
                 "callee": {
-                  "type": "Identifier",
-                  "name": "d3_rgb"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "COLOR"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_rgb"
+                  },
+                  "_isReplacement": true
                 },
                 "arguments": [
                   {
@@ -470,8 +1022,17 @@
             "type": "MemberExpression",
             "computed": false,
             "object": {
-              "type": "Identifier",
-              "name": "d3_rgb"
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "COLOR"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "d3_rgb"
+              },
+              "_isReplacement": true
             },
             "property": {
               "type": "Identifier",
@@ -503,8 +1064,17 @@
               "type": "MemberExpression",
               "computed": false,
               "object": {
-                "type": "Identifier",
-                "name": "d3_rgb"
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "COLOR"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "d3_rgb"
+                },
+                "_isReplacement": true
               },
               "property": {
                 "type": "Identifier",
@@ -715,8 +1285,17 @@
                     "argument": {
                       "type": "NewExpression",
                       "callee": {
-                        "type": "Identifier",
-                        "name": "d3_rgb"
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "COLOR"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "d3_rgb"
+                        },
+                        "_isReplacement": true
                       },
                       "arguments": [
                         {
@@ -858,8 +1437,17 @@
                   "argument": {
                     "type": "NewExpression",
                     "callee": {
-                      "type": "Identifier",
-                      "name": "d3_rgb"
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "COLOR"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "d3_rgb"
+                      },
+                      "_isReplacement": true
                     },
                     "arguments": [
                       {
@@ -1067,8 +1655,17 @@
                   "argument": {
                     "type": "NewExpression",
                     "callee": {
-                      "type": "Identifier",
-                      "name": "d3_rgb"
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "COLOR"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "d3_rgb"
+                      },
+                      "_isReplacement": true
                     },
                     "arguments": [
                       {
@@ -2968,8 +3565,17 @@
               "argument": {
                 "type": "NewExpression",
                 "callee": {
-                  "type": "Identifier",
-                  "name": "d3_hsl"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "COLOR"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_hsl"
+                  },
+                  "_isReplacement": true
                 },
                 "arguments": [
                   {
@@ -2983,403 +3589,6 @@
                   {
                     "type": "Identifier",
                     "name": "l"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "rest": null,
-        "generator": false,
-        "expression": false
-      },
-      {
-        "type": "FunctionDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "d3_rgb_lab"
-        },
-        "params": [
-          {
-            "type": "Identifier",
-            "name": "r"
-          },
-          {
-            "type": "Identifier",
-            "name": "g"
-          },
-          {
-            "type": "Identifier",
-            "name": "b"
-          }
-        ],
-        "defaults": [],
-        "body": {
-          "type": "BlockStatement",
-          "body": [
-            {
-              "type": "ExpressionStatement",
-              "expression": {
-                "type": "AssignmentExpression",
-                "operator": "=",
-                "left": {
-                  "type": "Identifier",
-                  "name": "r"
-                },
-                "right": {
-                  "type": "CallExpression",
-                  "callee": {
-                    "type": "Identifier",
-                    "name": "d3_rgb_xyz"
-                  },
-                  "arguments": [
-                    {
-                      "type": "Identifier",
-                      "name": "r"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "ExpressionStatement",
-              "expression": {
-                "type": "AssignmentExpression",
-                "operator": "=",
-                "left": {
-                  "type": "Identifier",
-                  "name": "g"
-                },
-                "right": {
-                  "type": "CallExpression",
-                  "callee": {
-                    "type": "Identifier",
-                    "name": "d3_rgb_xyz"
-                  },
-                  "arguments": [
-                    {
-                      "type": "Identifier",
-                      "name": "g"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "ExpressionStatement",
-              "expression": {
-                "type": "AssignmentExpression",
-                "operator": "=",
-                "left": {
-                  "type": "Identifier",
-                  "name": "b"
-                },
-                "right": {
-                  "type": "CallExpression",
-                  "callee": {
-                    "type": "Identifier",
-                    "name": "d3_rgb_xyz"
-                  },
-                  "arguments": [
-                    {
-                      "type": "Identifier",
-                      "name": "b"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "VariableDeclaration",
-              "declarations": [
-                {
-                  "type": "VariableDeclarator",
-                  "id": {
-                    "type": "Identifier",
-                    "name": "x"
-                  },
-                  "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "d3_xyz_lab"
-                    },
-                    "arguments": [
-                      {
-                        "type": "BinaryExpression",
-                        "operator": "/",
-                        "left": {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "BinaryExpression",
-                            "operator": "+",
-                            "left": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.4124564,
-                                "raw": "0.4124564"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "r"
-                              }
-                            },
-                            "right": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.3575761,
-                                "raw": "0.3575761"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "g"
-                              }
-                            }
-                          },
-                          "right": {
-                            "type": "BinaryExpression",
-                            "operator": "*",
-                            "left": {
-                              "type": "Literal",
-                              "value": 0.1804375,
-                              "raw": "0.1804375"
-                            },
-                            "right": {
-                              "type": "Identifier",
-                              "name": "b"
-                            }
-                          }
-                        },
-                        "right": {
-                          "type": "Identifier",
-                          "name": "d3_lab_X"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "VariableDeclarator",
-                  "id": {
-                    "type": "Identifier",
-                    "name": "y"
-                  },
-                  "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "d3_xyz_lab"
-                    },
-                    "arguments": [
-                      {
-                        "type": "BinaryExpression",
-                        "operator": "/",
-                        "left": {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "BinaryExpression",
-                            "operator": "+",
-                            "left": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.2126729,
-                                "raw": "0.2126729"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "r"
-                              }
-                            },
-                            "right": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.7151522,
-                                "raw": "0.7151522"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "g"
-                              }
-                            }
-                          },
-                          "right": {
-                            "type": "BinaryExpression",
-                            "operator": "*",
-                            "left": {
-                              "type": "Literal",
-                              "value": 0.072175,
-                              "raw": "0.0721750"
-                            },
-                            "right": {
-                              "type": "Identifier",
-                              "name": "b"
-                            }
-                          }
-                        },
-                        "right": {
-                          "type": "Identifier",
-                          "name": "d3_lab_Y"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "VariableDeclarator",
-                  "id": {
-                    "type": "Identifier",
-                    "name": "z"
-                  },
-                  "init": {
-                    "type": "CallExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "d3_xyz_lab"
-                    },
-                    "arguments": [
-                      {
-                        "type": "BinaryExpression",
-                        "operator": "/",
-                        "left": {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "BinaryExpression",
-                            "operator": "+",
-                            "left": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.0193339,
-                                "raw": "0.0193339"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "r"
-                              }
-                            },
-                            "right": {
-                              "type": "BinaryExpression",
-                              "operator": "*",
-                              "left": {
-                                "type": "Literal",
-                                "value": 0.119192,
-                                "raw": "0.1191920"
-                              },
-                              "right": {
-                                "type": "Identifier",
-                                "name": "g"
-                              }
-                            }
-                          },
-                          "right": {
-                            "type": "BinaryExpression",
-                            "operator": "*",
-                            "left": {
-                              "type": "Literal",
-                              "value": 0.9503041,
-                              "raw": "0.9503041"
-                            },
-                            "right": {
-                              "type": "Identifier",
-                              "name": "b"
-                            }
-                          }
-                        },
-                        "right": {
-                          "type": "Identifier",
-                          "name": "d3_lab_Z"
-                        }
-                      }
-                    ]
-                  }
-                }
-              ],
-              "kind": "var"
-            },
-            {
-              "type": "ReturnStatement",
-              "argument": {
-                "type": "CallExpression",
-                "callee": {
-                  "type": "Identifier",
-                  "name": "d3_lab"
-                },
-                "arguments": [
-                  {
-                    "type": "BinaryExpression",
-                    "operator": "-",
-                    "left": {
-                      "type": "BinaryExpression",
-                      "operator": "*",
-                      "left": {
-                        "type": "Literal",
-                        "value": 116,
-                        "raw": "116"
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "y"
-                      }
-                    },
-                    "right": {
-                      "type": "Literal",
-                      "value": 16,
-                      "raw": "16"
-                    }
-                  },
-                  {
-                    "type": "BinaryExpression",
-                    "operator": "*",
-                    "left": {
-                      "type": "Literal",
-                      "value": 500,
-                      "raw": "500"
-                    },
-                    "right": {
-                      "type": "BinaryExpression",
-                      "operator": "-",
-                      "left": {
-                        "type": "Identifier",
-                        "name": "x"
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "y"
-                      }
-                    }
-                  },
-                  {
-                    "type": "BinaryExpression",
-                    "operator": "*",
-                    "left": {
-                      "type": "Literal",
-                      "value": 200,
-                      "raw": "200"
-                    },
-                    "right": {
-                      "type": "BinaryExpression",
-                      "operator": "-",
-                      "left": {
-                        "type": "Identifier",
-                        "name": "y"
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "z"
-                      }
-                    }
                   }
                 ]
               }

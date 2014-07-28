@@ -1,11 +1,20 @@
 {
   "filepath": "/locale/time-format.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/_global.js",
+      "properties": [
+        "d3_array",
+        "d3_date",
+        "d3.event"
+      ],
+      "name": "GLOBAL"
+    }
+  ],
   "dependencies": [
     "d3_time_format",
     "d3_time_formats",
     "d3_time_parse",
-    "d3_date",
     "d3_date_utc",
     "d3_time_parsers",
     "d3_time_periodLookup",
@@ -1125,8 +1134,17 @@
                                       "type": "BinaryExpression",
                                       "operator": "!==",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_date"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GLOBAL"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_date"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
                                         "type": "Identifier",
@@ -1154,8 +1172,17 @@
                                         "name": "d3_date_utc"
                                       },
                                       "alternate": {
-                                        "type": "Identifier",
-                                        "name": "d3_date"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GLOBAL"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_date"
+                                        },
+                                        "_isReplacement": true
                                       }
                                     },
                                     "arguments": []
@@ -2361,8 +2388,17 @@
                                       "type": "AssignmentExpression",
                                       "operator": "=",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_date"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GLOBAL"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_date"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
                                         "type": "Identifier",
@@ -2382,8 +2418,17 @@
                                         "init": {
                                           "type": "NewExpression",
                                           "callee": {
-                                            "type": "Identifier",
-                                            "name": "d3_date"
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "name": "GLOBAL"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "name": "d3_date"
+                                            },
+                                            "_isReplacement": true
                                           },
                                           "arguments": []
                                         }
@@ -2443,8 +2488,17 @@
                                       "type": "AssignmentExpression",
                                       "operator": "=",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_date"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GLOBAL"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_date"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
                                         "type": "Identifier",
@@ -2502,8 +2556,17 @@
                                           "type": "AssignmentExpression",
                                           "operator": "=",
                                           "left": {
-                                            "type": "Identifier",
-                                            "name": "d3_date"
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "name": "GLOBAL"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "name": "d3_date"
+                                            },
+                                            "_isReplacement": true
                                           },
                                           "right": {
                                             "type": "Identifier",
@@ -2581,8 +2644,17 @@
                                           "type": "AssignmentExpression",
                                           "operator": "=",
                                           "left": {
-                                            "type": "Identifier",
-                                            "name": "d3_date"
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "name": "GLOBAL"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "name": "d3_date"
+                                            },
+                                            "_isReplacement": true
                                           },
                                           "right": {
                                             "type": "Identifier",

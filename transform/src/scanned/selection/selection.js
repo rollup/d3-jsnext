@@ -1,12 +1,21 @@
 {
   "filepath": "/selection/selection.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/_global.js",
+      "properties": [
+        "d3_array",
+        "d3_date",
+        "d3.event"
+      ],
+      "name": "GLOBAL"
+    }
+  ],
   "dependencies": [
     "d3_subclass",
     "d3_documentElement",
     "d3_vendorSymbol",
-    "d3_document",
-    "d3_array"
+    "d3_document"
   ],
   "helpers": [
     "d3_selection",
@@ -784,8 +793,17 @@
                       "init": {
                         "type": "CallExpression",
                         "callee": {
-                          "type": "Identifier",
-                          "name": "d3_array"
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "GLOBAL"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "d3_array"
+                          },
+                          "_isReplacement": true
                         },
                         "arguments": [
                           {

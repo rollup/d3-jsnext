@@ -28,7 +28,8 @@ module.exports = function ( node, parent, scanned ) {
 				type: 'ExpressionStatement',
 				expression: {
 					type: 'AssignmentExpression',
-					left: astHelpers.generateMemberExpression( group.name + '.' + name ),
+					//left: astHelpers.generateMemberExpression( group.name + '.' + name ),
+					left: declaration.id,
 					operator: '=',
 					right: declaration.init
 				}

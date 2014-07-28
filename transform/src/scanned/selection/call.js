@@ -1,9 +1,18 @@
 {
   "filepath": "/selection/call.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/_global.js",
+      "properties": [
+        "d3_array",
+        "d3_date",
+        "d3.event"
+      ],
+      "name": "GLOBAL"
+    }
+  ],
   "dependencies": [
-    "d3_selectionPrototype",
-    "d3_array"
+    "d3_selectionPrototype"
   ],
   "helpers": [],
   "exports": [],
@@ -52,8 +61,17 @@
                       "init": {
                         "type": "CallExpression",
                         "callee": {
-                          "type": "Identifier",
-                          "name": "d3_array"
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "GLOBAL"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "d3_array"
+                          },
+                          "_isReplacement": true
                         },
                         "arguments": [
                           {

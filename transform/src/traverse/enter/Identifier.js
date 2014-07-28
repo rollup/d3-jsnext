@@ -5,9 +5,9 @@ var shouldExport = require( '../../shouldExport' ),
 module.exports = function ( node, parent, state ) {
 	var group;
 
-	/*if ( groupByIdentifier.hasOwnProperty( node.name ) && ( group = groupByIdentifier[ node.name ] ) ) {
-		if ( !~state.dependencies.indexOf( group.name ) ) {
-			state.dependencies.push( group.name );
+	if ( groupByIdentifier.hasOwnProperty( node.name ) && ( group = groupByIdentifier[ node.name ] ) ) {
+		if ( !~state.shared.indexOf( group ) ) {
+			state.shared.push( group );
 		}
 
 		// Return a replacement node
@@ -16,7 +16,7 @@ module.exports = function ( node, parent, state ) {
 		return replacement;
 	}
 
-	else*/ if ( shouldExport( node.name ) && !~state.dependencies.indexOf( node.name ) ) {
+	else if ( shouldExport( node.name ) && !~state.dependencies.indexOf( node.name ) ) {
 		state.dependencies.push( node.name );
 	}
 };

@@ -2,34 +2,32 @@
   "filepath": "/color/lab.js",
   "shared": [
     {
-      "path": "/color/_lab.js",
+      "path": "/color/_color.js",
       "properties": [
+        "d3_lab",
         "d3_lab_K",
         "d3_lab_X",
         "d3_lab_Y",
-        "d3_lab_Z"
+        "d3_lab_Z",
+        "d3_hcl",
+        "d3_hsl",
+        "d3_rgb",
+        "d3_lab_hcl",
+        "d3_rgb_lab",
+        "d3_hsl_rgb",
+        "d3_hcl_lab"
       ],
-      "name": "LAB"
+      "name": "COLOR"
     }
   ],
   "dependencies": [
-    "d3_hcl",
-    "d3_hcl_lab",
-    "d3_rgb_lab",
-    "d3_rgb",
-    "d3_lab_K",
-    "d3_lab_X",
-    "d3_lab_Y",
-    "d3_lab_Z",
     "d3_color",
     "d3_xyz_rgb",
     "d3_degrees"
   ],
   "helpers": [
-    "d3_lab",
     "d3_labPrototype",
     "d3_lab_rgb",
-    "d3_lab_hcl",
     "d3_lab_xyz"
   ],
   "exports": [
@@ -38,6 +36,649 @@
   "ast": {
     "type": "Program",
     "body": [
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_lab_hcl"
+            },
+            "_isReplacement": true
+          },
+          "operator": "=",
+          "right": {
+            "type": "FunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "l"
+              },
+              {
+                "type": "Identifier",
+                "name": "a"
+              },
+              {
+                "type": "Identifier",
+                "name": "b"
+              }
+            ],
+            "defaults": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "ConditionalExpression",
+                    "test": {
+                      "type": "BinaryExpression",
+                      "operator": ">",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "l"
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": 0,
+                        "raw": "0"
+                      }
+                    },
+                    "consequent": {
+                      "type": "NewExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "COLOR"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "d3_hcl"
+                        },
+                        "_isReplacement": true
+                      },
+                      "arguments": [
+                        {
+                          "type": "BinaryExpression",
+                          "operator": "*",
+                          "left": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Math"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "atan2"
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "b"
+                              },
+                              {
+                                "type": "Identifier",
+                                "name": "a"
+                              }
+                            ]
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "d3_degrees"
+                          }
+                        },
+                        {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "Math"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "sqrt"
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "*",
+                                "left": {
+                                  "type": "Identifier",
+                                  "name": "a"
+                                },
+                                "right": {
+                                  "type": "Identifier",
+                                  "name": "a"
+                                }
+                              },
+                              "right": {
+                                "type": "BinaryExpression",
+                                "operator": "*",
+                                "left": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                },
+                                "right": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "l"
+                        }
+                      ]
+                    },
+                    "alternate": {
+                      "type": "NewExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "COLOR"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "d3_hcl"
+                        },
+                        "_isReplacement": true
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "name": "NaN"
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "NaN"
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "l"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "rest": null,
+            "generator": false,
+            "expression": false
+          }
+        },
+        "_shouldHoist": true
+      },
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_lab"
+            },
+            "_isReplacement": true
+          },
+          "operator": "=",
+          "right": {
+            "type": "FunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "l"
+              },
+              {
+                "type": "Identifier",
+                "name": "a"
+              },
+              {
+                "type": "Identifier",
+                "name": "b"
+              }
+            ],
+            "defaults": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "ConditionalExpression",
+                    "test": {
+                      "type": "BinaryExpression",
+                      "operator": "instanceof",
+                      "left": {
+                        "type": "ThisExpression"
+                      },
+                      "right": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "COLOR"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "d3_lab"
+                        },
+                        "_isReplacement": true
+                      }
+                    },
+                    "consequent": {
+                      "type": "UnaryExpression",
+                      "operator": "void",
+                      "argument": {
+                        "type": "SequenceExpression",
+                        "expressions": [
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "l"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "+",
+                              "argument": {
+                                "type": "Identifier",
+                                "name": "l"
+                              },
+                              "prefix": true
+                            }
+                          },
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "a"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "+",
+                              "argument": {
+                                "type": "Identifier",
+                                "name": "a"
+                              },
+                              "prefix": true
+                            }
+                          },
+                          {
+                            "type": "AssignmentExpression",
+                            "operator": "=",
+                            "left": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "b"
+                              }
+                            },
+                            "right": {
+                              "type": "UnaryExpression",
+                              "operator": "+",
+                              "argument": {
+                                "type": "Identifier",
+                                "name": "b"
+                              },
+                              "prefix": true
+                            }
+                          }
+                        ]
+                      },
+                      "prefix": true
+                    },
+                    "alternate": {
+                      "type": "ConditionalExpression",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "<",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "arguments"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "length"
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 2,
+                          "raw": "2"
+                        }
+                      },
+                      "consequent": {
+                        "type": "ConditionalExpression",
+                        "test": {
+                          "type": "BinaryExpression",
+                          "operator": "instanceof",
+                          "left": {
+                            "type": "Identifier",
+                            "name": "l"
+                          },
+                          "right": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "COLOR"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_lab"
+                            },
+                            "_isReplacement": true
+                          }
+                        },
+                        "consequent": {
+                          "type": "NewExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "COLOR"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_lab"
+                            },
+                            "_isReplacement": true
+                          },
+                          "arguments": [
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "l"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "l"
+                              }
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "l"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "a"
+                              }
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "l"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "b"
+                              }
+                            }
+                          ]
+                        },
+                        "alternate": {
+                          "type": "ConditionalExpression",
+                          "test": {
+                            "type": "BinaryExpression",
+                            "operator": "instanceof",
+                            "left": {
+                              "type": "Identifier",
+                              "name": "l"
+                            },
+                            "right": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_hcl"
+                              },
+                              "_isReplacement": true
+                            }
+                          },
+                          "consequent": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_hcl_lab"
+                              },
+                              "_isReplacement": true
+                            },
+                            "arguments": [
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                }
+                              },
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "c"
+                                }
+                              },
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "h"
+                                }
+                              }
+                            ]
+                          },
+                          "alternate": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "COLOR"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "d3_rgb_lab"
+                              },
+                              "_isReplacement": true
+                            },
+                            "arguments": [
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "AssignmentExpression",
+                                  "operator": "=",
+                                  "left": {
+                                    "type": "Identifier",
+                                    "name": "l"
+                                  },
+                                  "right": {
+                                    "type": "CallExpression",
+                                    "callee": {
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "COLOR"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_rgb"
+                                      },
+                                      "_isReplacement": true
+                                    },
+                                    "arguments": [
+                                      {
+                                        "type": "Identifier",
+                                        "name": "l"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "r"
+                                }
+                              },
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "g"
+                                }
+                              },
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "l"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "b"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "alternate": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "COLOR"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "d3_lab"
+                          },
+                          "_isReplacement": true
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "l"
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "a"
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "b"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "rest": null,
+            "generator": false,
+            "expression": false
+          }
+        },
+        "_shouldHoist": true
+      },
       {
         "type": "ExpressionStatement",
         "expression": {
@@ -56,366 +697,19 @@
             }
           },
           "right": {
-            "type": "Identifier",
-            "name": "d3_lab"
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "COLOR"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "d3_lab"
+            },
+            "_isReplacement": true
           }
         }
-      },
-      {
-        "type": "FunctionDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "d3_lab"
-        },
-        "params": [
-          {
-            "type": "Identifier",
-            "name": "l"
-          },
-          {
-            "type": "Identifier",
-            "name": "a"
-          },
-          {
-            "type": "Identifier",
-            "name": "b"
-          }
-        ],
-        "defaults": [],
-        "body": {
-          "type": "BlockStatement",
-          "body": [
-            {
-              "type": "ReturnStatement",
-              "argument": {
-                "type": "ConditionalExpression",
-                "test": {
-                  "type": "BinaryExpression",
-                  "operator": "instanceof",
-                  "left": {
-                    "type": "ThisExpression"
-                  },
-                  "right": {
-                    "type": "Identifier",
-                    "name": "d3_lab"
-                  }
-                },
-                "consequent": {
-                  "type": "UnaryExpression",
-                  "operator": "void",
-                  "argument": {
-                    "type": "SequenceExpression",
-                    "expressions": [
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "l"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "+",
-                          "argument": {
-                            "type": "Identifier",
-                            "name": "l"
-                          },
-                          "prefix": true
-                        }
-                      },
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "a"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "+",
-                          "argument": {
-                            "type": "Identifier",
-                            "name": "a"
-                          },
-                          "prefix": true
-                        }
-                      },
-                      {
-                        "type": "AssignmentExpression",
-                        "operator": "=",
-                        "left": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "ThisExpression"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "b"
-                          }
-                        },
-                        "right": {
-                          "type": "UnaryExpression",
-                          "operator": "+",
-                          "argument": {
-                            "type": "Identifier",
-                            "name": "b"
-                          },
-                          "prefix": true
-                        }
-                      }
-                    ]
-                  },
-                  "prefix": true
-                },
-                "alternate": {
-                  "type": "ConditionalExpression",
-                  "test": {
-                    "type": "BinaryExpression",
-                    "operator": "<",
-                    "left": {
-                      "type": "MemberExpression",
-                      "computed": false,
-                      "object": {
-                        "type": "Identifier",
-                        "name": "arguments"
-                      },
-                      "property": {
-                        "type": "Identifier",
-                        "name": "length"
-                      }
-                    },
-                    "right": {
-                      "type": "Literal",
-                      "value": 2,
-                      "raw": "2"
-                    }
-                  },
-                  "consequent": {
-                    "type": "ConditionalExpression",
-                    "test": {
-                      "type": "BinaryExpression",
-                      "operator": "instanceof",
-                      "left": {
-                        "type": "Identifier",
-                        "name": "l"
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "d3_lab"
-                      }
-                    },
-                    "consequent": {
-                      "type": "NewExpression",
-                      "callee": {
-                        "type": "Identifier",
-                        "name": "d3_lab"
-                      },
-                      "arguments": [
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "l"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "l"
-                          }
-                        },
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "l"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "a"
-                          }
-                        },
-                        {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "l"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "b"
-                          }
-                        }
-                      ]
-                    },
-                    "alternate": {
-                      "type": "ConditionalExpression",
-                      "test": {
-                        "type": "BinaryExpression",
-                        "operator": "instanceof",
-                        "left": {
-                          "type": "Identifier",
-                          "name": "l"
-                        },
-                        "right": {
-                          "type": "Identifier",
-                          "name": "d3_hcl"
-                        }
-                      },
-                      "consequent": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "Identifier",
-                          "name": "d3_hcl_lab"
-                        },
-                        "arguments": [
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "l"
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "l"
-                            }
-                          },
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "l"
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "c"
-                            }
-                          },
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "l"
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "h"
-                            }
-                          }
-                        ]
-                      },
-                      "alternate": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "Identifier",
-                          "name": "d3_rgb_lab"
-                        },
-                        "arguments": [
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "AssignmentExpression",
-                              "operator": "=",
-                              "left": {
-                                "type": "Identifier",
-                                "name": "l"
-                              },
-                              "right": {
-                                "type": "CallExpression",
-                                "callee": {
-                                  "type": "Identifier",
-                                  "name": "d3_rgb"
-                                },
-                                "arguments": [
-                                  {
-                                    "type": "Identifier",
-                                    "name": "l"
-                                  }
-                                ]
-                              }
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "r"
-                            }
-                          },
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "l"
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "g"
-                            }
-                          },
-                          {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "l"
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "b"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "alternate": {
-                    "type": "NewExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "d3_lab"
-                    },
-                    "arguments": [
-                      {
-                        "type": "Identifier",
-                        "name": "l"
-                      },
-                      {
-                        "type": "Identifier",
-                        "name": "a"
-                      },
-                      {
-                        "type": "Identifier",
-                        "name": "b"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "rest": null,
-        "generator": false,
-        "expression": false
       },
       {
         "type": "ExpressionStatement",
@@ -426,12 +720,13 @@
             "computed": false,
             "object": {
               "type": "Identifier",
-              "name": "LAB"
+              "name": "COLOR"
             },
             "property": {
               "type": "Identifier",
               "name": "d3_lab_K"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
@@ -439,7 +734,8 @@
             "value": 18,
             "raw": "18"
           }
-        }
+        },
+        "_isReplacement": true
       },
       {
         "type": "ExpressionStatement",
@@ -450,12 +746,13 @@
             "computed": false,
             "object": {
               "type": "Identifier",
-              "name": "LAB"
+              "name": "COLOR"
             },
             "property": {
               "type": "Identifier",
               "name": "d3_lab_X"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
@@ -463,7 +760,8 @@
             "value": 0.95047,
             "raw": "0.950470"
           }
-        }
+        },
+        "_isReplacement": true
       },
       {
         "type": "ExpressionStatement",
@@ -474,12 +772,13 @@
             "computed": false,
             "object": {
               "type": "Identifier",
-              "name": "LAB"
+              "name": "COLOR"
             },
             "property": {
               "type": "Identifier",
               "name": "d3_lab_Y"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
@@ -487,7 +786,8 @@
             "value": 1,
             "raw": "1"
           }
-        }
+        },
+        "_isReplacement": true
       },
       {
         "type": "ExpressionStatement",
@@ -498,12 +798,13 @@
             "computed": false,
             "object": {
               "type": "Identifier",
-              "name": "LAB"
+              "name": "COLOR"
             },
             "property": {
               "type": "Identifier",
               "name": "d3_lab_Z"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
@@ -511,7 +812,8 @@
             "value": 1.08883,
             "raw": "1.088830"
           }
-        }
+        },
+        "_isReplacement": true
       },
       {
         "type": "ExpressionStatement",
@@ -521,8 +823,17 @@
             "type": "MemberExpression",
             "computed": false,
             "object": {
-              "type": "Identifier",
-              "name": "d3_lab"
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "COLOR"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "d3_lab"
+              },
+              "_isReplacement": true
             },
             "property": {
               "type": "Identifier",
@@ -554,8 +865,17 @@
               "type": "MemberExpression",
               "computed": false,
               "object": {
-                "type": "Identifier",
-                "name": "d3_lab"
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "COLOR"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "d3_lab"
+                },
+                "_isReplacement": true
               },
               "property": {
                 "type": "Identifier",
@@ -600,8 +920,17 @@
                   "argument": {
                     "type": "NewExpression",
                     "callee": {
-                      "type": "Identifier",
-                      "name": "d3_lab"
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "COLOR"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "d3_lab"
+                      },
+                      "_isReplacement": true
                     },
                     "arguments": [
                       {
@@ -642,8 +971,17 @@
                               "type": "BinaryExpression",
                               "operator": "*",
                               "left": {
-                                "type": "Identifier",
-                                "name": "d3_lab_K"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "COLOR"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_lab_K"
+                                },
+                                "_isReplacement": true
                               },
                               "right": {
                                 "type": "ConditionalExpression",
@@ -741,8 +1079,17 @@
                   "argument": {
                     "type": "NewExpression",
                     "callee": {
-                      "type": "Identifier",
-                      "name": "d3_lab"
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "COLOR"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "d3_lab"
+                      },
+                      "_isReplacement": true
                     },
                     "arguments": [
                       {
@@ -783,8 +1130,17 @@
                               "type": "BinaryExpression",
                               "operator": "*",
                               "left": {
-                                "type": "Identifier",
-                                "name": "d3_lab_K"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "COLOR"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_lab_K"
+                                },
+                                "_isReplacement": true
                               },
                               "right": {
                                 "type": "ConditionalExpression",
@@ -1066,8 +1422,17 @@
                     ]
                   },
                   "right": {
-                    "type": "Identifier",
-                    "name": "d3_lab_X"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "COLOR"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_lab_X"
+                    },
+                    "_isReplacement": true
                   }
                 }
               }
@@ -1098,8 +1463,17 @@
                     ]
                   },
                   "right": {
-                    "type": "Identifier",
-                    "name": "d3_lab_Y"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "COLOR"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_lab_Y"
+                    },
+                    "_isReplacement": true
                   }
                 }
               }
@@ -1130,8 +1504,17 @@
                     ]
                   },
                   "right": {
-                    "type": "Identifier",
-                    "name": "d3_lab_Z"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "COLOR"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_lab_Z"
+                    },
+                    "_isReplacement": true
                   }
                 }
               }
@@ -1141,8 +1524,17 @@
               "argument": {
                 "type": "NewExpression",
                 "callee": {
-                  "type": "Identifier",
-                  "name": "d3_rgb"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "COLOR"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_rgb"
+                  },
+                  "_isReplacement": true
                 },
                 "arguments": [
                   {
@@ -1319,167 +1711,6 @@
                     ]
                   }
                 ]
-              }
-            }
-          ]
-        },
-        "rest": null,
-        "generator": false,
-        "expression": false
-      },
-      {
-        "type": "FunctionDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "d3_lab_hcl"
-        },
-        "params": [
-          {
-            "type": "Identifier",
-            "name": "l"
-          },
-          {
-            "type": "Identifier",
-            "name": "a"
-          },
-          {
-            "type": "Identifier",
-            "name": "b"
-          }
-        ],
-        "defaults": [],
-        "body": {
-          "type": "BlockStatement",
-          "body": [
-            {
-              "type": "ReturnStatement",
-              "argument": {
-                "type": "ConditionalExpression",
-                "test": {
-                  "type": "BinaryExpression",
-                  "operator": ">",
-                  "left": {
-                    "type": "Identifier",
-                    "name": "l"
-                  },
-                  "right": {
-                    "type": "Literal",
-                    "value": 0,
-                    "raw": "0"
-                  }
-                },
-                "consequent": {
-                  "type": "NewExpression",
-                  "callee": {
-                    "type": "Identifier",
-                    "name": "d3_hcl"
-                  },
-                  "arguments": [
-                    {
-                      "type": "BinaryExpression",
-                      "operator": "*",
-                      "left": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "Math"
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "atan2"
-                          }
-                        },
-                        "arguments": [
-                          {
-                            "type": "Identifier",
-                            "name": "b"
-                          },
-                          {
-                            "type": "Identifier",
-                            "name": "a"
-                          }
-                        ]
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "d3_degrees"
-                      }
-                    },
-                    {
-                      "type": "CallExpression",
-                      "callee": {
-                        "type": "MemberExpression",
-                        "computed": false,
-                        "object": {
-                          "type": "Identifier",
-                          "name": "Math"
-                        },
-                        "property": {
-                          "type": "Identifier",
-                          "name": "sqrt"
-                        }
-                      },
-                      "arguments": [
-                        {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "BinaryExpression",
-                            "operator": "*",
-                            "left": {
-                              "type": "Identifier",
-                              "name": "a"
-                            },
-                            "right": {
-                              "type": "Identifier",
-                              "name": "a"
-                            }
-                          },
-                          "right": {
-                            "type": "BinaryExpression",
-                            "operator": "*",
-                            "left": {
-                              "type": "Identifier",
-                              "name": "b"
-                            },
-                            "right": {
-                              "type": "Identifier",
-                              "name": "b"
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "type": "Identifier",
-                      "name": "l"
-                    }
-                  ]
-                },
-                "alternate": {
-                  "type": "NewExpression",
-                  "callee": {
-                    "type": "Identifier",
-                    "name": "d3_hcl"
-                  },
-                  "arguments": [
-                    {
-                      "type": "Identifier",
-                      "name": "NaN"
-                    },
-                    {
-                      "type": "Identifier",
-                      "name": "NaN"
-                    },
-                    {
-                      "type": "Identifier",
-                      "name": "l"
-                    }
-                  ]
-                }
               }
             }
           ]

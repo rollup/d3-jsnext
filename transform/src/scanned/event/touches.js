@@ -1,9 +1,18 @@
 {
   "filepath": "/event/touches.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/_global.js",
+      "properties": [
+        "d3_array",
+        "d3_date",
+        "d3.event"
+      ],
+      "name": "GLOBAL"
+    }
+  ],
   "dependencies": [
     "d3_eventSource",
-    "d3_array",
     "d3_mousePoint"
   ],
   "helpers": [],
@@ -115,8 +124,17 @@
                         "object": {
                           "type": "CallExpression",
                           "callee": {
-                            "type": "Identifier",
-                            "name": "d3_array"
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "GLOBAL"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "d3_array"
+                            },
+                            "_isReplacement": true
                           },
                           "arguments": [
                             {

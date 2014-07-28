@@ -6,8 +6,12 @@ var estraverse = require( 'estraverse' ),
 
 module.exports = function ( scanned, pathsByHelperName, pathsByExportName ) {
 	estraverse.replace( scanned.ast, {
-		enter: function ( node ) {
+		enter: function ( node, parent ) {
 			var keypath, replacementKeypath;
+
+			if ( node._isReplacement || parent._isReplacement ) {
+				return;
+			}
 
 			if ( node.type === 'MemberExpression' ) {
 				// this.skip();

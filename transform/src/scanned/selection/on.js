@@ -13,7 +13,6 @@
   ],
   "dependencies": [
     "d3_selectionPrototype",
-    "d3_array",
     "d3.requote",
     "d3_noop",
     "d3.map",
@@ -744,8 +743,17 @@
                             {
                               "type": "CallExpression",
                               "callee": {
-                                "type": "Identifier",
-                                "name": "d3_array"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "GLOBAL"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_array"
+                                },
+                                "_isReplacement": true
                               },
                               "arguments": [
                                 {

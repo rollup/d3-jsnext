@@ -1,24 +1,39 @@
 {
   "filepath": "/geo/path.js",
-  "shared": [],
+  "shared": [
+    {
+      "path": "/geo/_centroid.js",
+      "properties": [
+        "d3_geo_centroidW0",
+        "d3_geo_centroidW1",
+        "d3_geo_centroidX0",
+        "d3_geo_centroidY0",
+        "d3_geo_centroidZ0",
+        "d3_geo_centroidX1",
+        "d3_geo_centroidY1",
+        "d3_geo_centroidZ1",
+        "d3_geo_centroidX2",
+        "d3_geo_centroidY2",
+        "d3_geo_centroidZ2"
+      ],
+      "name": "GEO_CENTROID"
+    },
+    {
+      "path": "/geo/_pathBounds.js",
+      "properties": [
+        "d3_geo_pathBoundsX0",
+        "d3_geo_pathBoundsY0",
+        "d3_geo_pathBoundsX1",
+        "d3_geo_pathBoundsY1"
+      ],
+      "name": "GEO_PATHBOUNDS"
+    }
+  ],
   "dependencies": [
     "d3.geo.stream",
     "d3_geo_pathAreaSum",
     "d3_geo_pathArea",
-    "d3_geo_centroidX0",
-    "d3_geo_centroidY0",
-    "d3_geo_centroidZ0",
-    "d3_geo_centroidX1",
-    "d3_geo_centroidY1",
-    "d3_geo_centroidZ1",
-    "d3_geo_centroidX2",
-    "d3_geo_centroidY2",
-    "d3_geo_centroidZ2",
     "d3_geo_pathCentroid",
-    "d3_geo_pathBoundsX1",
-    "d3_geo_pathBoundsY1",
-    "d3_geo_pathBoundsX0",
-    "d3_geo_pathBoundsY0",
     "d3_geo_pathBounds",
     "d3_identity",
     "d3_geo_pathBuffer",
@@ -489,64 +504,145 @@
                               "type": "AssignmentExpression",
                               "operator": "=",
                               "left": {
-                                "type": "Identifier",
-                                "name": "d3_geo_centroidX0"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "GEO_CENTROID"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_geo_centroidX0"
+                                },
+                                "_isReplacement": true
                               },
                               "right": {
                                 "type": "AssignmentExpression",
                                 "operator": "=",
                                 "left": {
-                                  "type": "Identifier",
-                                  "name": "d3_geo_centroidY0"
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "GEO_CENTROID"
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "d3_geo_centroidY0"
+                                  },
+                                  "_isReplacement": true
                                 },
                                 "right": {
                                   "type": "AssignmentExpression",
                                   "operator": "=",
                                   "left": {
-                                    "type": "Identifier",
-                                    "name": "d3_geo_centroidZ0"
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "GEO_CENTROID"
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "d3_geo_centroidZ0"
+                                    },
+                                    "_isReplacement": true
                                   },
                                   "right": {
                                     "type": "AssignmentExpression",
                                     "operator": "=",
                                     "left": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_centroidX1"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_CENTROID"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_centroidX1"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     "right": {
                                       "type": "AssignmentExpression",
                                       "operator": "=",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_centroidY1"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_CENTROID"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_centroidY1"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
                                         "type": "AssignmentExpression",
                                         "operator": "=",
                                         "left": {
-                                          "type": "Identifier",
-                                          "name": "d3_geo_centroidZ1"
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "GEO_CENTROID"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "d3_geo_centroidZ1"
+                                          },
+                                          "_isReplacement": true
                                         },
                                         "right": {
                                           "type": "AssignmentExpression",
                                           "operator": "=",
                                           "left": {
-                                            "type": "Identifier",
-                                            "name": "d3_geo_centroidX2"
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "name": "GEO_CENTROID"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "name": "d3_geo_centroidX2"
+                                            },
+                                            "_isReplacement": true
                                           },
                                           "right": {
                                             "type": "AssignmentExpression",
                                             "operator": "=",
                                             "left": {
-                                              "type": "Identifier",
-                                              "name": "d3_geo_centroidY2"
+                                              "type": "MemberExpression",
+                                              "computed": false,
+                                              "object": {
+                                                "type": "Identifier",
+                                                "name": "GEO_CENTROID"
+                                              },
+                                              "property": {
+                                                "type": "Identifier",
+                                                "name": "d3_geo_centroidY2"
+                                              },
+                                              "_isReplacement": true
                                             },
                                             "right": {
                                               "type": "AssignmentExpression",
                                               "operator": "=",
                                               "left": {
-                                                "type": "Identifier",
-                                                "name": "d3_geo_centroidZ2"
+                                                "type": "MemberExpression",
+                                                "computed": false,
+                                                "object": {
+                                                  "type": "Identifier",
+                                                  "name": "GEO_CENTROID"
+                                                },
+                                                "property": {
+                                                  "type": "Identifier",
+                                                  "name": "d3_geo_centroidZ2"
+                                                },
+                                                "_isReplacement": true
                                               },
                                               "right": {
                                                 "type": "Literal",
@@ -613,8 +709,17 @@
                             "argument": {
                               "type": "ConditionalExpression",
                               "test": {
-                                "type": "Identifier",
-                                "name": "d3_geo_centroidZ2"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "GEO_CENTROID"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_geo_centroidZ2"
+                                },
+                                "_isReplacement": true
                               },
                               "consequent": {
                                 "type": "ArrayExpression",
@@ -623,24 +728,60 @@
                                     "type": "BinaryExpression",
                                     "operator": "/",
                                     "left": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_centroidX2"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_CENTROID"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_centroidX2"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     "right": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_centroidZ2"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_CENTROID"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_centroidZ2"
+                                      },
+                                      "_isReplacement": true
                                     }
                                   },
                                   {
                                     "type": "BinaryExpression",
                                     "operator": "/",
                                     "left": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_centroidY2"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_CENTROID"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_centroidY2"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     "right": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_centroidZ2"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_CENTROID"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_centroidZ2"
+                                      },
+                                      "_isReplacement": true
                                     }
                                   }
                                 ]
@@ -648,8 +789,17 @@
                               "alternate": {
                                 "type": "ConditionalExpression",
                                 "test": {
-                                  "type": "Identifier",
-                                  "name": "d3_geo_centroidZ1"
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "GEO_CENTROID"
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "d3_geo_centroidZ1"
+                                  },
+                                  "_isReplacement": true
                                 },
                                 "consequent": {
                                   "type": "ArrayExpression",
@@ -658,24 +808,60 @@
                                       "type": "BinaryExpression",
                                       "operator": "/",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_centroidX1"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_CENTROID"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_centroidX1"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_centroidZ1"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_CENTROID"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_centroidZ1"
+                                        },
+                                        "_isReplacement": true
                                       }
                                     },
                                     {
                                       "type": "BinaryExpression",
                                       "operator": "/",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_centroidY1"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_CENTROID"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_centroidY1"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_centroidZ1"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_CENTROID"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_centroidZ1"
+                                        },
+                                        "_isReplacement": true
                                       }
                                     }
                                   ]
@@ -683,8 +869,17 @@
                                 "alternate": {
                                   "type": "ConditionalExpression",
                                   "test": {
-                                    "type": "Identifier",
-                                    "name": "d3_geo_centroidZ0"
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "GEO_CENTROID"
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "d3_geo_centroidZ0"
+                                    },
+                                    "_isReplacement": true
                                   },
                                   "consequent": {
                                     "type": "ArrayExpression",
@@ -693,24 +888,60 @@
                                         "type": "BinaryExpression",
                                         "operator": "/",
                                         "left": {
-                                          "type": "Identifier",
-                                          "name": "d3_geo_centroidX0"
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "GEO_CENTROID"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "d3_geo_centroidX0"
+                                          },
+                                          "_isReplacement": true
                                         },
                                         "right": {
-                                          "type": "Identifier",
-                                          "name": "d3_geo_centroidZ0"
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "GEO_CENTROID"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "d3_geo_centroidZ0"
+                                          },
+                                          "_isReplacement": true
                                         }
                                       },
                                       {
                                         "type": "BinaryExpression",
                                         "operator": "/",
                                         "left": {
-                                          "type": "Identifier",
-                                          "name": "d3_geo_centroidY0"
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "GEO_CENTROID"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "d3_geo_centroidY0"
+                                          },
+                                          "_isReplacement": true
                                         },
                                         "right": {
-                                          "type": "Identifier",
-                                          "name": "d3_geo_centroidZ0"
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "GEO_CENTROID"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "d3_geo_centroidZ0"
+                                          },
+                                          "_isReplacement": true
                                         }
                                       }
                                     ]
@@ -776,15 +1007,33 @@
                               "type": "AssignmentExpression",
                               "operator": "=",
                               "left": {
-                                "type": "Identifier",
-                                "name": "d3_geo_pathBoundsX1"
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "GEO_PATHBOUNDS"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "d3_geo_pathBoundsX1"
+                                },
+                                "_isReplacement": true
                               },
                               "right": {
                                 "type": "AssignmentExpression",
                                 "operator": "=",
                                 "left": {
-                                  "type": "Identifier",
-                                  "name": "d3_geo_pathBoundsY1"
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "GEO_PATHBOUNDS"
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "d3_geo_pathBoundsY1"
+                                  },
+                                  "_isReplacement": true
                                 },
                                 "right": {
                                   "type": "UnaryExpression",
@@ -793,15 +1042,33 @@
                                     "type": "AssignmentExpression",
                                     "operator": "=",
                                     "left": {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_pathBoundsX0"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_PATHBOUNDS"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_pathBoundsX0"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     "right": {
                                       "type": "AssignmentExpression",
                                       "operator": "=",
                                       "left": {
-                                        "type": "Identifier",
-                                        "name": "d3_geo_pathBoundsY0"
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "GEO_PATHBOUNDS"
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "d3_geo_pathBoundsY0"
+                                        },
+                                        "_isReplacement": true
                                       },
                                       "right": {
                                         "type": "Identifier",
@@ -868,12 +1135,30 @@
                                   "type": "ArrayExpression",
                                   "elements": [
                                     {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_pathBoundsX0"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_PATHBOUNDS"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_pathBoundsX0"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_pathBoundsY0"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_PATHBOUNDS"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_pathBoundsY0"
+                                      },
+                                      "_isReplacement": true
                                     }
                                   ]
                                 },
@@ -881,12 +1166,30 @@
                                   "type": "ArrayExpression",
                                   "elements": [
                                     {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_pathBoundsX1"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_PATHBOUNDS"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_pathBoundsX1"
+                                      },
+                                      "_isReplacement": true
                                     },
                                     {
-                                      "type": "Identifier",
-                                      "name": "d3_geo_pathBoundsY1"
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "GEO_PATHBOUNDS"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "d3_geo_pathBoundsY1"
+                                      },
+                                      "_isReplacement": true
                                     }
                                   ]
                                 }

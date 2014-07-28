@@ -55,15 +55,20 @@ module.exports = function ( src, filepath, pathsByExportName, pathsByHelperName 
 			}
 		},
 
-		leave: function ( node ) {
+		leave: function ( node, parent ) {
 			var i;
 
 			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
 				scanned.scopeDepth -= 1;
 			}
 
-			delete node._isReplacement;
+			//delete node._isReplacement;
 			delete node._ignore;
+
+			if ( fn = traverse.leave[ node.type ] ) {
+				replacement = fn( node, parent, scanned );
+				return replacement;
+			}
 		}
 	});
 

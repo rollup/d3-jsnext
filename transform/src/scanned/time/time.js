@@ -11,9 +11,7 @@
       "name": "GLOBAL"
     }
   ],
-  "dependencies": [
-    "d3_date"
-  ],
+  "dependencies": [],
   "helpers": [
     "d3_time",
     "d3_date_utc",
@@ -87,14 +85,16 @@
             "property": {
               "type": "Identifier",
               "name": "d3_date"
-            }
+            },
+            "_isReplacement": true
           },
           "operator": "=",
           "right": {
             "type": "Identifier",
             "name": "Date"
           }
-        }
+        },
+        "_isReplacement": true
       },
       {
         "type": "FunctionDeclaration",

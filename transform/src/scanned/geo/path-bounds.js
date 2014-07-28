@@ -13,11 +13,7 @@
     }
   ],
   "dependencies": [
-    "d3_noop",
-    "d3_geo_pathBoundsX0",
-    "d3_geo_pathBoundsX1",
-    "d3_geo_pathBoundsY0",
-    "d3_geo_pathBoundsY1"
+    "d3_noop"
   ],
   "helpers": [
     "d3_geo_pathBounds",
@@ -28,16 +24,20 @@
     "type": "Program",
     "body": [
       {
-        "type": "EmptyStatement"
+        "type": "EmptyStatement",
+        "_isReplacement": true
       },
       {
-        "type": "EmptyStatement"
+        "type": "EmptyStatement",
+        "_isReplacement": true
       },
       {
-        "type": "EmptyStatement"
+        "type": "EmptyStatement",
+        "_isReplacement": true
       },
       {
-        "type": "EmptyStatement"
+        "type": "EmptyStatement",
+        "_isReplacement": true
       },
       {
         "type": "VariableDeclaration",
@@ -147,8 +147,17 @@
                   "name": "x"
                 },
                 "right": {
-                  "type": "Identifier",
-                  "name": "d3_geo_pathBoundsX0"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "GEO_PATHBOUNDS"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_geo_pathBoundsX0"
+                  },
+                  "_isReplacement": true
                 }
               },
               "consequent": {
@@ -157,8 +166,17 @@
                   "type": "AssignmentExpression",
                   "operator": "=",
                   "left": {
-                    "type": "Identifier",
-                    "name": "d3_geo_pathBoundsX0"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "GEO_PATHBOUNDS"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_geo_pathBoundsX0"
+                    },
+                    "_isReplacement": true
                   },
                   "right": {
                     "type": "Identifier",
@@ -178,8 +196,17 @@
                   "name": "x"
                 },
                 "right": {
-                  "type": "Identifier",
-                  "name": "d3_geo_pathBoundsX1"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "GEO_PATHBOUNDS"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_geo_pathBoundsX1"
+                  },
+                  "_isReplacement": true
                 }
               },
               "consequent": {
@@ -188,8 +215,17 @@
                   "type": "AssignmentExpression",
                   "operator": "=",
                   "left": {
-                    "type": "Identifier",
-                    "name": "d3_geo_pathBoundsX1"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "GEO_PATHBOUNDS"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_geo_pathBoundsX1"
+                    },
+                    "_isReplacement": true
                   },
                   "right": {
                     "type": "Identifier",
@@ -209,8 +245,17 @@
                   "name": "y"
                 },
                 "right": {
-                  "type": "Identifier",
-                  "name": "d3_geo_pathBoundsY0"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "GEO_PATHBOUNDS"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_geo_pathBoundsY0"
+                  },
+                  "_isReplacement": true
                 }
               },
               "consequent": {
@@ -219,8 +264,17 @@
                   "type": "AssignmentExpression",
                   "operator": "=",
                   "left": {
-                    "type": "Identifier",
-                    "name": "d3_geo_pathBoundsY0"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "GEO_PATHBOUNDS"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_geo_pathBoundsY0"
+                    },
+                    "_isReplacement": true
                   },
                   "right": {
                     "type": "Identifier",
@@ -240,8 +294,17 @@
                   "name": "y"
                 },
                 "right": {
-                  "type": "Identifier",
-                  "name": "d3_geo_pathBoundsY1"
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "GEO_PATHBOUNDS"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "d3_geo_pathBoundsY1"
+                  },
+                  "_isReplacement": true
                 }
               },
               "consequent": {
@@ -250,8 +313,17 @@
                   "type": "AssignmentExpression",
                   "operator": "=",
                   "left": {
-                    "type": "Identifier",
-                    "name": "d3_geo_pathBoundsY1"
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "GEO_PATHBOUNDS"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "d3_geo_pathBoundsY1"
+                    },
+                    "_isReplacement": true
                   },
                   "right": {
                     "type": "Identifier",
