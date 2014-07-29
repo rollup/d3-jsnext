@@ -50,7 +50,9 @@
             "d3_lab_hcl",
             "d3_rgb_lab",
             "d3_hsl_rgb",
-            "d3_hcl_lab"
+            "d3_hcl_lab",
+
+            "d3.rgb"
         ]
     }
 }

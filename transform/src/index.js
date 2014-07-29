@@ -18,6 +18,7 @@ var fs = require( 'graceful-fs' ),
 	generateCjs = require( './generators/cjs' ),
 	generateCjsIndex = require( './generators/cjsIndex' ),
 	postprocess = require( './postprocess' ),
+	relative = require( '../utils/relative' ),
 
 	srcDir = path.join( __dirname, '../../d3/src' ),
 	destDir = path.join( __dirname, '../../output' );
@@ -138,6 +139,21 @@ module.exports = function () {
 				return writeTo( path.join( destDir + '/cjs/' + ( modulePath || 'index' ) + '.js' ) )( generateCjs( exportName, srcPath ) );
 			});
 
+			Object.keys( groupByIdentifier ).forEach( function ( name ) {
+				var group, modulePath, destPath, relativePath;
+
+				if ( /^d3\.[\w\.]+$/.test( name ) ) {
+					group = groupByIdentifier[ name ];
+					modulePath = name.replace( /\./g, '/' );
+					destPath = path.join( destDir, 'cjs/' + modulePath + '.js' );
+					relativePath = relative( modulePath, 'd3/_' + group.path.replace( '.js', '' ) );
+
+					promises.push(
+						writeTo( destPath )( 'module.exports = require( \'' + relativePath + '\' ).' + name.replace( /\./g, '$' ) + ';' )
+					);
+				}
+			});
+
 			version = require( '../../d3/package.json' ).version;
 
 			promises.push(
@@ -152,7 +168,13 @@ module.exports = function () {
 		return exportPromise.then( function () {
 			var groups = {}, promises;
 
-			Object.keys( pathsByExportName ).forEach( function ( exportName ) {
+			Object.keys( pathsByExportName ).forEach( addExport );
+
+			Object.keys( groupByIdentifier ).filter( function ( name ) {
+				return /^d3\.[\w\.]+$/.test( name );
+			}).forEach( addExport );
+
+			function addExport ( exportName ) {
 				var keys, key, parent;
 
 				keys = exportName.split( '.' );
@@ -166,15 +188,10 @@ module.exports = function () {
 
 					groups[ parent ].push( key );
 				}
-			});
+			}
 
 			promises = Object.keys( groups ).map( function ( groupName ) {
 				var modulePath = groupName.replace( /\./g, '/' );
-
-				/*if ( groupName === '' ) {
-					return writeTo( path.join( __dirname, '../../output/index.js' ) )( generateCjsIndex( groupName, groups[ groupName ] ) );
-					return;
-				}*/
 
 				return writeTo( path.join( __dirname, '../../output/cjs/' + modulePath + '.js' ) )( generateCjsIndex( groupName.split( '.' ).splice( -1 )[0], groups[ groupName ] ) );
 			});
@@ -185,10 +202,6 @@ module.exports = function () {
 					writeTo( path.join( __dirname, '../../output/cjs/d3/_' + group.path ) )( 'module.exports = {};' )
 				);
 			});
-
-			/*promises.push(
-				writeTo( path.join( __dirname, '../../output/cjs/d3/_/_shared.js' ) )( 'module.exports = {};' )
-			);*/
 
 			return Promise.all( promises );
 		}).catch( debug );
