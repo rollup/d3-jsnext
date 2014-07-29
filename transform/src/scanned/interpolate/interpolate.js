@@ -3,7 +3,6 @@
   "shared": [],
   "dependencies": [
     "d3.interpolators.length",
-    "d3.interpolators.i",
     "d3_rgb_names",
     "d3_interpolateRgb",
     "d3_interpolateString",

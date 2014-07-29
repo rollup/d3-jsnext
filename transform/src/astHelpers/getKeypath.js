@@ -2,6 +2,10 @@ module.exports = function ( node ) {
 	var keys = [], key;
 
 	do {
+		if ( node.computed ) {
+			return null;
+		}
+
 		key = node.property.name;
 
 		if ( !key ) {
