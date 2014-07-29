@@ -54,6 +54,7 @@ function unrollDeclarations ( declarations ) {
 				_value = _right.left;
 			} else {
 				_value = _right;
+				_right = null;
 			}
 
 			if ( _left.type === 'MemberExpression' ) {
