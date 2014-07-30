@@ -37,14 +37,18 @@ This is way better because you automatically only load the code you need, and wh
 
 ## Setting up
 
-After cloning this repo and `cd`'ing into it, you need to set up d3 itself:
-
 ```
-# Clone the repo
+# Clone this repo and install dependencies
+git clone https://github.com/rich-harris/modular-d3
+cd modular-d3
+npm i
+
+# Clone d3
 git clone https://github.com/mbostock/d3.git
 
-# Install its dependencies
-( cd d3; npm i )
+# Install d3's dependencies
+cd d3
+npm i
 ```
 
 ## Coming soon
