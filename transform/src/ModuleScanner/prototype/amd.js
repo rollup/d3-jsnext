@@ -50,7 +50,7 @@ module.exports = function () {
 		this.src,
 
 		this.helpers.map( function ( helperName ) {
-			return 'exports.' + helperName + ' = ' + helperName + ';';
+			return 'exports.' + helperName.replace( /\./g, '$' ) + ' = ' + helperName + ';';
 		}).join( '\n' ),
 
 		this.safeExports.map( function ( exportName ) {

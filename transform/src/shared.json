@@ -76,5 +76,12 @@
 			"d3_degrees",
 			"d3_asin"
 		]
+	},
+
+	"SELECTION": {
+		"path": "/selection/_selection.js",
+		"properties": [
+			"d3_selectionPrototype"
+		]
 	}
 }

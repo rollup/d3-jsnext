@@ -39,16 +39,14 @@
 		require([
 			'd3/range',
 			'd3/geom/voronoi',
-			// 'd3/select',
-			// 'd3/mouse'
+			'd3/select',
+			'd3/mouse'
 		], function (
 			range,
 			voronoi,
 			select,
 			mouse
 		) {
-			console.log( 'range', range );
-
 			var width = 960,
 			height = 500;
 
@@ -59,8 +57,13 @@
 			var v = voronoi()
 			.clipExtent([[0, 0], [width, height]]);
 
-			var svg = select("body").append("svg")
-			.attr("width", width)
+			console.log( 'select', select );
+			var body = select("body");//.append("svg");
+			console.log( 'body', body );
+
+			var svg = body.append( 'svg' );
+
+			svg.attr("width", width)
 			.attr("height", height)
 			.on("mousemove", function() { vertices[0] = mouse(this); redraw(); });
 

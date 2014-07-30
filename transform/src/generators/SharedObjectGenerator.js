@@ -8,7 +8,13 @@ SharedObjectGenerator.prototype = {
 	},
 
 	amd: function () {
-		return 'define({});';
+		/* all the modules that assign to this shared object */
+
+		return 'define([\'require\',\'exports\'],function (require,exports){\n' +
+			'require([' +
+
+			']);\n' +
+		'});';
 	},
 
 	cjs: function () {
