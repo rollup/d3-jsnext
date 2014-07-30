@@ -10,6 +10,9 @@ var fs = require( 'graceful-fs' ),
 
 	ModuleScanner = require( './ModuleScanner' ),
 	ExportGenerator = require( './generators/ExportGenerator' ),
+	SharedPropertyExportGenerator = require( './generators/SharedPropertyExportGenerator' ),
+	SharedObjectGenerator = require( './generators/SharedObjectGenerator' ),
+	IndexGenerator = require( './generators/IndexGenerator' ),
 	writeTo = require( '../utils/writeTo' ),
 
 	shared = require( './shared.json' ),
@@ -101,18 +104,17 @@ module.exports = function () {
 				);
 			});
 
-			// Shared properties (e.g. d3.event, TRIG.π)
+			// Values that are defined in shared objects, but should be exposed (e.g. d3.rgb)
 			Object.keys( groupByIdentifier ).forEach( function ( name ) {
-				var group, modulePath, destPath, relativePath;
+				var generator;
 
 				if ( /^d3\.[\w\.]+$/.test( name ) ) {
-					group = groupByIdentifier[ name ];
-					modulePath = name.replace( /\./g, '/' );
-					destPath = path.join( destDir, 'cjs/' + modulePath + '.js' );
-					relativePath = relative( modulePath, 'd3/_' + group.path.replace( '.js', '' ) );
+
+					generator = new SharedPropertyExportGenerator( groupByIdentifier[ name ], name );
 
 					promises.push(
-						writeTo( destPath )( 'module.exports = require( \'' + relativePath + '\' ).' + name.replace( /\./g, '$' ) + ';' )
+						writeTo( path.join( destDir, generator.path( 'amd' ) ) )( generator.amd() ),
+						writeTo( path.join( destDir, generator.path( 'cjs' ) ) )( generator.cjs() )
 					);
 				}
 			});
@@ -147,16 +149,32 @@ module.exports = function () {
 				}
 			}
 
-			promises = Object.keys( groups ).map( function ( groupName ) {
-				var modulePath = groupName.replace( /\./g, '/' );
+			Object.keys( groups ).forEach( function ( groupName ) {
+				var generator;
 
-				return writeTo( path.join( __dirname, '../../output/cjs/' + modulePath + '.js' ) )( generateCjsIndex( groupName.split( '.' ).splice( -1 )[0], groups[ groupName ] ) );
+				generator = new IndexGenerator( groupName, groups[ groupName ] );
+				console.log( generator.path( 'cjs' ) );
+				console.log( generator.cjs() );
+
+				promises.push(
+					writeTo( path.join( destDir, generator.path( 'cjs' ) ) )( generator.cjs() ),
+					writeTo( path.join( destDir, generator.path( 'amd' ) ) )( generator.amd() )
+				);
 			});
 
+			// SHared objects, e.g. TRIG
 			Object.keys( shared ).forEach( function ( groupName ) {
-				var group = shared[ groupName ];
-				promises.push(
+				var generator, group = shared[ groupName ];
+
+				generator = new SharedObjectGenerator( shared[ groupName ] );
+
+				/*promises.push(
 					writeTo( path.join( __dirname, '../../output/cjs/d3/_' + group.path ) )( 'module.exports = {};' )
+				);*/
+
+				promises.push(
+					writeTo( path.join( destDir, generator.path( 'amd' ) ) )( generator.amd() ),
+					writeTo( path.join( destDir, generator.path( 'cjs' ) ) )( generator.cjs() )
 				);
 			});
 
