@@ -9,6 +9,7 @@ var fs = require( 'graceful-fs' ),
 
 	transformTest = require( './transformTest' ),
 	writeTo = require( '../utils/writeTo' ),
+	debug = require( '../utils/debug' ),
 
 	srcDir = path.join( __dirname, '../../d3/test' ),
 	destDir = path.join( __dirname, '../../output/test' );
@@ -26,14 +27,11 @@ module.exports = function () {
 
 		Promise.all([
 			testPromises,
-			copy( path.join( srcDir, 'XMLHttpRequest.js' ), path.join( destDir, 'XMLHttpRequest.js' ) ),
-			copy( path.join( __dirname, 'root/assert.js' ), path.join( destDir, 'assert.js' ) ),
-			copy( path.join( __dirname, 'root/load.js' ), path.join( destDir, 'load.js' ) ),
-			copy( path.join( __dirname, 'root/requireAbsolute.js' ), path.join( destDir, 'requireAbsolute.js' ) ),
-			copy( path.join( __dirname, 'root/d3.js' ), path.join( destDir, 'd3.js' ) )
+			copyFolder( path.join( __dirname, 'root' ), destDir ),
+			copyFolder( path.join( srcDir, 'data' ), path.join( destDir, 'data' ) )
 		]).then( function () {
 			console.log( 'done!' );
-		})
+		}).catch( debug );
 	});
 };
 
@@ -43,4 +41,12 @@ function toString ( buffer ) {
 
 function copy ( srcPath, destPath ) {
 	return readFile( srcPath ).then( writeTo( destPath ) );
+}
+
+function copyFolder ( srcPath, destPath ) {
+	return glob( path.join( srcPath, '**' ) ).then( function ( files ) {
+		var promises = files.map( function ( file ) {
+			return copy( file, file.replace( srcPath, destPath ) );
+		});
+	});
 }

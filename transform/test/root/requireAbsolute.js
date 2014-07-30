@@ -2,12 +2,13 @@ var vm = require( 'vm' ),
 	fs = require( 'fs' ),
 	path = require( 'path' ),
 	jsdom = require( 'jsdom' ),
-	XMLHttpRequest = require( './XMLHttpRequest' ),
 	document,
 	window,
 	context,
 
 	cache = {};
+
+require( './XMLHttpRequest' );
 
 document = jsdom.jsdom("<html><head></head><body></body></html>");
 window = document.createWindow();
@@ -48,7 +49,7 @@ module.exports = function requireAbsolute ( currentPath ) {
 			exports: _module.exports,
 
 			console: console,
-			XMLHttpRequest: XMLHttpRequest,
+			XMLHttpRequest: global.XMLHttpRequest,
 			document: document,
 			window: window,
 			setTimeout: setTimeout,
