@@ -1,4 +1,4 @@
-# d3-amd
+# modular-d3
 
 Hello! This project is *in no way* ready for public consumption yet - I don't yet even know if it will be possible. I'm just storing it here.
 
@@ -37,16 +37,48 @@ This is way better because you automatically only load the code you need, and wh
 
 ## Setting up
 
-After cloning this repo and `cd`'ing into it, you need to set up d3 itself:
-
 ```
-# Clone the repo
+# Clone this repo and install dependencies
+git clone https://github.com/rich-harris/modular-d3
+cd modular-d3
+npm i
+
+# Clone d3
 git clone https://github.com/mbostock/d3.git
 
-# Install its dependencies
-( cd d3; npm i )
+# Install d3's dependencies
+cd d3
+npm i
 ```
 
-## Coming soon
+## Running the code transformation
+
+`cd` into the `modular-d3` folder if you're not there already.
+
+```
+node transform
+```
+
+This will generate transformed tests and source code - they will go in the `output` folder.
+
+## Running the tests
+
+Before you can run the tests you need to install `vows` globally:
+
+```
+npm i -g vows
+```
+
+Then, `cd` into the `output` folder and run the `vows` command to run all tests.
+
+```
+cd output
+vows
+```
+
+You can also run a subset of tests - consult the [vows documentation](http://vowsjs.org/) for details.
+
+
+## License etc
 
 MIT licensed, yada yada. Oh and I'm [@Rich_Harris](http://twitter.com) on Twitter.
