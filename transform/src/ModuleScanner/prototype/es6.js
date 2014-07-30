@@ -1,3 +1,8 @@
+module.exports = function () {
+
+};
+
+/*
 <%=
 	importDeclarations.map( function ( group ) {
 		return 'import { ' + group.dependencies.join( ', ' ) + ' } from \'' + group.path + '\';';
@@ -27,3 +32,4 @@
 		return 'export ' + exportName + ';';
 	}).join( '\n' )
 %>
+*/

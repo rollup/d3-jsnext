@@ -1,4 +1,4 @@
-var shouldExport = require( '../../../shouldExport' );
+var shouldExport = require( '../../../../shouldExport' );
 
 module.exports = function ( node, parent, scanned ) {
 	if ( node.id ) {

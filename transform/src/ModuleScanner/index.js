@@ -1,9 +1,6 @@
 var esprima = require( 'esprima' ),
 	shouldExport = require( '../shouldExport' ),
-	groupByIdentifier = require( '../groupByIdentifier' ),
-
-	preprocess = require( './preprocess' ),
-	process = require( './process' );
+	groupByIdentifier = require( '../groupByIdentifier' );
 
 var ModuleScanner = function ( src, filepath ) {
 
@@ -33,8 +30,8 @@ var ModuleScanner = function ( src, filepath ) {
 
 	// We need to unroll complex variable declarations, otherwise
 	// we'll be in a world of hurt later
-	preprocess( this.ast );
-	process( this.ast, this );
+	this.preprocess();
+	this.process();
 
 	// See which variables were used but not declared...
 	this._scopesToCheck.forEach( function ( scope ) {
@@ -132,7 +129,17 @@ ModuleScanner.prototype = {
 				return true;
 			}
 		} while ( scope = scope.parent );
-	}
+	},
+
+	process: require( './prototype/process' ),
+	preprocess: require( './prototype/preprocess' ),
+	postprocess: require( './prototype/postprocess' ),
+
+	consolidate: require( './prototype/consolidate' ),
+
+	es6: require( './prototype/es6' ),
+	amd: require( './prototype/amd' ),
+	cjs: require( './prototype/cjs' )
 };
 
 

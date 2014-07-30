@@ -1,7 +1,7 @@
 var estraverse = require( 'estraverse' );
 
-module.exports = function ( ast ) {
-	estraverse.traverse( ast, {
+module.exports = function () {
+	estraverse.traverse( this.ast, {
 		enter: function ( node ) {
 			if ( node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' ) {
 				this.skip();

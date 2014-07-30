@@ -1,11 +1,8 @@
 var estraverse = require( 'estraverse' ),
-	getKeypath = require( './astHelpers/getKeypath' ),
-	replaceMemberExpression = require( './replaceMemberExpression' ),
-	shouldExport = require( './shouldExport' ),
-	astHelpers = require( './astHelpers' );
+	confirm = require( '../../confirm' );
 
-module.exports = function ( scanned, pathsByHelperName, pathsByExportName ) {
-	estraverse.replace( scanned.ast, {
+module.exports = function ( pathsByHelperName, pathsByExportName ) {
+	estraverse.replace( this.ast, {
 		enter: function ( node, parent ) {
 			var keypath, replacementKeypath;
 
@@ -42,4 +39,17 @@ module.exports = function ( scanned, pathsByHelperName, pathsByExportName ) {
 			}
 		}
 	});
+
+	var deps = this.dependencies, i = deps.length, dep, index;
+	while ( i-- ) {
+		dep = confirm( deps[i], this, pathsByHelperName, pathsByExportName );
+
+		if ( !dep ) {
+			deps.splice( i, 1 );
+		} else {
+			deps[i] = dep;
+		}
+	}
+
+	this.consolidate( pathsByHelperName, pathsByExportName );
 };

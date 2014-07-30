@@ -1,6 +1,6 @@
-var shouldExport = require( '../../../shouldExport' ),
-	astHelpers = require( '../../../astHelpers' ),
-	groupByIdentifier = require( '../../../groupByIdentifier' );
+var shouldExport = require( '../../../../shouldExport' ),
+	astHelpers = require( '../../../../astHelpers' ),
+	groupByIdentifier = require( '../../../../groupByIdentifier' );
 
 module.exports = function ( node, parent, scanned ) {
 	var group;

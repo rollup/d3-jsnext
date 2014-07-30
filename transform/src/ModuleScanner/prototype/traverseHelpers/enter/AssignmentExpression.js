@@ -1,5 +1,5 @@
-var astHelpers = require( '../../../astHelpers' ),
-	groupByIdentifier = require( '../../../groupByIdentifier' );
+var astHelpers = require( '../../../../astHelpers' ),
+	groupByIdentifier = require( '../../../../groupByIdentifier' );
 
 module.exports = function ( node, parent, scanned ) {
 	var left, right, keypath, group;

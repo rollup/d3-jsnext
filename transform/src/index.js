@@ -9,15 +9,13 @@ var fs = require( 'graceful-fs' ),
 	readFile = promo( fs.readFile ),
 
 	ModuleScanner = require( './ModuleScanner' ),
-	transform = require( './transform' ),
+	ExportGenerator = require( './generators/ExportGenerator' ),
 	writeTo = require( '../utils/writeTo' ),
 
 	shared = require( './shared.json' ),
 	groupByIdentifier = require( './groupByIdentifier' ),
 	confirm = require( './confirm' ),
-	generateCjs = require( './generators/cjs' ),
 	generateCjsIndex = require( './generators/cjsIndex' ),
-	postprocess = require( './postprocess' ),
 	relative = require( '../utils/relative' ),
 
 	srcDir = path.join( __dirname, '../../d3/src' ),
@@ -34,7 +32,7 @@ module.exports = function () {
 			transformPromise,
 			exportPromise;
 
-		// Scan files
+		// Scan files - parse them, and extract metadata
 		promises = files.map( function ( file ) {
 			return readFile( file ).then( toString ).then( function ( src ) {
 				scanners.push( new ModuleScanner( src, file.replace( srcDir, '' ) ) );
@@ -43,7 +41,7 @@ module.exports = function () {
 
 		scanPromise = Promise.all( promises );
 
-		// first, we need to map the entire dependency graph -
+		// First, we need to map the entire dependency graph -
 		// in other words, we need to find out which file exports
 		// which variable. Assume they all begin `d3_` or `d3.`
 		pathsByHelperName = {};
@@ -53,13 +51,8 @@ module.exports = function () {
 			// Discover exports and helpers
 			scanners.forEach( function ( x ) {
 				x.helpers.forEach( function ( helperName ) {
-					/*if ( shared[ helperName ] ) {
-						// TODO
-					}*/
-
 					// already exists as something else?
 					if ( pathsByHelperName[ helperName ] && pathsByHelperName[ helperName ] !== x.filepath ) {
-						//throw new Error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByHelperName[ helperName ] + ': ' + helperName + ' (' + x.filepath + ')' );
 					}
 
@@ -69,13 +62,8 @@ module.exports = function () {
 				});
 
 				x.exports.forEach( function ( exportName ) {
-					/*if ( shared[ exportName ] ) {
-						// TODO
-					}*/
-
 					// already exists as something else?
 					if ( pathsByExportName[ exportName ] && pathsByExportName[ exportName ] !== x.filepath ) {
-						//throw new Error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 						console.error( 'already defined in ' + pathsByExportName[ exportName ] + ': ' + exportName + ' (' + x.filepath + ')' );
 					}
 
@@ -86,51 +74,34 @@ module.exports = function () {
 			});
 
 			scanners.forEach( function ( x ) {
-				postprocess( x, pathsByHelperName, pathsByExportName );
-			});
-
-			// Clean up dependencies
-			scanners.forEach( function ( x ) {
-				var deps = x.dependencies, i = deps.length, dep, index;
-				while ( i-- ) {
-					dep = confirm( deps[i], x, pathsByHelperName, pathsByExportName );
-
-					if ( !dep ) {
-						deps.splice( i, 1 );
-					} else {
-						deps[i] = dep;
-					}
-				}
+				x.postprocess( pathsByHelperName, pathsByExportName );
 			});
 		}).catch( debug );
 
 
-		// Then, we transform the source of each file
+		// Then, we write files
 		transformPromise = scanPromise.then( function () {
-			return scanners.map( function ( x ) {
-				return transform( x, pathsByHelperName, pathsByExportName ).then( function ( transformed ) {
-					return Promise.all([
-						writeTo( path.join( destDir + '/es6/d3/_/' + x.filepath ) )( transformed.es6.trim() ),
-						writeTo( path.join( destDir + '/cjs/d3/_/' + x.filepath ) )( transformed.cjs.trim() )
-					]);
-				}).catch( debug );
-			});
-		});
+			var promises = [];
 
-
-		// Then, we write files corresponding to the API
-		exportPromise = transformPromise.then( function () {
-			var exportName, srcPath, modulePath, promises = [], version;
-
-			promises = Object.keys( pathsByExportName ).map( function ( exportName ) {
-				var modulePath, srcPath;
-
-				modulePath = exportName.replace( /\./g, '/' );
-				srcPath = pathsByExportName[ exportName ];
-
-				return writeTo( path.join( destDir + '/cjs/' + ( modulePath || 'index' ) + '.js' ) )( generateCjs( exportName, srcPath ) );
+			// Internal modules (e.g. d3_ascending)
+			scanners.forEach( function ( x ) {
+				promises.push(
+					writeTo( path.join( destDir + '/amd/d3/_/' + x.filepath ) )( x.amd().trim() ),
+					writeTo( path.join( destDir + '/cjs/d3/_/' + x.filepath ) )( x.cjs().trim() )
+				);
 			});
 
+			// Exports (e.g. d3.ascending)
+			Object.keys( pathsByExportName ).forEach( function ( exportName ) {
+				var generator = new ExportGenerator( exportName, pathsByExportName[ exportName ] );
+
+				promises.push(
+					writeTo( path.join( destDir, generator.path( 'amd' ) ) )( generator.amd() ),
+					writeTo( path.join( destDir, generator.path( 'cjs' ) ) )( generator.cjs() )
+				);
+			});
+
+			// Shared properties (e.g. d3.event, TRIG.π)
 			Object.keys( groupByIdentifier ).forEach( function ( name ) {
 				var group, modulePath, destPath, relativePath;
 
@@ -146,19 +117,13 @@ module.exports = function () {
 				}
 			});
 
-			version = require( '../../d3/package.json' ).version;
-
+			// d3.version
 			promises.push(
-				writeTo( path.join( destDir, 'cjs/d3/version.js' ) )( 'module.exports = \'' + version + '\';' )
+				writeTo( path.join( destDir, 'cjs/d3/version.js' ) )( 'module.exports = \'' + require( '../../d3/package.json' ).version + '\';' )
 			);
 
-			return Promise.all( promises );
-		}).catch( debug );
-
-
-		// Finally, we write files that group APIs
-		return exportPromise.then( function () {
-			var groups = {}, promises;
+			// index files (e.g. d3.behavior - not a method, just groups behavior.drag and behavior.zoom)
+			var groups = {};
 
 			Object.keys( pathsByExportName ).forEach( addExport );
 
@@ -197,6 +162,8 @@ module.exports = function () {
 
 			return Promise.all( promises );
 		}).catch( debug );
+
+		return transformPromise;
 	});
 };
 

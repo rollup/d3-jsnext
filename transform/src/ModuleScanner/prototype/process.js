@@ -1,9 +1,11 @@
 var estraverse = require( 'estraverse' ),
 	traverseHelpers = require( './traverseHelpers' );
 
-module.exports = function ( ast, scanner ) {
+module.exports = function () {
+	var scanner = this;
+
 	// Find declared helpers, and API methods/properties
-	estraverse.replace( ast, {
+	estraverse.replace( this.ast, {
 		enter: function ( node, parent ) {
 			var fn, _left, _right, name, declaration, left, keypath, skip;
 
