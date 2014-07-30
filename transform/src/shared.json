@@ -1,66 +1,80 @@
 {
 	"GLOBAL": {
-        "path": "/_global.js",
-        "properties": [
-            "d3_array",
-            "d3_date",
-            "d3.event"
-        ]
-    },
+		"path": "/_global.js",
+		"properties": [
+			"d3_array",
+			"d3_date",
+			"d3.event"
+		]
+	},
 
-    "GEO_CENTROID": {
-    	"path": "/geo/_centroid.js",
-        "properties": [
-            "d3_geo_centroidW0",
-            "d3_geo_centroidW1",
-            "d3_geo_centroidX0",
-            "d3_geo_centroidY0",
-            "d3_geo_centroidZ0",
-            "d3_geo_centroidX1",
-            "d3_geo_centroidY1",
-            "d3_geo_centroidZ1",
-            "d3_geo_centroidX2",
-            "d3_geo_centroidY2",
-            "d3_geo_centroidZ2"
-        ]
-    },
+	"GEO_CENTROID": {
+		"path": "/geo/_centroid.js",
+		"properties": [
+			"d3_geo_centroidW0",
+			"d3_geo_centroidW1",
+			"d3_geo_centroidX0",
+			"d3_geo_centroidY0",
+			"d3_geo_centroidZ0",
+			"d3_geo_centroidX1",
+			"d3_geo_centroidY1",
+			"d3_geo_centroidZ1",
+			"d3_geo_centroidX2",
+			"d3_geo_centroidY2",
+			"d3_geo_centroidZ2"
+		]
+	},
 
-    "GEO_PATHBOUNDS": {
-        "path": "/geo/_pathBounds.js",
-        "properties": [
-            "d3_geo_pathBoundsX0",
-            "d3_geo_pathBoundsY0",
-            "d3_geo_pathBoundsX1",
-            "d3_geo_pathBoundsY1"
-        ]
-    },
+	"GEO_PATHBOUNDS": {
+		"path": "/geo/_pathBounds.js",
+		"properties": [
+			"d3_geo_pathBoundsX0",
+			"d3_geo_pathBoundsY0",
+			"d3_geo_pathBoundsX1",
+			"d3_geo_pathBoundsY1"
+		]
+	},
 
-    "COLOR": {
-        "path": "/color/_color.js",
-        "properties": [
-            "d3_lab",
-            "d3_lab_K",
-            "d3_lab_X",
-            "d3_lab_Y",
-            "d3_lab_Z",
+	"COLOR": {
+		"path": "/color/_color.js",
+		"properties": [
+			"d3_lab",
+			"d3_lab_K",
+			"d3_lab_X",
+			"d3_lab_Y",
+			"d3_lab_Z",
 
-            "d3_hcl",
-            "d3_hsl",
-            "d3_rgb",
-            "d3_lab_hcl",
-            "d3_rgb_lab",
-            "d3_hsl_rgb",
-            "d3_hcl_lab",
+			"d3_hcl",
+			"d3_hsl",
+			"d3_rgb",
+			"d3_lab_hcl",
+			"d3_rgb_lab",
+			"d3_hsl_rgb",
+			"d3_hcl_lab",
 
-            "d3.rgb"
-        ]
-    },
+			"d3.rgb"
+		]
+	},
 
-    "DATE": {
-        "path": "/locale/_date.js",
-        "properties": [
-            "d3_date",
-            "d3_date_utc"
-        ]
-    }
+	"DATE": {
+		"path": "/locale/_date.js",
+		"properties": [
+			"d3_date",
+			"d3_date_utc"
+		]
+	},
+
+	"TRIG": {
+		"path": "/math/_trig.js",
+		"properties": [
+			"π",
+			"τ",
+			"halfπ",
+			"ε",
+			"ε2",
+			"d3_radians",
+			"d3_degrees",
+			"d3_asin"
+		]
+	}
 }

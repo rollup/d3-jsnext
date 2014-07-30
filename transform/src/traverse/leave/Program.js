@@ -1,8 +1,12 @@
+var groupByIdentifier = require( '../../groupByIdentifier' );
+
 module.exports = function ( node, parent, scanned ) {
 	var i, statement, toHoist = [];
 
 	// Discover top-level definitions
-	scanned.definedInModule = scanned.scope().defined;
+	scanned.definedInModule = scanned.scope().defined.filter( function ( name ) {
+		return !groupByIdentifier[ name ];
+	});
 
 	scanned.leaveScope();
 
