@@ -4,5 +4,6 @@ module.exports = {
 	FunctionExpression:  require( './FunctionExpression' ),
 	Identifier:  require( './Identifier' ),
 	MemberExpression:  require( './MemberExpression' ),
-	VariableDeclaration: require( './VariableDeclaration' )
+	VariableDeclaration: require( './VariableDeclaration' ),
+	VariableDeclarator: require( './VariableDeclarator' )
 };

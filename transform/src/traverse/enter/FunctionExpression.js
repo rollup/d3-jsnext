@@ -1,14 +1,9 @@
 var shouldExport = require( '../../shouldExport' );
 
-module.exports = function ( node, parent, state ) {
-	var name;
-
-	if ( !state.scopeDepth && node.id ) {
-		name = node.id.name;
-		if ( shouldExport( name ) && !~state.helpers.indexOf( name ) ) {
-			state.helpers.push( name );
-		}
+module.exports = function ( node, parent, scanned ) {
+	if ( node.id ) {
+		scanned.definedInScope( node.id.name );
 	}
 
-	state.scopeDepth += 1;
+	scanned.enterScope();
 };

@@ -2,10 +2,17 @@ var shouldExport = require( '../../shouldExport' ),
 	groupByIdentifier = require( '../../groupByIdentifier' ),
 	astHelpers = require( '../../astHelpers' );
 
-module.exports = function ( node, parent, state ) {
+module.exports = function ( node, parent, scanned ) {
 	var name, group, replacement;
 
-	if ( !state.scopeDepth && node.id ) {
+	if ( !node.id ) {
+		// is this even possible?
+		return;
+	}
+
+	scanned.definedInScope( node.id.name );
+
+	if ( !scanned.scopeDepth && node.id ) {
 		name = node.id.name;
 
 		// If this is a function that needs to be shared between
@@ -37,18 +44,13 @@ module.exports = function ( node, parent, state ) {
 			// Prevent this from getting nuked later
 			replacement.expression.left._isReplacement = true;
 
-			if ( !~state.shared.indexOf( group ) ) {
-				state.shared.push( group );
+			if ( !~scanned.shared.indexOf( group ) ) {
+				scanned.shared.push( group );
 			}
 
 			return replacement;
 		}
-
-
-		if ( shouldExport( name ) && !~state.helpers.indexOf( name ) ) {
-			state.helpers.push( name );
-		}
 	}
 
-	state.scopeDepth += 1;
+	scanned.enterScope();
 };

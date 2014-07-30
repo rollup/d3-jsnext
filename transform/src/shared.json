@@ -54,5 +54,13 @@
 
             "d3.rgb"
         ]
+    },
+
+    "DATE": {
+        "path": "/locale/_date.js",
+        "properties": [
+            "d3_date",
+            "d3_date_utc"
+        ]
     }
 }

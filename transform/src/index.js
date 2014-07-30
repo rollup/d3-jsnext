@@ -24,7 +24,7 @@ var fs = require( 'graceful-fs' ),
 	destDir = path.join( __dirname, '../../output' );
 
 module.exports = function () {
-	glob( path.join( srcDir, '*/**/*.js' ) ).then( function ( files ) {
+	glob( path.join( srcDir, ( require('./TEST') ? '*/$test.js' : '*/**/*.js' ) ) ).then( function ( files ) {
 
 		var scanned = [],
 			pathsByHelperName,

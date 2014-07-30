@@ -14,21 +14,14 @@ module.exports = function ( scanned, pathsByHelperName, pathsByExportName ) {
 			}
 
 			if ( node.type === 'MemberExpression' ) {
-				// this.skip();
-				// return;
+				/*keypath = getKeypath( node );
 
-				keypath = getKeypath( node );
-
-				if ( !shouldExport( keypath ) ) {
-					return;
-				}
-
-				// TODO circular groups, e.g. d3.event?
-
-				replacementKeypath = replaceMemberExpression( keypath, null, pathsByHelperName, pathsByExportName );
-				if ( replacementKeypath ) {
-					return astHelpers.generateMemberExpression( replacementKeypath );
-				}
+				if ( shouldExport( keypath ) && !scanned.definedInScope( node._scope, keypath ) ) {
+					replacementKeypath = replaceMemberExpression( keypath, null, pathsByHelperName, pathsByExportName );
+					if ( replacementKeypath ) {
+						return astHelpers.generateMemberExpression( replacementKeypath );
+					}
+				}*/
 			}
 
 			// Replace foo.apply(d3,...) with foo.apply(null,...)
@@ -39,6 +32,7 @@ module.exports = function ( scanned, pathsByHelperName, pathsByExportName ) {
 					node.arguments[0] &&
 					node.arguments[0].name === 'd3'
 				) {
+					console.log( 'fixing CallExpression' );
 					node.arguments[0] === {
 						"type": "Literal",
 						"value": null,

@@ -1,6 +1,11 @@
 module.exports = function ( node, parent, scanned ) {
 	var i, statement, toHoist = [];
 
+	// Discover top-level definitions
+	scanned.definedInModule = scanned.scope().defined;
+
+	scanned.leaveScope();
+
 	i = node.body.length;
 	while ( i-- ) {
 		statement = node.body[i];

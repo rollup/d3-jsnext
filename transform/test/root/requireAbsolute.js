@@ -61,9 +61,9 @@ module.exports = function requireAbsolute ( currentPath ) {
 			vm.runInContext( code, context );
 		} catch ( err ) {
 			// console.log( '\n\n==========================\nfailed to run ' + currentPath );
-			// console.log( '>>> ' + err.message + '\n\n' );
+			// console.log( '>>> ' + err.message.substr( 0, 100 ) + '\n\n' );
 			// console.log( code.toString() + '\n==========================\n\n' );
-			//throw err;
+			// throw err;
 		}
 	}
 

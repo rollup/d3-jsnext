@@ -1,8 +1,16 @@
 module.exports = function relative ( from, to ) {
 	var fromKeys, toKeys, prefix;
 
-	fromKeys = from.split( '/' );
-	toKeys = to.split( '/' );
+
+
+	try {
+		fromKeys = from.split( '/' );
+		toKeys = ( to || '' ).split( '/' );
+	} catch ( err ) {
+		console.log( 'failed with from', from );
+		console.log( 'to', to );
+		throw err;
+	}
 
 	fromKeys.pop();
 
