@@ -8,7 +8,7 @@ var fs = require( 'graceful-fs' ),
 
 	readFile = promo( fs.readFile ),
 
-	scan = require( './scan' ),
+	ModuleScanner = require( './ModuleScanner' ),
 	transform = require( './transform' ),
 	writeTo = require( '../utils/writeTo' ),
 
@@ -26,7 +26,7 @@ var fs = require( 'graceful-fs' ),
 module.exports = function () {
 	glob( path.join( srcDir, ( require('./TEST') ? '*/$test.js' : '*/**/*.js' ) ) ).then( function ( files ) {
 
-		var scanned = [],
+		var scanners = [],
 			pathsByHelperName,
 			pathsByExportName,
 			promises,
@@ -37,7 +37,7 @@ module.exports = function () {
 		// Scan files
 		promises = files.map( function ( file ) {
 			return readFile( file ).then( toString ).then( function ( src ) {
-				scanned.push( scan( src, file.replace( srcDir, '' ) ) );
+				scanners.push( new ModuleScanner( src, file.replace( srcDir, '' ) ) );
 			});
 		});
 
@@ -49,17 +49,9 @@ module.exports = function () {
 		pathsByHelperName = {};
 		pathsByExportName = {};
 
-		scanPromise = scanPromise.then( function () {
-			var promises = scanned.map( function ( x ) {
-				return writeTo( path.join( __dirname, 'scanned', x.filepath ) )( JSON.stringify( x, null, '  ' ) );
-			});
-
-			return Promise.all( promises );
-		});
-
 		scanPromise.then( function () {
 			// Discover exports and helpers
-			scanned.forEach( function ( x ) {
+			scanners.forEach( function ( x ) {
 				x.helpers.forEach( function ( helperName ) {
 					/*if ( shared[ helperName ] ) {
 						// TODO
@@ -93,12 +85,12 @@ module.exports = function () {
 				});
 			});
 
-			scanned.forEach( function ( x ) {
+			scanners.forEach( function ( x ) {
 				postprocess( x, pathsByHelperName, pathsByExportName );
 			});
 
 			// Clean up dependencies
-			scanned.forEach( function ( x ) {
+			scanners.forEach( function ( x ) {
 				var deps = x.dependencies, i = deps.length, dep, index;
 				while ( i-- ) {
 					dep = confirm( deps[i], x, pathsByHelperName, pathsByExportName );
@@ -115,7 +107,7 @@ module.exports = function () {
 
 		// Then, we transform the source of each file
 		transformPromise = scanPromise.then( function () {
-			return scanned.map( function ( x ) {
+			return scanners.map( function ( x ) {
 				return transform( x, pathsByHelperName, pathsByExportName ).then( function ( transformed ) {
 					return Promise.all([
 						writeTo( path.join( destDir + '/es6/d3/_/' + x.filepath ) )( transformed.es6.trim() ),
@@ -207,10 +199,6 @@ module.exports = function () {
 		}).catch( debug );
 	});
 };
-
-
-
-
 
 function toString ( buffer ) {
 	return buffer.toString();

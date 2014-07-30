@@ -1,5 +1,4 @@
-var estraverse = require( 'estraverse' ),
-	astHelpers = require( './index' );
+var estraverse = require( 'estraverse' );
 
 module.exports = function ( ast ) {
 	estraverse.traverse( ast, {

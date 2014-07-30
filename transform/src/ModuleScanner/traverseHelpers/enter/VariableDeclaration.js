@@ -1,6 +1,6 @@
-var groupByIdentifier = require( '../../groupByIdentifier' ),
-	astHelpers = require( '../../astHelpers' ),
-	shouldExport = require( '../../shouldExport' );
+var groupByIdentifier = require( '../../../groupByIdentifier' ),
+	astHelpers = require( '../../../astHelpers' ),
+	shouldExport = require( '../../../shouldExport' );
 
 var escodegen = require( 'escodegen' );
 

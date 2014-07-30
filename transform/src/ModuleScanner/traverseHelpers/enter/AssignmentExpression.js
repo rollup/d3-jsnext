@@ -1,5 +1,5 @@
-var astHelpers = require( '../../astHelpers' ),
-	groupByIdentifier = require( '../../groupByIdentifier' );
+var astHelpers = require( '../../../astHelpers' ),
+	groupByIdentifier = require( '../../../groupByIdentifier' );
 
 module.exports = function ( node, parent, scanned ) {
 	var left, right, keypath, group;
@@ -11,22 +11,6 @@ module.exports = function ( node, parent, scanned ) {
 	if ( left.type === 'MemberExpression' ) {
 		keypath = astHelpers.getKeypath( left );
 		scanned.definedInScope( keypath );
-
-		/*if ( !keypath ) {
-			return;
-		}
-
-		if ( group = groupByIdentifier[ keypath ] ) {
-			scanned.addShared( group );
-		}
-
-		else {
-			if ( /^d3\./.test( keypath ) && !~scanned.exports.indexOf( keypath ) ) {
-				scanned.exports.push( keypath );
-			}
-
-			scanned.definedInScope( keypath );
-		}*/
 	}
 
 	// Do we have a dependency?
