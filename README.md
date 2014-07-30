@@ -1,4 +1,4 @@
-# d3-amd
+# modular-d3
 
 Hello! This project is *in no way* ready for public consumption yet - I don't yet even know if it will be possible. I'm just storing it here.
 
