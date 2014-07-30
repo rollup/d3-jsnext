@@ -1,1 +1,13 @@
-<script src='require.js' data-main='main'></script>
+<script src='require.js'></script>
+<script>
+	require.config({
+		paths: {
+			d3: '../output/amd/d3'
+		}
+	});
+
+	require([ 'd3/ascending' ], function ( ascending ) {
+		var array = [ 7, 4, 6, 2, 5, 3, 9, 10 ];
+		console.log( array.sort( ascending ) );
+	});
+</script>
