@@ -23,9 +23,6 @@ module.exports = function () {
 		},
 
 		leave: function ( node, parent ) {
-			var i;
-
-
 			//delete node._isReplacement;
 			delete node._ignore;
 

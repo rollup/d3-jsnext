@@ -25,7 +25,8 @@ module.exports = function ( pathsByHelperName, pathsByExportName ) {
 		}
 	}
 
-	this.src = escodegen.generate( this.ast );
+	// todo fix apply context inside the AST
+	this.src = escodegen.generate( this.ast ).replace( /\.apply\(\s*d3/g, '.apply(null' );
 	this.importDeclarations = importDeclarations;
 	this.safeExports = this.exports.map( function ( exportName ) {
 		return exportName.replace( /\./g, '$' );

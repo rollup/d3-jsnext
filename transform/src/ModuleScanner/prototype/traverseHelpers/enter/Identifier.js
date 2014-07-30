@@ -5,7 +5,7 @@ var shouldExport = require( '../../../../shouldExport' ),
 module.exports = function ( node, parent, scanned ) {
 	var group;
 
-	scanned.usedInScope( node.name ); // new-style
+	scanned.usedInScope( node.name );
 
 	if ( groupByIdentifier.hasOwnProperty( node.name ) && ( group = groupByIdentifier[ node.name ] ) ) {
 		// Return a replacement node

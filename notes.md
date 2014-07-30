@@ -1,11 +1,10 @@
 # broken tests
 
 color - all
-event
+data
 geo - path-test, point-in-polygon-test, +others
 geom
 interpolate
-layout
 math
 scale
 selection

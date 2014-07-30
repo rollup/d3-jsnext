@@ -1,6 +1,7 @@
 var esprima = require( 'esprima' ),
 	shouldExport = require( '../shouldExport' ),
-	groupByIdentifier = require( '../groupByIdentifier' );
+	groupByIdentifier = require( '../groupByIdentifier' ),
+	Scope = require( './Scope' );
 
 var ModuleScanner = function ( src, filepath ) {
 
@@ -23,7 +24,7 @@ var ModuleScanner = function ( src, filepath ) {
 	this.helpers = [];
 	this.exports = [];
 	this.scopeDepth = 0;
-	this.scopes = [{ used: [], defined: [], parent: null }];
+	this.scopes = [ new Scope( null )];
 	this.definedInModule = null; // fill in on leaving Program node
 	this.externalRefs = [];
 	this._scopesToCheck = [];
@@ -35,6 +36,7 @@ var ModuleScanner = function ( src, filepath ) {
 
 	// See which variables were used but not declared...
 	this._scopesToCheck.forEach( function ( scope ) {
+		// TODO use scope.defines()
 		scope.used.forEach( function ( name ) {
 			if ( !scanner.checkIfDefined( scope, name ) && !~scanner.externalRefs.indexOf( name ) ) {
 				scanner.externalRefs.push( name );
@@ -54,12 +56,7 @@ var ModuleScanner = function ( src, filepath ) {
 
 ModuleScanner.prototype = {
 	enterScope: function () {
-		this.scopes.push({
-			used: [],
-			defined: [],
-			parent: this.scope()
-		});
-
+		this.scopes.push( new Scope( this.scope() ) );
 		this.scopeDepth += 1;
 	},
 
@@ -78,19 +75,6 @@ ModuleScanner.prototype = {
 
 	scope: function () {
 		return this.scopes[ this.scopes.length - 1 ];
-	},
-
-	isDefined: function ( varName ) {
-		var i = this.scopes.length, scope;
-
-		while ( i-- ) {
-			scope = this.scopes[i];
-			if ( ~scope.defined.indexOf( varName ) ) {
-				return true;
-			}
-		}
-
-		return false;
 	},
 
 	definedInScope: function ( name ) {
@@ -119,6 +103,11 @@ ModuleScanner.prototype = {
 
 	checkIfDefined: function ( scope, name ) {
 		var index = name.indexOf( '.' );
+
+		if ( !scope ) {
+			console.error( 'missing _scope' );
+			return;
+		}
 
 		if ( ~index ) {
 			name = name.substr( 0, index );

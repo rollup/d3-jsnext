@@ -28,9 +28,7 @@ module.exports = function () {
 			return 'var ' + exportName + ';';
 		}).join( '\n' ),
 
-		this.src.replace( /(d3\.[\w\.]+)/g, function ( match, $1 ) {
-			return match.replace( $1, $1.replace( /\./g, '$' ) );
-		}),
+		this.src,
 
 		this.helpers.map( function ( helperName ) {
 			return 'exports.' + helperName + ' = ' + helperName + ';';

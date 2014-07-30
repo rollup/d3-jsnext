@@ -1,11 +1,11 @@
 var astHelpers = require( '../../../../astHelpers' ),
 	groupByIdentifier = require( '../../../../groupByIdentifier' );
 
-module.exports = function ( node, parent, scanned ) {
+module.exports = function ( node, parent, scanner ) {
 	var keypath, group;
 
 	if ( !node._ignore ) {
 		keypath = astHelpers.getKeypath( node );
-		scanned.usedInScope( keypath );
+		scanner.usedInScope( keypath );
 	}
 };

@@ -29,9 +29,7 @@ module.exports = function () {
 		}).join( '\n' ) + '\n';
 	}
 
-	result += '\n' + this.src.replace( /(d3\.[\w\.]+)/g, function ( match, $1 ) {
-		return match.replace( $1, $1.replace( /\./g, '$' ) );
-	}) + '\n\n';
+	result += '\n' + this.src + '\n\n';
 
 	if ( this.helpers.length ) {
 		result += this.helpers.map( function ( helperName ) {
