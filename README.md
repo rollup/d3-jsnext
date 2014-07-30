@@ -51,6 +51,34 @@ cd d3
 npm i
 ```
 
-## Coming soon
+## Running the code transformation
+
+`cd` into the `modular-d3` folder if you're not there already.
+
+```
+node transform
+```
+
+This will generate transformed tests and source code - they will go in the `output` folder.
+
+## Running the tests
+
+Before you can run the tests you need to install `vows` globally:
+
+```
+npm i -g vows
+```
+
+Then, `cd` into the `output` folder and run the `vows` command to run all tests.
+
+```
+cd output
+vows
+```
+
+You can also run a subset of tests - consult the [vows documentation](http://vowsjs.org/) for details.
+
+
+## License etc
 
 MIT licensed, yada yada. Oh and I'm [@Rich_Harris](http://twitter.com) on Twitter.
