@@ -1,13 +1,18 @@
 var escodegen = require( 'escodegen' );
 
 module.exports = function ( pathsByHelperName, pathsByExportName ) {
-	var src,
+	var filepath = this.filepath,
+		src,
 		srcPath,
 		dependencyGroups = {},
 		importDeclarations = [];
 
 	this.dependencies.forEach( function ( dep ) {
 		var srcPath = pathsByHelperName[ dep ] || pathsByExportName[ dep ];
+
+		if ( srcPath === filepath ) {
+			return; // d'oh!
+		}
 
 		if ( !dependencyGroups[ srcPath ] ) {
 			dependencyGroups[ srcPath ] = [];

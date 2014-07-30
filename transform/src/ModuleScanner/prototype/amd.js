@@ -1,22 +1,33 @@
 var relative = require( '../../../utils/relative' );
 
 module.exports = function () {
-	var result, filepath = this.filepath;
+	var result, filepath = this.filepath, dependencyPaths, dependencyNames;
+
+	dependencyPaths = this.importDeclarations.map( function ( group ) {
+		return "'" + relative( filepath, group.path ).replace( '.js', '' ) + "'";
+	}).concat( "'exports'" );
+
+	dependencyNames = this.importDeclarations.map( function ( group, i ) {
+		return '__dependency' + ( i + 1 ) + '__';
+	}).concat( 'exports' );
 
 	result = [
-		'define([ \'require\', \'exports\' ], function ( require, exports ) {',
+		'define([' + dependencyPaths.join( ',' ) + '], function (' + dependencyNames.join( ',' ) + ') {',
 
 		'\t\'use strict\';',
 
-		this.importDeclarations.map( function ( group ) {
-			var relativePath = relative( filepath, group.path );
+		this.importDeclarations.map( function ( group, i ) {
+			var dependencyName, relativePath;
+
+			dependencyName = '__dependency' + ( i + 1 ) + '__';
+			relativePath = relative( filepath, group.path );
 
 			return group.dependencies.map( function ( dep ) {
 				// dep may be an exposed function, e.g. `d3.quantile` - we need
 				// to turn those into `d3$quantile`
 				dep = dep.replace( /\./g, '$' );
 
-				return 'var ' + dep + ' = require( \'' + relativePath.replace( '.js', '' ) + '\' ).' + dep + ';';
+				return 'var ' + dep + ' = ' + dependencyName + '.' + dep + ';';
 			}).join( '\n' );
 		}).join( '\n' ),
 
