@@ -3,13 +3,25 @@ var relative = require( '../../../utils/relative' );
 module.exports = function () {
 	var result, filepath = this.filepath, dependencyPaths, dependencyNames;
 
-	dependencyPaths = this.importDeclarations.map( function ( group ) {
-		return "'" + relative( filepath, group.path ).replace( '.js', '' ) + "'";
-	}).concat( "'exports'" );
+	dependencyPaths = [];
+	this.importDeclarations.forEach( function ( group ) {
+		dependencyPaths.push( "'" + relative( filepath, group.path ).replace( '.js', '' ) + "'" );
+	});
+	this.shared.forEach( function ( group ) {
+		dependencyPaths.push( "'" + relative( filepath, group.path ).replace( '.js', '' ) + "'" );
+	});
+	dependencyPaths.push( "'exports'" );
 
-	dependencyNames = this.importDeclarations.map( function ( group, i ) {
-		return '__dependency' + ( i + 1 ) + '__';
-	}).concat( 'exports' );
+
+	dependencyNames = [];
+	this.importDeclarations.forEach( function ( group, i ) {
+		dependencyNames.push( '__dependency' + ( i + 1 ) + '__' );
+	});
+	this.shared.forEach( function ( group, i ) {
+		dependencyNames.push( group.name );
+	});
+	dependencyNames.push( 'exports' );
+
 
 	result = [
 		'define([' + dependencyPaths.join( ',' ) + '], function (' + dependencyNames.join( ',' ) + ') {',
@@ -29,10 +41,6 @@ module.exports = function () {
 
 				return 'var ' + dep + ' = ' + dependencyName + '.' + dep + ';';
 			}).join( '\n' );
-		}).join( '\n' ),
-
-		this.shared.map( function ( group ) {
-			return 'var ' + group.name + ' = require( \'' + relative( filepath, group.path ).replace( '.js', '' ) + '\' );';
 		}).join( '\n' ),
 
 		this.safeExports.map( function ( exportName ) {
