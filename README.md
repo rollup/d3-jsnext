@@ -1,10 +1,10 @@
-# modular-d3
+# d3-jsnext
 
 **[Slides from the Hacks/Hackers NYC talk are here.](https://docs.google.com/presentation/d/1c1ufewQA4RtcQiV1vz1tZGDeA-7yHsrzoxOQiFcBLhY/edit#slide=id.p) (They may not make a great deal of sense without context.)**
 
 Hello! This project is *in no way* ready for public consumption yet - I don't yet even know if it will be possible. I'm just storing it here.
 
-But here's what it's going to be: a suite of micro functions with all of D3's functionality, generated with esprima.
+But here's what it's going to be: a modular ES6 version of D3, suitable for use with a futuristic module bundler like [rollup](https://github.com/rollup/rollup).
 
 ## Why?
 
@@ -16,8 +16,8 @@ Now:
 
 ```js
 define( function ( require ) {
-  var d3 = require( 'd3' ),
-      projection = d3.geo.albers();
+  var d3 = require( 'd3' );
+  var projection = d3.geo.albers();
 
   // ...
 });
@@ -26,23 +26,23 @@ define( function ( require ) {
 The future:
 
 ```js
-define( function ( require ) {
-  var albers = require( 'd3/geo/albers' ),
-      projection = albers();
+import { albers } from 'd3';
+var projection = albers();
 
-  // ...
-});
+// ...
 ```
 
-This is way better because you automatically only load the code you need, and when you build your project with the RequireJS optimiser, everything else is discarded. (And yes, this should work with browserify too...)
+This is way better, because when you bundle your app, you don't include all the unused gubbins.
+
+TODO before and after comparisons...
 
 
 ## Setting up
 
 ```
 # Clone this repo and install dependencies
-git clone https://github.com/rich-harris/modular-d3
-cd modular-d3
+git clone https://github.com/rich-harris/d3-jsnext
+cd d3-jsnext
 npm i
 
 # Clone d3
@@ -55,30 +55,21 @@ npm i
 
 ## Running the code transformation
 
-`cd` into the `modular-d3` folder if you're not there already.
+`cd` into the `d3-jsnext` folder if you're not there already.
 
 ```
-node transform
+npm run build
 ```
 
-This will generate transformed tests and source code - they will go in the `output` folder.
+This will generate transformed tests and source code in the `test` and `src` folders respectively.
 
 ## Running the tests
 
-Before you can run the tests you need to install `vows` globally:
-
 ```
-npm i -g vows
+npm test
 ```
 
-Then, `cd` into the `output` folder and run the `vows` command to run all tests.
-
-```
-cd output
-vows
-```
-
-You can also run a subset of tests - consult the [vows documentation](http://vowsjs.org/) for details.
+If you have [vows](http://vowsjs.org/) installed globally you can run a subset of the tests - see the vows documentation for details.
 
 
 ## License etc
