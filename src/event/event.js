@@ -50,4 +50,4 @@ function d3_eventDispatch(target) {
   return dispatch;
 }
 
-export { event, event, event, d3_eventDispatch, d3_eventSource, d3_eventPreventDefault };
+export { event, d3_eventDispatch, d3_eventSource, d3_eventPreventDefault };

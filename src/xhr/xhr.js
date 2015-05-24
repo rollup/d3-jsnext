@@ -124,4 +124,4 @@ function d3_xhrHasResponse(request) {
       : request.responseText; // "" on error
 }
 
-export { event, event, d3$xhr, d3_xhrHasResponse, d3_xhr_fixCallback, d3_xhr, d3_xhrType };
+export { event, d3$xhr, d3_xhrHasResponse, d3_xhr_fixCallback, d3_xhr, d3_xhrType };

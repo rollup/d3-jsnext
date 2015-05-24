@@ -52,4 +52,4 @@ function d3_interpolateTransform(a, b) {
   };
 }
 
-export { d3_interpolateTransform, d3_interpolateTransform };
+export { d3_interpolateTransform };

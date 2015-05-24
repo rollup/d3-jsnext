@@ -4,4 +4,4 @@ function d3_functor(v) {
 
 
 
-export { d3_functor, d3_functor };
+export { d3_functor };

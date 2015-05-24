@@ -17,4 +17,4 @@ function d3_interpolateHsl(a, b) {
   };
 }
 
-export { d3_interpolateHsl, d3_interpolateHsl };
+export { d3_interpolateHsl };

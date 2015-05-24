@@ -124,4 +124,4 @@ function d3_transitionNode(node, i, ns, id, inherit) {
   }
 }
 
-export { d3_transitionPrototype, d3$transition, d3_transitionNode, d3_transitionNamespace, d3_transitionPrototype, d3_transitionId, d3_transitionInheritId, d3_transitionInherit, d3_transition };
+export { d3_transitionPrototype, d3$transition, d3_transitionNode, d3_transitionNamespace, d3_transitionId, d3_transitionInheritId, d3_transitionInherit, d3_transition };

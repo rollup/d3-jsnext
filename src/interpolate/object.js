@@ -22,4 +22,4 @@ function d3_interpolateObject(a, b) {
   };
 }
 
-export { d3_interpolateObject, d3_interpolateObject };
+export { d3_interpolateObject };

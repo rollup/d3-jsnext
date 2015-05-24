@@ -14,4 +14,4 @@ function d3_interpolateLab(a, b) {
   };
 }
 
-export { d3_interpolateLab, d3_interpolateLab };
+export { d3_interpolateLab };

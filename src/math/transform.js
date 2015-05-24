@@ -66,4 +66,4 @@ function d3_transformCombine(a, b, k) {
 
 var d3_transformIdentity = {a: 1, b: 0, c: 0, d: 1, e: 0, f: 0};
 
-export { d3$transform, d3$transform, d3_transformIdentity, d3_transformCombine, d3_transformNormalize, d3_transformDot, d3_transform };
+export { d3$transform, d3_transformIdentity, d3_transformCombine, d3_transformNormalize, d3_transformDot, d3_transform };

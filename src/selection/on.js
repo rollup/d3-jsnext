@@ -102,4 +102,4 @@ function d3_selection_onFilter(listener, argumentz) {
   };
 }
 
-export { event, event, d3_selection_onFilter, d3_selection_onListener, d3_selection_onFilters, d3_selection_on };
+export { event, d3_selection_onFilter, d3_selection_onListener, d3_selection_onFilters, d3_selection_on };

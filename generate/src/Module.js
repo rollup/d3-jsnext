@@ -4,6 +4,7 @@ import MagicString from 'magic-string';
 import attachScopes from './ast/attachScopes';
 import walk from './ast/walk';
 import createAlias from './utils/createAlias';
+import dedupe from './utils/dedupe';
 
 function isIdentifier ( node, parent ) {
 	if ( node.type !== 'Identifier' ) return false;
@@ -28,19 +29,6 @@ function getKeypath ( node ) {
 
 	if ( node.type !== 'Identifier' ) return null;
 	return `${node.name}.${keypath}`;
-}
-
-function findNextNode ( nodes, node ) {
-	const len = nodes.length;
-	let i;
-
-	for ( i = 0; i < len; i += 1 ) {
-		if ( nodes[i].start >= node.end ) {
-			return nodes[i];
-		}
-	}
-
-	return null;
 }
 
 export default class Module {
@@ -217,18 +205,14 @@ export default class Module {
 			magicString.prepend( importBlock + '\n\n' );
 		}
 
-		const shouldExport = exportNamesByPath[ this.file ]
-			.map( name => {
-				const alias = internalNameByExportName[ name ] || createAlias( name );
-				return alias;
-			})
-			.concat( internalNamesByPath[ this.file ]);
-			// .map( name => {
-			// 	console.log( '%s should export %s', this.file, name );
-			// 	const alias = internalNameByExportName[ name ] || createAlias( name );
-			// 	return alias;
-			// })
-			// .filter( Boolean );
+		let shouldExport = dedupe(
+			exportNamesByPath[ this.file ]
+				.map( name => {
+					const alias = internalNameByExportName[ name ] || createAlias( name );
+					return alias;
+				})
+				.concat( internalNamesByPath[ this.file ])
+		);
 
 		const exportBlock = `\n\nexport { ${shouldExport.join(', ')} };`
 

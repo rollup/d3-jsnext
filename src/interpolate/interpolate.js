@@ -25,4 +25,4 @@ d3$interpolators = [
   }
 ];
 
-export { d3$interpolators, d3_interpolate, d3_interpolate };
+export { d3$interpolators, d3_interpolate };

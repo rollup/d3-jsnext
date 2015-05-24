@@ -33,4 +33,4 @@ function d3_hcl_lab(h, c, l) {
   return new d3_lab(l, Math.cos(h *= d3_radians) * c, Math.sin(h) * c);
 }
 
-export { d3_hcl, d3_hcl_lab, d3_hclPrototype, d3_hcl };
+export { d3_hcl, d3_hcl_lab, d3_hclPrototype };

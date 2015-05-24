@@ -16,4 +16,4 @@ d3_selection_enterPrototype.node = d3_selectionPrototype.node;
 d3_selection_enterPrototype.call = d3_selectionPrototype.call;
 d3_selection_enterPrototype.size = d3_selectionPrototype.size;
 
-export { d3_selection_enterPrototype, d3_selection_enter, d3_selection_enterPrototype, d3_selection_enter };
+export { d3_selection_enterPrototype, d3_selection_enter };

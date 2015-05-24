@@ -53,4 +53,4 @@ function d3_interpolateString(a, b) {
 var d3_interpolate_numberA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
     d3_interpolate_numberB = new RegExp(d3_interpolate_numberA.source, "g");
 
-export { d3_interpolateString, d3_interpolate_numberA, d3_interpolate_numberB, d3_interpolateString };
+export { d3_interpolateString, d3_interpolate_numberA, d3_interpolate_numberB };

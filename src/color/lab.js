@@ -60,4 +60,4 @@ function d3_lab_xyz(x) {
   return x > 0.206893034 ? x * x * x : (x - 4 / 29) / 7.787037;
 }
 
-export { d3_lab, d3_lab_xyz, d3_lab_hcl, d3_lab_rgb, d3_labPrototype, d3_lab_X, d3_lab_Y, d3_lab_Z, d3_lab_K, d3_lab };
+export { d3_lab, d3_lab_xyz, d3_lab_hcl, d3_lab_rgb, d3_labPrototype, d3_lab_X, d3_lab_Y, d3_lab_Z, d3_lab_K };

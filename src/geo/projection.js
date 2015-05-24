@@ -116,4 +116,4 @@ function d3_geo_projectionRadians(stream) {
   });
 }
 
-export { d3_geo_projectionMutator, d3_geo_projection, d3_geo_projectionRadians, d3_geo_projectionMutator, d3_geo_projection };
+export { d3_geo_projectionMutator, d3_geo_projection, d3_geo_projectionRadians };

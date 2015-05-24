@@ -299,4 +299,4 @@ d3_rgb_names.forEach(function(key, value) {
   d3_rgb_names.set(key, d3_rgbNumber(value));
 });
 
-export { d3_rgb, d3_rgb_names, d3_rgb_parseNumber, d3_rgb_xyz, d3_rgb_lab, d3_rgb_hsl, d3_rgb_parse, d3_rgb_hex, d3_rgbPrototype, d3_rgbString, d3_rgbNumber, d3_rgb };
+export { d3_rgb, d3_rgb_names, d3_rgb_parseNumber, d3_rgb_xyz, d3_rgb_lab, d3_rgb_hsl, d3_rgb_parse, d3_rgb_hex, d3_rgbPrototype, d3_rgbString, d3_rgbNumber };
