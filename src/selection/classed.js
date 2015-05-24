@@ -1,6 +1,8 @@
 import { d3_collapse } from '../format/collapse';
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.classed = function(name, value) {
   if (arguments.length < 2) {
 
@@ -74,4 +76,4 @@ function d3_selection_classedName(name) {
   };
 }
 
-export {  };
+export { d3_selection_classedName, d3_selection_classed, d3_selection_classes, d3_selection_classedRe };

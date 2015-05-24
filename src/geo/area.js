@@ -2,9 +2,12 @@ import { π, d3_radians } from '../math/trigonometry';
 import { d3_noop } from '../core/noop';
 import { d3_adder } from '../math/adder';
 
-var d3$geo$area = function(object) {
+var undefined;
+var d3$geo$area;
+
+d3$geo$area = function(object) {
   d3_geo_areaSum = 0;
-  d3.geo.stream(object, d3_geo_area);
+  d3$geo$stream(object, d3_geo_area);
   return d3_geo_areaSum;
 };
 
@@ -66,4 +69,4 @@ function d3_geo_areaRingStart() {
   };
 }
 
-export { d3$geo$area };
+export { d3$geo$area, d3_geo_areaRingStart, d3_geo_area, d3_geo_areaSum, d3_geo_areaRingSum };

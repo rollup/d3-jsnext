@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var assert = require("../assert"),
     _ = require("../d3");
 

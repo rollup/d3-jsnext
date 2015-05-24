@@ -151,4 +151,4 @@ function d3_format_typeDefault(x) {
   return x + "";
 }
 
-export {  };
+export { d3_format_typeDefault, d3_format_types, d3_format_re, d3_locale_numberFormat };

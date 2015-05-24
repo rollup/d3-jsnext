@@ -1,7 +1,9 @@
 import { d3_document } from '../core/document';
 import { d3_xhr } from './xhr';
 
-var d3$html = function(url, callback) {
+var d3$html;
+
+d3$html = function(url, callback) {
   return d3_xhr(url, "text/html", d3_html, callback);
 };
 
@@ -11,4 +13,4 @@ function d3_html(request) {
   return range.createContextualFragment(request.responseText);
 }
 
-export { d3$html };
+export { d3$html, d3_html };

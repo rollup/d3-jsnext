@@ -1,6 +1,8 @@
 import { d3_numeric } from '../math/number';
 
-var d3$sum = function(array, f) {
+var d3$sum;
+
+d3$sum = function(array, f) {
   var s = 0,
       n = array.length,
       a,

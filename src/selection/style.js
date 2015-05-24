@@ -1,6 +1,8 @@
 import { d3_window } from '../core/document';
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.style = function(name, value, priority) {
   var n = arguments.length;
   if (n < 3) {
@@ -58,4 +60,4 @@ function d3_selection_style(name, value, priority) {
       ? styleFunction : styleConstant);
 }
 
-export {  };
+export { d3_selection_style };

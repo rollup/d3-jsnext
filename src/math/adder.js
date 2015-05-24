@@ -1,3 +1,5 @@
+var undefined;
+
 // Adds floating point numbers with twice the normal precision.
 // Reference: J. R. Shewchuk, Adaptive Precision Floating-Point Arithmetic and
 // Fast Robust Geometric Predicates, Discrete & Computational Geometry 18(3)
@@ -33,4 +35,4 @@ function d3_adderSum(a, b, o) {
   o.t = (a - av) + (b - bv); // a_roundoff + b_roundoff
 }
 
-export {  };
+export { d3_adderSum, d3_adderTemp, d3_adder };

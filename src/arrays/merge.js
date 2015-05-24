@@ -1,4 +1,6 @@
-var d3$merge = function(arrays) {
+var d3$merge;
+
+d3$merge = function(arrays) {
   var n = arrays.length,
       m,
       i = -1,

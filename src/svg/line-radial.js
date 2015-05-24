@@ -1,7 +1,10 @@
 import { halfπ } from '../math/trigonometry';
 import { d3_svg_line } from './line';
 
-var d3$svg$line$radial = function() {
+var d3$svg$line$radial;
+var undefined;
+
+d3$svg$line$radial = function() {
   var line = d3_svg_line(d3_svg_lineRadial);
   line.radius = line.x, delete line.x;
   line.angle = line.y, delete line.y;
@@ -24,4 +27,4 @@ function d3_svg_lineRadial(points) {
   return points;
 }
 
-export { d3$svg$line$radial };
+export { d3$svg$line$radial, d3_svg_lineRadial };

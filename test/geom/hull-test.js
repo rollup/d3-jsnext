@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var vows = require("vows"),
     _ = require("../d3"),
     load = require("../load"),

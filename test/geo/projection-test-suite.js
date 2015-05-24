@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var assert = require("../assert"),
     _ = require("../d3"),
     format = _.format("13.8f");

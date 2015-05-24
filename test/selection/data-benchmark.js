@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var d3 = require("../d3");
 
 var formatNumber = d3.format(",.02r"),

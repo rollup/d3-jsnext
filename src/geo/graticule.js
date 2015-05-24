@@ -1,7 +1,10 @@
 import { ε } from '../math/trigonometry';
 import { abs } from '../math/abs';
 
-var d3$geo$graticule = function() {
+var d3$geo$graticule;
+var undefined;
+
+d3$geo$graticule = function() {
   var x1, x0, X1, X0,
       y1, y0, Y1, Y0,
       dx = 10, dy = dx, DX = 90, DY = 360,
@@ -13,10 +16,10 @@ var d3$geo$graticule = function() {
   }
 
   function lines() {
-    return d3.range(Math.ceil(X0 / DX) * DX, X1, DX).map(X)
-        .concat(d3.range(Math.ceil(Y0 / DY) * DY, Y1, DY).map(Y))
-        .concat(d3.range(Math.ceil(x0 / dx) * dx, x1, dx).filter(function(x) { return abs(x % DX) > ε; }).map(x))
-        .concat(d3.range(Math.ceil(y0 / dy) * dy, y1, dy).filter(function(y) { return abs(y % DY) > ε; }).map(y));
+    return d3$range(Math.ceil(X0 / DX) * DX, X1, DX).map(X)
+        .concat(d3$range(Math.ceil(Y0 / DY) * DY, Y1, DY).map(Y))
+        .concat(d3$range(Math.ceil(x0 / dx) * dx, x1, dx).filter(function(x) { return abs(x % DX) > ε; }).map(x))
+        .concat(d3$range(Math.ceil(y0 / dy) * dy, y1, dy).filter(function(y) { return abs(y % DY) > ε; }).map(y));
   }
 
   graticule.lines = function() {
@@ -100,4 +103,4 @@ function d3_geo_graticuleY(x0, x1, dx) {
   return function(y) { return x.map(function(x) { return [x, y]; }); };
 }
 
-export { d3$geo$graticule };
+export { d3$geo$graticule, d3_geo_graticuleY, d3_geo_graticuleX };

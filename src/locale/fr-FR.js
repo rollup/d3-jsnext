@@ -1,4 +1,6 @@
-var d3$locale$fr_FR = d3.locale({
+var d3$locale$fr_FR;
+
+d3$locale$fr_FR = d3$locale({
   decimal: ",",
   thousands: ".",
   grouping: [3],

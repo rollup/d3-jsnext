@@ -1,3 +1,3 @@
 function d3_noop() {}
 
-export {  };
+export { d3_noop };

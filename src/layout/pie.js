@@ -1,6 +1,9 @@
 import { τ } from '../math/trigonometry';
 
-var d3$layout$pie = function() {
+var d3$layout$pie;
+var undefined;
+
+d3$layout$pie = function() {
   var value = Number,
       sort = d3_layout_pieSortByValue,
       startAngle = 0,
@@ -14,8 +17,8 @@ var d3$layout$pie = function() {
         da = (typeof endAngle === "function" ? endAngle.apply(this, arguments) : endAngle) - a,
         p = Math.min(Math.abs(da) / n, +(typeof padAngle === "function" ? padAngle.apply(this, arguments) : padAngle)),
         pa = p * (da < 0 ? -1 : 1),
-        k = (da - n * pa) / d3.sum(values),
-        index = d3.range(n),
+        k = (da - n * pa) / d3$sum(values),
+        index = d3$range(n),
         arcs = [],
         v;
 
@@ -73,4 +76,4 @@ var d3$layout$pie = function() {
 
 var d3_layout_pieSortByValue = {};
 
-export { d3$layout$pie };
+export { d3$layout$pie, d3_layout_pieSortByValue };

@@ -1,7 +1,10 @@
 import { d3_layout_hierarchyRebind } from './hierarchy';
 
-var d3$layout$partition = function() {
-  var hierarchy = d3.layout.hierarchy(),
+var d3$layout$partition;
+var undefined;
+
+d3$layout$partition = function() {
+  var hierarchy = d3$layout$hierarchy(),
       size = [1, 1]; // width, height
 
   function position(node, x, dx, dy) {

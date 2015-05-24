@@ -1,6 +1,8 @@
 import { d3_time } from './time';
 import { d3_time_interval } from './interval';
 
+var undefined;
+
 ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"].forEach(function(day, i) {
   i = 7 - i;
 

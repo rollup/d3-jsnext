@@ -6,4 +6,4 @@ function d3_numeric(x) {
   return !isNaN(x);
 }
 
-export {  };
+export { d3_numeric, d3_number };

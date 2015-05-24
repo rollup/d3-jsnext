@@ -3,6 +3,8 @@ import { d3_time } from './time';
 import { d3_true } from '../core/true';
 import { d3_time_formatUtc } from './format-utc';
 
+var undefined;
+
 var d3_time_scaleUtcMethods = d3_time_scaleLocalMethods.map(function(m) {
   return [m[0].utc, m[1]];
 });
@@ -24,4 +26,4 @@ d3_time.scale.utc = function() {
   return d3_time_scale(d3$scale$linear(), d3_time_scaleUtcMethods, d3_time_scaleUtcFormat);
 };
 
-export {  };
+export { d3_time_scaleUtcFormat, d3_time_scaleUtcMethods };

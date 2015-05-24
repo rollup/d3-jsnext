@@ -1,3 +1,5 @@
+var d3$ns;
+
 var d3_nsPrefix = {
   svg: "http://www.w3.org/2000/svg",
   xhtml: "http://www.w3.org/1999/xhtml",
@@ -6,7 +8,7 @@ var d3_nsPrefix = {
   xmlns: "http://www.w3.org/2000/xmlns/"
 };
 
-var d3$ns = {
+d3$ns = {
   prefix: d3_nsPrefix,
   qualify: function(name) {
     var i = name.indexOf(":"),
@@ -21,4 +23,4 @@ var d3$ns = {
   }
 };
 
-export { d3$ns };
+export { d3$ns, d3_nsPrefix };

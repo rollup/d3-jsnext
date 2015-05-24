@@ -1,6 +1,9 @@
 import { d3_dispatch_event, d3_dispatch } from './dispatch';
 
-var event = null;
+var undefined;
+var event;
+
+event = null;
 
 function d3_eventPreventDefault() {
   d3$event$preventDefault();
@@ -38,9 +41,13 @@ function d3_eventDispatch(target) {
         var e0 =
         e1.sourceEvent = event;
         e1.target = target;
-        dispatch[e1.type].apply(thiz, argumentz);
+                dispatch[e1.type].apply(thiz, argumentz);
       } finally {
-        return dispatch;
+              }
+    };
+  };
+
+  return dispatch;
 }
 
-export { event, event, event };
+export { event, event, event, d3_eventDispatch, d3_eventSource, d3_eventPreventDefault };

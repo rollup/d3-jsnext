@@ -2,6 +2,8 @@ import { d3_transition, d3_transitionNode, d3_transitionInherit, d3_transitionNa
 import { d3_ease_cubicInOut } from '../interpolate/ease';
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 // import "../transition/transition";
 
 

@@ -1,8 +1,10 @@
+var d3$layout$bundle;
+
 // Implements hierarchical edge bundling using Holten's algorithm. For each
 // input link, a path is computed that travels through the tree, up the parent
 // hierarchy to the least common ancestor, and then back down to the destination
 // node. Each path is simply an array of nodes.
-var d3$layout$bundle = function() {
+d3$layout$bundle = function() {
   return function(links) {
     var paths = [],
         i = -1,
@@ -56,4 +58,4 @@ function d3_layout_bundleLeastCommonAncestor(a, b) {
   return sharedNode;
 }
 
-export { d3$layout$bundle };
+export { d3$layout$bundle, d3_layout_bundleLeastCommonAncestor, d3_layout_bundleAncestors, d3_layout_bundlePath };

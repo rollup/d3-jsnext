@@ -1,7 +1,10 @@
 import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitAfter } from './hierarchy';
 
-var d3$layout$pack = function() {
-  var hierarchy = d3.layout.hierarchy().sort(d3_layout_packSort),
+var undefined;
+var d3$layout$pack;
+
+d3$layout$pack = function() {
+  var hierarchy = d3$layout$hierarchy().sort(d3_layout_packSort),
       padding = 0,
       size = [1, 1],
       radius;
@@ -209,4 +212,4 @@ function d3_layout_packPlace(a, b, c) {
   }
 }
 
-export { d3$layout$pack };
+export { d3$layout$pack, d3_layout_packPlace, d3_layout_packTransform, d3_layout_packUnlink, d3_layout_packLink, d3_layout_packSiblings, d3_layout_packIntersects, d3_layout_packSplice, d3_layout_packInsert, d3_layout_packSort };

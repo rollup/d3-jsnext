@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 module.exports = OneTimeNumber;
 
 function OneTimeNumber(value) {

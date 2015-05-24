@@ -6,6 +6,8 @@ import { d3_scale_linearRebind, d3_scale_linearTickRange } from '../scale/linear
 import { d3_scaleExtent } from '../scale/scale';
 import { d3_scale_nice } from '../scale/nice';
 
+var undefined;
+
 function d3_time_scale(linear, methods, format) {
 
   function scale(x) {
@@ -146,4 +148,4 @@ d3_time.scale = function() {
   return d3_time_scale(d3$scale$linear(), d3_time_scaleLocalMethods, d3_time_scaleLocalFormat);
 };
 
-export {  };
+export { d3_time_scaleMilliseconds, d3_time_scaleLocalFormat, d3_time_scaleLocalMethods, d3_time_scaleSteps, d3_time_scaleDate, d3_time_scale };

@@ -1,7 +1,9 @@
 import { d3_radians } from '../math/trigonometry';
 
+var d3$geo$distance;
+
 // Length returned in radians; multiply by radius for distance.
-var d3$geo$distance = function(a, b) {
+d3$geo$distance = function(a, b) {
   var Δλ = (b[0] - a[0]) * d3_radians,
       φ0 = a[1] * d3_radians, φ1 = b[1] * d3_radians,
       sinΔλ = Math.sin(Δλ), cosΔλ = Math.cos(Δλ),

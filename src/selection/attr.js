@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.attr = function(name, value) {
   if (arguments.length < 2) {
 
@@ -60,4 +62,4 @@ function d3_selection_attr(name, value) {
       : (name.local ? attrConstantNS : attrConstant));
 }
 
-export {  };
+export { d3_selection_attr };

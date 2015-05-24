@@ -1,6 +1,8 @@
 import { d3_selection_each } from '../selection/each';
 import { d3_transitionPrototype } from './transition';
 
+var undefined;
+
 d3_transitionPrototype.ease = function(value) {
   var id = this.id, ns = this.namespace;
   if (arguments.length < 1) return this.node()[ns][id].ease;

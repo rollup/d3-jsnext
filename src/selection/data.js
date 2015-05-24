@@ -2,6 +2,8 @@ import { d3_selection, d3_selectionPrototype } from './selection';
 import { d3_selection_enter } from './enter';
 import { d3_Map } from '../arrays/map';
 
+var undefined;
+
 d3_selectionPrototype.data = function(value, key) {
   var i = -1,
       n = this.length,
@@ -114,4 +116,4 @@ function d3_selection_dataNode(data) {
   return {__data__: data};
 }
 
-export {  };
+export { d3_selection_dataNode };

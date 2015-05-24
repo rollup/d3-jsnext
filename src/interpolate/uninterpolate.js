@@ -8,4 +8,4 @@ function d3_uninterpolateClamp(a, b) {
   return function(x) { return Math.max(0, Math.min(1, (x - a) / b)); };
 }
 
-export {  };
+export { d3_uninterpolateClamp, d3_uninterpolateNumber };

@@ -2,6 +2,8 @@ import { ε } from '../../math/trigonometry';
 import { abs } from '../../math/abs';
 import { d3_geom_voronoiCreateBorderEdge, d3_geom_voronoiHalfEdge } from './edge';
 
+var undefined;
+
 function d3_geom_voronoiCell(site) {
   this.site = site;
   this.edges = [];
@@ -65,4 +67,4 @@ function d3_geom_voronoiHalfEdgeOrder(a, b) {
   return b.angle - a.angle;
 }
 
-export {  };
+export { d3_geom_voronoiHalfEdgeOrder, d3_geom_voronoiCloseCells, d3_geom_voronoiCell };

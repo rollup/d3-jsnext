@@ -2,4 +2,4 @@ function d3_zero() {
   return 0;
 }
 
-export {  };
+export { d3_zero };

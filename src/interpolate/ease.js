@@ -2,6 +2,8 @@ import { τ, halfπ } from '../math/trigonometry';
 import { d3_arraySlice } from '../core/array';
 import { d3_identity } from '../core/identity';
 
+var d3$ease;
+
 var d3_ease_default = function() { return d3_identity; };
 
 var d3_ease = d3$map({
@@ -24,7 +26,7 @@ var d3_ease_mode = d3$map({
   "out-in": function(f) { return d3_ease_reflect(d3_ease_reverse(f)); }
 });
 
-var d3$ease = function(name) {
+d3$ease = function(name) {
   var i = name.indexOf("-"),
       t = i >= 0 ? name.slice(0, i) : name,
       m = i >= 0 ? name.slice(i + 1) : "in";
@@ -109,4 +111,4 @@ function d3_ease_bounce(t) {
       : 7.5625 * (t -= 2.625 / 2.75) * t + .984375;
 }
 
-export { d3$ease };
+export { d3$ease, d3_ease_bounce, d3_ease_back, d3_ease_elastic, d3_ease_circle, d3_ease_exp, d3_ease_sin, d3_ease_poly, d3_ease_cubicInOut, d3_ease_cubic, d3_ease_quad, d3_ease_reflect, d3_ease_reverse, d3_ease_clamp, d3_ease_mode, d3_ease, d3_ease_default };

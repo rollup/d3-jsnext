@@ -3,6 +3,8 @@ import { d3_noop } from '../core/noop';
 import { d3_geo_clipPolygon } from './clip-polygon';
 import { d3_geo_pointInPolygon } from './point-in-polygon';
 
+var undefined;
+
 function d3_geo_clip(pointVisible, clipLine, interpolate, clipStart) {
   return function(rotate, listener) {
     var line = clipLine(listener),
@@ -148,4 +150,4 @@ function d3_geo_clipSort(a, b) {
        - ((b = b.x)[0] < 0 ? b[1] - halfπ - ε : halfπ - b[1]);
 }
 
-export {  };
+export { d3_geo_clipSort, d3_geo_clipBufferListener, d3_geo_clipSegmentLength1, d3_geo_clip };

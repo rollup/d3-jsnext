@@ -1,6 +1,9 @@
 import { d3_Map } from './map';
 
-var d3$nest = function() {
+var d3$nest;
+var undefined;
+
+d3$nest = function() {
   var nest = {},
       keys = [],
       sortKeys = [],
@@ -66,7 +69,7 @@ var d3$nest = function() {
   };
 
   nest.entries = function(array) {
-    return entries(map(d3.map, array, 0), 0);
+    return entries(map(d3$map, array, 0), 0);
   };
 
   nest.key = function(d) {

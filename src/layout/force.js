@@ -1,9 +1,12 @@
 import { d3_identity } from '../core/identity';
 
+var undefined;
+var d3$layout$force;
+
 // A rudimentary force layout using Gauss-Seidel.
-var d3$layout$force = function() {
+d3$layout$force = function() {
   var force = {},
-      event = d3.dispatch("start", "tick", "end"),
+      event = d3$dispatch("start", "tick", "end"),
       size = [1, 1],
       drag,
       alpha,
@@ -98,7 +101,7 @@ var d3$layout$force = function() {
 
     // compute quadtree center of mass and apply charge forces
     if (charge) {
-      d3_layout_forceAccumulate(q = d3.geom.quadtree(nodes), alpha, charges);
+      d3_layout_forceAccumulate(q = d3$geom$quadtree(nodes), alpha, charges);
       i = -1; while (++i < n) {
         if (!(o = nodes[i]).fixed) {
           q.visit(repulse(o));
@@ -193,7 +196,7 @@ var d3$layout$force = function() {
       else alpha = 0; // or, next tick will dispatch "end"
     } else if (x > 0) { // otherwise, fire it up!
       event.start({type: "start", alpha: alpha = x});
-      d3.timer(force.tick);
+      d3$timer(force.tick);
     }
 
     return force;
@@ -277,7 +280,7 @@ var d3$layout$force = function() {
 
   // use `node.call(force.drag)` to make nodes draggable
   force.drag = function() {
-    if (!drag) drag = d3.behavior.drag()
+    if (!drag) drag = d3$behavior$drag()
         .origin(d3_identity)
         .on("dragstart.force", d3_layout_forceDragstart)
         .on("drag.force", dragmove)
@@ -291,11 +294,11 @@ var d3$layout$force = function() {
   };
 
   function dragmove(d) {
-    d.px = d3.event.x, d.py = d3.event.y;
+    d.px = d3$event$x, d.py = d3$event$y;
     force.resume(); // restart annealing
   }
 
-  return d3.rebind(force, event, "on");
+  return d3$rebind(force, event, "on");
 };
 
 // The fixed property has three bits:
@@ -358,4 +361,4 @@ var d3_layout_forceLinkDistance = 20,
     d3_layout_forceLinkStrength = 1,
     d3_layout_forceChargeDistance2 = Infinity;
 
-export { d3$layout$force };
+export { d3$layout$force, d3_layout_forceLinkDistance, d3_layout_forceLinkStrength, d3_layout_forceChargeDistance2, d3_layout_forceAccumulate, d3_layout_forceMouseout, d3_layout_forceMouseover, d3_layout_forceDragend, d3_layout_forceDragstart };

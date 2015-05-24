@@ -1,4 +1,6 @@
-var d3$random = {
+var d3$random;
+
+d3$random = {
   normal: function(µ, σ) {
     var n = arguments.length;
     if (n < 2) σ = 1;
@@ -14,13 +16,13 @@ var d3$random = {
     };
   },
   logNormal: function() {
-    var random = d3.random.normal.apply(d3, arguments);
+    var random = d3$random$normal$apply(d3, arguments);
     return function() {
       return Math.exp(random());
     };
   },
   bates: function(m) {
-    var random = d3.random.irwinHall(m);
+    var random = d3$random$irwinHall(m);
     return function() {
       return random() / m;
     };

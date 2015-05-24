@@ -1,6 +1,8 @@
 import { d3_time, d3_date } from './time';
 import { d3_time_interval } from './interval';
 
+var undefined;
+
 d3_time.second = d3_time_interval(function(date) {
   return new d3_date(Math.floor(date / 1e3) * 1e3);
 }, function(date, offset) {

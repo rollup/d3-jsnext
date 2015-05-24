@@ -13,4 +13,4 @@ var d3_locale_frCA = d3$locale({
   shortMonths: ["jan", "fév", "mar", "avr", "mai", "jui", "jul", "aoû", "sep", "oct", "nov", "déc"]
 });
 
-export {  };
+export { d3_locale_frCA };

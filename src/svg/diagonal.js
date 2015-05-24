@@ -2,7 +2,10 @@ import { d3_functor } from '../core/functor';
 import { d3_target } from '../core/target';
 import { d3_source } from '../core/source';
 
-var d3$svg$diagonal = function() {
+var d3$svg$diagonal;
+var undefined;
+
+d3$svg$diagonal = function() {
   var source = d3_source,
       target = d3_target,
       projection = d3_svg_diagonalProjection;
@@ -41,4 +44,4 @@ function d3_svg_diagonalProjection(d) {
   return [d.x, d.y];
 }
 
-export { d3$svg$diagonal };
+export { d3$svg$diagonal, d3_svg_diagonalProjection };

@@ -2,9 +2,12 @@ import { d3_radians } from '../math/trigonometry';
 import { abs } from '../math/abs';
 import { d3_noop } from '../core/noop';
 
-var d3$geo$length = function(object) {
+var undefined;
+var d3$geo$length;
+
+d3$geo$length = function(object) {
   d3_geo_lengthSum = 0;
-  d3.geo.stream(object, d3_geo_length);
+  d3$geo$stream(object, d3_geo_length);
   return d3_geo_lengthSum;
 };
 
@@ -41,4 +44,4 @@ function d3_geo_lengthLineStart() {
   }
 }
 
-export { d3$geo$length };
+export { d3$geo$length, d3_geo_lengthLineStart, d3_geo_length, d3_geo_lengthSum };

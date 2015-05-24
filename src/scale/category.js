@@ -1,24 +1,29 @@
 import { d3_rgbString } from '../color/rgb';
 
+var d3$scale$category20c;
+var d3$scale$category20b;
+var d3$scale$category20;
+var d3$scale$category10;
+
 /*
  * This product includes color specifications and designs developed by Cynthia
  * Brewer (http://colorbrewer.org/). See lib/colorbrewer for more information.
  */
 
-var d3$scale$category10 = function() {
-  return d3.scale.ordinal().range(d3_category10);
+d3$scale$category10 = function() {
+  return d3$scale$ordinal().range(d3_category10);
 };
 
-var d3$scale$category20 = function() {
-  return d3.scale.ordinal().range(d3_category20);
+d3$scale$category20 = function() {
+  return d3$scale$ordinal().range(d3_category20);
 };
 
-var d3$scale$category20b = function() {
-  return d3.scale.ordinal().range(d3_category20b);
+d3$scale$category20b = function() {
+  return d3$scale$ordinal().range(d3_category20b);
 };
 
-var d3$scale$category20c = function() {
-  return d3.scale.ordinal().range(d3_category20c);
+d3$scale$category20c = function() {
+  return d3$scale$ordinal().range(d3_category20c);
 };
 
 var d3_category10 = [
@@ -55,4 +60,4 @@ var d3_category20c = [
   0x636363, 0x969696, 0xbdbdbd, 0xd9d9d9
 ].map(d3_rgbString);
 
-export { d3$scale$category20c, d3$scale$category20b, d3$scale$category20, d3$scale$category10 };
+export { d3$scale$category20c, d3$scale$category20b, d3$scale$category20, d3$scale$category10, d3_category20c, d3_category20b, d3_category20, d3_category10 };

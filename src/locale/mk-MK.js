@@ -1,4 +1,6 @@
-var d3$locale$mk_MK = d3.locale({
+var d3$locale$mk_MK;
+
+d3$locale$mk_MK = d3$locale({
   decimal: ",",
   thousands: ".",
   grouping: [3],

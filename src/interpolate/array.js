@@ -16,4 +16,4 @@ function d3_interpolateArray(a, b) {
   };
 }
 
-export { d3_interpolateArray };
+export { d3_interpolateArray, d3_interpolateArray };

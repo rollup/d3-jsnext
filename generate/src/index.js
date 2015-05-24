@@ -1,7 +1,7 @@
 import { lsrSync, readFileSync, rimrafSync, writeFileSync } from 'sander';
 import { basename, dirname, join } from 'path';
 
-import Module from './Module/index';
+import Module from './Module';
 import createAlias from './utils/createAlias';
 
 const srcDir = join( __dirname, '../../d3/src' );
@@ -46,22 +46,27 @@ export default function () {
 	// First, we need to map the entire dependency graph -
 	// in other words, we need to find out which file exports
 	// which variable. Assume they all begin `d3_` or `d3.`
-	let pathByName = {};
-	let namesByPath = {};
+	let pathByExportName = {};
+	let exportNamesByPath = {};
+
+	let pathByInternalName = {};
+	let internalNamesByPath = {};
+
 	let internalNameByExportName = {};
 	let exportNameByInternalName = {};
 
 	modules.forEach( module => {
-		namesByPath[ module.file ] = [];
+		exportNamesByPath[ module.file ] = [];
+		internalNamesByPath[ module.file ] = [];
 
 		module.exports.forEach( name => {
-			pathByName[ name ] = module.file;
-			namesByPath[ module.file ].push( name );
+			pathByExportName[ name ] = module.file;
+			exportNamesByPath[ module.file ].push( name );
 		});
 
 		module.definitions.forEach( name => {
-			pathByName[ name ] = module.file;
-			namesByPath[ module.file ].push( name );
+			pathByInternalName[ name ] = module.file;
+			internalNamesByPath[ module.file ].push( name );
 		});
 
 		Object.keys( module.internalNameByExportName ).forEach( exportName => {
@@ -73,7 +78,15 @@ export default function () {
 	});
 
 	modules.forEach( module => {
-		const rendered = module.render( pathByName, namesByPath, internalNameByExportName, exportNameByInternalName );
+		const rendered = module.render({
+			pathByExportName,
+			exportNamesByPath,
+			pathByInternalName,
+			internalNamesByPath,
+			internalNameByExportName,
+			exportNameByInternalName
+		});
+
 		writeFileSync( destDir, module.file, rendered );
 	});
 
@@ -84,8 +97,8 @@ export default function () {
 	// index file
 	const indexBlock = [];
 
-	Object.keys( namesByPath ).map( path => {
-		const names = namesByPath[ path ]
+	Object.keys( exportNamesByPath ).map( path => {
+		const names = exportNamesByPath[ path ]
 			.filter( isExport )
 			.map( createAlias );
 

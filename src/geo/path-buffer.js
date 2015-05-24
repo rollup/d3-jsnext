@@ -1,3 +1,5 @@
+var undefined;
+
 function d3_geo_pathBuffer() {
   var pointCircle = d3_geo_pathBufferCircle(4.5),
       buffer = [];
@@ -58,4 +60,4 @@ function d3_geo_pathBufferCircle(radius) {
       + "z";
 }
 
-export {  };
+export { d3_geo_pathBufferCircle, d3_geo_pathBuffer };

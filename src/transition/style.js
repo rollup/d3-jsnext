@@ -3,6 +3,8 @@ import { d3_transitionPrototype } from './transition';
 import { d3_transition_tween } from './tween';
 import { d3_interpolate } from '../interpolate/interpolate';
 
+var undefined;
+
 d3_transitionPrototype.style = function(name, value, priority) {
   var n = arguments.length;
   if (n < 3) {

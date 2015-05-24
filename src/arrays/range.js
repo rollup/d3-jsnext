@@ -1,6 +1,8 @@
 import { abs } from '../math/abs';
 
-var d3$range = function(start, stop, step) {
+var d3$range;
+
+d3$range = function(start, stop, step) {
   if (arguments.length < 3) {
     step = 1;
     if (arguments.length < 2) {
@@ -25,4 +27,4 @@ function d3_range_integerScale(x) {
   return k;
 }
 
-export { d3$range };
+export { d3$range, d3_range_integerScale };

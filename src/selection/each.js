@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.each = function(callback) {
   return d3_selection_each(this, function(node, i, j) {
     callback.call(node, node.__data__, i, j);
@@ -15,4 +17,4 @@ function d3_selection_each(groups, callback) {
   return groups;
 }
 
-export {  };
+export { d3_selection_each };

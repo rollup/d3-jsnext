@@ -1,6 +1,8 @@
 import { d3_transition, d3_transitionNode, d3_transitionPrototype } from './transition';
 import { d3_selection_selector } from '../selection/select';
 
+var undefined;
+
 d3_transitionPrototype.select = function(selector) {
   var id = this.id,
       ns = this.namespace,

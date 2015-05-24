@@ -1,8 +1,11 @@
 import { halfπ } from '../math/trigonometry';
 import { d3_svg_diagonalProjection } from './diagonal';
 
-var d3$svg$diagonal$radial = function() {
-  var diagonal = d3.svg.diagonal(),
+var d3$svg$diagonal$radial;
+var undefined;
+
+d3$svg$diagonal$radial = function() {
+  var diagonal = d3$svg$diagonal(),
       projection = d3_svg_diagonalProjection,
       projection_ = diagonal.projection;
 
@@ -24,4 +27,4 @@ function d3_svg_diagonalRadialProjection(projection) {
   };
 }
 
-export { d3$svg$diagonal$radial };
+export { d3$svg$diagonal$radial, d3_svg_diagonalRadialProjection };

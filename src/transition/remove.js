@@ -1,5 +1,7 @@
 import { d3_transitionPrototype } from './transition';
 
+var undefined;
+
 d3_transitionPrototype.remove = function() {
   var ns = this.namespace;
   return this.each("end.transition", function() {

@@ -1,7 +1,10 @@
 import { d3_identity } from '../core/identity';
 
+var undefined;
+var d3$layout$stack;
+
 // data is two-dimensional array of x,y; we populate y0
-var d3$layout$stack = function() {
+d3$layout$stack = function() {
   var values = d3_identity,
       order = d3_layout_stackOrderDefault,
       offset = d3_layout_stackOffsetZero,
@@ -26,8 +29,8 @@ var d3$layout$stack = function() {
 
     // Compute the order of series, and permute them.
     var orders = order.call(stack, points, index);
-    series = d3.permute(series, orders);
-    points = d3.permute(points, orders);
+    series = d3$permute(series, orders);
+    points = d3$permute(points, orders);
 
     // Compute the baseline…
     var offsets = offset.call(stack, points, index);
@@ -242,4 +245,4 @@ function d3_layout_stackSum(p, d) {
   return p + d[1];
 }
 
-export { d3$layout$stack };
+export { d3$layout$stack, d3_layout_stackSum, d3_layout_stackReduceSum, d3_layout_stackMaxIndex, d3_layout_stackOffsetZero, d3_layout_stackOrderDefault, d3_layout_stackOffsets, d3_layout_stackOrders, d3_layout_stackOut, d3_layout_stackY, d3_layout_stackX };

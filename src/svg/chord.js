@@ -4,7 +4,10 @@ import { d3_svg_arcEndAngle, d3_svg_arcStartAngle } from './arc';
 import { d3_target } from '../core/target';
 import { d3_source } from '../core/source';
 
-var d3$svg$chord = function() {
+var d3$svg$chord;
+var undefined;
+
+d3$svg$chord = function() {
   var source = d3_source,
       target = d3_target,
       radius = d3_svg_chordRadius,
@@ -88,4 +91,4 @@ function d3_svg_chordRadius(d) {
   return d.radius;
 }
 
-export { d3$svg$chord };
+export { d3$svg$chord, d3_svg_chordRadius };

@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.append = function(name) {
   name = d3_selection_creator(name);
   return this.select(function() {
@@ -26,4 +28,4 @@ function d3_selection_creator(name) {
       : create;
 }
 
-export {  };
+export { d3_selection_creator };

@@ -2,4 +2,4 @@ function d3_collapse(s) {
   return s.trim().replace(/\s+/g, " ");
 }
 
-export {  };
+export { d3_collapse };

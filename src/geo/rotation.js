@@ -2,7 +2,10 @@ import { d3_asin, τ, π, d3_degrees, d3_radians } from '../math/trigonometry';
 import { d3_geo_compose } from './compose';
 import { d3_geo_equirectangular } from './equirectangular';
 
-var d3$geo$rotation = function(rotate) {
+var undefined;
+var d3$geo$rotation;
+
+d3$geo$rotation = function(rotate) {
   rotate = d3_geo_rotation(rotate[0] % 360 * d3_radians, rotate[1] * d3_radians, rotate.length > 2 ? rotate[2] * d3_radians : 0);
 
   function forward(coordinates) {
@@ -77,4 +80,4 @@ function d3_geo_rotationφγ(δφ, δγ) {
   return rotation;
 }
 
-export { d3$geo$rotation };
+export { d3$geo$rotation, d3_geo_rotationφγ, d3_geo_rotationλ, d3_geo_forwardRotationλ, d3_geo_rotation, d3_geo_identityRotation };

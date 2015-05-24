@@ -2,6 +2,9 @@ import { d3_geo_conic } from './conic';
 import { halfπ, d3_sgn, ε, π } from '../math/trigonometry';
 import { d3_geo_mercator } from './mercator';
 
+var d3$geo$conicConformal;
+var undefined;
+
 function d3_geo_conicConformal(φ0, φ1) {
   var cosφ0 = Math.cos(φ0),
       t = function(φ) { return Math.tan(π / 4 + φ / 2); },
@@ -32,8 +35,8 @@ function d3_geo_conicConformal(φ0, φ1) {
   return forward;
 }
 
-(var d3$geo$conicConformal = function() {
+(d3$geo$conicConformal = function() {
   return d3_geo_conic(d3_geo_conicConformal);
 }).raw = d3_geo_conicConformal;
 
-export { d3$geo$conicConformal };
+export { d3$geo$conicConformal, d3_geo_conicConformal };

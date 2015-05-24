@@ -35,4 +35,4 @@ function d3_event_dragSuppress(node) {
   };
 }
 
-export {  };
+export { d3_event_dragSuppress, d3_event_dragSelect, d3_event_dragId };

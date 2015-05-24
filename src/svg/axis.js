@@ -2,8 +2,11 @@ import { d3_scaleRange } from '../scale/scale';
 import { ε } from '../math/trigonometry';
 import { d3_identity } from '../core/identity';
 
-var d3$svg$axis = function() {
-  var scale = d3.scale.linear(),
+var d3$svg$axis;
+var undefined;
+
+d3$svg$axis = function() {
+  var scale = d3$scale$linear(),
       orient = d3_svg_axisDefaultOrient,
       innerTickSize = 6,
       outerTickSize = 6,
@@ -14,7 +17,7 @@ var d3$svg$axis = function() {
 
   function axis(g) {
     g.each(function() {
-      var g = d3.select(this);
+      var g = d3$select(this);
 
       // Stash a snapshot of the new scale, and retrieve the old snapshot.
       var scale0 = this.__chart__ || scale,
@@ -25,15 +28,15 @@ var d3$svg$axis = function() {
           tickFormat = tickFormat_ == null ? (scale1.tickFormat ? scale1.tickFormat.apply(scale1, tickArguments_) : d3_identity) : tickFormat_,
           tick = g.selectAll(".tick").data(ticks, scale1),
           tickEnter = tick.enter().insert("g", ".domain").attr("class", "tick").style("opacity", ε),
-          tickExit = d3.transition(tick.exit()).style("opacity", ε).remove(),
-          tickUpdate = d3.transition(tick.order()).style("opacity", 1),
+          tickExit = d3$transition(tick.exit()).style("opacity", ε).remove(),
+          tickUpdate = d3$transition(tick.order()).style("opacity", 1),
           tickSpacing = Math.max(innerTickSize, 0) + tickPadding,
           tickTransform;
 
       // Domain.
       var range = d3_scaleRange(scale1),
           path = g.selectAll(".domain").data([0]),
-          pathUpdate = (path.enter().append("path").attr("class", "domain"), d3.transition(path));
+          pathUpdate = (path.enter().append("path").attr("class", "domain"), d3$transition(path));
 
       tickEnter.append("line");
       tickEnter.append("text");
@@ -154,4 +157,4 @@ function d3_svg_axisY(selection, y0, y1) {
   selection.attr("transform", function(d) { var v0 = y0(d); return "translate(0," + (isFinite(v0) ? v0 : y1(d)) + ")"; });
 }
 
-export { d3$svg$axis };
+export { d3$svg$axis, d3_svg_axisY, d3_svg_axisX, d3_svg_axisDefaultOrient, d3_svg_axisOrients };

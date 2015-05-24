@@ -1,5 +1,7 @@
 import { d3_transition, d3_transitionNode, d3_transitionId, d3_transitionPrototype } from './transition';
 
+var undefined;
+
 d3_transitionPrototype.transition = function() {
   var id0 = this.id,
       id1 = ++d3_transitionId,

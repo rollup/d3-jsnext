@@ -1,7 +1,9 @@
 import { d3_map_unescape, d3_map_empty, d3_map_size, d3_map_keys, d3_map_remove, d3_map_escape, d3_map_has } from './map';
 import { d3_class } from '../core/class';
 
-var d3$set = function(array) {
+var d3$set;
+
+d3$set = function(array) {
   var set = new d3_Set;
   if (array) for (var i = 0, n = array.length; i < n; ++i) set.add(array[i]);
   return set;
@@ -26,4 +28,4 @@ d3_class(d3_Set, {
   }
 });
 
-export { d3$set };
+export { d3$set, d3_Set };

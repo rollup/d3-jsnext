@@ -1,4 +1,6 @@
-var d3$scale = {};
+var d3$scale;
+
+d3$scale = {};
 
 function d3_scaleExtent(domain) {
   var start = domain[0], stop = domain[domain.length - 1];
@@ -9,4 +11,4 @@ function d3_scaleRange(scale) {
   return scale.rangeExtent ? scale.rangeExtent() : d3_scaleExtent(scale.range());
 }
 
-export { d3$scale };
+export { d3$scale, d3_scaleRange, d3_scaleExtent };

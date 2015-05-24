@@ -7,4 +7,4 @@ function d3_class(ctor, properties) {
   }
 }
 
-export {  };
+export { d3_class };

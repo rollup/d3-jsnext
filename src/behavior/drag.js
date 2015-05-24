@@ -4,11 +4,14 @@ import { d3_window } from '../core/document';
 import { d3_noop } from '../core/noop';
 import { d3_eventDispatch } from '../event/event';
 
-var d3$behavior$drag = function() {
+var d3$behavior$drag;
+var undefined;
+
+d3$behavior$drag = function() {
   var event = d3_eventDispatch(drag, "drag", "dragstart", "dragend"),
       origin = null,
-      mousedown = dragstart(d3_noop, d3.mouse, d3_window, "mousemove", "mouseup"),
-      touchstart = dragstart(d3_behavior_dragTouchId, d3.touch, d3_identity, "touchmove", "touchend");
+      mousedown = dragstart(d3_noop, d3$mouse, d3_window, "mousemove", "mouseup"),
+      touchstart = dragstart(d3_behavior_dragTouchId, d3$touch, d3_identity, "touchmove", "touchend");
 
   function drag() {
     this.on("mousedown.drag", mousedown)
@@ -18,14 +21,14 @@ var d3$behavior$drag = function() {
   function dragstart(id, position, subject, move, end) {
     return function() {
       var that = this,
-          target = d3.event.target,
+          target = d3$event$target,
           parent = that.parentNode,
           dispatch = event.of(that, arguments),
           dragged = 0,
           dragId = id(),
           dragName = ".drag" + (dragId == null ? "" : "-" + dragId),
           dragOffset,
-          dragSubject = d3.select(subject(target)).on(move + dragName, moved).on(end + dragName, ended),
+          dragSubject = d3$select(subject(target)).on(move + dragName, moved).on(end + dragName, ended),
           dragRestore = d3_event_dragSuppress(target),
           position0 = position(parent, dragId);
 
@@ -59,7 +62,7 @@ var d3$behavior$drag = function() {
       function ended() {
         if (!position(parent, dragId)) return; // this touch didn’t end
         dragSubject.on(move + dragName, null).on(end + dragName, null);
-        dragRestore(dragged && d3.event.target === target);
+        dragRestore(dragged && d3$event$target === target);
         dispatch({type: "dragend"});
       }
     };
@@ -71,7 +74,7 @@ var d3$behavior$drag = function() {
     return drag;
   };
 
-  return d3.rebind(drag, event, "on");
+  return d3$rebind(drag, event, "on");
 };
 
 // While it is possible to receive a touchstart event with more than one changed
@@ -84,4 +87,4 @@ function d3_behavior_dragTouchId() {
   return d3$event$changedTouches[0].identifier;
 }
 
-export { d3$behavior$drag };
+export { d3$behavior$drag, d3_behavior_dragTouchId };

@@ -3,7 +3,10 @@ import { d3_geom_voronoiHalfEdgeOrder } from './voronoi/cell';
 import { ε } from '../math/trigonometry';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
 
-var d3$geom$voronoi = function(points) {
+var d3$geom$voronoi;
+var undefined;
+
+d3$geom$voronoi = function(points) {
   var x = d3_geom_pointX,
       y = d3_geom_pointY,
       fx = x,
@@ -109,4 +112,4 @@ function d3_geom_voronoiTriangleArea(a, b, c) {
   return (a.x - c.x) * (b.y - a.y) - (a.x - b.x) * (c.y - a.y);
 }
 
-export { d3$geom$voronoi };
+export { d3$geom$voronoi, d3_geom_voronoiTriangleArea, d3_geom_voronoiClipExtent };

@@ -9,4 +9,4 @@ function d3_vendorSymbol(object, name) {
 
 var d3_vendorPrefixes = ["webkit", "ms", "moz", "Moz", "o", "O"];
 
-export {  };
+export { d3_vendorPrefixes, d3_vendorSymbol };

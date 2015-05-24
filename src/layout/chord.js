@@ -1,6 +1,9 @@
 import { τ } from '../math/trigonometry';
 
-var d3$layout$chord = function() {
+var d3$layout$chord;
+var undefined;
+
+d3$layout$chord = function() {
   var chord = {},
       chords,
       groups,
@@ -14,7 +17,7 @@ var d3$layout$chord = function() {
   function relayout() {
     var subgroups = {},
         groupSums = [],
-        groupIndex = d3.range(n),
+        groupIndex = d3$range(n),
         subgroupIndex = [],
         k,
         x,
@@ -31,7 +34,7 @@ var d3$layout$chord = function() {
         x += matrix[i][j];
       }
       groupSums.push(x);
-      subgroupIndex.push(d3.range(n));
+      subgroupIndex.push(d3$range(n));
       k += x;
     }
 

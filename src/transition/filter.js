@@ -1,6 +1,8 @@
 import { d3_transition, d3_transitionPrototype } from './transition';
 import { d3_selection_filter } from '../selection/filter';
 
+var undefined;
+
 d3_transitionPrototype.filter = function(filter) {
   var subgroups = [],
       subgroup,

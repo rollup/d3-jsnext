@@ -1,7 +1,10 @@
 import { d3_Set } from '../arrays/set';
 import { d3_xhr } from '../xhr/xhr';
 
-var d3$dsv = function(delimiter, mimeType) {
+var d3$dsv;
+var undefined;
+
+d3$dsv = function(delimiter, mimeType) {
   var reFormat = new RegExp("[\"" + delimiter + "\n]"),
       delimiterCode = delimiter.charCodeAt(0);
 

@@ -17,4 +17,4 @@ function d3_interpolateHcl(a, b) {
   };
 }
 
-export { d3_interpolateHcl };
+export { d3_interpolateHcl, d3_interpolateHcl };

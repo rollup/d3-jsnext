@@ -176,4 +176,4 @@ function d3_geo_clipCircle(radius) {
   }
 }
 
-export {  };
+export { d3_geo_clipCircle };

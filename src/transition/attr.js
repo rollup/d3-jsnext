@@ -3,6 +3,8 @@ import { d3_transition_tween } from './tween';
 import { d3_interpolate } from '../interpolate/interpolate';
 import { d3_interpolateTransform } from '../interpolate/transform';
 
+var undefined;
+
 d3_transitionPrototype.attr = function(nameNS, value) {
   if (arguments.length < 2) {
 

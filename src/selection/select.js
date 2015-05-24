@@ -1,5 +1,7 @@
 import { d3_select, d3_selection, d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.select = function(selector) {
   var subgroups = [],
       subgroup,
@@ -31,4 +33,4 @@ function d3_selection_selector(selector) {
   };
 }
 
-export {  };
+export { d3_selection_selector };

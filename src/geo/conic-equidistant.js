@@ -3,6 +3,9 @@ import { d3_sgn, ε } from '../math/trigonometry';
 import { d3_geo_equirectangular } from './equirectangular';
 import { abs } from '../math/abs';
 
+var d3$geo$conicEquidistant;
+var undefined;
+
 function d3_geo_conicEquidistant(φ0, φ1) {
   var cosφ0 = Math.cos(φ0),
       n = φ0 === φ1 ? Math.sin(φ0) : (cosφ0 - Math.cos(φ1)) / (φ1 - φ0),
@@ -29,8 +32,8 @@ function d3_geo_conicEquidistant(φ0, φ1) {
   return forward;
 }
 
-(var d3$geo$conicEquidistant = function() {
+(d3$geo$conicEquidistant = function() {
   return d3_geo_conic(d3_geo_conicEquidistant);
 }).raw = d3_geo_conicEquidistant;
 
-export { d3$geo$conicEquidistant };
+export { d3$geo$conicEquidistant, d3_geo_conicEquidistant };

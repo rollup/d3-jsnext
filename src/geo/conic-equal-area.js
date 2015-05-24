@@ -1,6 +1,9 @@
 import { d3_geo_conic } from './conic';
 import { d3_asin } from '../math/trigonometry';
 
+var d3$geo$conicEqualArea;
+var undefined;
+
 function d3_geo_conicEqualArea(φ0, φ1) {
   var sinφ0 = Math.sin(φ0),
       n = (sinφ0 + Math.sin(φ1)) / 2,
@@ -26,8 +29,8 @@ function d3_geo_conicEqualArea(φ0, φ1) {
   return forward;
 }
 
-(var d3$geo$conicEqualArea = function() {
+(d3$geo$conicEqualArea = function() {
   return d3_geo_conic(d3_geo_conicEqualArea);
 }).raw = d3_geo_conicEqualArea;
 
-export { d3$geo$conicEqualArea };
+export { d3$geo$conicEqualArea, d3_geo_conicEqualArea };

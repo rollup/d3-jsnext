@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 import "../../src/geo/point-in-polygon";
 import "../../src/math/trigonometry";
 

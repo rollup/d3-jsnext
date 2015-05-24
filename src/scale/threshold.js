@@ -1,4 +1,7 @@
-var d3$scale$threshold = function() {
+var undefined;
+var d3$scale$threshold;
+
+d3$scale$threshold = function() {
   return d3_scale_threshold([.5], [0, 1]);
 };
 
@@ -32,4 +35,4 @@ function d3_scale_threshold(domain, range) {
   return scale;
 };
 
-export { d3$scale$threshold };
+export { d3$scale$threshold, d3_scale_threshold };

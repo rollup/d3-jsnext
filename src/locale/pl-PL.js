@@ -13,4 +13,4 @@ var d3_locale_pl_PL = d3$locale({
   shortMonths: ["Stycz.", "Luty", "Marz.", "Kwie.", "Maj", "Czerw.", "Lipc.", "Sierp.", "Wrz.", "Paźdz.", "Listop.", "Grudz."]/* In Polish language abbraviated months are not commonly used so there is a dispute about the proper abbraviations. */
 });
 
-export {  };
+export { d3_locale_pl_PL };

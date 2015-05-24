@@ -6,4 +6,4 @@ function d3_scale_bilinear(domain, range, uninterpolate, interpolate) {
   };
 }
 
-export {  };
+export { d3_scale_bilinear };

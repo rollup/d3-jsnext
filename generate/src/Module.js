@@ -1,9 +1,9 @@
 import { dirname, relative } from 'path';
 import { parse } from 'acorn';
 import MagicString from 'magic-string';
-import attachScopes from '../ast/attachScopes';
-import walk from '../ast/walk';
-import createAlias from '../utils/createAlias';
+import attachScopes from './ast/attachScopes';
+import walk from './ast/walk';
+import createAlias from './utils/createAlias';
 
 function isIdentifier ( node, parent ) {
 	if ( node.type !== 'Identifier' ) return false;
@@ -112,16 +112,22 @@ export default class Module {
 			}
 		});
 
-		this.allNodes.sort( ( a, b ) => {
-			return a.start - b.start;
-		});
+		this.allNodes.sort( ( a, b ) => a.start - b.start );
 	}
 
-	render ( pathByName, namesByPath, internalNameByExportName, exportNameByInternalName ) {
+	render ({
+		pathByExportName,
+		exportNamesByPath,
+		pathByInternalName,
+		internalNamesByPath,
+		internalNameByExportName,
+		exportNameByInternalName
+	}) {
 		const self = this;
 		const magicString = this.magicString;
 
 		let scope = this.ast._scope;
+		let varsToDeclare = {};
 
 		walk( this.ast, {
 			enter ( node, parent ) {
@@ -129,11 +135,20 @@ export default class Module {
 					scope = node._scope;
 				}
 
+				// rewrite top-level `this` as `window`
+				if ( node.type === 'ThisExpression' && !scope.parent ) {
+					magicString.overwrite( node.start, node.end, 'window' );
+				}
+
 				// remove e.g. `d3.ascending = d3_ascending`
 				if ( node._shouldRemove ) {
-					const nextNode = findNextNode( self.allNodes, node );
+					let end = node.end;
+					const remaining = magicString.slice( end );
+					const match = /^;\n*/.exec( remaining );
 
-					magicString.remove( node.start, nextNode ? nextNode.start : node.end );
+					if ( match ) end += match[0].length;
+
+					magicString.remove( node.start, end );
 					return this.skip();
 				}
 
@@ -143,11 +158,7 @@ export default class Module {
 
 					if ( keypath ) {
 						const alias = internalNameByExportName[ keypath ] || createAlias( keypath );
-
-						if ( alias ) {
-							magicString.overwrite( node.start, node.left.end, `var ${alias}` );
-							return this.skip();
-						}
+						varsToDeclare[ alias ] = true;
 					}
 				}
 
@@ -175,7 +186,7 @@ export default class Module {
 
 		let dependencies = {};
 		Object.keys( this.dependencies ).forEach( name => {
-			const owner = pathByName[ name ];
+			const owner = pathByInternalName[ name ];
 
 			if ( !owner ) return;
 
@@ -189,6 +200,14 @@ export default class Module {
 			dependencies[ relativePath ].push( name );
 		});
 
+		const varDeclarationBlock = Object.keys( varsToDeclare )
+			.map( name => `var ${name};` )
+			.join( '\n' );
+
+		if ( varDeclarationBlock ) {
+			magicString.prepend( varDeclarationBlock + '\n\n' );
+		}
+
 		const importBlock = Object.keys( dependencies ).map( relativePath => {
 			const names = dependencies[ relativePath ];
 			return `import { ${names.join( ', ' )} } from '${relativePath}';`
@@ -198,12 +217,18 @@ export default class Module {
 			magicString.prepend( importBlock + '\n\n' );
 		}
 
-		const shouldExport = namesByPath[ this.file ]
+		const shouldExport = exportNamesByPath[ this.file ]
 			.map( name => {
 				const alias = internalNameByExportName[ name ] || createAlias( name );
 				return alias;
 			})
-			.filter( Boolean );
+			.concat( internalNamesByPath[ this.file ]);
+			// .map( name => {
+			// 	console.log( '%s should export %s', this.file, name );
+			// 	const alias = internalNameByExportName[ name ] || createAlias( name );
+			// 	return alias;
+			// })
+			// .filter( Boolean );
 
 		const exportBlock = `\n\nexport { ${shouldExport.join(', ')} };`
 

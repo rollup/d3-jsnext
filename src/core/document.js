@@ -1,4 +1,4 @@
-var d3_document = this.document;
+var d3_document = window.document;
 
 function d3_documentElement(node) {
   return node
@@ -14,4 +14,4 @@ function d3_window(node) {
         || node.defaultView); // node is a Document
 }
 
-export {  };
+export { d3_window, d3_documentElement, d3_document };

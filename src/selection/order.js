@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.order = function() {
   for (var j = -1, m = this.length; ++j < m;) {
     for (var group = this[j], i = group.length - 1, next = group[i], node; --i >= 0;) {

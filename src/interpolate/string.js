@@ -1,5 +1,7 @@
 import { d3_interpolateNumber } from './number';
 
+var undefined;
+
 function d3_interpolateString(a, b) {
   var bi = d3_interpolate_numberA.lastIndex = d3_interpolate_numberB.lastIndex = 0, // scan index for next number in b
       am, // current match in a
@@ -51,4 +53,4 @@ function d3_interpolateString(a, b) {
 var d3_interpolate_numberA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
     d3_interpolate_numberB = new RegExp(d3_interpolate_numberA.source, "g");
 
-export { d3_interpolateString };
+export { d3_interpolateString, d3_interpolate_numberA, d3_interpolate_numberB, d3_interpolateString };

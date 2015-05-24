@@ -1,8 +1,11 @@
 import { d3_target } from '../core/target';
 import { d3_source } from '../core/source';
 
+var d3$geo$greatArc;
+var undefined;
+
 // @deprecated use {type: "LineString"} or d3.geo.distance instead.
-var d3$geo$greatArc = function() {
+d3$geo$greatArc = function() {
   var source = d3_source, source_,
       target = d3_target, target_;
 
@@ -14,7 +17,7 @@ var d3$geo$greatArc = function() {
   }
 
   greatArc.distance = function() {
-    return d3.geo.distance(
+    return d3$geo$distance(
       source_ || source.apply(this, arguments),
       target_ || target.apply(this, arguments)
     );

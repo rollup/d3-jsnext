@@ -1,7 +1,7 @@
-var assert = require("assert"),
-    _ = require("./d3");
+import _assert from 'assert';
+import { round } from '../src/index';
 
-assert = module.exports = Object.create(assert);
+const assert = Object.create(_assert);
 
 assert.isArray = function(actual, message) {
   if (!Array.isArray(actual)) {
@@ -151,3 +151,5 @@ function formatPath(path) {
 function formatNumber(s) {
   return Math.abs((s = +s) - Math.floor(s)) < 1e-6 ? Math.floor(s) : s.toFixed(6);
 }
+
+export default assert;

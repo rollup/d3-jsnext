@@ -4,7 +4,10 @@ import { d3_geo_area, d3_geo_areaRingSum } from './area';
 import { d3_geo_spherical } from './spherical';
 import { d3_geo_cartesianNormalize, d3_geo_cartesianCross, d3_geo_cartesian } from './cartesian';
 
-var d3$geo$bounds = (function() {
+var d3$geo$bounds;
+var undefined;
+
+d3$geo$bounds = (function() {
   var λ0, φ0, λ1, φ1, // bounds
       λ_, // previous λ-coordinate
       λ__, φ__, // first point
@@ -132,7 +135,7 @@ var d3$geo$bounds = (function() {
     φ1 = λ1 = -(λ0 = φ0 = Infinity);
     ranges = [];
 
-    d3.geo.stream(feature, bound);
+    d3$geo$stream(feature, bound);
 
     var n = ranges.length;
     if (n) {

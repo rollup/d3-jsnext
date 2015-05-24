@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 #!/usr/bin/env node
 
 var d3 = require("../d3");

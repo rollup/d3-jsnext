@@ -8,7 +8,10 @@ import { d3_uninterpolateNumber, d3_uninterpolateClamp } from '../interpolate/un
 import { d3_scale_bilinear } from './bilinear';
 import { d3_scale_polylinear } from './polylinear';
 
-var d3$scale$linear = function() {
+var undefined;
+var d3$scale$linear;
+
+d3$scale$linear = function() {
   return d3_scale_linear([0, 1], [0, 1], d3_interpolate, false);
 };
 
@@ -155,4 +158,4 @@ function d3_scale_linearFormatPrecision(type, range) {
       : p - (type === "%") * 2;
 }
 
-export { d3$scale$linear };
+export { d3$scale$linear, d3_scale_linearFormatPrecision, d3_scale_linearPrecision, d3_scale_linearFormatSignificant, d3_scale_linearTickFormat, d3_scale_linearTicks, d3_scale_linearTickRange, d3_scale_linearNice, d3_scale_linearRebind, d3_scale_linear };

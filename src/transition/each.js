@@ -1,6 +1,8 @@
 import { d3_selection_each } from '../selection/each';
 import { d3_transitionInheritId, d3_transitionInherit, d3_transitionPrototype } from './transition';
 
+var undefined;
+
 d3_transitionPrototype.each = function(type, listener) {
   var id = this.id, ns = this.namespace;
   if (arguments.length < 2) {

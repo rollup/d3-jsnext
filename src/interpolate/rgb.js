@@ -17,4 +17,4 @@ function d3_interpolateRgb(a, b) {
   };
 }
 
-export { d3_interpolateRgb };
+export { d3_interpolateRgb, d3_interpolateRgb };

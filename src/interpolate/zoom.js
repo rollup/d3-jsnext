@@ -1,12 +1,15 @@
 import { d3_cosh, d3_sinh, d3_tanh } from '../math/trigonometry';
 
+var d3$interpolateZoom;
+var undefined;
+
 var ρ = Math.SQRT2,
     ρ2 = 2,
     ρ4 = 4;
 
 // p0 = [ux0, uy0, w0]
 // p1 = [ux1, uy1, w1]
-var d3$interpolateZoom = function(p0, p1) {
+d3$interpolateZoom = function(p0, p1) {
   var ux0 = p0[0], uy0 = p0[1], w0 = p0[2],
       ux1 = p1[0], uy1 = p1[1], w1 = p1[2];
 
@@ -46,4 +49,4 @@ var d3$interpolateZoom = function(p0, p1) {
   return interpolate;
 };
 
-export { d3$interpolateZoom };
+export { d3$interpolateZoom, ρ, ρ2, ρ4 };

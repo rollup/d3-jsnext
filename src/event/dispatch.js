@@ -1,6 +1,9 @@
 import { d3_Map } from '../arrays/map';
 
-var d3$dispatch = function() {
+var undefined;
+var d3$dispatch;
+
+d3$dispatch = function() {
   var dispatch = new d3_dispatch,
       i = -1,
       n = arguments.length;
@@ -68,4 +71,4 @@ function d3_dispatch_event(dispatch) {
   return event;
 }
 
-export { d3$dispatch };
+export { d3$dispatch, d3_dispatch_event, d3_dispatch };

@@ -13,4 +13,4 @@ var d3_locale_itIT = d3$locale({
   shortMonths: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
 });
 
-export {  };
+export { d3_locale_itIT };

@@ -2,6 +2,9 @@ import { d3_cross2d } from '../math/trigonometry';
 import { d3_functor } from '../core/functor';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
 
+var d3$geom$hull;
+var undefined;
+
 /**
  * Computes the 2D convex hull of a set of points using the monotone chain
  * algorithm:
@@ -13,7 +16,7 @@ import { d3_geom_pointY, d3_geom_pointX } from './point';
  * @param vertices [[x1, y1], [x2, y2], ...]
  * @returns polygon [[x1, y1], [x2, y2], ...]
  */
-var d3$geom$hull = function(vertices) {
+d3$geom$hull = function(vertices) {
   var x = d3_geom_pointX,
       y = d3_geom_pointY;
 
@@ -89,4 +92,4 @@ function d3_geom_hullOrder(a, b) {
   return a[0] - b[0] || a[1] - b[1];
 }
 
-export { d3$geom$hull };
+export { d3$geom$hull, d3_geom_hullOrder, d3_geom_hullUpper };

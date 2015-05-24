@@ -1,4 +1,7 @@
-var d3$geo$transform = function(methods) {
+var undefined;
+var d3$geo$transform;
+
+d3$geo$transform = function(methods) {
   return {
     stream: function(stream) {
       var transform = new d3_geo_transform(stream);
@@ -32,4 +35,4 @@ function d3_geo_transformPoint(stream, point) {
   };
 }
 
-export { d3$geo$transform };
+export { d3$geo$transform, d3_geo_transformPoint, d3_geo_transform };

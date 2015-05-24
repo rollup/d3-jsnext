@@ -2,4 +2,4 @@ function d3_identity(d) {
   return d;
 }
 
-export {  };
+export { d3_identity };

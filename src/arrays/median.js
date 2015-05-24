@@ -1,7 +1,9 @@
 import { d3_ascending } from './ascending';
 import { d3_number, d3_numeric } from '../math/number';
 
-var d3$median = function(array, f) {
+var d3$median;
+
+d3$median = function(array, f) {
   var numbers = [],
       n = array.length,
       a,
@@ -11,7 +13,7 @@ var d3$median = function(array, f) {
   } else {
     while (++i < n) if (d3_numeric(a = d3_number(f.call(array, array[i], i)))) numbers.push(a);
   }
-  if (numbers.length) return d3.quantile(numbers.sort(d3_ascending), .5);
+  if (numbers.length) return d3$quantile(numbers.sort(d3_ascending), .5);
 };
 
 export { d3$median };

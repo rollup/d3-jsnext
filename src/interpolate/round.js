@@ -3,4 +3,4 @@ function d3_interpolateRound(a, b) {
   return function(t) { return Math.round(a + b * t); };
 }
 
-export { d3_interpolateRound };
+export { d3_interpolateRound, d3_interpolateRound };

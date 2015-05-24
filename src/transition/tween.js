@@ -1,6 +1,8 @@
 import { d3_selection_each } from '../selection/each';
 import { d3_transitionPrototype } from './transition';
 
+var undefined;
+
 d3_transitionPrototype.tween = function(name, tween) {
   var id = this.id, ns = this.namespace;
   if (arguments.length < 2) return this.node()[ns][id].tween.get(name);
@@ -16,4 +18,4 @@ function d3_transition_tween(groups, name, value, tween) {
       : (value = tween(value), function(node) { node[ns][id].tween.set(name, value); }));
 }
 
-export {  };
+export { d3_transition_tween };

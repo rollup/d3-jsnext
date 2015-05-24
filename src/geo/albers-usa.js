@@ -1,20 +1,23 @@
 import { ε } from '../math/trigonometry';
 
+var d3$geo$albersUsa;
+var undefined;
+
 // A composite projection for the United States, configured by default for
 // 960×500. Also works quite well at 960×600 with scale 1285. The set of
 // standard parallels for each region comes from USGS, which is published here:
 // http://egsc.usgs.gov/isb/pubs/MapProjections/projections.html#albers
-var d3$geo$albersUsa = function() {
-  var lower48 = d3.geo.albers();
+d3$geo$albersUsa = function() {
+  var lower48 = d3$geo$albers();
 
   // EPSG:3338
-  var alaska = d3.geo.conicEqualArea()
+  var alaska = d3$geo$conicEqualArea()
       .rotate([154, 0])
       .center([-2, 58.5])
       .parallels([55, 65]);
 
   // ESRI:102007
-  var hawaii = d3.geo.conicEqualArea()
+  var hawaii = d3$geo$conicEqualArea()
       .rotate([157, 0])
       .center([-3, 19.9])
       .parallels([8, 18]);

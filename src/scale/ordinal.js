@@ -1,7 +1,10 @@
 import { d3_scaleExtent } from './scale';
 import { d3_Map } from '../arrays/map';
 
-var d3$scale$ordinal = function() {
+var undefined;
+var d3$scale$ordinal;
+
+d3$scale$ordinal = function() {
   return d3_scale_ordinal([], {t: "range", a: [[]]});
 };
 
@@ -100,4 +103,4 @@ function d3_scale_ordinal(domain, ranger) {
   return scale.domain(domain);
 }
 
-export { d3$scale$ordinal };
+export { d3$scale$ordinal, d3_scale_ordinal };

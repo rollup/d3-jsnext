@@ -1,6 +1,8 @@
 import { d3_class } from '../core/class';
 
-var d3$map = function(object, f) {
+var d3$map;
+
+d3$map = function(object, f) {
   var map = new d3_Map;
   if (object instanceof d3_Map) {
     object.forEach(function(key, value) { map.set(key, value); });
@@ -83,4 +85,4 @@ function d3_map_empty() {
   return true;
 }
 
-export { d3$map };
+export { d3$map, d3_map_empty, d3_map_size, d3_map_keys, d3_map_remove, d3_map_has, d3_map_unescape, d3_map_escape, d3_map_proto, d3_map_zero, d3_Map };

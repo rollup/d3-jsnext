@@ -12,4 +12,4 @@ function d3_geo_sphericalEqual(a, b) {
   return abs(a[0] - b[0]) < ε && abs(a[1] - b[1]) < ε;
 }
 
-export {  };
+export { d3_geo_sphericalEqual, d3_geo_spherical };

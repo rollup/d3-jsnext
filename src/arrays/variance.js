@@ -1,6 +1,8 @@
 import { d3_number, d3_numeric } from '../math/number';
 
-var d3$variance = function(array, f) {
+var d3$variance;
+
+d3$variance = function(array, f) {
   var n = array.length,
       m = 0,
       a,

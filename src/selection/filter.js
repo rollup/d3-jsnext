@@ -1,5 +1,7 @@
 import { d3_selectMatches, d3_selection, d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.filter = function(filter) {
   var subgroups = [],
       subgroup,
@@ -27,4 +29,4 @@ function d3_selection_filter(selector) {
   };
 }
 
-export {  };
+export { d3_selection_filter };

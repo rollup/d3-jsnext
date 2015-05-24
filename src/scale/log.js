@@ -2,8 +2,11 @@ import { d3_scale_linearRebind } from './linear';
 import { d3_scaleExtent } from './scale';
 import { d3_scale_nice } from './nice';
 
-var d3$scale$log = function() {
-  return d3_scale_log(d3.scale.linear().domain([0, 1]), 10, true, [1, 10]);
+var undefined;
+var d3$scale$log;
+
+d3$scale$log = function() {
+  return d3_scale_log(d3$scale$linear().domain([0, 1]), 10, true, [1, 10]);
 };
 
 function d3_scale_log(linear, base, positive, domain) {
@@ -90,4 +93,4 @@ function d3_scale_log(linear, base, positive, domain) {
 var d3_scale_logFormat = d3$format(".0e"),
     d3_scale_logNiceNegative = {floor: function(x) { return -Math.ceil(-x); }, ceil: function(x) { return -Math.floor(-x); }};
 
-export { d3$scale$log };
+export { d3$scale$log, d3_scale_logFormat, d3_scale_logNiceNegative, d3_scale_log };

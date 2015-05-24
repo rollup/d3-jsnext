@@ -1,6 +1,9 @@
 import { d3_functor } from '../core/functor';
 
-var d3$layout$histogram = function() {
+var d3$layout$histogram;
+var undefined;
+
+d3$layout$histogram = function() {
   var frequency = true,
       valuer = Number,
       ranger = d3_layout_histogramRange,
@@ -30,7 +33,7 @@ var d3$layout$histogram = function() {
       i = -1; while(++i < n) {
         x = values[i];
         if (x >= range[0] && x <= range[1]) {
-          bin = bins[d3.bisect(thresholds, x, 1, m) - 1];
+          bin = bins[d3$bisect(thresholds, x, 1, m) - 1];
           bin.y += k;
           bin.push(data[i]);
         }
@@ -105,4 +108,4 @@ function d3_layout_histogramRange(values) {
   return [d3$min(values), d3$max(values)];
 }
 
-export { d3$layout$histogram };
+export { d3$layout$histogram, d3_layout_histogramRange, d3_layout_histogramBinFixed, d3_layout_histogramBinSturges };

@@ -94,4 +94,4 @@ function d3_geo_clipAntimeridianInterpolate(from, to, direction, listener) {
   }
 }
 
-export {  };
+export { d3_geo_clipAntimeridianInterpolate, d3_geo_clipAntimeridianIntersect, d3_geo_clipAntimeridianLine, d3_geo_clipAntimeridian };

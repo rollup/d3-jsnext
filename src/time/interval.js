@@ -1,5 +1,7 @@
 import { d3_date, d3_date_utc } from './time';
 
+var undefined;
+
 function d3_time_interval(local, step, number) {
 
   function round(date) {
@@ -70,4 +72,4 @@ function d3_time_interval_utc(method) {
   };
 }
 
-export {  };
+export { d3_time_interval_utc, d3_time_interval };

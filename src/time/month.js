@@ -1,6 +1,8 @@
 import { d3_time } from './time';
 import { d3_time_interval } from './interval';
 
+var undefined;
+
 d3_time.month = d3_time_interval(function(date) {
   date = d3_time.day(date);
   date.setDate(1);

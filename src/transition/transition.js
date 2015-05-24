@@ -4,6 +4,9 @@ import { d3_Map } from '../arrays/map';
 import { d3_selectionPrototype } from '../selection/selection';
 import { d3_subclass } from '../core/subclass';
 
+var undefined;
+var d3$transition;
+
 function d3_transition(groups, ns, id) {
   d3_subclass(groups, d3_transitionPrototype);
 
@@ -24,10 +27,10 @@ d3_transitionPrototype.empty = d3_selectionPrototype.empty;
 d3_transitionPrototype.node = d3_selectionPrototype.node;
 d3_transitionPrototype.size = d3_selectionPrototype.size;
 
-var d3$transition = function(selection, name) {
+d3$transition = function(selection, name) {
   return selection && selection.transition
       ? (d3_transitionInheritId ? selection.transition(name) : selection)
-      : d3.selection().transition(selection);
+      : d3$selection().transition(selection);
 };
 
 function d3_transitionNamespace(name) {
@@ -121,4 +124,4 @@ function d3_transitionNode(node, i, ns, id, inherit) {
   }
 }
 
-export { d3_transitionPrototype, d3$transition };
+export { d3_transitionPrototype, d3$transition, d3_transitionNode, d3_transitionNamespace, d3_transitionPrototype, d3_transitionId, d3_transitionInheritId, d3_transitionInherit, d3_transition };

@@ -1,6 +1,8 @@
 import { π } from '../math/trigonometry';
 import { d3_geo_projectionMutator } from './projection';
 
+var undefined;
+
 function d3_geo_conic(projectAt) {
   var φ0 = 0,
       φ1 = π / 3,
@@ -15,4 +17,4 @@ function d3_geo_conic(projectAt) {
   return p;
 }
 
-export {  };
+export { d3_geo_conic };

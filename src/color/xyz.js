@@ -6,4 +6,4 @@ function d3_xyz_rgb(r) {
   return Math.round(255 * (r <= 0.00304 ? 12.92 * r : 1.055 * Math.pow(r, 1 / 2.4) - 0.055));
 }
 
-export {  };
+export { d3_xyz_rgb, d3_xyz_lab };

@@ -3,6 +3,8 @@ import { d3_lab, d3_lab_K, d3_lab_hcl } from './lab';
 import { d3_color } from './color';
 import { d3_rgb_lab } from './rgb';
 
+var undefined;
+
 function d3_hcl(h, c, l) {
   return this instanceof d3_hcl ? void (this.h = +h, this.c = +c, this.l = +l)
       : arguments.length < 2 ? (h instanceof d3_hcl ? new d3_hcl(h.h, h.c, h.l)
@@ -31,4 +33,4 @@ function d3_hcl_lab(h, c, l) {
   return new d3_lab(l, Math.cos(h *= d3_radians) * c, Math.sin(h) * c);
 }
 
-export { d3_hcl };
+export { d3_hcl, d3_hcl_lab, d3_hclPrototype, d3_hcl };

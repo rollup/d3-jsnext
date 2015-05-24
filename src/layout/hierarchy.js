@@ -1,4 +1,7 @@
-var d3$layout$hierarchy = function() {
+var undefined;
+var d3$layout$hierarchy;
+
+d3$layout$hierarchy = function() {
   var sort = d3_layout_hierarchySort,
       children = d3_layout_hierarchyChildren,
       value = d3_layout_hierarchyValue;
@@ -131,4 +134,4 @@ function d3_layout_hierarchyLinks(nodes) {
   }));
 }
 
-export { d3$layout$hierarchy };
+export { d3$layout$hierarchy, d3_layout_hierarchyLinks, d3_layout_hierarchySort, d3_layout_hierarchyValue, d3_layout_hierarchyChildren, d3_layout_hierarchyVisitAfter, d3_layout_hierarchyVisitBefore, d3_layout_hierarchyRebind };

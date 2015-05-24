@@ -2,4 +2,4 @@ function d3_target(d) {
   return d.target;
 }
 
-export {  };
+export { d3_target };

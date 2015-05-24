@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.property = function(name, value) {
   if (arguments.length < 2) {
 
@@ -42,4 +44,4 @@ function d3_selection_property(name, value) {
       ? propertyFunction : propertyConstant);
 }
 
-export {  };
+export { d3_selection_property };

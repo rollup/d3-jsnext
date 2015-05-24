@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var vows = require("vows"),
     assert = require("./assert");
 

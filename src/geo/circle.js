@@ -3,7 +3,10 @@ import { d3_geo_cartesianNormalize, d3_geo_cartesian } from './cartesian';
 import { d3_geo_spherical } from './spherical';
 import { d3_geo_rotation } from './rotation';
 
-var d3$geo$circle = function() {
+var d3$geo$circle;
+var undefined;
+
+d3$geo$circle = function() {
   var origin = [0, 0],
       angle,
       precision = 6,
@@ -79,4 +82,4 @@ function d3_geo_circleAngle(cr, point) {
   return ((-a[2] < 0 ? -angle : angle) + 2 * Math.PI - ε) % (2 * Math.PI);
 }
 
-export { d3$geo$circle };
+export { d3$geo$circle, d3_geo_circleAngle, d3_geo_circleInterpolate };

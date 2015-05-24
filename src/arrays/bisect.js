@@ -1,5 +1,10 @@
 import { d3_ascending } from './ascending';
 
+var d3$bisector;
+var d3$bisect;
+var d3$bisectRight;
+var d3$bisectLeft;
+
 function d3_bisector(compare) {
   return {
     left: function(a, x, lo, hi) {
@@ -26,13 +31,13 @@ function d3_bisector(compare) {
 }
 
 var d3_bisect = d3_bisector(d3_ascending);
-var d3$bisectLeft = d3_bisect.left;
-var d3$bisect = d3.bisectRight = d3_bisect.right;
+d3$bisectLeft = d3_bisect.left;
+d3$bisect = d3$bisectRight = d3_bisect.right;
 
-var d3$bisector = function(f) {
+d3$bisector = function(f) {
   return d3_bisector(f.length === 1
       ? function(d, x) { return d3_ascending(f(d), x); }
       : f);
 };
 
-export { d3$bisector, d3$bisect, d3$bisectRight, d3$bisectLeft };
+export { d3$bisector, d3$bisect, d3$bisectRight, d3$bisectLeft, d3_bisect, d3_bisector };

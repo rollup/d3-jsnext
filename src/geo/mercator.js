@@ -1,6 +1,9 @@
 import { π, halfπ } from '../math/trigonometry';
 import { d3_geo_projection } from './projection';
 
+var d3$geo$mercator;
+var undefined;
+
 function d3_geo_mercator(λ, φ) {
   return [λ, Math.log(Math.tan(π / 4 + φ / 2))];
 }
@@ -42,8 +45,8 @@ function d3_geo_mercatorProjection(project) {
   return m.clipExtent(null);
 }
 
-(var d3$geo$mercator = function() {
+(d3$geo$mercator = function() {
   return d3_geo_mercatorProjection(d3_geo_mercator);
 }).raw = d3_geo_mercator;
 
-export { d3$geo$mercator };
+export { d3$geo$mercator, d3_geo_mercatorProjection, d3_geo_mercator };

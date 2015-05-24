@@ -1,4 +1,6 @@
-var d3$locale$ru_RU = d3.locale({
+var d3$locale$ru_RU;
+
+d3$locale$ru_RU = d3$locale({
   decimal: ",",
   thousands: "\xa0",
   grouping: [3],

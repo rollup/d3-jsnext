@@ -1,6 +1,9 @@
 import { d3_degrees, d3_haversin, d3_radians } from '../math/trigonometry';
 
-var d3$geo$interpolate = function(source, target) {
+var undefined;
+var d3$geo$interpolate;
+
+d3$geo$interpolate = function(source, target) {
   return d3_geo_interpolate(
     source[0] * d3_radians, source[1] * d3_radians,
     target[0] * d3_radians, target[1] * d3_radians
@@ -36,4 +39,4 @@ function d3_geo_interpolate(x0, y0, x1, y1) {
   return interpolate;
 };
 
-export { d3$geo$interpolate };
+export { d3$geo$interpolate, d3_geo_interpolate };

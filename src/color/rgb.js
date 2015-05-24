@@ -3,6 +3,8 @@ import { d3_xyz_lab } from './xyz';
 import { d3_hsl, d3_hsl_rgb } from './hsl';
 import { d3_color } from './color';
 
+var undefined;
+
 function d3_rgb(r, g, b) {
   return this instanceof d3_rgb ? void (this.r = ~~r, this.g = ~~g, this.b = ~~b)
       : arguments.length < 2 ? (r instanceof d3_rgb ? new d3_rgb(r.r, r.g, r.b)
@@ -297,4 +299,4 @@ d3_rgb_names.forEach(function(key, value) {
   d3_rgb_names.set(key, d3_rgbNumber(value));
 });
 
-export { d3_rgb };
+export { d3_rgb, d3_rgb_names, d3_rgb_parseNumber, d3_rgb_xyz, d3_rgb_lab, d3_rgb_hsl, d3_rgb_parse, d3_rgb_hex, d3_rgbPrototype, d3_rgbString, d3_rgbNumber, d3_rgb };

@@ -6,4 +6,4 @@ function d3_geom_pointY(d) {
   return d[1];
 }
 
-export {  };
+export { d3_geom_pointY, d3_geom_pointX };

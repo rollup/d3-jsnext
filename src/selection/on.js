@@ -3,6 +3,8 @@ import { d3_noop } from '../core/noop';
 import { d3_array } from '../core/array';
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 d3_selectionPrototype.on = function(type, listener, capture) {
   var n = arguments.length;
   if (n < 3) {
@@ -82,11 +84,15 @@ if (d3_document) {
 function d3_selection_onListener(listener, argumentz) {
   return function(e) {
     var o = event; // Events can be reentrant (e.g., focus).
-    argumentz[0] = this.__data__;
+        argumentz[0] = this.__data__;
     try {
       listener.apply(this, argumentz);
     } finally {
-      function d3_selection_onFilter(listener, argumentz) {
+          }
+  };
+}
+
+function d3_selection_onFilter(listener, argumentz) {
   var l = d3_selection_onListener(listener, argumentz);
   return function(e) {
     var target = this, related = e.relatedTarget;
@@ -96,4 +102,4 @@ function d3_selection_onListener(listener, argumentz) {
   };
 }
 
-export { event, event };
+export { event, event, d3_selection_onFilter, d3_selection_onListener, d3_selection_onFilters, d3_selection_on };

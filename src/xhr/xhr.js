@@ -1,7 +1,10 @@
 import { d3_array } from '../core/array';
 import { d3_identity } from '../core/identity';
 
-var d3$xhr = d3_xhrType(d3_identity);
+var undefined;
+var d3$xhr;
+
+d3$xhr = d3_xhrType(d3_identity);
 
 function d3_xhrType(response) {
   return function(url, mimeType, callback) {
@@ -43,8 +46,11 @@ function d3_xhr(url, mimeType, response, callback) {
 
   request.onprogress = function(event) {
     var o = event;
-    try { dispatch.progress.call(xhr, request); }
-    finally { xhr.header = function(name, value) {
+        try { dispatch.progress.call(xhr, request); }
+    finally {  }
+  };
+
+  xhr.header = function(name, value) {
     name = (name + "").toLowerCase();
     if (arguments.length < 2) return headers[name];
     if (value == null) delete headers[name];
@@ -118,4 +124,4 @@ function d3_xhrHasResponse(request) {
       : request.responseText; // "" on error
 }
 
-export { event, event, d3$xhr };
+export { event, event, d3$xhr, d3_xhrHasResponse, d3_xhr_fixCallback, d3_xhr, d3_xhrType };

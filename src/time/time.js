@@ -1,4 +1,7 @@
-var d3_time = var d3$time = {},
+var undefined;
+var d3$time;
+
+var d3_time = d3$time = {},
     d3_date = Date;
 
 function d3_date_utc() {
@@ -32,4 +35,4 @@ d3_date_utc.prototype = {
 
 var d3_time_prototype = Date.prototype;
 
-export { d3$time };
+export { d3$time, d3_time_prototype, d3_date_utc, d3_time, d3_date };

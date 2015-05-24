@@ -6,13 +6,15 @@ import { d3_color } from '../color/color';
 import { d3_interpolateString } from './string';
 import { d3_rgb_names } from '../color/rgb';
 
+var d3$interpolators;
+
 function d3_interpolate(a, b) {
   var i = d3$interpolators$length, f;
   while (--i >= 0 && !(f = d3$interpolators[i](a, b)));
   return f;
 }
 
-var d3$interpolators = [
+d3$interpolators = [
   function(a, b) {
     var t = typeof b;
     return (t === "string" ? (d3_rgb_names.has(b) || /^(#|rgb\(|hsl\()/.test(b) ? d3_interpolateRgb : d3_interpolateString)
@@ -23,4 +25,4 @@ var d3$interpolators = [
   }
 ];
 
-export { d3$interpolators, d3_interpolate };
+export { d3$interpolators, d3_interpolate, d3_interpolate };

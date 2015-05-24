@@ -1,5 +1,7 @@
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 // TODO remove(selector)?
 // TODO remove(node)?
 // TODO remove(function)?
@@ -12,4 +14,4 @@ function d3_selectionRemove() {
   if (parent) parent.removeChild(this);
 }
 
-export {  };
+export { d3_selectionRemove };

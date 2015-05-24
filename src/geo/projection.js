@@ -8,6 +8,8 @@ import { d3_geo_clipCircle } from './clip-circle';
 import { d3_geo_clipAntimeridian } from './clip-antimeridian';
 import { d3_geo_resample } from './resample';
 
+var undefined;
+
 function d3_geo_projection(project) {
   return d3_geo_projectionMutator(function() { return project; })();
 }
@@ -114,4 +116,4 @@ function d3_geo_projectionRadians(stream) {
   });
 }
 
-export { d3_geo_projectionMutator, d3_geo_projection };
+export { d3_geo_projectionMutator, d3_geo_projection, d3_geo_projectionRadians, d3_geo_projectionMutator, d3_geo_projection };

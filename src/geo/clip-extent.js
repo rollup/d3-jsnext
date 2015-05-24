@@ -4,9 +4,12 @@ import { d3_geo_clipPolygon } from './clip-polygon';
 import { d3_geom_clipLine } from '../geom/clip-line';
 import { d3_geo_clipBufferListener } from './clip';
 
+var undefined;
+var d3$geo$clipExtent;
+
 var d3_geo_clipExtentMAX = 1e9;
 
-var d3$geo$clipExtent = function() {
+d3$geo$clipExtent = function() {
   var x0, y0, x1, y1,
       stream,
       clip,
@@ -193,4 +196,4 @@ function d3_geo_clipExtent(x0, y0, x1, y1) {
   }
 }
 
-export { d3$geo$clipExtent };
+export { d3$geo$clipExtent, d3_geo_clipExtent, d3_geo_clipExtentMAX };

@@ -1,6 +1,8 @@
 import { d3_selectAll, d3_selection, d3_selectionPrototype } from './selection';
 import { d3_array } from '../core/array';
 
+var undefined;
+
 d3_selectionPrototype.selectAll = function(selector) {
   var subgroups = [],
       subgroup,
@@ -26,4 +28,4 @@ function d3_selection_selectorAll(selector) {
   };
 }
 
-export {  };
+export { d3_selection_selectorAll };

@@ -5,6 +5,9 @@ import { d3_functor } from '../core/functor';
 import { d3_true } from '../core/true';
 import { d3_geom_pointY, d3_geom_pointX } from '../geom/point';
 
+var undefined;
+var d3$svg$line;
+
 function d3_svg_line(projection) {
   var x = d3_geom_pointX,
       y = d3_geom_pointY,
@@ -74,7 +77,7 @@ function d3_svg_line(projection) {
   return line;
 }
 
-var d3$svg$line = function() {
+d3$svg$line = function() {
   return d3_svg_line(d3_identity);
 };
 
@@ -429,4 +432,4 @@ function d3_svg_lineMonotone(points) {
       : points[0] + d3_svg_lineHermite(points, d3_svg_lineMonotoneTangents(points));
 }
 
-export { d3$svg$line };
+export { d3$svg$line, d3_svg_lineMonotone, d3_svg_lineMonotoneTangents, d3_svg_lineFiniteDifferences, d3_svg_lineSlope, d3_svg_lineBasisBezier, d3_svg_lineBasisBezier1, d3_svg_lineBasisBezier2, d3_svg_lineBasisBezier3, d3_svg_lineDot4, d3_svg_lineBundle, d3_svg_lineBasisClosed, d3_svg_lineBasisOpen, d3_svg_lineBasis, d3_svg_lineCardinalTangents, d3_svg_lineHermite, d3_svg_lineCardinal, d3_svg_lineCardinalClosed, d3_svg_lineCardinalOpen, d3_svg_lineStepAfter, d3_svg_lineStepBefore, d3_svg_lineStep, d3_svg_lineLinearClosed, d3_svg_lineLinear, d3_svg_lineInterpolators, d3_svg_line };

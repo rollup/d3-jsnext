@@ -1,14 +1,18 @@
 import { d3_vendorSymbol } from '../core/vendor';
 
+var undefined;
+var d3$timer$flush;
+var d3$timer;
+
 var d3_timer_queueHead,
     d3_timer_queueTail,
     d3_timer_interval, // is an interval (or frame) active?
     d3_timer_timeout, // is a timeout active?
     d3_timer_active, // active timer object
-    d3_timer_frame = this[d3_vendorSymbol(this, "requestAnimationFrame")] || function(callback) { setTimeout(callback, 17); };
+    d3_timer_frame = window[d3_vendorSymbol(window, "requestAnimationFrame")] || function(callback) { setTimeout(callback, 17); };
 
 // The timer will continue to fire until callback returns true.
-var d3$timer = function(callback, delay, then) {
+d3$timer = function(callback, delay, then) {
   var n = arguments.length;
   if (n < 2) delay = 0;
   if (n < 3) then = Date.now();
@@ -42,7 +46,7 @@ function d3_timer_step() {
   }
 }
 
-var d3$timer$flush = function() {
+d3$timer$flush = function() {
   d3_timer_mark();
   d3_timer_sweep();
 };
@@ -75,4 +79,4 @@ function d3_timer_sweep() {
   return time;
 }
 
-export { d3$timer$flush, d3$timer };
+export { d3$timer$flush, d3$timer, d3_timer_sweep, d3_timer_mark, d3_timer_step, d3_timer_queueHead, d3_timer_queueTail, d3_timer_interval, d3_timer_timeout, d3_timer_active, d3_timer_frame };

@@ -29,4 +29,4 @@ var d3_scale_niceIdentity = {
   ceil: d3_identity
 };
 
-export {  };
+export { d3_scale_niceIdentity, d3_scale_niceStep, d3_scale_nice };

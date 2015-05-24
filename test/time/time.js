@@ -1,3 +1,5 @@
+require( 'babel/register' );
+
 var offset = 0;
 
 exports.local = function(year, month, day, hours, minutes, seconds, milliseconds) {

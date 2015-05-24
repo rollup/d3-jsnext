@@ -21,4 +21,4 @@ function d3_scale_polylinear(domain, range, uninterpolate, interpolate) {
   };
 }
 
-export {  };
+export { d3_scale_polylinear };

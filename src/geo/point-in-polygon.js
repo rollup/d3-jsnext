@@ -68,4 +68,4 @@ function d3_geo_pointInPolygon(point, polygon) {
   return (polarAngle < -ε || polarAngle < ε && d3_geo_areaRingSum < 0) ^ (winding & 1);
 }
 
-export {  };
+export { d3_geo_pointInPolygon };

@@ -9,7 +9,10 @@ import { d3_geo_centroidZ0, d3_geo_centroidY0, d3_geo_centroidX0, d3_geo_centroi
 import { d3_geo_pathCentroid } from './path-centroid';
 import { d3_geo_pathAreaSum, d3_geo_pathArea } from './path-area';
 
-var d3$geo$path = function() {
+var d3$geo$path;
+var undefined;
+
+d3$geo$path = function() {
   var pointRadius = 4.5,
       projection,
       context,
@@ -21,14 +24,14 @@ var d3$geo$path = function() {
     if (object) {
       if (typeof pointRadius === "function") contextStream.pointRadius(+pointRadius.apply(this, arguments));
       if (!cacheStream || !cacheStream.valid) cacheStream = projectStream(contextStream);
-      d3.geo.stream(object, cacheStream);
+      d3$geo$stream(object, cacheStream);
     }
     return contextStream.result();
   }
 
   path.area = function(object) {
     d3_geo_pathAreaSum = 0;
-    d3.geo.stream(object, projectStream(d3_geo_pathArea));
+    d3$geo$stream(object, projectStream(d3_geo_pathArea));
     return d3_geo_pathAreaSum;
   };
 
@@ -36,7 +39,7 @@ var d3$geo$path = function() {
     d3_geo_centroidX0 = d3_geo_centroidY0 = d3_geo_centroidZ0 =
     d3_geo_centroidX1 = d3_geo_centroidY1 = d3_geo_centroidZ1 =
     d3_geo_centroidX2 = d3_geo_centroidY2 = d3_geo_centroidZ2 = 0;
-    d3.geo.stream(object, projectStream(d3_geo_pathCentroid));
+    d3$geo$stream(object, projectStream(d3_geo_pathCentroid));
     return d3_geo_centroidZ2 ? [d3_geo_centroidX2 / d3_geo_centroidZ2, d3_geo_centroidY2 / d3_geo_centroidZ2]
         : d3_geo_centroidZ1 ? [d3_geo_centroidX1 / d3_geo_centroidZ1, d3_geo_centroidY1 / d3_geo_centroidZ1]
         : d3_geo_centroidZ0 ? [d3_geo_centroidX0 / d3_geo_centroidZ0, d3_geo_centroidY0 / d3_geo_centroidZ0]
@@ -45,7 +48,7 @@ var d3$geo$path = function() {
 
   path.bounds = function(object) {
     d3_geo_pathBoundsX1 = d3_geo_pathBoundsY1 = -(d3_geo_pathBoundsX0 = d3_geo_pathBoundsY0 = Infinity);
-    d3.geo.stream(object, projectStream(d3_geo_pathBounds));
+    d3$geo$stream(object, projectStream(d3_geo_pathBounds));
     return [[d3_geo_pathBoundsX0, d3_geo_pathBoundsY0], [d3_geo_pathBoundsX1, d3_geo_pathBoundsY1]];
   };
 
@@ -73,7 +76,7 @@ var d3$geo$path = function() {
     return path;
   }
 
-  return path.projection(d3.geo.albersUsa()).context(null);
+  return path.projection(d3$geo$albersUsa()).context(null);
 };
 
 function d3_geo_pathProjectStream(project) {
@@ -81,4 +84,4 @@ function d3_geo_pathProjectStream(project) {
   return function(stream) { return d3_geo_projectionRadians(resample(stream)); };
 }
 
-export { d3$geo$path };
+export { d3$geo$path, d3_geo_pathProjectStream };

@@ -1,6 +1,8 @@
 import { d3_time, d3_date } from './time';
 import { d3_time_interval } from './interval';
 
+var undefined;
+
 d3_time.day = d3_time_interval(function(date) {
   var day = new d3_date(2000, 0);
   day.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());

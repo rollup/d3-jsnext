@@ -1,6 +1,8 @@
 import { abs } from '../math/abs';
 import { d3_noop } from '../core/noop';
 
+var undefined;
+
 // TODO Unify this code with d3.geom.polygon area?
 
 var d3_geo_pathAreaSum, d3_geo_pathAreaPolygon, d3_geo_pathArea = {
@@ -40,4 +42,4 @@ function d3_geo_pathAreaRingStart() {
   };
 }
 
-export {  };
+export { d3_geo_pathAreaRingStart, d3_geo_pathAreaSum, d3_geo_pathAreaPolygon, d3_geo_pathArea };

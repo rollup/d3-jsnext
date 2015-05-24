@@ -1,10 +1,13 @@
 import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitAfter } from './hierarchy';
 import { d3_layout_treeSeparation } from './tree';
 
+var d3$layout$cluster;
+var undefined;
+
 // Implements a hierarchical layout using the cluster (or dendrogram)
 // algorithm.
-var d3$layout$cluster = function() {
-  var hierarchy = d3.layout.hierarchy().sort(null).value(null),
+d3$layout$cluster = function() {
+  var hierarchy = d3$layout$hierarchy().sort(null).value(null),
       separation = d3_layout_treeSeparation,
       size = [1, 1], // width, height
       nodeSize = false;
@@ -89,4 +92,4 @@ function d3_layout_clusterRight(node) {
   return children && (n = children.length) ? d3_layout_clusterRight(children[n - 1]) : node;
 }
 
-export { d3$layout$cluster };
+export { d3$layout$cluster, d3_layout_clusterRight, d3_layout_clusterLeft, d3_layout_clusterX, d3_layout_clusterY };

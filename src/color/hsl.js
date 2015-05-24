@@ -1,6 +1,8 @@
 import { d3_rgb, d3_rgb_hsl, d3_rgb_parse } from './rgb';
 import { d3_color } from './color';
 
+var undefined;
+
 function d3_hsl(h, s, l) {
   return this instanceof d3_hsl ? void (this.h = +h, this.s = +s, this.l = +l)
       : arguments.length < 2 ? (h instanceof d3_hsl ? new d3_hsl(h.h, h.s, h.l)
@@ -53,4 +55,4 @@ function d3_hsl_rgb(h, s, l) {
   return new d3_rgb(vv(h + 120), vv(h), vv(h - 120));
 }
 
-export { d3_hsl };
+export { d3_hsl, d3_hsl_rgb, d3_hslPrototype, d3_hsl };

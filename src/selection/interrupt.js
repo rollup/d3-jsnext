@@ -1,6 +1,8 @@
 import { d3_transitionNamespace } from '../transition/transition';
 import { d3_selectionPrototype } from './selection';
 
+var undefined;
+
 // import "../transition/transition";
 
 
@@ -25,4 +27,4 @@ function d3_selection_interruptNS(ns) {
   };
 }
 
-export {  };
+export { d3_selection_interruptNS, d3_selection_interrupt };

@@ -1,5 +1,7 @@
 import { d3_geo_centroidZ2, d3_geo_centroidY2, d3_geo_centroidX2, d3_geo_centroidZ1, d3_geo_centroidY1, d3_geo_centroidX1, d3_geo_centroidZ0, d3_geo_centroidY0, d3_geo_centroidX0 } from './centroid';
 
+var undefined;
+
 // TODO Unify this code with d3.geom.polygon centroid?
 // TODO Enforce positive area for exterior, negative area for interior?
 
@@ -77,4 +79,4 @@ function d3_geo_pathCentroidRingStart() {
   };
 }
 
-export {  };
+export { d3_geo_pathCentroidRingStart, d3_geo_pathCentroidLineEnd, d3_geo_pathCentroidLineStart, d3_geo_pathCentroidPoint, d3_geo_pathCentroid };

@@ -4,6 +4,9 @@ import { d3_functor } from '../core/functor';
 import { d3_true } from '../core/true';
 import { d3_geom_pointY, d3_geom_pointX } from '../geom/point';
 
+var d3$svg$area;
+var undefined;
+
 function d3_svg_area(projection) {
   var x0 = d3_geom_pointX,
       x1 = d3_geom_pointX,
@@ -115,8 +118,8 @@ function d3_svg_area(projection) {
 d3_svg_lineStepBefore.reverse = d3_svg_lineStepAfter;
 d3_svg_lineStepAfter.reverse = d3_svg_lineStepBefore;
 
-var d3$svg$area = function() {
+d3$svg$area = function() {
   return d3_svg_area(d3_identity);
 };
 
-export { d3$svg$area };
+export { d3$svg$area, d3_svg_area };

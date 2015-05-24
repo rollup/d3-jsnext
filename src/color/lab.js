@@ -4,6 +4,8 @@ import { d3_xyz_rgb } from './xyz';
 import { d3_rgb, d3_rgb_lab } from './rgb';
 import { d3_color } from './color';
 
+var undefined;
+
 function d3_lab(l, a, b) {
   return this instanceof d3_lab ? void (this.l = +l, this.a = +a, this.b = +b)
       : arguments.length < 2 ? (l instanceof d3_lab ? new d3_lab(l.l, l.a, l.b)
@@ -58,4 +60,4 @@ function d3_lab_xyz(x) {
   return x > 0.206893034 ? x * x * x : (x - 4 / 29) / 7.787037;
 }
 
-export { d3_lab };
+export { d3_lab, d3_lab_xyz, d3_lab_hcl, d3_lab_rgb, d3_labPrototype, d3_lab_X, d3_lab_Y, d3_lab_Z, d3_lab_K, d3_lab };

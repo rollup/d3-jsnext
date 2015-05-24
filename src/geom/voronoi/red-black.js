@@ -1,3 +1,5 @@
+var undefined;
+
 function d3_geom_voronoiRedBlackTree() {
   this._ = null; // root node
 }
@@ -234,4 +236,4 @@ function d3_geom_voronoiRedBlackFirst(node) {
   return node;
 }
 
-export {  };
+export { d3_geom_voronoiRedBlackFirst, d3_geom_voronoiRedBlackRotateRight, d3_geom_voronoiRedBlackRotateLeft, d3_geom_voronoiRedBlackNode, d3_geom_voronoiRedBlackTree };

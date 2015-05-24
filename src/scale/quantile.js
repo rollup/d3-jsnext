@@ -1,7 +1,10 @@
 import { d3_ascending } from '../arrays/ascending';
 import { d3_numeric, d3_number } from '../math/number';
 
-var d3$scale$quantile = function() {
+var undefined;
+var d3$scale$quantile;
+
+d3$scale$quantile = function() {
   return d3_scale_quantile([], []);
 };
 
@@ -51,4 +54,4 @@ function d3_scale_quantile(domain, range) {
   return rescale();
 }
 
-export { d3$scale$quantile };
+export { d3$scale$quantile, d3_scale_quantile };

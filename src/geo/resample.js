@@ -3,6 +3,8 @@ import { ε, d3_radians } from '../math/trigonometry';
 import { d3_geo_cartesian } from './cartesian';
 import { d3_geo_transformPoint } from './transform';
 
+var undefined;
+
 function d3_geo_resample(project) {
   var δ2 = .5, // precision, px²
       cosMinDistance = Math.cos(30 * d3_radians), // cos(minimum angular distance)
@@ -109,4 +111,4 @@ function d3_geo_resample(project) {
   return resample;
 }
 
-export {  };
+export { d3_geo_resample };
