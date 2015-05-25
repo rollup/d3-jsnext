@@ -1,5 +1,5 @@
 import { d3_functor } from '../core/functor';
-import { d3_geom_voronoiHalfEdgeOrder } from './voronoi/cell';
+import { d3_geom_voronoiHalfEdgeOrder, d3_geom_voronoi } from './voronoi/index';
 import { ε } from '../math/trigonometry';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
 import { d3$geom } from './geom';

@@ -28,7 +28,7 @@ export default function () {
 		if ( dirname( file ) === '.' ) return false;
 
 		// skip index.js files
-		if ( basename( file ) === 'index.js' ) return false;
+		//if ( basename( file ) === 'index.js' ) return false;
 
 		return true;
 	});
@@ -102,24 +102,75 @@ export default function () {
 			exportNameByInternalName
 		});
 
-		writeFileSync( module.file.replace( srcDir, destDir ), rendered );
+		if ( rendered ) {
+			writeFileSync( module.file.replace( srcDir, destDir ), rendered );
+		}
 	});
 
 	// d3.version. TODO rig this up
 	const version = require( '../../d3/package.json' ).version;
 	writeFileSync( destDir, 'version.js', `export default '${version}';` );
 
+
+	// determine unique export names (e.g. `d3.geom.voronoi` can just
+	// be `voronoi`, but `....TK example`)
+
 	// index file
+	let used = {};
+	let dupes = {};
+
+	Object.keys( exportNamesByPath ).map( path => {
+		const keypaths = exportNamesByPath[ path ]
+			.filter( isExport );
+
+		keypaths.forEach( keypath => {
+			const keys = keypath.split( '.' );
+			let i = keys.length;
+
+			while ( i-- ) {
+				const part = keys.slice( i ).join( '_' );
+
+				if ( used[ part ] ) {
+					dupes[ part ] = true;
+				}
+
+				used[ part ] = true;
+			}
+		});
+	});
+
+	function getUniqueExportName ( keypath ) {
+		const keys = keypath.split( '.' );
+		keys.shift(); // lose the 'd3'
+
+		let i = keys.length;
+
+		while ( i-- ) {
+			const part = keys.slice( i ).join( '_' );
+
+			if ( !dupes[ part ] || !i ) {
+				return part;
+			}
+		}
+
+		//throw new Error( `Could not get unique name for ${keypath}` );
+	}
+
 	const indexBlock = [];
 
 	Object.keys( exportNamesByPath ).map( path => {
 		const names = exportNamesByPath[ path ]
-			.filter( isExport )
-			.map( createAlias );
+			.filter( isExport );
 
 		if ( names.length ) {
 			const relativePath = `./${relative( srcDir, path )}`;
-			const exports = names.map( name => `${name} as ${name.substring( 3 )}` );
+
+			const exports = names.map( keypath => {
+				const alias = keypath.replace( /\./g, '$' );
+				const uniqueExportName = getUniqueExportName( keypath );
+
+				return `${alias} as ${uniqueExportName}`;
+			});
 
 			const declaration = exports.length > 3 ?
 				`export {\n  ${exports.join(',\n  ')}\n}` :

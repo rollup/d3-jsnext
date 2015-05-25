@@ -1,4 +1,4 @@
-import { range, select, geom$voronoi as voronoi } from '../../src/index'; // TODO just voronoi
+import { mouse, range, select, voronoi } from '../../src/index'; // TODO just voronoi
 
 var width = 960,
     height = 500;
@@ -13,7 +13,7 @@ var layout = voronoi()
 var svg = select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .on("mousemove", function() { vertices[0] = d3.mouse(this); redraw(); });
+    .on("mousemove", function() { vertices[0] = mouse(this); redraw(); });
 
 var path = svg.append("g").selectAll("path");
 

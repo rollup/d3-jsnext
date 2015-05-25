@@ -297,6 +297,6 @@ export default class Module {
 			`\n\nexport { ${shouldExport.join(', ')} };` :
 			'';
 
-		return magicString.append( exportBlock ).toString();
+		return magicString.append( exportBlock ).toString().trim();
 	}
 }
