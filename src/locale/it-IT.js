@@ -1,3 +1,5 @@
+import { d3$locale } from './locale';
+
 var d3_locale_itIT = d3$locale({
   decimal: ",",
   thousands: ".",

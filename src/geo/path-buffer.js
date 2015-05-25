@@ -1,5 +1,3 @@
-var undefined;
-
 function d3_geo_pathBuffer() {
   var pointCircle = d3_geo_pathBufferCircle(4.5),
       buffer = [];

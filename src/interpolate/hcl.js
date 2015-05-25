@@ -1,8 +1,12 @@
-import { d3_hcl_lab } from '../color/hcl';
+import { d3_hcl_lab, d3$hcl } from '../color/hcl';
+
+var d3_interpolateHcl;
+
+d3$interpolateHcl = d3_interpolateHcl;
 
 function d3_interpolateHcl(a, b) {
-  a = d3_hcl(a);
-  b = d3_hcl(b);
+  a = d3$hcl(a);
+  b = d3$hcl(b);
   var ah = a.h,
       ac = a.c,
       al = a.l,

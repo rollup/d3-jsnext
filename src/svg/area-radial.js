@@ -1,8 +1,8 @@
 import { d3_svg_lineRadial } from './line-radial';
-import { d3_svg_area } from './area';
+import { d3_svg_area, d3$svg$area } from './area';
+import { d3$svg } from './svg';
 
 var d3$svg$area$radial;
-var undefined;
 
 d3$svg$area$radial = function() {
   var area = d3_svg_area(d3_svg_lineRadial);

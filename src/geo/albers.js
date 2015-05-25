@@ -1,3 +1,6 @@
+import { d3$geo$conicEqualArea } from './conic-equal-area';
+import { d3$geo } from './geo';
+
 var d3$geo$albers;
 
 // ESRI:102003

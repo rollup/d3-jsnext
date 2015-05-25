@@ -8,9 +8,11 @@ import { d3_geo_pathBoundsY1, d3_geo_pathBoundsX1, d3_geo_pathBoundsY0, d3_geo_p
 import { d3_geo_centroidZ0, d3_geo_centroidY0, d3_geo_centroidX0, d3_geo_centroidZ1, d3_geo_centroidY1, d3_geo_centroidX1, d3_geo_centroidZ2, d3_geo_centroidY2, d3_geo_centroidX2 } from './centroid';
 import { d3_geo_pathCentroid } from './path-centroid';
 import { d3_geo_pathAreaSum, d3_geo_pathArea } from './path-area';
+import { d3$geo$albersUsa } from './albers-usa';
+import { d3$geo } from './geo';
+import { d3$geo$stream } from './stream';
 
 var d3$geo$path;
-var undefined;
 
 d3$geo$path = function() {
   var pointRadius = 4.5,

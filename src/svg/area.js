@@ -3,9 +3,9 @@ import { d3_svg_lineStepBefore, d3_svg_lineStepAfter, d3_svg_lineLinear, d3_svg_
 import { d3_functor } from '../core/functor';
 import { d3_true } from '../core/true';
 import { d3_geom_pointY, d3_geom_pointX } from '../geom/point';
+import { d3$svg } from './svg';
 
 var d3$svg$area;
-var undefined;
 
 function d3_svg_area(projection) {
   var x0 = d3_geom_pointX,

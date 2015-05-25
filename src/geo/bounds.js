@@ -3,9 +3,10 @@ import { abs } from '../math/abs';
 import { d3_geo_area, d3_geo_areaRingSum } from './area';
 import { d3_geo_spherical } from './spherical';
 import { d3_geo_cartesianNormalize, d3_geo_cartesianCross, d3_geo_cartesian } from './cartesian';
+import { d3$geo$stream } from './stream';
+import { d3$geo } from './geo';
 
 var d3$geo$bounds;
-var undefined;
 
 d3$geo$bounds = (function() {
   var λ0, φ0, λ1, φ1, // bounds

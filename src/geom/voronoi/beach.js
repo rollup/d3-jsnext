@@ -4,8 +4,6 @@ import { ε } from '../../math/trigonometry';
 import { abs } from '../../math/abs';
 import { d3_geom_voronoiRedBlackNode } from './red-black';
 
-var undefined;
-
 function d3_geom_voronoiBeach() {
   d3_geom_voronoiRedBlackNode(this);
   this.edge =
@@ -191,4 +189,12 @@ function d3_geom_voronoiRightBreakPoint(arc, directrix) {
   return site.y === directrix ? site.x : Infinity;
 }
 
-export { d3_geom_voronoiRightBreakPoint, d3_geom_voronoiLeftBreakPoint, d3_geom_voronoiAddBeach, d3_geom_voronoiRemoveBeach, d3_geom_voronoiDetachBeach, d3_geom_voronoiCreateBeach, d3_geom_voronoiBeach };
+export {
+  d3_geom_voronoiRightBreakPoint,
+  d3_geom_voronoiLeftBreakPoint,
+  d3_geom_voronoiAddBeach,
+  d3_geom_voronoiRemoveBeach,
+  d3_geom_voronoiDetachBeach,
+  d3_geom_voronoiCreateBeach,
+  d3_geom_voronoiBeach
+};

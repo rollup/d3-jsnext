@@ -1,7 +1,5 @@
 import { d3_geo_sphericalEqual } from './spherical';
 
-var undefined;
-
 // General spherical polygon clipping algorithm: takes a polygon, cuts it into
 // visible line segments and rejoins the segments by interpolating along the
 // clip edge.

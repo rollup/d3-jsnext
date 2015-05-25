@@ -1,7 +1,8 @@
 import { τ } from '../math/trigonometry';
+import { d3$range } from '../arrays/range';
+import { d3$layout } from './layout';
 
 var d3$layout$chord;
-var undefined;
 
 d3$layout$chord = function() {
   var chord = {},

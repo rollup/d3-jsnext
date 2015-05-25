@@ -2,8 +2,8 @@ import { d3_time_scale, d3_time_scaleLocalMethods } from './scale';
 import { d3_time } from './time';
 import { d3_true } from '../core/true';
 import { d3_time_formatUtc } from './format-utc';
-
-var undefined;
+import { d3$scale$linear } from '../scale/linear';
+import { d3$scale } from '../scale/scale';
 
 var d3_time_scaleUtcMethods = d3_time_scaleLocalMethods.map(function(m) {
   return [m[0].utc, m[1]];

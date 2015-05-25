@@ -1,3 +1,5 @@
+import { d3$locale } from './locale';
+
 var d3$locale$ca_ES;
 
 d3$locale$ca_ES = d3$locale({

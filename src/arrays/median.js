@@ -1,5 +1,6 @@
 import { d3_ascending } from './ascending';
 import { d3_number, d3_numeric } from '../math/number';
+import { d3$quantile } from './quantile';
 
 var d3$median;
 

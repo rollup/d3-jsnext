@@ -1,6 +1,9 @@
 import { d3_identity } from '../core/identity';
+import { d3$range } from '../arrays/range';
+import { d3$map } from '../arrays/map';
+import { d3$permute } from '../arrays/permute';
+import { d3$layout } from './layout';
 
-var undefined;
 var d3$layout$stack;
 
 // data is two-dimensional array of x,y; we populate y0
@@ -245,4 +248,16 @@ function d3_layout_stackSum(p, d) {
   return p + d[1];
 }
 
-export { d3$layout$stack, d3_layout_stackSum, d3_layout_stackReduceSum, d3_layout_stackMaxIndex, d3_layout_stackOffsetZero, d3_layout_stackOrderDefault, d3_layout_stackOffsets, d3_layout_stackOrders, d3_layout_stackOut, d3_layout_stackY, d3_layout_stackX };
+export {
+  d3$layout$stack,
+  d3_layout_stackSum,
+  d3_layout_stackReduceSum,
+  d3_layout_stackMaxIndex,
+  d3_layout_stackOffsetZero,
+  d3_layout_stackOrderDefault,
+  d3_layout_stackOffsets,
+  d3_layout_stackOrders,
+  d3_layout_stackOut,
+  d3_layout_stackY,
+  d3_layout_stackX
+};

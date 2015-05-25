@@ -1,7 +1,9 @@
 import { d3_ascending } from '../arrays/ascending';
 import { d3_numeric, d3_number } from '../math/number';
+import { d3$bisect } from '../arrays/bisect';
+import { d3$quantile } from '../arrays/quantile';
+import { d3$scale } from './scale';
 
-var undefined;
 var d3$scale$quantile;
 
 d3$scale$quantile = function() {

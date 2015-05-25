@@ -3,9 +3,14 @@ import { d3_selection_interrupt } from '../selection/interrupt';
 import { d3_event_dragSuppress } from '../event/drag';
 import { d3_window, d3_document } from '../core/document';
 import { d3_transitionInheritId } from '../transition/transition';
+import { d3$rebind } from '../core/rebind';
+import { d3$mouse } from '../event/mouse';
+import { d3$selectAll, d3$select } from '../selection/selection';
+import { d3$touches } from '../event/touches';
+import { d3$interpolateZoom } from '../interpolate/zoom';
+import { d3$behavior } from './behavior';
 
 var d3$behavior$zoom;
-var undefined;
 
 d3$behavior$zoom = function() {
   var view = {x: 0, y: 0, k: 1},
@@ -31,9 +36,9 @@ d3$behavior$zoom = function() {
   // Lazily determine the DOM’s support for Wheel events.
   // https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/wheel
   if (!d3_behavior_zoomWheel) {
-    d3_behavior_zoomWheel = "onwheel" in d3_document ? (d3_behavior_zoomDelta = function() { return -d3$event$deltaY * (d3$event$deltaMode ? 120 : 1); }, "wheel")
-        : "onmousewheel" in d3_document ? (d3_behavior_zoomDelta = function() { return d3$event$wheelDelta; }, "mousewheel")
-        : (d3_behavior_zoomDelta = function() { return -d3$event$detail; }, "MozMousePixelScroll");
+    d3_behavior_zoomWheel = "onwheel" in d3_document ? (d3_behavior_zoomDelta = function() { return -window.d3_event.deltaY * (window.d3_event.deltaMode ? 120 : 1); }, "wheel")
+        : "onmousewheel" in d3_document ? (d3_behavior_zoomDelta = function() { return window.d3_event.wheelDelta; }, "mousewheel")
+        : (d3_behavior_zoomDelta = function() { return -window.d3_event.detail; }, "MozMousePixelScroll");
   }
 
   function zoom(g) {
@@ -187,7 +192,7 @@ d3$behavior$zoom = function() {
 
   function mousedowned() {
     var that = this,
-        target = d3$event$target,
+        target = window.d3_event.target,
         dispatch = event.of(that, arguments),
         dragged = 0,
         subject = d3$select(d3_window(that)).on(mousemove, moved).on(mouseup, ended),
@@ -205,7 +210,7 @@ d3$behavior$zoom = function() {
 
     function ended() {
       subject.on(mousemove, null).on(mouseup, null);
-      dragRestore(dragged && d3$event$target === target);
+      dragRestore(dragged && window.d3_event.target === target);
       zoomended(dispatch);
     }
   }
@@ -217,7 +222,7 @@ d3$behavior$zoom = function() {
         locations0 = {}, // touchstart locations
         distance0 = 0, // distance² between initial touches
         scale0, // scale when we started touching
-        zoomName = ".zoom-" + d3$event$changedTouches[0].identifier,
+        zoomName = ".zoom-" + window.d3_event.changedTouches[0].identifier,
         touchmove = "touchmove" + zoomName,
         touchend = "touchend" + zoomName,
         targets = [],
@@ -245,12 +250,12 @@ d3$behavior$zoom = function() {
     function started() {
 
       // Listen for touchmove and touchend on the target of touchstart.
-      var target = d3$event$target;
+      var target = window.d3_event.target;
       d3$select(target).on(touchmove, moved).on(touchend, ended);
       targets.push(target);
 
       // Only track touches started on the same subject element.
-      var changed = d3$event$changedTouches;
+      var changed = window.d3_event.changedTouches;
       for (var i = 0, n = changed.length; i < n; ++i) {
         locations0[changed[i].identifier] = null;
       }
@@ -303,8 +308,8 @@ d3$behavior$zoom = function() {
     function ended() {
       // If there are any globally-active touches remaining, remove the ended
       // touches from locations0.
-      if (d3$event$touches$length) {
-        var changed = d3$event$changedTouches;
+      if (window.d3_event.touches.length) {
+        var changed = window.d3_event.changedTouches;
         for (var i = 0, n = changed.length; i < n; ++i) {
           delete locations0[changed[i].identifier];
         }
@@ -337,7 +342,7 @@ d3$behavior$zoom = function() {
     var p = d3$mouse(this),
         k = Math.log(view.k) / Math.LN2;
 
-    zoomTo(this, p, location(p), d3$event$shiftKey ? Math.ceil(k) - 1 : Math.floor(k) + 1);
+    zoomTo(this, p, location(p), window.d3_event.shiftKey ? Math.ceil(k) - 1 : Math.floor(k) + 1);
   }
 
   return d3$rebind(zoom, event, "on");

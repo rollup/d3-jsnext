@@ -7,8 +7,14 @@ import { d3_geo_clipExtent } from './clip-extent';
 import { d3_geo_clipCircle } from './clip-circle';
 import { d3_geo_clipAntimeridian } from './clip-antimeridian';
 import { d3_geo_resample } from './resample';
+import { d3$rebind } from '../core/rebind';
+import { d3$geo } from './geo';
 
-var undefined;
+var d3_geo_projectionMutator;
+var d3_geo_projection;
+
+d3$geo$projection = d3_geo_projection;
+d3$geo$projectionMutator = d3_geo_projectionMutator;
 
 function d3_geo_projection(project) {
   return d3_geo_projectionMutator(function() { return project; })();

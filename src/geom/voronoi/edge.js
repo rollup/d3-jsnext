@@ -1,5 +1,3 @@
-var undefined;
-
 function d3_geom_voronoiEdge(lSite, rSite) {
   this.l = lSite;
   this.r = rSite;
@@ -51,4 +49,10 @@ d3_geom_voronoiHalfEdge.prototype = {
   end: function() { return this.edge.l === this.site ? this.edge.b : this.edge.a; }
 };
 
-export { d3_geom_voronoiHalfEdge, d3_geom_voronoiSetEdgeEnd, d3_geom_voronoiCreateBorderEdge, d3_geom_voronoiCreateEdge, d3_geom_voronoiEdge };
+export {
+  d3_geom_voronoiHalfEdge,
+  d3_geom_voronoiSetEdgeEnd,
+  d3_geom_voronoiCreateBorderEdge,
+  d3_geom_voronoiCreateEdge,
+  d3_geom_voronoiEdge
+};

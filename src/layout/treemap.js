@@ -1,7 +1,7 @@
-import { d3_layout_hierarchyRebind } from './hierarchy';
+import { d3_layout_hierarchyRebind, d3$layout$hierarchy } from './hierarchy';
+import { d3$layout } from './layout';
 
 var d3$layout$treemap;
-var undefined;
 
 // Squarified Treemaps by Mark Bruls, Kees Huizing, and Jarke J. van Wijk
 // Modified to support a target aspect ratio by Jeff Heer

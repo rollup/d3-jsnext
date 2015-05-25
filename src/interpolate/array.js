@@ -1,5 +1,9 @@
 import { d3_interpolate } from './interpolate';
 
+var d3_interpolateArray;
+
+d3$interpolateArray = d3_interpolateArray;
+
 function d3_interpolateArray(a, b) {
   var x = [],
       c = [],

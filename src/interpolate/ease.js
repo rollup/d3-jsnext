@@ -1,6 +1,7 @@
 import { τ, halfπ } from '../math/trigonometry';
 import { d3_arraySlice } from '../core/array';
 import { d3_identity } from '../core/identity';
+import { d3$map } from '../arrays/map';
 
 var d3$ease;
 
@@ -111,4 +112,22 @@ function d3_ease_bounce(t) {
       : 7.5625 * (t -= 2.625 / 2.75) * t + .984375;
 }
 
-export { d3$ease, d3_ease_bounce, d3_ease_back, d3_ease_elastic, d3_ease_circle, d3_ease_exp, d3_ease_sin, d3_ease_poly, d3_ease_cubicInOut, d3_ease_cubic, d3_ease_quad, d3_ease_reflect, d3_ease_reverse, d3_ease_clamp, d3_ease_mode, d3_ease, d3_ease_default };
+export {
+  d3$ease,
+  d3_ease_bounce,
+  d3_ease_back,
+  d3_ease_elastic,
+  d3_ease_circle,
+  d3_ease_exp,
+  d3_ease_sin,
+  d3_ease_poly,
+  d3_ease_cubicInOut,
+  d3_ease_cubic,
+  d3_ease_quad,
+  d3_ease_reflect,
+  d3_ease_reverse,
+  d3_ease_clamp,
+  d3_ease_mode,
+  d3_ease,
+  d3_ease_default
+};

@@ -1,6 +1,7 @@
 import { d3_geo_projection } from './projection';
 import { d3_identity } from '../core/identity';
 import { d3_geo_azimuthal } from './azimuthal';
+import { d3$geo } from './geo';
 
 var d3$geo$azimuthalEquidistant;
 

@@ -1,3 +1,5 @@
+import { d3$geo } from './geo';
+
 var d3$geo$stream;
 
 d3$geo$stream = function(object, listener) {
@@ -70,4 +72,11 @@ function d3_geo_streamPolygon(coordinates, listener) {
   listener.polygonEnd();
 }
 
-export { d3$geo$stream, d3_geo_streamPolygon, d3_geo_streamLine, d3_geo_streamGeometryType, d3_geo_streamObjectType, d3_geo_streamGeometry };
+export {
+  d3$geo$stream,
+  d3_geo_streamPolygon,
+  d3_geo_streamLine,
+  d3_geo_streamGeometryType,
+  d3_geo_streamObjectType,
+  d3_geo_streamGeometry
+};

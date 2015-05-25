@@ -2,8 +2,6 @@ import { ε } from '../../math/trigonometry';
 import { abs } from '../../math/abs';
 import { d3_geom_clipLine } from '../clip-line';
 
-var undefined;
-
 function d3_geom_voronoiClipEdges(extent) {
   var edges = d3_geom_voronoiEdges,
       clip = d3_geom_clipLine(extent[0][0], extent[0][1], extent[1][0], extent[1][1]),

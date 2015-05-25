@@ -1,5 +1,3 @@
-var undefined;
-
 // Liang–Barsky line clipping.
 function d3_geom_clipLine(x0, y0, x1, y1) {
   return function(line) {

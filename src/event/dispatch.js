@@ -1,6 +1,5 @@
 import { d3_Map } from '../arrays/map';
 
-var undefined;
 var d3$dispatch;
 
 d3$dispatch = function() {

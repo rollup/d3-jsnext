@@ -16,6 +16,7 @@
   "scripts": {
      "build": "node generate",
      "test": "vows",
-     "pretest": "npm run build"
+     "pretest": "npm run build",
+     "update-d3": "rm -rf d3 && git clone https://github.com/mbostock/d3"
   }
 }

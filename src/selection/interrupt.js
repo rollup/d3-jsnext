@@ -1,11 +1,6 @@
 import { d3_transitionNamespace } from '../transition/transition';
 import { d3_selectionPrototype } from './selection';
 
-var undefined;
-
-// import "../transition/transition";
-
-
 // TODO Interrupt transitions for all namespaces?
 d3_selectionPrototype.interrupt = function(name) {
   return this.each(name == null

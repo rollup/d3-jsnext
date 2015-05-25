@@ -2,9 +2,9 @@ import { halfπ, π, d3_asin, τε } from '../math/trigonometry';
 import { d3_functor } from '../core/functor';
 import { d3_geom_polygonIntersect } from '../geom/polygon';
 import { d3_zero } from '../core/zero';
+import { d3$svg } from './svg';
 
 var d3$svg$arc;
-var undefined;
 
 d3$svg$arc = function() {
   var innerRadius = d3_svg_arcInnerRadius,
@@ -289,4 +289,14 @@ function d3_svg_arcCornerTangents(p0, p1, r1, rc, cw) {
   ];
 }
 
-export { d3$svg$arc, d3_svg_arcCornerTangents, d3_svg_arcSweep, d3_svg_arcPadAngle, d3_svg_arcEndAngle, d3_svg_arcStartAngle, d3_svg_arcOuterRadius, d3_svg_arcInnerRadius, d3_svg_arcAuto };
+export {
+  d3$svg$arc,
+  d3_svg_arcCornerTangents,
+  d3_svg_arcSweep,
+  d3_svg_arcPadAngle,
+  d3_svg_arcEndAngle,
+  d3_svg_arcStartAngle,
+  d3_svg_arcOuterRadius,
+  d3_svg_arcInnerRadius,
+  d3_svg_arcAuto
+};

@@ -1,8 +1,12 @@
-import { d3_hsl_rgb } from '../color/hsl';
+import { d3_hsl_rgb, d3$hsl } from '../color/hsl';
+
+var d3_interpolateHsl;
+
+d3$interpolateHsl = d3_interpolateHsl;
 
 function d3_interpolateHsl(a, b) {
-  a = d3_hsl(a);
-  b = d3_hsl(b);
+  a = d3$hsl(a);
+  b = d3$hsl(b);
   var ah = a.h,
       as = a.s,
       al = a.l,

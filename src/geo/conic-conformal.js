@@ -1,9 +1,9 @@
 import { d3_geo_conic } from './conic';
 import { halfπ, d3_sgn, ε, π } from '../math/trigonometry';
 import { d3_geo_mercator } from './mercator';
+import { d3$geo } from './geo';
 
 var d3$geo$conicConformal;
-var undefined;
 
 function d3_geo_conicConformal(φ0, φ1) {
   var cosφ0 = Math.cos(φ0),

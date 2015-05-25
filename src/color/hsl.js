@@ -1,7 +1,9 @@
 import { d3_rgb, d3_rgb_hsl, d3_rgb_parse } from './rgb';
 import { d3_color } from './color';
 
-var undefined;
+var d3_hsl;
+
+d3$hsl = d3_hsl;
 
 function d3_hsl(h, s, l) {
   return this instanceof d3_hsl ? void (this.h = +h, this.s = +s, this.l = +l)

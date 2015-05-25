@@ -1,3 +1,5 @@
+import { d3$min } from './min';
+
 var d3$zip;
 
 d3$zip = function() {

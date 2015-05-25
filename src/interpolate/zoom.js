@@ -1,7 +1,6 @@
 import { d3_cosh, d3_sinh, d3_tanh } from '../math/trigonometry';
 
 var d3$interpolateZoom;
-var undefined;
 
 var ρ = Math.SQRT2,
     ρ2 = 2,

@@ -85,4 +85,16 @@ function d3_map_empty() {
   return true;
 }
 
-export { d3$map, d3_map_empty, d3_map_size, d3_map_keys, d3_map_remove, d3_map_has, d3_map_unescape, d3_map_escape, d3_map_proto, d3_map_zero, d3_Map };
+export {
+  d3$map,
+  d3_map_empty,
+  d3_map_size,
+  d3_map_keys,
+  d3_map_remove,
+  d3_map_has,
+  d3_map_unescape,
+  d3_map_escape,
+  d3_map_proto,
+  d3_map_zero,
+  d3_Map
+};

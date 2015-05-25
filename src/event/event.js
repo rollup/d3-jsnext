@@ -1,16 +1,13 @@
 import { d3_dispatch_event, d3_dispatch } from './dispatch';
 
-var undefined;
-var event;
-
-event = null;
+window.d3_event = null;
 
 function d3_eventPreventDefault() {
-  d3$event$preventDefault();
+  window.d3_event.preventDefault();
 }
 
 function d3_eventSource() {
-  var e = event, s;
+  var e = window.d3_event, s;
   while (s = e.sourceEvent) e = s;
   return e;
 }
@@ -39,15 +36,17 @@ function d3_eventDispatch(target) {
     return function(e1) {
       try {
         var e0 =
-        e1.sourceEvent = event;
+        e1.sourceEvent = window.d3_event;
         e1.target = target;
-                dispatch[e1.type].apply(thiz, argumentz);
+        window.d3_event = e1;
+        dispatch[e1.type].apply(thiz, argumentz);
       } finally {
-              }
+        window.d3_event = e0;
+      }
     };
   };
 
   return dispatch;
 }
 
-export { event, d3_eventDispatch, d3_eventSource, d3_eventPreventDefault };
+export { d3_eventDispatch, d3_eventSource, d3_eventPreventDefault };

@@ -1,5 +1,3 @@
-var undefined;
-
 // Abstract azimuthal projection.
 function d3_geo_azimuthal(scale, angle) {
   function azimuthal(λ, φ) {

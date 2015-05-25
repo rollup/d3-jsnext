@@ -1,7 +1,8 @@
 import { d3_acos, d3_radians, d3_degrees, d3_asin, ε2, ε } from '../math/trigonometry';
 import { d3_noop } from '../core/noop';
+import { d3$geo$stream } from './stream';
+import { d3$geo } from './geo';
 
-var undefined;
 var d3$geo$centroid;
 
 d3$geo$centroid = function(object) {
@@ -149,4 +150,23 @@ function d3_geo_centroidRingStart() {
   }
 }
 
-export { d3$geo$centroid, d3_geo_centroidRingStart, d3_geo_centroidLineEnd, d3_geo_centroidLineStart, d3_geo_centroidPointXYZ, d3_geo_centroidPoint, d3_geo_centroid, d3_geo_centroidW0, d3_geo_centroidW1, d3_geo_centroidX0, d3_geo_centroidY0, d3_geo_centroidZ0, d3_geo_centroidX1, d3_geo_centroidY1, d3_geo_centroidZ1, d3_geo_centroidX2, d3_geo_centroidY2, d3_geo_centroidZ2 };
+export {
+  d3$geo$centroid,
+  d3_geo_centroidRingStart,
+  d3_geo_centroidLineEnd,
+  d3_geo_centroidLineStart,
+  d3_geo_centroidPointXYZ,
+  d3_geo_centroidPoint,
+  d3_geo_centroid,
+  d3_geo_centroidW0,
+  d3_geo_centroidW1,
+  d3_geo_centroidX0,
+  d3_geo_centroidY0,
+  d3_geo_centroidZ0,
+  d3_geo_centroidX1,
+  d3_geo_centroidY1,
+  d3_geo_centroidZ1,
+  d3_geo_centroidX2,
+  d3_geo_centroidY2,
+  d3_geo_centroidZ2
+};

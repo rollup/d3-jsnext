@@ -1,11 +1,11 @@
 import { d3_degrees } from './trigonometry';
 import { d3_document } from '../core/document';
+import { d3$ns } from '../core/ns';
 
-var undefined;
 var d3$transform;
 
 d3$transform = function(string) {
-  var g = d3_document.createElementNS(d3$ns$prefix$svg, "g");
+  var g = d3_document.createElementNS(d3$ns.prefix.svg, "g");
   return (d3$transform = function(string) {
     if (string != null) {
       g.setAttribute("transform", string);
@@ -66,4 +66,11 @@ function d3_transformCombine(a, b, k) {
 
 var d3_transformIdentity = {a: 1, b: 0, c: 0, d: 1, e: 0, f: 0};
 
-export { d3$transform, d3_transformIdentity, d3_transformCombine, d3_transformNormalize, d3_transformDot, d3_transform };
+export {
+  d3$transform,
+  d3_transformIdentity,
+  d3_transformCombine,
+  d3_transformNormalize,
+  d3_transformDot,
+  d3_transform
+};

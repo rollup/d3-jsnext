@@ -2,8 +2,7 @@ import { halfπ, ε } from '../math/trigonometry';
 import { d3_noop } from '../core/noop';
 import { d3_geo_clipPolygon } from './clip-polygon';
 import { d3_geo_pointInPolygon } from './point-in-polygon';
-
-var undefined;
+import { d3$merge } from '../arrays/merge';
 
 function d3_geo_clip(pointVisible, clipLine, interpolate, clipStart) {
   return function(rotate, listener) {

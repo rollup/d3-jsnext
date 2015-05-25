@@ -1,4 +1,6 @@
-var undefined;
+import { d3$bisect } from '../arrays/bisect';
+import { d3$scale } from './scale';
+
 var d3$scale$threshold;
 
 d3$scale$threshold = function() {

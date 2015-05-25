@@ -1,8 +1,6 @@
 import { d3_time, d3_date } from './time';
 import { d3_time_interval } from './interval';
 
-var undefined;
-
 d3_time.hour = d3_time_interval(function(date) {
   var timezone = date.getTimezoneOffset() / 60;
   return new d3_date((Math.floor(date / 36e5 - timezone) + timezone) * 36e5);
@@ -14,5 +12,3 @@ d3_time.hour = d3_time_interval(function(date) {
 
 d3_time.hours = d3_time.hour.range;
 d3_time.hours.utc = d3_time.hour.utc.range;
-
-export {  };

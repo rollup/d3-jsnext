@@ -1,5 +1,9 @@
 import { d3_interpolate } from './interpolate';
 
+var d3_interpolateObject;
+
+d3$interpolateObject = d3_interpolateObject;
+
 function d3_interpolateObject(a, b) {
   var i = {},
       c = {},

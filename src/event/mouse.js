@@ -1,7 +1,7 @@
 import { d3_window } from '../core/document';
 import { d3_eventSource } from './event';
+import { d3$select } from '../selection/selection';
 
-var undefined;
 var d3$mouse;
 
 d3$mouse = function(container) {

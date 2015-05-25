@@ -1,7 +1,6 @@
-import { d3_Map } from './map';
+import { d3_Map, d3$map } from './map';
 
 var d3$nest;
-var undefined;
 
 d3$nest = function() {
   var nest = {},

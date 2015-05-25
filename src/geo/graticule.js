@@ -1,8 +1,9 @@
 import { ε } from '../math/trigonometry';
 import { abs } from '../math/abs';
+import { d3$range } from '../arrays/range';
+import { d3$geo } from './geo';
 
 var d3$geo$graticule;
-var undefined;
 
 d3$geo$graticule = function() {
   var x1, x0, X1, X0,

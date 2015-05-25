@@ -43,4 +43,21 @@ function d3_haversin(x) {
   return (x = Math.sin(x / 2)) * x;
 }
 
-export { d3_haversin, d3_tanh, d3_cosh, d3_sinh, d3_asin, d3_acos, d3_cross2d, d3_sgn, ε, ε2, π, τ, τε, halfπ, d3_radians, d3_degrees };
+export {
+  d3_haversin,
+  d3_tanh,
+  d3_cosh,
+  d3_sinh,
+  d3_asin,
+  d3_acos,
+  d3_cross2d,
+  d3_sgn,
+  ε,
+  ε2,
+  π,
+  τ,
+  τε,
+  halfπ,
+  d3_radians,
+  d3_degrees
+};

@@ -1,6 +1,8 @@
 import { d3_interpolateNumber } from './number';
 
-var undefined;
+var d3_interpolateString;
+
+d3$interpolateString = d3_interpolateString;
 
 function d3_interpolateString(a, b) {
   var bi = d3_interpolate_numberA.lastIndex = d3_interpolate_numberB.lastIndex = 0, // scan index for next number in b

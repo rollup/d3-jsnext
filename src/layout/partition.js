@@ -1,7 +1,7 @@
-import { d3_layout_hierarchyRebind } from './hierarchy';
+import { d3_layout_hierarchyRebind, d3$layout$hierarchy } from './hierarchy';
+import { d3$layout } from './layout';
 
 var d3$layout$partition;
-var undefined;
 
 d3$layout$partition = function() {
   var hierarchy = d3$layout$hierarchy(),

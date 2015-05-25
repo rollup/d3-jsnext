@@ -1,6 +1,13 @@
 import { d3_identity } from '../core/identity';
+import { d3$rebind } from '../core/rebind';
+import { d3$behavior$drag } from '../behavior/drag';
+import { d3$behavior } from '../behavior/behavior';
+import { d3$timer } from '../event/timer';
+import { d3$geom$quadtree } from '../geom/quadtree';
+import { d3$geom } from '../geom/geom';
+import { d3$dispatch } from '../event/dispatch';
+import { d3$layout } from './layout';
 
-var undefined;
 var d3$layout$force;
 
 // A rudimentary force layout using Gauss-Seidel.
@@ -294,7 +301,7 @@ d3$layout$force = function() {
   };
 
   function dragmove(d) {
-    d.px = d3$event$x, d.py = d3$event$y;
+    d.px = window.d3_event.x, d.py = window.d3_event.y;
     force.resume(); // restart annealing
   }
 
@@ -361,4 +368,14 @@ var d3_layout_forceLinkDistance = 20,
     d3_layout_forceLinkStrength = 1,
     d3_layout_forceChargeDistance2 = Infinity;
 
-export { d3$layout$force, d3_layout_forceLinkDistance, d3_layout_forceLinkStrength, d3_layout_forceChargeDistance2, d3_layout_forceAccumulate, d3_layout_forceMouseout, d3_layout_forceMouseover, d3_layout_forceDragend, d3_layout_forceDragstart };
+export {
+  d3$layout$force,
+  d3_layout_forceLinkDistance,
+  d3_layout_forceLinkStrength,
+  d3_layout_forceChargeDistance2,
+  d3_layout_forceAccumulate,
+  d3_layout_forceMouseout,
+  d3_layout_forceMouseover,
+  d3_layout_forceDragend,
+  d3_layout_forceDragstart
+};

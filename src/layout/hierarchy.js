@@ -1,4 +1,7 @@
-var undefined;
+import { d3$merge } from '../arrays/merge';
+import { d3$rebind } from '../core/rebind';
+import { d3$layout } from './layout';
+
 var d3$layout$hierarchy;
 
 d3$layout$hierarchy = function() {
@@ -134,4 +137,13 @@ function d3_layout_hierarchyLinks(nodes) {
   }));
 }
 
-export { d3$layout$hierarchy, d3_layout_hierarchyLinks, d3_layout_hierarchySort, d3_layout_hierarchyValue, d3_layout_hierarchyChildren, d3_layout_hierarchyVisitAfter, d3_layout_hierarchyVisitBefore, d3_layout_hierarchyRebind };
+export {
+  d3$layout$hierarchy,
+  d3_layout_hierarchyLinks,
+  d3_layout_hierarchySort,
+  d3_layout_hierarchyValue,
+  d3_layout_hierarchyChildren,
+  d3_layout_hierarchyVisitAfter,
+  d3_layout_hierarchyVisitBefore,
+  d3_layout_hierarchyRebind
+};

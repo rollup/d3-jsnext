@@ -1,10 +1,12 @@
-import { dirname, relative } from 'path';
+import { dirname, relative, resolve } from 'path';
+import { readFileSync } from 'sander';
 import { parse } from 'acorn';
 import MagicString from 'magic-string';
 import attachScopes from './ast/attachScopes';
 import walk from './ast/walk';
 import createAlias from './utils/createAlias';
 import dedupe from './utils/dedupe';
+import isExport from './utils/isExport';
 
 function isIdentifier ( node, parent ) {
 	if ( node.type !== 'Identifier' ) return false;
@@ -31,29 +33,64 @@ function getKeypath ( node ) {
 	return `${node.name}.${keypath}`;
 }
 
+function readSource ( file, included ) {
+	const dir = dirname( file );
+
+	let lastIndex = 0;
+
+	return readFileSync( file ).toString()
+		.replace( /^\/\/\s*import.+?\n/gm, '' ) // ...(including commented-out ones...)
+		.replace( /^import \"(.+?)\";?\n/gm, ( match, relativePath, index ) => {
+			// ...except some. In most cases, we want to strip out import statements
+			// altogether and reconstruct them from the ASTs we're about to generate.
+			// There are a couple of places, however, where that won't work, because
+			// imports exist for their side-effects rather than their dependencies.
+			// (This is an undesirable pattern with ES6 modules, but that's a subject
+			// for another time.) As an easy way of including them, we identify
+			// side-effecty imports (because they're not at the top of the module -
+			// they come later on, after e.g. `d3_selection.prototype` has been
+			// defined) and basically copy-and-paste them in. This is, it goes
+			// without saying, a dreadful hack.
+
+			if ( index > lastIndex ) {
+				const path = resolve( dir, relativePath + '.js' );
+				included[ path ] = true;
+				const include = readSource( path, included );
+
+				return include + '\n\n';
+			}
+
+			lastIndex = index + match.length;
+			return '';
+		})
+		.trim();
+}
+
 export default class Module {
-	constructor ( src, file ) {
+	constructor ( file ) {
 		this.file = file;
 		this.dir = dirname( file );
 
-		// Remove smash import declarations, and remove whitespace
-		this.src = src.replace( /^import .+/gm, '' ).trim();
+		let lastIndex = 0;
+
+		this.src = readSource( file, this.included = {} );
 		this.magicString = new MagicString( this.src );
 
 		// Attempt to parse with acorn
 		try {
 			this.ast = parse( this.src );
 		} catch ( err ) {
+			console.log( this.src );
 			console.log( `error parsing ${file}: ${err.message}` );
 			throw err;
 		}
 
-		this.dependencies = {};
-		this.internalNameByExportName = {};
-		this.exports = [];
-		this.helpers = [];
+		this.internalDependencies = {};
+		this.exportDependencies = {};
 
-		this.allNodes = [];
+		this.internalNameByExportName = {};
+		this.exports = {};
+
 		this.analyse();
 
 		this.definitions = this.ast._scope.names.slice();
@@ -64,29 +101,30 @@ export default class Module {
 
 		walk( this.ast, {
 			enter: ( node, parent ) => {
-				this.allNodes.push( node );
-
 				if ( node._scope ) {
 					scope = node._scope;
 				}
 
 				if ( isIdentifier( node, parent ) && !scope.contains( node.name ) ) {
-					this.dependencies[ node.name ] = true;
+					this.internalDependencies[ node.name ] = true;
+				}
+
+				const keypath = getKeypath( node );
+				if ( isExport( keypath ) ) {
+					this.exportDependencies[ keypath ] = true;
 				}
 
 				// check for assignments to d3.whatever
 				if ( node.type === 'AssignmentExpression' && node.left.type === 'MemberExpression' ) {
 					const keypath = getKeypath( node.left );
 
-					if ( keypath && keypath.slice( 0, 3 ) === 'd3.' ) {
-						this.exports.push( keypath );
+					if ( isExport( keypath ) ) {
+						this.exports[ keypath ] = true;
 
 						if ( node.right.type === 'Identifier' ) {
 							this.internalNameByExportName[ keypath ] = node.right.name;
 							node._shouldRemove = true;
 
-							// we don't want this appearing in the output
-							this.magicString.remove( node.start, node.end );
 							return;
 						}
 					}
@@ -99,8 +137,6 @@ export default class Module {
 				}
 			}
 		});
-
-		this.allNodes.sort( ( a, b ) => a.start - b.start );
 	}
 
 	render ({
@@ -129,38 +165,47 @@ export default class Module {
 				}
 
 				// remove e.g. `d3.ascending = d3_ascending`
+				// TODO we don't always want this...
 				if ( node._shouldRemove ) {
-					let end = node.end;
-					const remaining = magicString.slice( end );
-					const match = /^;\n*/.exec( remaining );
-
-					if ( match ) end += match[0].length;
-
-					magicString.remove( node.start, end );
-					return this.skip();
+					//console.log( 'should remove', node );
+					// let end = node.end;
+					// const remaining = magicString.slice( end );
+					// const match = /^;\n*/.exec( remaining );
+					//
+					// if ( match ) end += match[0].length;
+					//
+					// magicString.remove( node.start, end );
+					// return this.skip();
 				}
 
-				// replace `d3.whatever = ...` with `var d3$whatever = ...`
+				// if we encounter `d3.whatever = ...` it gets turned into
+				// `d3$whatever = ...`, so we need to declare `var d3$whatever`
 				if ( node.type === 'AssignmentExpression' && node.left.type === 'MemberExpression' ) {
 					const keypath = getKeypath( node.left );
 
-					if ( keypath ) {
-						const alias = internalNameByExportName[ keypath ] || createAlias( keypath );
-						varsToDeclare[ alias ] = true;
-					}
-				}
-
-				// rewrite all other instances of `d3.whatever` to `d3_whatever`
-				if ( node.type === 'MemberExpression' ) {
-					const keypath = getKeypath( node );
-
-					if ( keypath ) {
+					if ( isExport( keypath ) ) {
 						const alias = internalNameByExportName[ keypath ] || createAlias( keypath );
 
 						if ( alias ) {
-							magicString.overwrite( node.start, node.end, alias );
-							return this.skip();
+							varsToDeclare[ alias ] = true;
 						}
+					}
+				}
+
+				// rewrite all other instances of `d3.whatever` to `d3_whatever`, but be
+				// careful with e.g. `d3.ns.qualify` -> `d3$ns.qualify`
+				if ( node.type === 'MemberExpression' ) {
+					const keypath = getKeypath( node );
+
+					if ( keypath === 'd3.event' ) {
+						// TODO fix this, once things actually work
+						magicString.overwrite( node.start, node.end, 'window.d3_event' );
+					}
+
+					if ( !!pathByExportName[ keypath ] ) {
+						const alias = keypath.replace( /\./g, '$' );
+						magicString.overwrite( node.start, node.end, alias );
+						return this.skip();
 					}
 				}
 			},
@@ -173,10 +218,20 @@ export default class Module {
 		});
 
 		let dependencies = {};
-		Object.keys( this.dependencies ).forEach( name => {
-			const owner = pathByInternalName[ name ];
+		let imported = {};
 
-			if ( !owner ) return;
+		const addDependency = ( owner, name ) => {
+			if ( !owner || owner === this.file ) return;
+
+			if ( imported[ name ] ) {
+				if ( owner !== imported[ name ] ) {
+					throw new Error( `Importing ${name} from separate locations: ${imported[ name ]}, ${owner}` );
+				}
+
+				return;
+			}
+
+			imported[ name ] = owner;
 
 			let relativePath = relative( this.dir, owner ).replace( /\.js$/, '' );
 			if ( relativePath[0] !== '.' ) relativePath = `./${relativePath}`;
@@ -186,6 +241,28 @@ export default class Module {
 			}
 
 			dependencies[ relativePath ].push( name );
+		};
+
+		Object.keys( this.internalDependencies ).forEach( name => {
+			addDependency( pathByInternalName[ name ], name );
+		});
+
+		Object.keys( this.exportDependencies ).forEach( keypath => {
+			const keys = keypath.split( '.' );
+			let owner;
+
+			while ( keys.length ) {
+				keypath = keys.join( '.' );
+				owner = pathByExportName[ keypath ];
+				if ( owner ) break;
+
+				keys.pop();
+			}
+
+			if ( !owner ) return;
+
+			const alias = keypath.replace( /\./g, '$' );
+			addDependency( owner, alias );
 		});
 
 		const varDeclarationBlock = Object.keys( varsToDeclare )
@@ -214,7 +291,11 @@ export default class Module {
 				.concat( internalNamesByPath[ this.file ])
 		);
 
-		const exportBlock = `\n\nexport { ${shouldExport.join(', ')} };`
+		const exportBlock = shouldExport.length > 4 ?
+			`\n\nexport {\n  ${shouldExport.join(',\n  ')}\n};` :
+			shouldExport.length > 0 ?
+			`\n\nexport { ${shouldExport.join(', ')} };` :
+			'';
 
 		return magicString.append( exportBlock ).toString();
 	}

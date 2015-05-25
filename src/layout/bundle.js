@@ -1,3 +1,5 @@
+import { d3$layout } from './layout';
+
 var d3$layout$bundle;
 
 // Implements hierarchical edge bundling using Holten's algorithm. For each

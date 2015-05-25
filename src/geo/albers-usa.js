@@ -1,7 +1,9 @@
 import { ε } from '../math/trigonometry';
+import { d3$geo$conicEqualArea } from './conic-equal-area';
+import { d3$geo } from './geo';
+import { d3$geo$albers } from './albers';
 
 var d3$geo$albersUsa;
-var undefined;
 
 // A composite projection for the United States, configured by default for
 // 960×500. Also works quite well at 960×600 with scale 1285. The set of

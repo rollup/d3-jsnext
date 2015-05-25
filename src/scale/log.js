@@ -1,8 +1,8 @@
-import { d3_scale_linearRebind } from './linear';
-import { d3_scaleExtent } from './scale';
+import { d3_scale_linearRebind, d3$scale$linear } from './linear';
+import { d3_scaleExtent, d3$scale } from './scale';
 import { d3_scale_nice } from './nice';
+import { d3$format } from '../format/format';
 
-var undefined;
 var d3$scale$log;
 
 d3$scale$log = function() {

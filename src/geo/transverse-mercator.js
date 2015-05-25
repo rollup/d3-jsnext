@@ -1,8 +1,8 @@
 import { d3_geo_mercatorProjection } from './mercator';
 import { halfπ, π } from '../math/trigonometry';
+import { d3$geo } from './geo';
 
 var d3$geo$transverseMercator;
-var undefined;
 
 function d3_geo_transverseMercator(λ, φ) {
   return [Math.log(Math.tan(π / 4 + φ / 2)), -λ];

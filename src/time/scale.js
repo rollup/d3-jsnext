@@ -2,11 +2,11 @@ import { d3_time } from './time';
 import { d3_identity } from '../core/identity';
 import { d3_true } from '../core/true';
 import { d3_time_format } from './format';
-import { d3_scale_linearRebind, d3_scale_linearTickRange } from '../scale/linear';
-import { d3_scaleExtent } from '../scale/scale';
+import { d3_scale_linearRebind, d3_scale_linearTickRange, d3$scale$linear } from '../scale/linear';
+import { d3_scaleExtent, d3$scale } from '../scale/scale';
 import { d3_scale_nice } from '../scale/nice';
-
-var undefined;
+import { d3$range } from '../arrays/range';
+import { d3$bisect } from '../arrays/bisect';
 
 function d3_time_scale(linear, methods, format) {
 
@@ -148,4 +148,11 @@ d3_time.scale = function() {
   return d3_time_scale(d3$scale$linear(), d3_time_scaleLocalMethods, d3_time_scaleLocalFormat);
 };
 
-export { d3_time_scaleMilliseconds, d3_time_scaleLocalFormat, d3_time_scaleLocalMethods, d3_time_scaleSteps, d3_time_scaleDate, d3_time_scale };
+export {
+  d3_time_scaleMilliseconds,
+  d3_time_scaleLocalFormat,
+  d3_time_scaleLocalMethods,
+  d3_time_scaleSteps,
+  d3_time_scaleDate,
+  d3_time_scale
+};

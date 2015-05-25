@@ -2,9 +2,9 @@ import { ε, d3_acos, τ, d3_radians, d3_degrees } from '../math/trigonometry';
 import { d3_geo_cartesianNormalize, d3_geo_cartesian } from './cartesian';
 import { d3_geo_spherical } from './spherical';
 import { d3_geo_rotation } from './rotation';
+import { d3$geo } from './geo';
 
 var d3$geo$circle;
-var undefined;
 
 d3$geo$circle = function() {
   var origin = [0, 0],

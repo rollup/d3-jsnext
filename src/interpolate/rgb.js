@@ -1,8 +1,12 @@
-import { d3_rgb_hex } from '../color/rgb';
+import { d3_rgb_hex, d3$rgb } from '../color/rgb';
+
+var d3_interpolateRgb;
+
+d3$interpolateRgb = d3_interpolateRgb;
 
 function d3_interpolateRgb(a, b) {
-  a = d3_rgb(a);
-  b = d3_rgb(b);
+  a = d3$rgb(a);
+  b = d3$rgb(b);
   var ar = a.r,
       ag = a.g,
       ab = a.b,

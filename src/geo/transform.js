@@ -1,4 +1,5 @@
-var undefined;
+import { d3$geo } from './geo';
+
 var d3$geo$transform;
 
 d3$geo$transform = function(methods) {

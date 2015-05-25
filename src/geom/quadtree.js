@@ -1,9 +1,9 @@
 import { abs } from '../math/abs';
 import { d3_functor } from '../core/functor';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
+import { d3$geom } from './geom';
 
 var d3$geom$quadtree;
-var undefined;
 
 d3$geom$quadtree = function(points, x1, y1, x2, y2) {
   var x = d3_geom_pointX,
@@ -244,4 +244,11 @@ function d3_geom_quadtreeFind(root, x, y, x0, y0, x3, y3) {
   return closestPoint;
 }
 
-export { d3$geom$quadtree, d3_geom_quadtreeFind, d3_geom_quadtreeVisit, d3_geom_quadtreeNode, d3_geom_quadtreeCompatY, d3_geom_quadtreeCompatX };
+export {
+  d3$geom$quadtree,
+  d3_geom_quadtreeFind,
+  d3_geom_quadtreeVisit,
+  d3_geom_quadtreeNode,
+  d3_geom_quadtreeCompatY,
+  d3_geom_quadtreeCompatX
+};

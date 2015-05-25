@@ -1,7 +1,10 @@
 import { d3_functor } from '../core/functor';
+import { d3$max } from '../arrays/max';
+import { d3$min } from '../arrays/min';
+import { d3$bisect } from '../arrays/bisect';
+import { d3$layout } from './layout';
 
 var d3$layout$histogram;
-var undefined;
 
 d3$layout$histogram = function() {
   var frequency = true,

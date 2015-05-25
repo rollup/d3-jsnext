@@ -1,8 +1,6 @@
 import { d3_time, d3_date } from './time';
 import { d3_time_interval } from './interval';
 
-var undefined;
-
 d3_time.minute = d3_time_interval(function(date) {
   return new d3_date(Math.floor(date / 6e4) * 6e4);
 }, function(date, offset) {
@@ -13,5 +11,3 @@ d3_time.minute = d3_time_interval(function(date) {
 
 d3_time.minutes = d3_time.minute.range;
 d3_time.minutes.utc = d3_time.minute.utc.range;
-
-export {  };

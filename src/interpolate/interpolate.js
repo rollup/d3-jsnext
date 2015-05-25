@@ -7,9 +7,12 @@ import { d3_interpolateString } from './string';
 import { d3_rgb_names } from '../color/rgb';
 
 var d3$interpolators;
+var d3_interpolate;
+
+d3$interpolate = d3_interpolate;
 
 function d3_interpolate(a, b) {
-  var i = d3$interpolators$length, f;
+  var i = d3$interpolators.length, f;
   while (--i >= 0 && !(f = d3$interpolators[i](a, b)));
   return f;
 }

@@ -1,8 +1,12 @@
-import { d3_lab_rgb } from '../color/lab';
+import { d3_lab_rgb, d3$lab } from '../color/lab';
+
+var d3_interpolateLab;
+
+d3$interpolateLab = d3_interpolateLab;
 
 function d3_interpolateLab(a, b) {
-  a = d3_lab(a);
-  b = d3_lab(b);
+  a = d3$lab(a);
+  b = d3$lab(b);
   var al = a.l,
       aa = a.a,
       ab = a.b,

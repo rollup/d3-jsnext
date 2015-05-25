@@ -46,4 +46,11 @@ function d3_geo_cartesianNormalize(d) {
   d[2] /= l;
 }
 
-export { d3_geo_cartesianNormalize, d3_geo_cartesianScale, d3_geo_cartesianAdd, d3_geo_cartesianCross, d3_geo_cartesianDot, d3_geo_cartesian };
+export {
+  d3_geo_cartesianNormalize,
+  d3_geo_cartesianScale,
+  d3_geo_cartesianAdd,
+  d3_geo_cartesianCross,
+  d3_geo_cartesianDot,
+  d3_geo_cartesian
+};

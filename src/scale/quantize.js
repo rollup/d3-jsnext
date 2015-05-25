@@ -1,4 +1,5 @@
-var undefined;
+import { d3$scale } from './scale';
+
 var d3$scale$quantize;
 
 d3$scale$quantize = function() {

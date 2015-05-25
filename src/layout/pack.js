@@ -1,6 +1,6 @@
-import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitAfter } from './hierarchy';
+import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitAfter, d3$layout$hierarchy } from './hierarchy';
+import { d3$layout } from './layout';
 
-var undefined;
 var d3$layout$pack;
 
 d3$layout$pack = function() {
@@ -212,4 +212,15 @@ function d3_layout_packPlace(a, b, c) {
   }
 }
 
-export { d3$layout$pack, d3_layout_packPlace, d3_layout_packTransform, d3_layout_packUnlink, d3_layout_packLink, d3_layout_packSiblings, d3_layout_packIntersects, d3_layout_packSplice, d3_layout_packInsert, d3_layout_packSort };
+export {
+  d3$layout$pack,
+  d3_layout_packPlace,
+  d3_layout_packTransform,
+  d3_layout_packUnlink,
+  d3_layout_packLink,
+  d3_layout_packSiblings,
+  d3_layout_packIntersects,
+  d3_layout_packSplice,
+  d3_layout_packInsert,
+  d3_layout_packSort
+};

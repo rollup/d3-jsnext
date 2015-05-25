@@ -1,7 +1,7 @@
-import { d3_scaleExtent } from './scale';
+import { d3_scaleExtent, d3$scale } from './scale';
 import { d3_Map } from '../arrays/map';
+import { d3$range } from '../arrays/range';
 
-var undefined;
 var d3$scale$ordinal;
 
 d3$scale$ordinal = function() {

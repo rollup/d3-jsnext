@@ -3,9 +3,9 @@ import { π, halfπ } from '../math/trigonometry';
 import { d3_svg_arcEndAngle, d3_svg_arcStartAngle } from './arc';
 import { d3_target } from '../core/target';
 import { d3_source } from '../core/source';
+import { d3$svg } from './svg';
 
 var d3$svg$chord;
-var undefined;
 
 d3$svg$chord = function() {
   var source = d3_source,

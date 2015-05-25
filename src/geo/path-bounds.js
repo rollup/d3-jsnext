@@ -20,4 +20,11 @@ function d3_geo_pathBoundsPoint(x, y) {
   if (y > d3_geo_pathBoundsY1) d3_geo_pathBoundsY1 = y;
 }
 
-export { d3_geo_pathBoundsPoint, d3_geo_pathBounds, d3_geo_pathBoundsX0, d3_geo_pathBoundsY0, d3_geo_pathBoundsX1, d3_geo_pathBoundsY1 };
+export {
+  d3_geo_pathBoundsPoint,
+  d3_geo_pathBounds,
+  d3_geo_pathBoundsX0,
+  d3_geo_pathBoundsY0,
+  d3_geo_pathBoundsX1,
+  d3_geo_pathBoundsY1
+};

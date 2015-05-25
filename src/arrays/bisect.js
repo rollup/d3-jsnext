@@ -40,4 +40,11 @@ d3$bisector = function(f) {
       : f);
 };
 
-export { d3$bisector, d3$bisect, d3$bisectRight, d3$bisectLeft, d3_bisect, d3_bisector };
+export {
+  d3$bisector,
+  d3$bisect,
+  d3$bisectRight,
+  d3$bisectLeft,
+  d3_bisect,
+  d3_bisector
+};

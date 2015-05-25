@@ -1,7 +1,5 @@
 import { d3_document } from '../core/document';
 
-var undefined;
-
 // Redefine style.setProperty et al. if the browser doesn’t coerce arguments.
 if (d3_document) {
   try {
@@ -23,5 +21,3 @@ if (d3_document) {
     };
   }
 }
-
-export {  };

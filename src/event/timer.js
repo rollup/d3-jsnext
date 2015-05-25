@@ -1,6 +1,5 @@
 import { d3_vendorSymbol } from '../core/vendor';
 
-var undefined;
 var d3$timer$flush;
 var d3$timer;
 
@@ -79,4 +78,16 @@ function d3_timer_sweep() {
   return time;
 }
 
-export { d3$timer$flush, d3$timer, d3_timer_sweep, d3_timer_mark, d3_timer_step, d3_timer_queueHead, d3_timer_queueTail, d3_timer_interval, d3_timer_timeout, d3_timer_active, d3_timer_frame };
+export {
+  d3$timer$flush,
+  d3$timer,
+  d3_timer_sweep,
+  d3_timer_mark,
+  d3_timer_step,
+  d3_timer_queueHead,
+  d3_timer_queueTail,
+  d3_timer_interval,
+  d3_timer_timeout,
+  d3_timer_active,
+  d3_timer_frame
+};

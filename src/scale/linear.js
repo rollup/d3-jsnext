@@ -1,14 +1,17 @@
 import { abs } from '../math/abs';
 import { d3_format_re } from '../locale/number-format';
-import { d3_scaleExtent } from './scale';
+import { d3_scaleExtent, d3$scale } from './scale';
 import { d3_scale_niceStep, d3_scale_nice } from './nice';
 import { d3_interpolateRound } from '../interpolate/round';
 import { d3_interpolate } from '../interpolate/interpolate';
 import { d3_uninterpolateNumber, d3_uninterpolateClamp } from '../interpolate/uninterpolate';
 import { d3_scale_bilinear } from './bilinear';
 import { d3_scale_polylinear } from './polylinear';
+import { d3$format } from '../format/format';
+import { d3$formatPrefix } from '../format/formatPrefix';
+import { d3$range } from '../arrays/range';
+import { d3$rebind } from '../core/rebind';
 
-var undefined;
 var d3$scale$linear;
 
 d3$scale$linear = function() {
@@ -113,7 +116,7 @@ function d3_scale_linearTickRange(domain, m) {
 }
 
 function d3_scale_linearTicks(domain, m) {
-  return d3$range$apply(d3, d3_scale_linearTickRange(domain, m));
+  return d3$range.apply(d3, d3_scale_linearTickRange(domain, m));
 }
 
 function d3_scale_linearTickFormat(domain, m, format) {
@@ -158,4 +161,15 @@ function d3_scale_linearFormatPrecision(type, range) {
       : p - (type === "%") * 2;
 }
 
-export { d3$scale$linear, d3_scale_linearFormatPrecision, d3_scale_linearPrecision, d3_scale_linearFormatSignificant, d3_scale_linearTickFormat, d3_scale_linearTicks, d3_scale_linearTickRange, d3_scale_linearNice, d3_scale_linearRebind, d3_scale_linear };
+export {
+  d3$scale$linear,
+  d3_scale_linearFormatPrecision,
+  d3_scale_linearPrecision,
+  d3_scale_linearFormatSignificant,
+  d3_scale_linearTickFormat,
+  d3_scale_linearTicks,
+  d3_scale_linearTickRange,
+  d3_scale_linearNice,
+  d3_scale_linearRebind,
+  d3_scale_linear
+};

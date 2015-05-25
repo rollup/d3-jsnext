@@ -1,9 +1,12 @@
-import { d3_scaleRange } from '../scale/scale';
+import { d3_scaleRange, d3$scale } from '../scale/scale';
 import { ε } from '../math/trigonometry';
 import { d3_identity } from '../core/identity';
+import { d3$transition } from '../transition/transition';
+import { d3$select } from '../selection/selection';
+import { d3$scale$linear } from '../scale/linear';
+import { d3$svg } from './svg';
 
 var d3$svg$axis;
-var undefined;
 
 d3$svg$axis = function() {
   var scale = d3$scale$linear(),
@@ -157,4 +160,10 @@ function d3_svg_axisY(selection, y0, y1) {
   selection.attr("transform", function(d) { var v0 = y0(d); return "translate(0," + (isFinite(v0) ? v0 : y1(d)) + ")"; });
 }
 
-export { d3$svg$axis, d3_svg_axisY, d3_svg_axisX, d3_svg_axisDefaultOrient, d3_svg_axisOrients };
+export {
+  d3$svg$axis,
+  d3_svg_axisY,
+  d3_svg_axisX,
+  d3_svg_axisDefaultOrient,
+  d3_svg_axisOrients
+};

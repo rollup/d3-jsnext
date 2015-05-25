@@ -1,9 +1,10 @@
 import { d3_radians, π } from '../math/trigonometry';
 import { d3_functor } from '../core/functor';
+import { d3$svg } from './svg';
+import { d3$map } from '../arrays/map';
 
 var d3$svg$symbolTypes;
 var d3$svg$symbol;
-var undefined;
 
 d3$svg$symbol = function() {
   var type = d3_svg_symbolType,
@@ -106,4 +107,13 @@ d3$svg$symbolTypes = d3_svg_symbols.keys();
 var d3_svg_symbolSqrt3 = Math.sqrt(3),
     d3_svg_symbolTan30 = Math.tan(30 * d3_radians);
 
-export { d3$svg$symbolTypes, d3$svg$symbol, d3_svg_symbolSqrt3, d3_svg_symbolTan30, d3_svg_symbols, d3_svg_symbolCircle, d3_svg_symbolType, d3_svg_symbolSize };
+export {
+  d3$svg$symbolTypes,
+  d3$svg$symbol,
+  d3_svg_symbolSqrt3,
+  d3_svg_symbolTan30,
+  d3_svg_symbols,
+  d3_svg_symbolCircle,
+  d3_svg_symbolType,
+  d3_svg_symbolSize
+};

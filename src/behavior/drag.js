@@ -3,9 +3,13 @@ import { d3_identity } from '../core/identity';
 import { d3_window } from '../core/document';
 import { d3_noop } from '../core/noop';
 import { d3_eventDispatch } from '../event/event';
+import { d3$rebind } from '../core/rebind';
+import { d3$select } from '../selection/selection';
+import { d3$touch } from '../event/touch';
+import { d3$mouse } from '../event/mouse';
+import { d3$behavior } from './behavior';
 
 var d3$behavior$drag;
-var undefined;
 
 d3$behavior$drag = function() {
   var event = d3_eventDispatch(drag, "drag", "dragstart", "dragend"),
@@ -21,7 +25,7 @@ d3$behavior$drag = function() {
   function dragstart(id, position, subject, move, end) {
     return function() {
       var that = this,
-          target = d3$event$target,
+          target = window.d3_event.target,
           parent = that.parentNode,
           dispatch = event.of(that, arguments),
           dragged = 0,
@@ -62,7 +66,7 @@ d3$behavior$drag = function() {
       function ended() {
         if (!position(parent, dragId)) return; // this touch didn’t end
         dragSubject.on(move + dragName, null).on(end + dragName, null);
-        dragRestore(dragged && d3$event$target === target);
+        dragRestore(dragged && window.d3_event.target === target);
         dispatch({type: "dragend"});
       }
     };
@@ -84,7 +88,7 @@ d3$behavior$drag = function() {
 // cannot move the same target to different locations concurrently without
 // tearing the fabric of spacetime, we allow the first touch to win.
 function d3_behavior_dragTouchId() {
-  return d3$event$changedTouches[0].identifier;
+  return window.d3_event.changedTouches[0].identifier;
 }
 
 export { d3$behavior$drag, d3_behavior_dragTouchId };

@@ -1,6 +1,6 @@
 import { d3_geo_projection } from './projection';
+import { d3$geo } from './geo';
 
-var undefined;
 var d3$geo$equirectangular;
 
 function d3_geo_equirectangular(λ, φ) {

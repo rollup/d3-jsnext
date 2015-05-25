@@ -1,7 +1,6 @@
 import { d3_subclass } from '../core/subclass';
+import { d3$geom } from './geom';
 
-var undefined;
-var d3$geom$polygon$prototype;
 var d3$geom$polygon;
 
 d3$geom$polygon = function(coordinates) {
@@ -9,7 +8,7 @@ d3$geom$polygon = function(coordinates) {
   return coordinates;
 };
 
-var d3_geom_polygonPrototype = d3$geom$polygon$prototype = [];
+var d3_geom_polygonPrototype = d3$geom$polygon.prototype = [];
 
 d3_geom_polygonPrototype.area = function() {
   var i = -1,
@@ -107,4 +106,10 @@ function d3_geom_polygonClosed(coordinates) {
   return !(a[0] - b[0] || a[1] - b[1]);
 }
 
-export { d3$geom$polygon$prototype, d3$geom$polygon, d3_geom_polygonClosed, d3_geom_polygonIntersect, d3_geom_polygonInside, d3_geom_polygonPrototype };
+export {
+  d3$geom$polygon,
+  d3_geom_polygonClosed,
+  d3_geom_polygonIntersect,
+  d3_geom_polygonInside,
+  d3_geom_polygonPrototype
+};

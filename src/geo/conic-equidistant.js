@@ -2,9 +2,9 @@ import { d3_geo_conic } from './conic';
 import { d3_sgn, ε } from '../math/trigonometry';
 import { d3_geo_equirectangular } from './equirectangular';
 import { abs } from '../math/abs';
+import { d3$geo } from './geo';
 
 var d3$geo$conicEquidistant;
-var undefined;
 
 function d3_geo_conicEquidistant(φ0, φ1) {
   var cosφ0 = Math.cos(φ0),

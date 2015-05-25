@@ -1,8 +1,8 @@
 import { π, halfπ } from '../math/trigonometry';
 import { d3_geo_projection } from './projection';
+import { d3$geo } from './geo';
 
 var d3$geo$mercator;
-var undefined;
 
 function d3_geo_mercator(λ, φ) {
   return [λ, Math.log(Math.tan(π / 4 + φ / 2))];

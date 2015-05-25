@@ -1,15 +1,12 @@
 import { lsrSync, readFileSync, rimrafSync, writeFileSync } from 'sander';
-import { basename, dirname, join } from 'path';
+import { basename, dirname, join, relative, resolve } from 'path';
 
 import Module from './Module';
 import createAlias from './utils/createAlias';
+import isExport from './utils/isExport';
 
-const srcDir = join( __dirname, '../../d3/src' );
-const destDir = join( __dirname, '../../src' );
-
-function isExport ( name ) {
-	return name.slice( 0, 3 ) === 'd3.';
-}
+const srcDir = resolve( __dirname, '../../d3/src' );
+const destDir = resolve( __dirname, '../../src' );
 
 function getExportName ( name ) {
 	// TODO
@@ -38,9 +35,8 @@ export default function () {
 	//const files = lsrSync( srcDir ).filter( file => file.slice( 0, 6 ) === 'arrays' );
 
 	// Scan files - parse them, and extract metadata
-	const modules = files.map( file => {
-		const src = readFileSync( srcDir, file ).toString();
-		return new Module( src, file );
+	let modules = files.map( file => {
+		return new Module( join( srcDir, file ) );
 	});
 
 	// First, we need to map the entire dependency graph -
@@ -55,11 +51,30 @@ export default function () {
 	let internalNameByExportName = {};
 	let exportNameByInternalName = {};
 
+	// First, remove any modules that were already imported into another
+	// (i.e. selection prototype stuff)
+	let included = {};
+	modules.forEach( module => {
+		Object.keys( module.included ).forEach( path => included[ path ] = true );
+	});
+
+	let i = modules.length;
+	while ( i-- ) {
+		if ( included[ modules[i].file ] ) {
+			modules.splice( i, 1 );
+		}
+	}
+
+	// Then create a map of which module exports what
 	modules.forEach( module => {
 		exportNamesByPath[ module.file ] = [];
 		internalNamesByPath[ module.file ] = [];
 
-		module.exports.forEach( name => {
+		Object.keys( module.exports ).forEach( name => {
+			if ( !!pathByExportName[ name ] ) {
+				console.log( 'already exported %s: %s (in %s)', name, pathByExportName[ name ], module.file );
+			}
+
 			pathByExportName[ name ] = module.file;
 			exportNamesByPath[ module.file ].push( name );
 		});
@@ -87,7 +102,7 @@ export default function () {
 			exportNameByInternalName
 		});
 
-		writeFileSync( destDir, module.file, rendered );
+		writeFileSync( module.file.replace( srcDir, destDir ), rendered );
 	});
 
 	// d3.version. TODO rig this up
@@ -103,10 +118,14 @@ export default function () {
 			.map( createAlias );
 
 		if ( names.length ) {
-			const relativePath = `./${path.slice( 0, -3 )}`;
+			const relativePath = `./${relative( srcDir, path )}`;
 			const exports = names.map( name => `${name} as ${name.substring( 3 )}` );
 
-			indexBlock.push( `export { ${exports.join(', ')} } from '${relativePath}';` );
+			const declaration = exports.length > 3 ?
+				`export {\n  ${exports.join(',\n  ')}\n}` :
+				`export { ${exports.join(', ')} }`;
+
+			indexBlock.push( `${declaration} from '${relativePath}';` );
 		}
 	});
 

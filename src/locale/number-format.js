@@ -1,5 +1,8 @@
 import { d3_format_precision } from '../format/precision';
 import { d3_identity } from '../core/identity';
+import { d3$round } from '../format/round';
+import { d3$map } from '../arrays/map';
+import { d3$formatPrefix } from '../format/formatPrefix';
 
 function d3_locale_numberFormat(locale) {
   var locale_decimal = locale.decimal,

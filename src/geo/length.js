@@ -1,8 +1,9 @@
 import { d3_radians } from '../math/trigonometry';
 import { abs } from '../math/abs';
 import { d3_noop } from '../core/noop';
+import { d3$geo$stream } from './stream';
+import { d3$geo } from './geo';
 
-var undefined;
 var d3$geo$length;
 
 d3$geo$length = function(object) {

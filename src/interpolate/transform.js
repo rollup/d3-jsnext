@@ -1,4 +1,9 @@
 import { d3_interpolateNumber } from './number';
+import { d3$transform } from '../math/transform';
+
+var d3_interpolateTransform;
+
+d3$interpolateTransform = d3_interpolateTransform;
 
 function d3_interpolateTransform(a, b) {
   var s = [], // string constants and placeholders

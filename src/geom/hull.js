@@ -1,9 +1,9 @@
 import { d3_cross2d } from '../math/trigonometry';
 import { d3_functor } from '../core/functor';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
+import { d3$geom } from './geom';
 
 var d3$geom$hull;
-var undefined;
 
 /**
  * Computes the 2D convex hull of a set of points using the monotone chain

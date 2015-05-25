@@ -1,5 +1,3 @@
-var undefined;
-
 // Adds floating point numbers with twice the normal precision.
 // Reference: J. R. Shewchuk, Adaptive Precision Floating-Point Arithmetic and
 // Fast Robust Geometric Predicates, Discrete & Computational Geometry 18(3)

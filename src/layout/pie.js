@@ -1,7 +1,9 @@
 import { τ } from '../math/trigonometry';
+import { d3$range } from '../arrays/range';
+import { d3$sum } from '../arrays/sum';
+import { d3$layout } from './layout';
 
 var d3$layout$pie;
-var undefined;
 
 d3$layout$pie = function() {
   var value = Number,

@@ -2,9 +2,9 @@ import { d3_functor } from '../core/functor';
 import { d3_geom_voronoiHalfEdgeOrder } from './voronoi/cell';
 import { ε } from '../math/trigonometry';
 import { d3_geom_pointY, d3_geom_pointX } from './point';
+import { d3$geom } from './geom';
 
 var d3$geom$voronoi;
-var undefined;
 
 d3$geom$voronoi = function(points) {
   var x = d3_geom_pointX,

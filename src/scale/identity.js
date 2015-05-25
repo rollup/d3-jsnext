@@ -1,6 +1,6 @@
 import { d3_scale_linearTickFormat, d3_scale_linearTicks } from './linear';
+import { d3$scale } from './scale';
 
-var undefined;
 var d3$scale$identity;
 
 d3$scale$identity = function() {

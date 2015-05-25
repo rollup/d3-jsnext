@@ -1,4 +1,6 @@
-var undefined;
+var d3_color;
+
+d3$color = d3_color;
 
 function d3_color() {}
 

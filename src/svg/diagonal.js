@@ -1,9 +1,9 @@
 import { d3_functor } from '../core/functor';
 import { d3_target } from '../core/target';
 import { d3_source } from '../core/source';
+import { d3$svg } from './svg';
 
 var d3$svg$diagonal;
-var undefined;
 
 d3$svg$diagonal = function() {
   var source = d3_source,

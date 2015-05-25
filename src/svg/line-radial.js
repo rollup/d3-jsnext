@@ -1,8 +1,8 @@
 import { halfπ } from '../math/trigonometry';
-import { d3_svg_line } from './line';
+import { d3_svg_line, d3$svg$line } from './line';
+import { d3$svg } from './svg';
 
 var d3$svg$line$radial;
-var undefined;
 
 d3$svg$line$radial = function() {
   var line = d3_svg_line(d3_svg_lineRadial);

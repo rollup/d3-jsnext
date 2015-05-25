@@ -3,8 +3,9 @@ import { abs } from '../math/abs';
 import { d3_geo_clipPolygon } from './clip-polygon';
 import { d3_geom_clipLine } from '../geom/clip-line';
 import { d3_geo_clipBufferListener } from './clip';
+import { d3$merge } from '../arrays/merge';
+import { d3$geo } from './geo';
 
-var undefined;
 var d3$geo$clipExtent;
 
 var d3_geo_clipExtentMAX = 1e9;

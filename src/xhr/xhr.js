@@ -1,7 +1,8 @@
 import { d3_array } from '../core/array';
 import { d3_identity } from '../core/identity';
+import { d3$rebind } from '../core/rebind';
+import { d3$dispatch } from '../event/dispatch';
 
-var undefined;
 var d3$xhr;
 
 d3$xhr = d3_xhrType(d3_identity);
@@ -45,9 +46,10 @@ function d3_xhr(url, mimeType, response, callback) {
   }
 
   request.onprogress = function(event) {
-    var o = event;
-        try { dispatch.progress.call(xhr, request); }
-    finally {  }
+    var o = window.d3_event;
+    window.d3_event = event;
+    try { dispatch.progress.call(xhr, request); }
+    finally { window.d3_event = o; }
   };
 
   xhr.header = function(name, value) {
@@ -124,4 +126,10 @@ function d3_xhrHasResponse(request) {
       : request.responseText; // "" on error
 }
 
-export { event, d3$xhr, d3_xhrHasResponse, d3_xhr_fixCallback, d3_xhr, d3_xhrType };
+export {
+  d3$xhr,
+  d3_xhrHasResponse,
+  d3_xhr_fixCallback,
+  d3_xhr,
+  d3_xhrType
+};

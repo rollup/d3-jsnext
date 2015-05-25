@@ -1,6 +1,6 @@
-import { d3_scale_linearRebind, d3_scale_linearNice, d3_scale_linearTickFormat, d3_scale_linearTicks } from './linear';
+import { d3_scale_linearRebind, d3_scale_linearNice, d3_scale_linearTickFormat, d3_scale_linearTicks, d3$scale$linear } from './linear';
+import { d3$scale } from './scale';
 
-var undefined;
 var d3$scale$pow;
 
 d3$scale$pow = function() {

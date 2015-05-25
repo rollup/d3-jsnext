@@ -1,6 +1,6 @@
 import { d3_degrees, d3_haversin, d3_radians } from '../math/trigonometry';
+import { d3$geo } from './geo';
 
-var undefined;
 var d3$geo$interpolate;
 
 d3$geo$interpolate = function(source, target) {

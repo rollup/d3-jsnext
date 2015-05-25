@@ -1,3 +1,5 @@
+import { d3$locale } from './locale';
+
 var d3$locale$ru_RU;
 
 d3$locale$ru_RU = d3$locale({

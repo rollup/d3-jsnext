@@ -1,5 +1,3 @@
-var undefined;
-
 function d3_geo_compose(a, b) {
 
   function compose(x, y) {

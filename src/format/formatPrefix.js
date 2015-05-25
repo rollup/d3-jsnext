@@ -1,5 +1,6 @@
 import { abs } from '../math/abs';
 import { d3_format_precision } from './precision';
+import { d3$round } from './round';
 
 var d3$formatPrefix;
 

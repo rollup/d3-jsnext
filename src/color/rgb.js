@@ -2,8 +2,11 @@ import { d3_lab, d3_lab_Z, d3_lab_Y, d3_lab_X } from './lab';
 import { d3_xyz_lab } from './xyz';
 import { d3_hsl, d3_hsl_rgb } from './hsl';
 import { d3_color } from './color';
+import { d3$map } from '../arrays/map';
 
-var undefined;
+var d3_rgb;
+
+d3$rgb = d3_rgb;
 
 function d3_rgb(r, g, b) {
   return this instanceof d3_rgb ? void (this.r = ~~r, this.g = ~~g, this.b = ~~b)
@@ -299,4 +302,16 @@ d3_rgb_names.forEach(function(key, value) {
   d3_rgb_names.set(key, d3_rgbNumber(value));
 });
 
-export { d3_rgb, d3_rgb_names, d3_rgb_parseNumber, d3_rgb_xyz, d3_rgb_lab, d3_rgb_hsl, d3_rgb_parse, d3_rgb_hex, d3_rgbPrototype, d3_rgbString, d3_rgbNumber };
+export {
+  d3_rgb,
+  d3_rgb_names,
+  d3_rgb_parseNumber,
+  d3_rgb_xyz,
+  d3_rgb_lab,
+  d3_rgb_hsl,
+  d3_rgb_parse,
+  d3_rgb_hex,
+  d3_rgbPrototype,
+  d3_rgbString,
+  d3_rgbNumber
+};

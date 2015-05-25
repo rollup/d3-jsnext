@@ -1,8 +1,7 @@
 import { abs } from '../math/abs';
-import { d3_Map } from '../arrays/map';
+import { d3_Map, d3$map } from '../arrays/map';
 import { d3_time, d3_date, d3_date_utc } from '../time/time';
-
-var undefined;
+import { d3$requote } from '../format/requote';
 
 function d3_locale_timeFormat(locale) {
   var locale_dateTime = locale.dateTime,
@@ -366,4 +365,29 @@ function d3_time_formatMulti(formats) {
   };
 }
 
-export { d3_time_formatMulti, d3_time_parseLiteralPercent, d3_time_zone, d3_time_parseMilliseconds, d3_time_parseSeconds, d3_time_parseMinutes, d3_time_parseHour24, d3_time_parseDayOfYear, d3_time_parseDay, d3_time_parseMonthNumber, d3_time_expandYear, d3_time_parseZone, d3_time_parseYear, d3_time_parseFullYear, d3_time_parseWeekNumberMonday, d3_time_parseWeekNumberSunday, d3_time_parseWeekdayNumber, d3_time_formatLookup, d3_time_formatRe, d3_time_formatPad, d3_time_formatPads, d3_time_numberRe, d3_time_percentRe, d3_locale_timeFormat };
+export {
+  d3_time_formatMulti,
+  d3_time_parseLiteralPercent,
+  d3_time_zone,
+  d3_time_parseMilliseconds,
+  d3_time_parseSeconds,
+  d3_time_parseMinutes,
+  d3_time_parseHour24,
+  d3_time_parseDayOfYear,
+  d3_time_parseDay,
+  d3_time_parseMonthNumber,
+  d3_time_expandYear,
+  d3_time_parseZone,
+  d3_time_parseYear,
+  d3_time_parseFullYear,
+  d3_time_parseWeekNumberMonday,
+  d3_time_parseWeekNumberSunday,
+  d3_time_parseWeekdayNumber,
+  d3_time_formatLookup,
+  d3_time_formatRe,
+  d3_time_formatPad,
+  d3_time_formatPads,
+  d3_time_numberRe,
+  d3_time_percentRe,
+  d3_locale_timeFormat
+};

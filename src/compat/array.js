@@ -13,5 +13,3 @@ if (d3_document) {
     };
   }
 }
-
-export {  };

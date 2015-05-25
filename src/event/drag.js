@@ -1,6 +1,7 @@
 import { d3_eventPreventDefault } from './event';
 import { d3_documentElement, d3_window } from '../core/document';
 import { d3_vendorSymbol } from '../core/vendor';
+import { d3$select } from '../selection/selection';
 
 var d3_event_dragSelect,
     d3_event_dragId = 0;

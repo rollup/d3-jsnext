@@ -1,6 +1,6 @@
-import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitBefore, d3_layout_hierarchyVisitAfter } from './hierarchy';
+import { d3_layout_hierarchyRebind, d3_layout_hierarchyVisitBefore, d3_layout_hierarchyVisitAfter, d3$layout$hierarchy } from './hierarchy';
+import { d3$layout } from './layout';
 
-var undefined;
 var d3$layout$tree;
 
 // Node-link tree diagram using the Reingold-Tilford "tidy" algorithm
@@ -241,4 +241,12 @@ function d3_layout_treeAncestor(vim, v, ancestor) {
   return vim.a.parent === v.parent ? vim.a : ancestor;
 }
 
-export { d3$layout$tree, d3_layout_treeAncestor, d3_layout_treeShift, d3_layout_treeMove, d3_layout_treeRight, d3_layout_treeLeft, d3_layout_treeSeparation };
+export {
+  d3$layout$tree,
+  d3_layout_treeAncestor,
+  d3_layout_treeShift,
+  d3_layout_treeMove,
+  d3_layout_treeRight,
+  d3_layout_treeLeft,
+  d3_layout_treeSeparation
+};

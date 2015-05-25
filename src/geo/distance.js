@@ -1,4 +1,5 @@
 import { d3_radians } from '../math/trigonometry';
+import { d3$geo } from './geo';
 
 var d3$geo$distance;
 

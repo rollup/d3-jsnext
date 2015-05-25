@@ -1,8 +1,6 @@
 import { d3_geom_voronoiRedBlackNode } from './red-black';
 import { ε2 } from '../../math/trigonometry';
 
-var undefined;
-
 function d3_geom_voronoiCircle() {
   d3_geom_voronoiRedBlackNode(this);
   this.x =

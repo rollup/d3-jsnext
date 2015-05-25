@@ -1,7 +1,9 @@
+import { d3$variance } from './variance';
+
 var d3$deviation;
 
 d3$deviation = function() {
-  var v = d3$variance$apply(this, arguments);
+  var v = d3$variance.apply(this, arguments);
   return v ? Math.sqrt(v) : v;
 };
 

@@ -1,15 +1,17 @@
 import { d3_radians } from '../math/trigonometry';
 import { d3_lab, d3_lab_K, d3_lab_hcl } from './lab';
 import { d3_color } from './color';
-import { d3_rgb_lab } from './rgb';
+import { d3_rgb_lab, d3$rgb } from './rgb';
 
-var undefined;
+var d3_hcl;
+
+d3$hcl = d3_hcl;
 
 function d3_hcl(h, c, l) {
   return this instanceof d3_hcl ? void (this.h = +h, this.c = +c, this.l = +l)
       : arguments.length < 2 ? (h instanceof d3_hcl ? new d3_hcl(h.h, h.c, h.l)
       : (h instanceof d3_lab ? d3_lab_hcl(h.l, h.a, h.b)
-      : d3_lab_hcl((h = d3_rgb_lab((h = d3_rgb(h)).r, h.g, h.b)).l, h.a, h.b)))
+      : d3_lab_hcl((h = d3_rgb_lab((h = d3$rgb(h)).r, h.g, h.b)).l, h.a, h.b)))
       : new d3_hcl(h, c, l);
 }
 
