@@ -1,4 +1,4 @@
-import { mouse, range, select, voronoi } from '../../src/index'; // TODO just voronoi
+import { mouse, range, select, voronoi } from '../../src/index';
 
 var width = 960,
     height = 500;
