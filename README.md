@@ -248,7 +248,7 @@ Err... the tests don't *quite* work yet. In progress! (It's tricky, because the 
 
 ## License etc
 
-d3 is copyright [Mike Bostock](https://github.com/mbostock) and released under the [MIT license](https://github.com/rollup/d3-jsnext/blob/master/D3-LICENSE).
+d3 is copyright [Mike Bostock](https://github.com/mbostock) - [license here](https://github.com/rollup/d3-jsnext/blob/master/D3-LICENSE).
 
 d3-jsnext copyright [Rich Harris](https://github.com/rich-harris) and released under the [MIT license](https://github.com/rollup/d3-jsnext/blob/master/LICENSE).
 
