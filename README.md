@@ -1,9 +1,5 @@
 # d3-jsnext
 
-**[Slides from the Hacks/Hackers NYC talk are here.](https://docs.google.com/presentation/d/1c1ufewQA4RtcQiV1vz1tZGDeA-7yHsrzoxOQiFcBLhY/edit#slide=id.p) (They may not make a great deal of sense without context.)**
-
-## What is this?
-
 [d3](http://d3js.org/), ported to ES6 modules.
 
 ## Why?
