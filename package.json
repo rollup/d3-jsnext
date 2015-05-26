@@ -21,5 +21,11 @@
     "update-d3": "rm -rf d3 && git clone https://github.com/mbostock/d3 && npm run update-pkg",
     "update-pkg": "node scripts/update-package.js"
   },
+  "files": [
+    "src/",
+    "examples/",
+    "index.js",
+    "README.md"
+  ],
   "version": "3.5.5"
 }
