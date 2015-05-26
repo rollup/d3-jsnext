@@ -1,6 +1,7 @@
 {
   "name": "d3-jsnext",
   "description": "d3, but futuristic",
+  "jsnext:main": "./src/index.js",
   "devDependencies": {
     "babel": "5.0.0",
     "spelunk": "0.1.1",
