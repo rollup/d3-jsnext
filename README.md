@@ -8,9 +8,9 @@
 
 ## Why?
 
-Because most D3 projects only use a tiny fraction of D3's code. It has so much stuff in there - data manipulation, DOM stuff, AJAX, string interpolators, etc, etc... that you just don't need if you only want to (for example) generate a map projection function.
+Because most d3 projects only use a tiny fraction of d3's code. It has so much stuff in there - data manipulation, DOM stuff, AJAX, string interpolators, etc, etc... that you just don't need if you only want to (for example) generate a map projection function.
 
-You can build D3 yourself, only including the bits that you need, but... can you really be bothered? And when you decide you want to use another D3 function that isn't in the build, do you waste time rebuilding it, or waste time implementing the function yourself?
+You can build d3 yourself, only including the bits that you need, but... can you really be bothered? And when you decide you want to use another d3 function that isn't in the build, do you waste time rebuilding it, or waste time implementing the function yourself?
 
 ES6 modules allow you to selectively import the bits of a library that you actually need.
 
