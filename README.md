@@ -16,7 +16,7 @@ var d3 = require( 'd3' );
 var projection = d3.geo.albers();
 
 // ...write this:
-import { albers } from 'd3';
+import { albers } from 'd3-jsnext';
 var projection = albers();
 ```
 
