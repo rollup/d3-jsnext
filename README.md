@@ -222,7 +222,6 @@ In most cases, the import name is just the last part of the name as it was befor
 | d3.text                     | text                 |
 | d3.xhr                      | xhr                  |
 | d3.xml                      | xml                  |
-|-----------------------------|----------------------|
 
 
 ## Building and testing
