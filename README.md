@@ -36,6 +36,8 @@ Yes! Minified and gzipped, d3 weighs around **53kb**. An adaptation of the [Voro
 
 Check out the [examples](https://github.com/rollup/d3-jsnext/tree/master/examples) folder to see how to use d3-jsnext. You need to have a build step which takes your source code and bundles it up, but it can be as simple as typing a single command into your terminal. In theory, any ES6-aware module bundler will work, but for best results use [rollup](https://github.com/rollup/rollup).
 
+Note that whereas the examples use a relative path, in your own projects you should import from `'d3-jsnext'`.
+
 
 ## Table of import names
 
