@@ -14,8 +14,6 @@ You can build d3 yourself, only including the bits that you need, but... can you
 
 ES6 modules allow you to selectively import the bits of a library that you actually need.
 
-Now:
-
 ```js
 // Instead of this...
 var d3 = require( 'd3' );
@@ -26,14 +24,21 @@ import { albers } from 'd3';
 var projection = albers();
 ```
 
+## How does it work?
+
+ES6 modules were designed from the ground for [static analysis](http://en.wikipedia.org/wiki/Static_program_analysis), which lets us determine which bits of a library you're using. (With CommonJS (i.e. node/browserify) and AMD modules, that just isn't possible.)
+
+But you have to use the right tools. [rollup](https://github.com/rollup/rollup) is an ES6 module bundle that's smart enough to only include the right bits of code.
+
+
 ## Does it really make that much difference?
 
-Yes! Minified and gzipped, d3 weighs around **53kb**. An adaptation of the [Voronoi Tesselation example](http://bl.ocks.org/mbostock/4060366) - you can see it [here](TK) - weighs just **8kb**, including the example code itself. Depending on which of d3's functions you're actually using, the savings can be even more dramatic.
+Yes! Minified and gzipped, d3 weighs around **53kb**. An adaptation of the [Voronoi Tesselation example](http://bl.ocks.org/mbostock/4060366) - you can see it [here](https://github.com/rollup/d3-jsnext/tree/master/examples/voronoi) - weighs just **8kb**, including the example code itself. Depending on which of d3's functions you're actually using, the savings can be even more dramatic.
 
 
 ## How do I use it?
 
-Check out the [examples](TK) folder to see how to use d3-jsnext. You need to have a build step which takes your source code and bundles it up, but it can be as simple as typing a single command into your terminal. In theory, any ES6-aware module bundler will work, but for best results use [rollup](https://github.com/rollup/rollup).
+Check out the [examples](https://github.com/rollup/d3-jsnext/tree/master/examples) folder to see how to use d3-jsnext. You need to have a build step which takes your source code and bundles it up, but it can be as simple as typing a single command into your terminal. In theory, any ES6-aware module bundler will work, but for best results use [rollup](https://github.com/rollup/rollup).
 
 
 ## Table of import names
