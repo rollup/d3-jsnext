@@ -2,6 +2,8 @@
 
 [d3](http://d3js.org/), ported to ES6 modules.
 
+*Note: d3 is moving to ES6 modules as of d3 4.0! See [d3-selection](https://github.com/d3/d3-selection) for a glimpse of the future.*
+
 ## Why?
 
 Because most d3 projects only use a tiny fraction of d3's code. It has so much stuff in there - data manipulation, DOM stuff, AJAX, string interpolators, etc, etc... that you just don't need if you only want to (for example) generate a map projection function.
